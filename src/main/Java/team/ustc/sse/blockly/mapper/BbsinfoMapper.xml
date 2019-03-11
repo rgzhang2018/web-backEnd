@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="team.ustc.sse.blockly.mapper.StudentMapper" >
-  <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Student" >
-    <id column="studentID" property="studentid" jdbcType="INTEGER" />
-    <result column="studentName" property="studentname" jdbcType="VARCHAR" />
-    <result column="studentPassword" property="studentpassword" jdbcType="VARCHAR" />
-    <result column="studentGender" property="studentgender" jdbcType="VARCHAR" />
-    <result column="studentAccount" property="studentaccount" jdbcType="VARCHAR" />
+<mapper namespace="team.ustc.sse.blockly.mapper.BbsinfoMapper" >
+  <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Bbsinfo" >
+    <id column="bbsID" property="bbsid" jdbcType="INTEGER" />
+    <result column="studentID" property="studentid" jdbcType="INTEGER" />
+    <result column="postDate" property="postdate" jdbcType="TIMESTAMP" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    studentID, studentName, studentPassword, studentGender, studentAccount
+    bbsID, studentID, postDate, theme
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.StudentExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.BbsinfoExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from student
+    from bbsinfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,85 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from student
-    where studentID = #{studentid,jdbcType=INTEGER}
+    from bbsinfo
+    where bbsID = #{bbsid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from student
-    where studentID = #{studentid,jdbcType=INTEGER}
+    delete from bbsinfo
+    where bbsID = #{bbsid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.StudentExample" >
-    delete from student
+  <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.BbsinfoExample" >
+    delete from bbsinfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Student" >
-    insert into student (studentID, studentName, studentPassword, 
-      studentGender, studentAccount)
-    values (#{studentid,jdbcType=INTEGER}, #{studentname,jdbcType=VARCHAR}, #{studentpassword,jdbcType=VARCHAR}, 
-      #{studentgender,jdbcType=VARCHAR}, #{studentaccount,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Bbsinfo" >
+    insert into bbsinfo (bbsID, studentID, postDate, 
+      theme)
+    values (#{bbsid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{postdate,jdbcType=TIMESTAMP}, 
+      #{theme,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Student" >
-    insert into student
+  <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Bbsinfo" >
+    insert into bbsinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bbsid != null" >
+        bbsID,
+      </if>
       <if test="studentid != null" >
         studentID,
       </if>
-      <if test="studentname != null" >
-        studentName,
+      <if test="postdate != null" >
+        postDate,
       </if>
-      <if test="studentpassword != null" >
-        studentPassword,
-      </if>
-      <if test="studentgender != null" >
-        studentGender,
-      </if>
-      <if test="studentaccount != null" >
-        studentAccount,
+      <if test="theme != null" >
+        theme,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bbsid != null" >
+        #{bbsid,jdbcType=INTEGER},
+      </if>
       <if test="studentid != null" >
         #{studentid,jdbcType=INTEGER},
       </if>
-      <if test="studentname != null" >
-        #{studentname,jdbcType=VARCHAR},
+      <if test="postdate != null" >
+        #{postdate,jdbcType=TIMESTAMP},
       </if>
-      <if test="studentpassword != null" >
-        #{studentpassword,jdbcType=VARCHAR},
-      </if>
-      <if test="studentgender != null" >
-        #{studentgender,jdbcType=VARCHAR},
-      </if>
-      <if test="studentaccount != null" >
-        #{studentaccount,jdbcType=VARCHAR},
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="team.ustc.sse.blockly.entity.StudentExample" resultType="java.lang.Integer" >
-    select count(*) from student
+  <select id="countByExample" parameterType="team.ustc.sse.blockly.entity.BbsinfoExample" resultType="java.lang.Integer" >
+    select count(*) from bbsinfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update student
+    update bbsinfo
     <set >
+      <if test="record.bbsid != null" >
+        bbsID = #{record.bbsid,jdbcType=INTEGER},
+      </if>
       <if test="record.studentid != null" >
         studentID = #{record.studentid,jdbcType=INTEGER},
       </if>
-      <if test="record.studentname != null" >
-        studentName = #{record.studentname,jdbcType=VARCHAR},
+      <if test="record.postdate != null" >
+        postDate = #{record.postdate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.studentpassword != null" >
-        studentPassword = #{record.studentpassword,jdbcType=VARCHAR},
-      </if>
-      <if test="record.studentgender != null" >
-        studentGender = #{record.studentgender,jdbcType=VARCHAR},
-      </if>
-      <if test="record.studentaccount != null" >
-        studentAccount = #{record.studentaccount,jdbcType=VARCHAR},
+      <if test="record.theme != null" >
+        theme = #{record.theme,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -172,40 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update student
-    set studentID = #{record.studentid,jdbcType=INTEGER},
-      studentName = #{record.studentname,jdbcType=VARCHAR},
-      studentPassword = #{record.studentpassword,jdbcType=VARCHAR},
-      studentGender = #{record.studentgender,jdbcType=VARCHAR},
-      studentAccount = #{record.studentaccount,jdbcType=VARCHAR}
+    update bbsinfo
+    set bbsID = #{record.bbsid,jdbcType=INTEGER},
+      studentID = #{record.studentid,jdbcType=INTEGER},
+      postDate = #{record.postdate,jdbcType=TIMESTAMP},
+      theme = #{record.theme,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="team.ustc.sse.blockly.entity.Student" >
-    update student
+  <update id="updateByPrimaryKeySelective" parameterType="team.ustc.sse.blockly.entity.Bbsinfo" >
+    update bbsinfo
     <set >
-      <if test="studentname != null" >
-        studentName = #{studentname,jdbcType=VARCHAR},
+      <if test="studentid != null" >
+        studentID = #{studentid,jdbcType=INTEGER},
       </if>
-      <if test="studentpassword != null" >
-        studentPassword = #{studentpassword,jdbcType=VARCHAR},
+      <if test="postdate != null" >
+        postDate = #{postdate,jdbcType=TIMESTAMP},
       </if>
-      <if test="studentgender != null" >
-        studentGender = #{studentgender,jdbcType=VARCHAR},
-      </if>
-      <if test="studentaccount != null" >
-        studentAccount = #{studentaccount,jdbcType=VARCHAR},
+      <if test="theme != null" >
+        theme = #{theme,jdbcType=VARCHAR},
       </if>
     </set>
-    where studentID = #{studentid,jdbcType=INTEGER}
+    where bbsID = #{bbsid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Student" >
-    update student
-    set studentName = #{studentname,jdbcType=VARCHAR},
-      studentPassword = #{studentpassword,jdbcType=VARCHAR},
-      studentGender = #{studentgender,jdbcType=VARCHAR},
-      studentAccount = #{studentaccount,jdbcType=VARCHAR}
-    where studentID = #{studentid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Bbsinfo" >
+    update bbsinfo
+    set studentID = #{studentid,jdbcType=INTEGER},
+      postDate = #{postdate,jdbcType=TIMESTAMP},
+      theme = #{theme,jdbcType=VARCHAR}
+    where bbsID = #{bbsid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,67 +1,64 @@
 package team.ustc.sse.blockly.entity;
 
-
-
-
 public class Student {
+    private Integer studentid;
 
-    private Integer studentID;
-    private String studentName;
-    private String studentPassword;
-    private String studentGender;
-    private String studentAccount;
+    private String studentname;
 
+    private String studentpassword;
+
+    private String studentgender;
+
+    private String studentaccount;
+
+    public Integer getStudentid() {
+        return studentid;
+    }
+
+    public void setStudentid(Integer studentid) {
+        this.studentid = studentid;
+    }
+
+    public String getStudentname() {
+        return studentname;
+    }
+
+    public void setStudentname(String studentname) {
+        this.studentname = studentname == null ? null : studentname.trim();
+    }
+
+    public String getStudentpassword() {
+        return studentpassword;
+    }
+
+    public void setStudentpassword(String studentpassword) {
+        this.studentpassword = studentpassword == null ? null : studentpassword.trim();
+    }
+
+    public String getStudentgender() {
+        return studentgender;
+    }
+
+    public void setStudentgender(String studentgender) {
+        this.studentgender = studentgender == null ? null : studentgender.trim();
+    }
+
+    public String getStudentaccount() {
+        return studentaccount;
+    }
+
+    public void setStudentaccount(String studentaccount) {
+        this.studentaccount = studentaccount == null ? null : studentaccount.trim();
+    }
 
     @Override
     public String toString() {
         return "Student{" +
-                "studentID=" + studentID +
-                ", studentName='" + studentName + '\'' +
-                ", studentPassword='" + studentPassword + '\'' +
-                ", studentGender='" + studentGender + '\'' +
-                ", studentAccount='" + studentAccount + '\'' +
+                "studentid=" + studentid +
+                ", studentname='" + studentname + '\'' +
+                ", studentpassword='" + studentpassword + '\'' +
+                ", studentgender='" + studentgender + '\'' +
+                ", studentaccount='" + studentaccount + '\'' +
                 '}';
     }
-
-    public Integer getStudentID() {
-        return studentID;
-    }
-
-    public void setStudentID(Integer studentID) {
-        this.studentID = studentID;
-    }
-
-    public String getStudentName() {
-        return studentName;
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
-
-    public String getStudentPassword() {
-        return studentPassword;
-    }
-
-    public void setStudentPassword(String studentPassword) {
-        this.studentPassword = studentPassword;
-    }
-
-    public String getStudentGender() {
-        return studentGender;
-    }
-
-    public void setStudentGender(String studentGender) {
-        this.studentGender = studentGender;
-    }
-
-    public String getStudentAccount() {
-        return studentAccount;
-    }
-
-    public void setStudentAccount(String studentAccount) {
-        this.studentAccount = studentAccount;
-    }
-
-
 }

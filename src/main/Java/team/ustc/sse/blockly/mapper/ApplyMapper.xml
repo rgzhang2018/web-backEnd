@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.ustc.sse.blockly.mapper.ApplyMapper" >
+  <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Apply" >
+    <id column="guardianID" property="guardianid" jdbcType="INTEGER" />
+    <id column="studentID" property="studentid" jdbcType="INTEGER" />
+    <result column="applyDate" property="applydate" jdbcType="TIMESTAMP" />
+    <result column="applySubmit" property="applysubmit" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    guardianID, studentID, applyDate, applySubmit
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.ApplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.ApplyKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from apply
+    where guardianID = #{guardianid,jdbcType=INTEGER}
+      and studentID = #{studentid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.ApplyKey" >
+    delete from apply
+    where guardianID = #{guardianid,jdbcType=INTEGER}
+      and studentID = #{studentid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.ApplyExample" >
+    delete from apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Apply" >
+    insert into apply (guardianID, studentID, applyDate, 
+      applySubmit)
+    values (#{guardianid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{applydate,jdbcType=TIMESTAMP}, 
+      #{applysubmit,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Apply" >
+    insert into apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="guardianid != null" >
+        guardianID,
+      </if>
+      <if test="studentid != null" >
+        studentID,
+      </if>
+      <if test="applydate != null" >
+        applyDate,
+      </if>
+      <if test="applysubmit != null" >
+        applySubmit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="guardianid != null" >
+        #{guardianid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null" >
+        #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="applydate != null" >
+        #{applydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applysubmit != null" >
+        #{applysubmit,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="team.ustc.sse.blockly.entity.ApplyExample" resultType="java.lang.Integer" >
+    select count(*) from apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update apply
+    <set >
+      <if test="record.guardianid != null" >
+        guardianID = #{record.guardianid,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentid != null" >
+        studentID = #{record.studentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.applydate != null" >
+        applyDate = #{record.applydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.applysubmit != null" >
+        applySubmit = #{record.applysubmit,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update apply
+    set guardianID = #{record.guardianid,jdbcType=INTEGER},
+      studentID = #{record.studentid,jdbcType=INTEGER},
+      applyDate = #{record.applydate,jdbcType=TIMESTAMP},
+      applySubmit = #{record.applysubmit,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="team.ustc.sse.blockly.entity.Apply" >
+    update apply
+    <set >
+      <if test="applydate != null" >
+        applyDate = #{applydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applysubmit != null" >
+        applySubmit = #{applysubmit,jdbcType=BIT},
+      </if>
+    </set>
+    where guardianID = #{guardianid,jdbcType=INTEGER}
+      and studentID = #{studentid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Apply" >
+    update apply
+    set applyDate = #{applydate,jdbcType=TIMESTAMP},
+      applySubmit = #{applysubmit,jdbcType=BIT}
+    where guardianID = #{guardianid,jdbcType=INTEGER}
+      and studentID = #{studentid,jdbcType=INTEGER}
+  </update>
+</mapper>

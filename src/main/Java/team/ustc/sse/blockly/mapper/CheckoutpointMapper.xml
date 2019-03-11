@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="team.ustc.sse.blockly.mapper.StudentMapper" >
-  <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Student" >
-    <id column="studentID" property="studentid" jdbcType="INTEGER" />
-    <result column="studentName" property="studentname" jdbcType="VARCHAR" />
-    <result column="studentPassword" property="studentpassword" jdbcType="VARCHAR" />
-    <result column="studentGender" property="studentgender" jdbcType="VARCHAR" />
-    <result column="studentAccount" property="studentaccount" jdbcType="VARCHAR" />
+<mapper namespace="team.ustc.sse.blockly.mapper.CheckoutpointMapper" >
+  <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Checkoutpoint" >
+    <id column="checkOutPointID" property="checkoutpointid" jdbcType="INTEGER" />
+    <result column="studentID" property="studentid" jdbcType="INTEGER" />
+    <result column="toalTime" property="toaltime" jdbcType="TIME" />
+    <result column="program" property="program" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    studentID, studentName, studentPassword, studentGender, studentAccount
+    checkOutPointID, studentID, toalTime, program
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.StudentExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.CheckoutpointExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from student
+    from checkoutpoint
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,85 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from student
-    where studentID = #{studentid,jdbcType=INTEGER}
+    from checkoutpoint
+    where checkOutPointID = #{checkoutpointid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from student
-    where studentID = #{studentid,jdbcType=INTEGER}
+    delete from checkoutpoint
+    where checkOutPointID = #{checkoutpointid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.StudentExample" >
-    delete from student
+  <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.CheckoutpointExample" >
+    delete from checkoutpoint
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Student" >
-    insert into student (studentID, studentName, studentPassword, 
-      studentGender, studentAccount)
-    values (#{studentid,jdbcType=INTEGER}, #{studentname,jdbcType=VARCHAR}, #{studentpassword,jdbcType=VARCHAR}, 
-      #{studentgender,jdbcType=VARCHAR}, #{studentaccount,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
+    insert into checkoutpoint (checkOutPointID, studentID, toalTime, 
+      program)
+    values (#{checkoutpointid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{toaltime,jdbcType=TIME}, 
+      #{program,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Student" >
-    insert into student
+  <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
+    insert into checkoutpoint
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="checkoutpointid != null" >
+        checkOutPointID,
+      </if>
       <if test="studentid != null" >
         studentID,
       </if>
-      <if test="studentname != null" >
-        studentName,
+      <if test="toaltime != null" >
+        toalTime,
       </if>
-      <if test="studentpassword != null" >
-        studentPassword,
-      </if>
-      <if test="studentgender != null" >
-        studentGender,
-      </if>
-      <if test="studentaccount != null" >
-        studentAccount,
+      <if test="program != null" >
+        program,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="checkoutpointid != null" >
+        #{checkoutpointid,jdbcType=INTEGER},
+      </if>
       <if test="studentid != null" >
         #{studentid,jdbcType=INTEGER},
       </if>
-      <if test="studentname != null" >
-        #{studentname,jdbcType=VARCHAR},
+      <if test="toaltime != null" >
+        #{toaltime,jdbcType=TIME},
       </if>
-      <if test="studentpassword != null" >
-        #{studentpassword,jdbcType=VARCHAR},
-      </if>
-      <if test="studentgender != null" >
-        #{studentgender,jdbcType=VARCHAR},
-      </if>
-      <if test="studentaccount != null" >
-        #{studentaccount,jdbcType=VARCHAR},
+      <if test="program != null" >
+        #{program,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="team.ustc.sse.blockly.entity.StudentExample" resultType="java.lang.Integer" >
-    select count(*) from student
+  <select id="countByExample" parameterType="team.ustc.sse.blockly.entity.CheckoutpointExample" resultType="java.lang.Integer" >
+    select count(*) from checkoutpoint
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update student
+    update checkoutpoint
     <set >
+      <if test="record.checkoutpointid != null" >
+        checkOutPointID = #{record.checkoutpointid,jdbcType=INTEGER},
+      </if>
       <if test="record.studentid != null" >
         studentID = #{record.studentid,jdbcType=INTEGER},
       </if>
-      <if test="record.studentname != null" >
-        studentName = #{record.studentname,jdbcType=VARCHAR},
+      <if test="record.toaltime != null" >
+        toalTime = #{record.toaltime,jdbcType=TIME},
       </if>
-      <if test="record.studentpassword != null" >
-        studentPassword = #{record.studentpassword,jdbcType=VARCHAR},
-      </if>
-      <if test="record.studentgender != null" >
-        studentGender = #{record.studentgender,jdbcType=VARCHAR},
-      </if>
-      <if test="record.studentaccount != null" >
-        studentAccount = #{record.studentaccount,jdbcType=VARCHAR},
+      <if test="record.program != null" >
+        program = #{record.program,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -172,40 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update student
-    set studentID = #{record.studentid,jdbcType=INTEGER},
-      studentName = #{record.studentname,jdbcType=VARCHAR},
-      studentPassword = #{record.studentpassword,jdbcType=VARCHAR},
-      studentGender = #{record.studentgender,jdbcType=VARCHAR},
-      studentAccount = #{record.studentaccount,jdbcType=VARCHAR}
+    update checkoutpoint
+    set checkOutPointID = #{record.checkoutpointid,jdbcType=INTEGER},
+      studentID = #{record.studentid,jdbcType=INTEGER},
+      toalTime = #{record.toaltime,jdbcType=TIME},
+      program = #{record.program,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="team.ustc.sse.blockly.entity.Student" >
-    update student
+  <update id="updateByPrimaryKeySelective" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
+    update checkoutpoint
     <set >
-      <if test="studentname != null" >
-        studentName = #{studentname,jdbcType=VARCHAR},
+      <if test="studentid != null" >
+        studentID = #{studentid,jdbcType=INTEGER},
       </if>
-      <if test="studentpassword != null" >
-        studentPassword = #{studentpassword,jdbcType=VARCHAR},
+      <if test="toaltime != null" >
+        toalTime = #{toaltime,jdbcType=TIME},
       </if>
-      <if test="studentgender != null" >
-        studentGender = #{studentgender,jdbcType=VARCHAR},
-      </if>
-      <if test="studentaccount != null" >
-        studentAccount = #{studentaccount,jdbcType=VARCHAR},
+      <if test="program != null" >
+        program = #{program,jdbcType=VARCHAR},
       </if>
     </set>
-    where studentID = #{studentid,jdbcType=INTEGER}
+    where checkOutPointID = #{checkoutpointid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Student" >
-    update student
-    set studentName = #{studentname,jdbcType=VARCHAR},
-      studentPassword = #{studentpassword,jdbcType=VARCHAR},
-      studentGender = #{studentgender,jdbcType=VARCHAR},
-      studentAccount = #{studentaccount,jdbcType=VARCHAR}
-    where studentID = #{studentid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
+    update checkoutpoint
+    set studentID = #{studentid,jdbcType=INTEGER},
+      toalTime = #{toaltime,jdbcType=TIME},
+      program = #{program,jdbcType=VARCHAR}
+    where checkOutPointID = #{checkoutpointid,jdbcType=INTEGER}
   </update>
 </mapper>

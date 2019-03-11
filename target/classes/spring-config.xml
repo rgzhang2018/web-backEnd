@@ -80,6 +80,7 @@
 
 
     <!--扫描带有注解的业务类，不可以放在SpringMVC的配置中-->
+    <!--注：对于mybatis逆向工程产生的东西，已经默认进行了bean的配置，可以不用考虑-->
     <context:component-scan base-package="team.ustc.sse.blockly.service"/>
 
 

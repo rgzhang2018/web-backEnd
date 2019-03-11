@@ -16,14 +16,37 @@
     <!--加载数据库配置文件-->
     <context:property-placeholder location="classpath:database.properties"/>
 
-    <!--创建数据源，多例模式-->
-    <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+    <!--创建数据源，这里选择apache提供的BasicDataSource，更加高效-->
+    <!--BasicDataSource提供了close()方法关闭数据源，所以必须设定destroy-method=”close”属性， 以便Spring容器关闭时，数据源能够正常关闭。-->
+    <bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource" destroy-method="close">
         <!--从配置文件中获取对应的值-->
         <property name="driverClassName" value="${db_driver}"/>
         <property name="url" value="${db_url}"/>
         <property name="username" value="${db_username}"/>
         <property name="password" value="${db_password}"/>
+        <!--最大连接数-->
+        <property name="maxActive" value="20"/>
+        <!--最大空闲数-->
+        <property name="maxIdle" value="5"/>
     </bean>
+
+    <!--会话工厂-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+        <!--传入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--指定MyBatis的核心配置文件的位置-->
+        <property name="configLocation" value="classpath:mybaits-config.xml"/>
+        <!--别名包扫描-->
+        <property name="typeAliasesPackage" value="team.ustc.sse.blockly.entity"/>
+        <!--其他MyBatis的配置都可以在此进行配置-->
+    </bean>
+
+    <!--配置接口代理开发,要求接口和xml有一样的名字，可以省去实现类-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="team.ustc.sse.blockly.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
 
     <!--事务注解驱动-->
     <tx:annotation-driven/>
@@ -37,7 +60,7 @@
     <tx:advice id="txAdvice" transaction-manager="txManager">
         <tx:attributes>
             <!--事务传播，默认REQUIRED，这是一个具有事务的方法，没有则创建事务-->
-            <!--事务隔离，默认DEFAULT，此设置是为了解决并发事务中，脏读、不可重复读外、幻读，性能会下降-->
+            <!--事务隔离，默认DEFAULT，此设置是为了解决并发事务中，脏读、不可重复读外、幻读.性能会下降-->
             <tx:method name="add*" isolation="SERIALIZABLE" propagation="REQUIRED"/>
             <tx:method name="delete*"/>
             <tx:method name="update*"/>
@@ -55,21 +78,9 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="studentPointcut"/>
     </aop:config>
 
-    <!--会话工厂-->
-    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
-        <!--传入数据源-->
-        <property name="dataSource" ref="dataSource"/>
-        <!--指定MyBatis的核心配置文件的位置-->
-        <property name="configLocation" value="classpath:mybaits-config.xml"/>
-        <!--其他MyBatis的配置都可以在此进行配置-->
-    </bean>
-
-    <!--扫描Mapper，生成dao的代理对象-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!--指定dao的创建位置-->
-        <property name="basePackage" value="team.ustc.sse.blockly.mapper"/>
-    </bean>
 
     <!--扫描带有注解的业务类，不可以放在SpringMVC的配置中-->
     <context:component-scan base-package="team.ustc.sse.blockly.service"/>
+
+
 </beans>

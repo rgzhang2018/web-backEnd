@@ -11,23 +11,21 @@
         <!--注册Spring的ServletContext监听器，监听到服务器启动时，自动执行ContextLoaderListener的方法初始化Spring-->
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    <!--spring的加载——xml配置文件-->
+    <!--spring的加载——xml配置文件    -->
     <context-param>
+        <!--param-name和param-value是一对键值，本质是加载的类里面的一个属性名和对应的属性值，通过配置文件的方式修改其值-->
+        <!--加载Spring的配置文件，随着监听器触发，Spring调用这里，找到Spring的核心配置文件-->
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:springMVC-config.xml</param-value>
+        <param-value>classpath:spring-config.xml</param-value>
     </context-param>
 
 
     <!--springMVC的加载-->
     <servlet>
         <!--配置前端控制器springMVC，这个类是一个servlet-->
-        <!-- 默认加载方式,使得springMVC对应的.xml默认被加载，需要按照如下命名规范
-       * 文件命名：(servlet-name)-servlet.xml    即这里的 springMVC-servlet.xml
-       * 路径规范：必须在WEB-INF目录下面
-         -->
         <servlet-name>springMVC</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <!--手动加载配置文件.xml-->
+        <!--当页面有请求时，DispatcherServlet对象调用这里，获取到SpringMVC的核心配置文件-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:springMVC-config.xml</param-value>
@@ -52,11 +50,6 @@
     </servlet-mapping>
 
     <!--访问映射的控制-->
-    <servlet-mapping>
-        <!--指定请求的映射，链接为指定形式时，使用Servlet处理，其他链接不执行Servlet-->
-        <servlet-name>springMVC</servlet-name>
-        <url-pattern>/*.do</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>springMVC</servlet-name>
         <url-pattern>/rest/*</url-pattern>
