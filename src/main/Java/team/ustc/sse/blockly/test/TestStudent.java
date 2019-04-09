@@ -12,6 +12,9 @@ import team.ustc.sse.blockly.entity.StudentExample;
 import team.ustc.sse.blockly.mapper.StudentMapper;
 
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadInfo;
+import java.lang.management.ThreadMXBean;
 import java.util.List;
 
 /**
@@ -35,12 +38,27 @@ public class TestStudent {
     * @Author: rgzhang
     * @Date: 2019/3/10
     */
-        @Before
-        public void init() {
-            //获取applicationContext
-            applicationContext = new ClassPathXmlApplicationContext("classpath:spring-config.xml");
+    @Before
+    public void init() {
+        //获取applicationContext
+        applicationContext = new ClassPathXmlApplicationContext("classpath:spring-config.xml");
+    }
+
+
+
+    @Test
+    public void ss(){
+        ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
+
+        ThreadInfo[] threadInfos = threadMXBean.dumpAllThreads(false,false);
+
+        for (ThreadInfo info : threadInfos
+        ) {
+            System.out.println("[" + info.getThreadId() + "]" + info.getThreadName());
         }
 
+        System.out.println(Thread.activeCount());
+    }
 
     @Test
     public void testUpdate(){
@@ -58,5 +76,7 @@ public class TestStudent {
 
         //注意，用完之后一定不要关闭连接池
     }
+
+
 
 }

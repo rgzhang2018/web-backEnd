@@ -6,58 +6,76 @@ public class Bbstalk {
     private Integer studentid;
 
     private Integer bbsid;
-
     private Integer talkto;
 
     private Integer likecount;
 
     private String bbstalkmessage;
 
+
     public Integer getTalkid() {
         return talkid;
     }
 
-    public void setTalkid(Integer talkid) {
+    public Bbstalk setTalkid(Integer talkid) {
         this.talkid = talkid;
+        return this;
     }
 
     public Integer getStudentid() {
         return studentid;
     }
 
-    public void setStudentid(Integer studentid) {
+    public Bbstalk setStudentid(Integer studentid) {
         this.studentid = studentid;
+        return this;
     }
 
     public Integer getBbsid() {
         return bbsid;
     }
 
-    public void setBbsid(Integer bbsid) {
+    public Bbstalk setBbsid(Integer bbsid) {
         this.bbsid = bbsid;
+        return this;
     }
 
     public Integer getTalkto() {
         return talkto;
     }
 
-    public void setTalkto(Integer talkto) {
+    public Bbstalk setTalkto(Integer talkto) {
         this.talkto = talkto;
+        return this;
     }
 
     public Integer getLikecount() {
         return likecount;
     }
 
-    public void setLikecount(Integer likecount) {
+    public Bbstalk setLikecount(Integer likecount) {
         this.likecount = likecount;
+        return this;
     }
 
     public String getBbstalkmessage() {
         return bbstalkmessage;
     }
 
-    public void setBbstalkmessage(String bbstalkmessage) {
-        this.bbstalkmessage = bbstalkmessage == null ? null : bbstalkmessage.trim();
+    public Bbstalk setBbstalkmessage(String bbstalkmessage) {
+        this.bbstalkmessage = bbstalkmessage;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Bbstalk{" +
+                "talkid=" + talkid +
+                ", studentid=" + studentid +
+                ", bbsid=" + bbsid +
+                ", talkto=" + talkto +
+                ", likecount=" + likecount +
+                ", bbstalkmessage='" + bbstalkmessage + '\'' +
+                '}';
     }
 }

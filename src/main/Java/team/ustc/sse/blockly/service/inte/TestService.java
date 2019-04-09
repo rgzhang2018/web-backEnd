@@ -28,4 +28,6 @@ public interface TestService {
     String getPassword();
 
     void insertStudent();
+
+    void testSaySomething();
 }

@@ -11,23 +11,35 @@ public class Freedommode {
         return freemodeid;
     }
 
-    public void setFreemodeid(Integer freemodeid) {
+    public Freedommode setFreemodeid(Integer freemodeid) {
         this.freemodeid = freemodeid;
+        return this;
     }
 
     public String getProgram() {
         return program;
     }
 
-    public void setProgram(String program) {
-        this.program = program == null ? null : program.trim();
+    public Freedommode setProgram(String program) {
+        this.program = program;
+        return this;
     }
 
     public String getSource() {
         return source;
     }
 
-    public void setSource(String source) {
-        this.source = source == null ? null : source.trim();
+    public Freedommode setSource(String source) {
+        this.source = source;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Freedommode{" +
+                "freemodeid=" + freemodeid +
+                ", program='" + program + '\'' +
+                ", source='" + source + '\'' +
+                '}';
     }
 }

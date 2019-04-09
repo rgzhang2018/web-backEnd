@@ -13,31 +13,45 @@ public class Guardian {
         return guardianid;
     }
 
-    public void setGuardianid(Integer guardianid) {
+    public Guardian setGuardianid(Integer guardianid) {
         this.guardianid = guardianid;
+        return this;
     }
 
     public String getGuardianname() {
         return guardianname;
     }
 
-    public void setGuardianname(String guardianname) {
-        this.guardianname = guardianname == null ? null : guardianname.trim();
+    public Guardian setGuardianname(String guardianname) {
+        this.guardianname = guardianname;
+        return this;
     }
 
     public String getGuardianpassword() {
         return guardianpassword;
     }
 
-    public void setGuardianpassword(String guardianpassword) {
-        this.guardianpassword = guardianpassword == null ? null : guardianpassword.trim();
+    public Guardian setGuardianpassword(String guardianpassword) {
+        this.guardianpassword = guardianpassword;
+        return this;
     }
 
     public String getGuardianemail() {
         return guardianemail;
     }
 
-    public void setGuardianemail(String guardianemail) {
-        this.guardianemail = guardianemail == null ? null : guardianemail.trim();
+    public Guardian setGuardianemail(String guardianemail) {
+        this.guardianemail = guardianemail;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Guardian{" +
+                "guardianid=" + guardianid +
+                ", guardianname='" + guardianname + '\'' +
+                ", guardianpassword='" + guardianpassword + '\'' +
+                ", guardianemail='" + guardianemail + '\'' +
+                '}';
     }
 }

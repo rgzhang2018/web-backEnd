@@ -11,6 +11,36 @@ public class Student {
 
     private String studentaccount;
 
+
+
+
+    /**
+    * @Description: 重写了string就要重写hashcode方法。
+    * @Param: [object]
+    * @return: boolean
+    * @Author: rgzhang
+    * @Date: 2019/3/22
+    */
+    @Override
+    public boolean equals(Object object){
+        if(!(object instanceof Student))return false;
+        Student student2 = (Student) object;
+        return student2.studentid.equals(studentid)
+                && student2.studentname.equals(studentname)
+                && student2.studentpassword.equals(studentpassword);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + studentid;
+        result = 31 * result + (studentname == null ? 0 : studentname.hashCode());
+        result = 31 * result + (studentpassword == null ? 0 : studentpassword.hashCode());
+//        result = 31 * result + (mObj == null ? 0 : mObj.hashCode());
+        return result;
+    }
+
+
     public Integer getStudentid() {
         return studentid;
     }
@@ -19,33 +49,20 @@ public class Student {
         this.studentid = studentid;
     }
 
-    public String getStudentname() {
-        return studentname;
-    }
 
     public void setStudentname(String studentname) {
         this.studentname = studentname == null ? null : studentname.trim();
-    }
-
-    public String getStudentpassword() {
-        return studentpassword;
     }
 
     public void setStudentpassword(String studentpassword) {
         this.studentpassword = studentpassword == null ? null : studentpassword.trim();
     }
 
-    public String getStudentgender() {
-        return studentgender;
-    }
 
     public void setStudentgender(String studentgender) {
         this.studentgender = studentgender == null ? null : studentgender.trim();
     }
 
-    public String getStudentaccount() {
-        return studentaccount;
-    }
 
     public void setStudentaccount(String studentaccount) {
         this.studentaccount = studentaccount == null ? null : studentaccount.trim();

@@ -1,6 +1,7 @@
 package team.ustc.sse.blockly.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.mapper.StudentMapper;
@@ -53,4 +54,12 @@ public class TestServiceImpl implements TestService {
         student.setStudentpassword("1234567");
         studentMapper.insert(student);
     }
+
+
+    public void testSaySomething(){
+        System.out.println("123");
+    }
+
+
+
 }
