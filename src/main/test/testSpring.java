@@ -28,7 +28,7 @@ public class testSpring {
     */
     @Test
     public void testIoc1(){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-config.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
         TestService testService =  applicationContext.getBean(TestService.class);
         testService.insertStudent();
     }
@@ -37,7 +37,7 @@ public class testSpring {
 
     @Test
     public void testIoc2() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-config.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
         TestService testService =  applicationContext.getBean(TestService.class);
         testService.testSaySomething();
 

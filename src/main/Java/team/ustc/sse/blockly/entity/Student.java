@@ -1,6 +1,6 @@
 package team.ustc.sse.blockly.entity;
 
-public class Student {
+public class Student implements User{
     private Integer studentid;
 
     private String studentname;
@@ -40,32 +40,49 @@ public class Student {
         return result;
     }
 
-
     public Integer getStudentid() {
         return studentid;
     }
 
-    public void setStudentid(Integer studentid) {
+    public Student setStudentid(Integer studentid) {
         this.studentid = studentid;
+        return this;
     }
 
-
-    public void setStudentname(String studentname) {
-        this.studentname = studentname == null ? null : studentname.trim();
+    public String getStudentname() {
+        return studentname;
     }
 
-    public void setStudentpassword(String studentpassword) {
-        this.studentpassword = studentpassword == null ? null : studentpassword.trim();
+    public Student setStudentname(String studentname) {
+        this.studentname = studentname;
+        return this;
     }
 
-
-    public void setStudentgender(String studentgender) {
-        this.studentgender = studentgender == null ? null : studentgender.trim();
+    public String getStudentpassword() {
+        return studentpassword;
     }
 
+    public Student setStudentpassword(String studentpassword) {
+        this.studentpassword = studentpassword;
+        return this;
+    }
 
-    public void setStudentaccount(String studentaccount) {
-        this.studentaccount = studentaccount == null ? null : studentaccount.trim();
+    public String getStudentgender() {
+        return studentgender;
+    }
+
+    public Student setStudentgender(String studentgender) {
+        this.studentgender = studentgender;
+        return this;
+    }
+
+    public String getStudentaccount() {
+        return studentaccount;
+    }
+
+    public Student setStudentaccount(String studentaccount) {
+        this.studentaccount = studentaccount;
+        return this;
     }
 
     @Override

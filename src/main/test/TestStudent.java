@@ -41,7 +41,7 @@ public class TestStudent {
     @Before
     public void init() {
         //获取applicationContext
-        applicationContext = new ClassPathXmlApplicationContext("classpath:spring-config.xml");
+        applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
     }
 
 

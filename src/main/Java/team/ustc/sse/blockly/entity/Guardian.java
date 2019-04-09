@@ -1,6 +1,6 @@
 package team.ustc.sse.blockly.entity;
 
-public class Guardian {
+public class Guardian implements User{
     private Integer guardianid;
 
     private String guardianname;
@@ -8,6 +8,33 @@ public class Guardian {
     private String guardianpassword;
 
     private String guardianemail;
+
+
+    /**
+     * @Description: 重写了string就要重写hashcode方法。
+     * @Param: [object]
+     * @return: boolean
+     * @Author: rgzhang
+     * @Date: 2019/3/22
+     */
+    @Override
+    public boolean equals(Object object){
+        if(!(object instanceof Guardian))return false;
+        Guardian guardian2 = (Guardian) object;
+        return guardian2.guardianid.equals(guardianid)
+                && guardian2.guardianname.equals(guardianname)
+                && guardian2.guardianpassword.equals(guardianpassword);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + guardianid;
+        result = 31 * result + (guardianname == null ? 0 : guardianname.hashCode());
+        result = 31 * result + (guardianpassword == null ? 0 : guardianpassword.hashCode());
+//        result = 31 * result + (mObj == null ? 0 : mObj.hashCode());
+        return result;
+    }
 
     public Integer getGuardianid() {
         return guardianid;
