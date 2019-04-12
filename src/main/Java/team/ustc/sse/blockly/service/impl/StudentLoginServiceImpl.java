@@ -21,30 +21,28 @@ public class StudentLoginServiceImpl implements LoginService {
     }
 
     @Override
-    public boolean loginCheck(String account) {
-        Student student = (Student) findByAccount(account);
-        if(null == student){
-            return false;
+    public boolean loginCheck(Student student) {
+
+        Student studentInDB = (Student) findByAccount(student.getStudentaccount());
+        if(studentInDB.getStudentpassword().equals(student.getStudentpassword())){
+            setLoginSession(student);
+            return true;
         }
-        setLoginSession(Student);
-        return true;
+        return false;
     }
 
     @Override
     public User findByAccount(String account) {
         StudentExample studentExample = new StudentExample();
         StudentExample.Criteria criteria = studentExample.createCriteria();
-        criteria.andStudentnameEqualTo(account);
+        criteria.andStudentaccountEqualTo(account);
         List<Student> studentList = studentMapper.selectByExample(studentExample);
-        return studentList.get(0);
+        return (User)studentList.get(0);
     }
 
     @Override
     public void saveNewUser(User user) {
-        if(user.getClass()!=Student.class)
-        {
-            System.out.println("错误的用户类型");
-        }
+
         Student student = (Student) user;
         studentMapper.insert(student);
     }

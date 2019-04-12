@@ -1,5 +1,6 @@
 package team.ustc.sse.blockly.service.inte;
 
+import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.User;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public interface LoginService {
 
 
     //登录检测
-    boolean loginCheck(String account);
+    boolean loginCheck(Student student);
 
     //根据账户名查找用户
     User findByAccount(String account) ;

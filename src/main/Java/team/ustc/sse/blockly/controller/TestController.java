@@ -29,19 +29,8 @@ public class TestController {
     @RequestMapping("index")
     public String index(){
         System.out.println("hello!");
-        return "hello";
+        return "index";
     }
 
 
-    /**
-    * @Description: 测试spring的注解开发
-    * @Param: []
-    * @return: void
-    * @Author: rgzhang
-    * @Date: 2019/3/11
-    */
-    @Test
-    public void doIt(){
-        testService.getPassword();
-    }
 }
