@@ -99,17 +99,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Bbsinfo" >
-    insert into bbsinfo (bbsID, studentID, postDate, 
-      theme)
-    values (#{bbsid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{postdate,jdbcType=TIMESTAMP}, 
-      #{theme,jdbcType=VARCHAR})
+    <selectKey resultType="java.lang.Integer" keyProperty="bbsid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into bbsinfo (studentID, postDate, theme
+      )
+    values (#{studentid,jdbcType=INTEGER}, #{postdate,jdbcType=TIMESTAMP}, #{theme,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Bbsinfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="bbsid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into bbsinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="bbsid != null" >
-        bbsID,
-      </if>
       <if test="studentid != null" >
         studentID,
       </if>
@@ -121,9 +124,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="bbsid != null" >
-        #{bbsid,jdbcType=INTEGER},
-      </if>
       <if test="studentid != null" >
         #{studentid,jdbcType=INTEGER},
       </if>

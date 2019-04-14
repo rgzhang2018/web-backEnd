@@ -99,17 +99,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Freedommode" >
-    insert into freedommode (freeModeID, program, source, 
-      freeModeSaveTime)
-    values (#{freemodeid,jdbcType=INTEGER}, #{program,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
-      #{freemodesavetime,jdbcType=TIMESTAMP})
+    <selectKey resultType="java.lang.Integer" keyProperty="freemodeid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into freedommode (program, source, freeModeSaveTime
+      )
+    values (#{program,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{freemodesavetime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Freedommode" >
+    <selectKey resultType="java.lang.Integer" keyProperty="freemodeid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into freedommode
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="freemodeid != null" >
-        freeModeID,
-      </if>
       <if test="program != null" >
         program,
       </if>
@@ -121,9 +124,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="freemodeid != null" >
-        #{freemodeid,jdbcType=INTEGER},
-      </if>
       <if test="program != null" >
         #{program,jdbcType=VARCHAR},
       </if>

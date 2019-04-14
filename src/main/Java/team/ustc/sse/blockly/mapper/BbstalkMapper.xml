@@ -102,19 +102,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Bbstalk" >
-    insert into bbstalk (talkID, studentID, bbsID, 
-      talkTo, likeCount, BBSTalkMessage, 
-      bbstalkTime)
-    values (#{talkid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{bbsid,jdbcType=INTEGER}, 
-      #{talkto,jdbcType=INTEGER}, #{likecount,jdbcType=INTEGER}, #{bbstalkmessage,jdbcType=VARCHAR}, 
-      #{bbstalktime,jdbcType=TIMESTAMP})
+    <selectKey resultType="java.lang.Integer" keyProperty="talkid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into bbstalk (studentID, bbsID, talkTo, 
+      likeCount, BBSTalkMessage, bbstalkTime
+      )
+    values (#{studentid,jdbcType=INTEGER}, #{bbsid,jdbcType=INTEGER}, #{talkto,jdbcType=INTEGER}, 
+      #{likecount,jdbcType=INTEGER}, #{bbstalkmessage,jdbcType=VARCHAR}, #{bbstalktime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Bbstalk" >
+    <selectKey resultType="java.lang.Integer" keyProperty="talkid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into bbstalk
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="talkid != null" >
-        talkID,
-      </if>
       <if test="studentid != null" >
         studentID,
       </if>
@@ -135,9 +138,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="talkid != null" >
-        #{talkid,jdbcType=INTEGER},
-      </if>
       <if test="studentid != null" >
         #{studentid,jdbcType=INTEGER},
       </if>

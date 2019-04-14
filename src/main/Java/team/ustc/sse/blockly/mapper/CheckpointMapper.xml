@@ -103,19 +103,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Checkpoint" >
-    insert into checkpoint (checkPointID, checkPointName, checkPointLevel, 
+    <selectKey resultType="java.lang.Integer" keyProperty="checkpointid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into checkpoint (checkPointName, checkPointLevel, 
       checkPointCate, checkpointCode, checkpointData, 
       checkpointRemark)
-    values (#{checkpointid,jdbcType=INTEGER}, #{checkpointname,jdbcType=VARCHAR}, #{checkpointlevel,jdbcType=INTEGER}, 
+    values (#{checkpointname,jdbcType=VARCHAR}, #{checkpointlevel,jdbcType=INTEGER}, 
       #{checkpointcate,jdbcType=INTEGER}, #{checkpointcode,jdbcType=VARCHAR}, #{checkpointdata,jdbcType=TIMESTAMP}, 
       #{checkpointremark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Checkpoint" >
+    <selectKey resultType="java.lang.Integer" keyProperty="checkpointid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into checkpoint
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="checkpointid != null" >
-        checkPointID,
-      </if>
       <if test="checkpointname != null" >
         checkPointName,
       </if>
@@ -136,9 +139,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="checkpointid != null" >
-        #{checkpointid,jdbcType=INTEGER},
-      </if>
       <if test="checkpointname != null" >
         #{checkpointname,jdbcType=VARCHAR},
       </if>

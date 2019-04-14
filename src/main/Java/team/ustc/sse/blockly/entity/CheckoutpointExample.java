@@ -252,6 +252,66 @@ public class CheckoutpointExample {
             return (Criteria) this;
         }
 
+        public Criteria andCheckpointidIsNull() {
+            addCriterion("checkpointID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidIsNotNull() {
+            addCriterion("checkpointID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidEqualTo(Integer value) {
+            addCriterion("checkpointID =", value, "checkpointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidNotEqualTo(Integer value) {
+            addCriterion("checkpointID <>", value, "checkpointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidGreaterThan(Integer value) {
+            addCriterion("checkpointID >", value, "checkpointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("checkpointID >=", value, "checkpointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidLessThan(Integer value) {
+            addCriterion("checkpointID <", value, "checkpointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidLessThanOrEqualTo(Integer value) {
+            addCriterion("checkpointID <=", value, "checkpointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidIn(List<Integer> values) {
+            addCriterion("checkpointID in", values, "checkpointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidNotIn(List<Integer> values) {
+            addCriterion("checkpointID not in", values, "checkpointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidBetween(Integer value1, Integer value2) {
+            addCriterion("checkpointID between", value1, value2, "checkpointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckpointidNotBetween(Integer value1, Integer value2) {
+            addCriterion("checkpointID not between", value1, value2, "checkpointid");
+            return (Criteria) this;
+        }
+
         public Criteria andToaltimeIsNull() {
             addCriterion("toalTime is null");
             return (Criteria) this;

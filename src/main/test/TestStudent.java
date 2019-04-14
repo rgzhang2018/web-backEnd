@@ -1,4 +1,3 @@
-package team.ustc.sse.blockly.test;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,7 +5,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.StudentExample;
+import team.ustc.sse.blockly.entity.Studentlogin;
 import team.ustc.sse.blockly.mapper.StudentMapper;
+import team.ustc.sse.blockly.mapper.StudentloginMapper;
 
 
 import java.lang.management.ManagementFactory;
@@ -72,6 +73,18 @@ public class TestStudent {
         }
 
         //注意，用完之后一定不要关闭连接池
+    }
+
+
+    @Test
+    public void testPK(){
+        StudentloginMapper studentloginMapper = applicationContext.getBean(StudentloginMapper.class);
+        Studentlogin studentlogin = new Studentlogin();
+        studentlogin.setNickname("aaa");
+        studentlogin.setStudentaccount("qq2q");
+        studentlogin.setStudentpassword("asd");
+        studentloginMapper.insertSelective(studentlogin);
+        System.out.println(studentlogin.getStudentid());
     }
 
 

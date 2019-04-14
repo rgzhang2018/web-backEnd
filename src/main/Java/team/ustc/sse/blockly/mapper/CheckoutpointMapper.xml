@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Checkoutpoint" >
     <id column="checkOutPointID" property="checkoutpointid" jdbcType="INTEGER" />
     <result column="studentID" property="studentid" jdbcType="INTEGER" />
+    <result column="checkpointID" property="checkpointid" jdbcType="INTEGER" />
     <result column="toalTime" property="toaltime" jdbcType="TIME" />
     <result column="program" property="program" jdbcType="VARCHAR" />
     <result column="saveTime" property="savetime" jdbcType="TIMESTAMP" />
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    checkOutPointID, studentID, toalTime, program, saveTime
+    checkOutPointID, studentID, checkpointID, toalTime, program, saveTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.CheckoutpointExample" >
     select
@@ -100,19 +101,25 @@
     </if>
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
-    insert into checkoutpoint (checkOutPointID, studentID, toalTime, 
+    <selectKey resultType="java.lang.Integer" keyProperty="checkoutpointid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into checkoutpoint (studentID, checkpointID, toalTime, 
       program, saveTime)
-    values (#{checkoutpointid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{toaltime,jdbcType=TIME}, 
+    values (#{studentid,jdbcType=INTEGER}, #{checkpointid,jdbcType=INTEGER}, #{toaltime,jdbcType=TIME}, 
       #{program,jdbcType=VARCHAR}, #{savetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
+    <selectKey resultType="java.lang.Integer" keyProperty="checkoutpointid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into checkoutpoint
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="checkoutpointid != null" >
-        checkOutPointID,
-      </if>
       <if test="studentid != null" >
         studentID,
+      </if>
+      <if test="checkpointid != null" >
+        checkpointID,
       </if>
       <if test="toaltime != null" >
         toalTime,
@@ -125,11 +132,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="checkoutpointid != null" >
-        #{checkoutpointid,jdbcType=INTEGER},
-      </if>
       <if test="studentid != null" >
         #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="checkpointid != null" >
+        #{checkpointid,jdbcType=INTEGER},
       </if>
       <if test="toaltime != null" >
         #{toaltime,jdbcType=TIME},
@@ -157,6 +164,9 @@
       <if test="record.studentid != null" >
         studentID = #{record.studentid,jdbcType=INTEGER},
       </if>
+      <if test="record.checkpointid != null" >
+        checkpointID = #{record.checkpointid,jdbcType=INTEGER},
+      </if>
       <if test="record.toaltime != null" >
         toalTime = #{record.toaltime,jdbcType=TIME},
       </if>
@@ -175,6 +185,7 @@
     update checkoutpoint
     set checkOutPointID = #{record.checkoutpointid,jdbcType=INTEGER},
       studentID = #{record.studentid,jdbcType=INTEGER},
+      checkpointID = #{record.checkpointid,jdbcType=INTEGER},
       toalTime = #{record.toaltime,jdbcType=TIME},
       program = #{record.program,jdbcType=VARCHAR},
       saveTime = #{record.savetime,jdbcType=TIMESTAMP}
@@ -187,6 +198,9 @@
     <set >
       <if test="studentid != null" >
         studentID = #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="checkpointid != null" >
+        checkpointID = #{checkpointid,jdbcType=INTEGER},
       </if>
       <if test="toaltime != null" >
         toalTime = #{toaltime,jdbcType=TIME},
@@ -203,6 +217,7 @@
   <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
     update checkoutpoint
     set studentID = #{studentid,jdbcType=INTEGER},
+      checkpointID = #{checkpointid,jdbcType=INTEGER},
       toalTime = #{toaltime,jdbcType=TIME},
       program = #{program,jdbcType=VARCHAR},
       saveTime = #{savetime,jdbcType=TIMESTAMP}

@@ -105,21 +105,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Guardian" >
-    insert into guardian (guardianID, guardianName, guardianGender, 
-      guardianEmail, guardianAge, guardianPhone, 
-      guardianAddress, guardianRemark, guardianRegisterTime
-      )
-    values (#{guardianid,jdbcType=INTEGER}, #{guardianname,jdbcType=VARCHAR}, #{guardiangender,jdbcType=VARCHAR}, 
-      #{guardianemail,jdbcType=VARCHAR}, #{guardianage,jdbcType=INTEGER}, #{guardianphone,jdbcType=VARCHAR}, 
-      #{guardianaddress,jdbcType=VARCHAR}, #{guardianremark,jdbcType=VARCHAR}, #{guardianregistertime,jdbcType=TIMESTAMP}
-      )
+    <selectKey resultType="java.lang.Integer" keyProperty="guardianid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into guardian (guardianName, guardianGender, guardianEmail, 
+      guardianAge, guardianPhone, guardianAddress, 
+      guardianRemark, guardianRegisterTime)
+    values (#{guardianname,jdbcType=VARCHAR}, #{guardiangender,jdbcType=VARCHAR}, #{guardianemail,jdbcType=VARCHAR}, 
+      #{guardianage,jdbcType=INTEGER}, #{guardianphone,jdbcType=VARCHAR}, #{guardianaddress,jdbcType=VARCHAR}, 
+      #{guardianremark,jdbcType=VARCHAR}, #{guardianregistertime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Guardian" >
+    <selectKey resultType="java.lang.Integer" keyProperty="guardianid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into guardian
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="guardianid != null" >
-        guardianID,
-      </if>
       <if test="guardianname != null" >
         guardianName,
       </if>
@@ -146,9 +147,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="guardianid != null" >
-        #{guardianid,jdbcType=INTEGER},
-      </if>
       <if test="guardianname != null" >
         #{guardianname,jdbcType=VARCHAR},
       </if>
