@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.ustc.sse.blockly.mapper.CheckpointMapper" >
+  <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Checkpoint" >
+    <id column="checkPointID" property="checkpointid" jdbcType="INTEGER" />
+    <result column="checkPointName" property="checkpointname" jdbcType="VARCHAR" />
+    <result column="checkPointLevel" property="checkpointlevel" jdbcType="INTEGER" />
+    <result column="checkPointCate" property="checkpointcate" jdbcType="INTEGER" />
+    <result column="checkpointCode" property="checkpointcode" jdbcType="VARCHAR" />
+    <result column="checkpointData" property="checkpointdata" jdbcType="TIMESTAMP" />
+    <result column="checkpointRemark" property="checkpointremark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    checkPointID, checkPointName, checkPointLevel, checkPointCate, checkpointCode, checkpointData, 
+    checkpointRemark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.CheckpointExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from checkpoint
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from checkpoint
+    where checkPointID = #{checkpointid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from checkpoint
+    where checkPointID = #{checkpointid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.CheckpointExample" >
+    delete from checkpoint
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Checkpoint" >
+    insert into checkpoint (checkPointID, checkPointName, checkPointLevel, 
+      checkPointCate, checkpointCode, checkpointData, 
+      checkpointRemark)
+    values (#{checkpointid,jdbcType=INTEGER}, #{checkpointname,jdbcType=VARCHAR}, #{checkpointlevel,jdbcType=INTEGER}, 
+      #{checkpointcate,jdbcType=INTEGER}, #{checkpointcode,jdbcType=VARCHAR}, #{checkpointdata,jdbcType=TIMESTAMP}, 
+      #{checkpointremark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Checkpoint" >
+    insert into checkpoint
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="checkpointid != null" >
+        checkPointID,
+      </if>
+      <if test="checkpointname != null" >
+        checkPointName,
+      </if>
+      <if test="checkpointlevel != null" >
+        checkPointLevel,
+      </if>
+      <if test="checkpointcate != null" >
+        checkPointCate,
+      </if>
+      <if test="checkpointcode != null" >
+        checkpointCode,
+      </if>
+      <if test="checkpointdata != null" >
+        checkpointData,
+      </if>
+      <if test="checkpointremark != null" >
+        checkpointRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="checkpointid != null" >
+        #{checkpointid,jdbcType=INTEGER},
+      </if>
+      <if test="checkpointname != null" >
+        #{checkpointname,jdbcType=VARCHAR},
+      </if>
+      <if test="checkpointlevel != null" >
+        #{checkpointlevel,jdbcType=INTEGER},
+      </if>
+      <if test="checkpointcate != null" >
+        #{checkpointcate,jdbcType=INTEGER},
+      </if>
+      <if test="checkpointcode != null" >
+        #{checkpointcode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkpointdata != null" >
+        #{checkpointdata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkpointremark != null" >
+        #{checkpointremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="team.ustc.sse.blockly.entity.CheckpointExample" resultType="java.lang.Integer" >
+    select count(*) from checkpoint
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update checkpoint
+    <set >
+      <if test="record.checkpointid != null" >
+        checkPointID = #{record.checkpointid,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkpointname != null" >
+        checkPointName = #{record.checkpointname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkpointlevel != null" >
+        checkPointLevel = #{record.checkpointlevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkpointcate != null" >
+        checkPointCate = #{record.checkpointcate,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkpointcode != null" >
+        checkpointCode = #{record.checkpointcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkpointdata != null" >
+        checkpointData = #{record.checkpointdata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.checkpointremark != null" >
+        checkpointRemark = #{record.checkpointremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update checkpoint
+    set checkPointID = #{record.checkpointid,jdbcType=INTEGER},
+      checkPointName = #{record.checkpointname,jdbcType=VARCHAR},
+      checkPointLevel = #{record.checkpointlevel,jdbcType=INTEGER},
+      checkPointCate = #{record.checkpointcate,jdbcType=INTEGER},
+      checkpointCode = #{record.checkpointcode,jdbcType=VARCHAR},
+      checkpointData = #{record.checkpointdata,jdbcType=TIMESTAMP},
+      checkpointRemark = #{record.checkpointremark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="team.ustc.sse.blockly.entity.Checkpoint" >
+    update checkpoint
+    <set >
+      <if test="checkpointname != null" >
+        checkPointName = #{checkpointname,jdbcType=VARCHAR},
+      </if>
+      <if test="checkpointlevel != null" >
+        checkPointLevel = #{checkpointlevel,jdbcType=INTEGER},
+      </if>
+      <if test="checkpointcate != null" >
+        checkPointCate = #{checkpointcate,jdbcType=INTEGER},
+      </if>
+      <if test="checkpointcode != null" >
+        checkpointCode = #{checkpointcode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkpointdata != null" >
+        checkpointData = #{checkpointdata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkpointremark != null" >
+        checkpointRemark = #{checkpointremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where checkPointID = #{checkpointid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Checkpoint" >
+    update checkpoint
+    set checkPointName = #{checkpointname,jdbcType=VARCHAR},
+      checkPointLevel = #{checkpointlevel,jdbcType=INTEGER},
+      checkPointCate = #{checkpointcate,jdbcType=INTEGER},
+      checkpointCode = #{checkpointcode,jdbcType=VARCHAR},
+      checkpointData = #{checkpointdata,jdbcType=TIMESTAMP},
+      checkpointRemark = #{checkpointremark,jdbcType=VARCHAR}
+    where checkPointID = #{checkpointid,jdbcType=INTEGER}
+  </update>
+</mapper>

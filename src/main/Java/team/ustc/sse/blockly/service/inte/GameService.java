@@ -9,6 +9,5 @@ public interface GameService {
 
     boolean saveCheckpoint(int totalTime,Student student,String program,int saveTime);
 
-    boolean saveFreemode();
 
 }
