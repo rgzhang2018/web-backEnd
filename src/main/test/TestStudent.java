@@ -2,11 +2,8 @@ package team.ustc.sse.blockly.test;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.StudentExample;
 import team.ustc.sse.blockly.mapper.StudentMapper;

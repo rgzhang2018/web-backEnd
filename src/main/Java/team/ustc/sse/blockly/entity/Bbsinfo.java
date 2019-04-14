@@ -15,35 +15,31 @@ public class Bbsinfo {
         return bbsid;
     }
 
-    public Bbsinfo setBbsid(Integer bbsid) {
+    public void setBbsid(Integer bbsid) {
         this.bbsid = bbsid;
-        return this;
     }
 
     public Integer getStudentid() {
         return studentid;
     }
 
-    public Bbsinfo setStudentid(Integer studentid) {
+    public void setStudentid(Integer studentid) {
         this.studentid = studentid;
-        return this;
     }
 
     public Date getPostdate() {
         return postdate;
     }
 
-    public Bbsinfo setPostdate(Date postdate) {
+    public void setPostdate(Date postdate) {
         this.postdate = postdate;
-        return this;
     }
 
     public String getTheme() {
         return theme;
     }
 
-    public Bbsinfo setTheme(String theme) {
-        this.theme = theme;
-        return this;
+    public void setTheme(String theme) {
+        this.theme = theme == null ? null : theme.trim();
     }
 }

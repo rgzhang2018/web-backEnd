@@ -30,7 +30,7 @@ public class testSpring {
     public void testIoc1(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
         TestService testService =  applicationContext.getBean(TestService.class);
-        testService.insertStudent();
+//        testService.insertStudent();
     }
 
 
@@ -39,7 +39,7 @@ public class testSpring {
     public void testIoc2() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
         TestService testService =  applicationContext.getBean(TestService.class);
-        testService.testSaySomething();
+//        testService.testSaySomething();
 
         testIoc3(testService);
 
@@ -47,6 +47,6 @@ public class testSpring {
 
     private void testIoc3(TestService testService) {
 
-        testService.testSaySomething();
+//        testService.testSaySomething();
     }
 }

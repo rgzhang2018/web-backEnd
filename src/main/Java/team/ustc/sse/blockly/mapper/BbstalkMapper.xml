@@ -8,6 +8,7 @@
     <result column="talkTo" property="talkto" jdbcType="INTEGER" />
     <result column="likeCount" property="likecount" jdbcType="INTEGER" />
     <result column="BBSTalkMessage" property="bbstalkmessage" jdbcType="VARCHAR" />
+    <result column="bbstalkTime" property="bbstalktime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    talkID, studentID, bbsID, talkTo, likeCount, BBSTalkMessage
+    talkID, studentID, bbsID, talkTo, likeCount, BBSTalkMessage, bbstalkTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.BbstalkExample" >
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Bbstalk" >
     insert into bbstalk (talkID, studentID, bbsID, 
-      talkTo, likeCount, BBSTalkMessage
-      )
+      talkTo, likeCount, BBSTalkMessage, 
+      bbstalkTime)
     values (#{talkid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{bbsid,jdbcType=INTEGER}, 
-      #{talkto,jdbcType=INTEGER}, #{likecount,jdbcType=INTEGER}, #{bbstalkmessage,jdbcType=VARCHAR}
-      )
+      #{talkto,jdbcType=INTEGER}, #{likecount,jdbcType=INTEGER}, #{bbstalkmessage,jdbcType=VARCHAR}, 
+      #{bbstalktime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Bbstalk" >
     insert into bbstalk
@@ -129,6 +130,9 @@
       <if test="bbstalkmessage != null" >
         BBSTalkMessage,
       </if>
+      <if test="bbstalktime != null" >
+        bbstalkTime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="talkid != null" >
@@ -148,6 +152,9 @@
       </if>
       <if test="bbstalkmessage != null" >
         #{bbstalkmessage,jdbcType=VARCHAR},
+      </if>
+      <if test="bbstalktime != null" >
+        #{bbstalktime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.bbstalkmessage != null" >
         BBSTalkMessage = #{record.bbstalkmessage,jdbcType=VARCHAR},
       </if>
+      <if test="record.bbstalktime != null" >
+        bbstalkTime = #{record.bbstalktime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       bbsID = #{record.bbsid,jdbcType=INTEGER},
       talkTo = #{record.talkto,jdbcType=INTEGER},
       likeCount = #{record.likecount,jdbcType=INTEGER},
-      BBSTalkMessage = #{record.bbstalkmessage,jdbcType=VARCHAR}
+      BBSTalkMessage = #{record.bbstalkmessage,jdbcType=VARCHAR},
+      bbstalkTime = #{record.bbstalktime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="bbstalkmessage != null" >
         BBSTalkMessage = #{bbstalkmessage,jdbcType=VARCHAR},
       </if>
+      <if test="bbstalktime != null" >
+        bbstalkTime = #{bbstalktime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where talkID = #{talkid,jdbcType=INTEGER}
   </update>
@@ -222,7 +236,8 @@
       bbsID = #{bbsid,jdbcType=INTEGER},
       talkTo = #{talkto,jdbcType=INTEGER},
       likeCount = #{likecount,jdbcType=INTEGER},
-      BBSTalkMessage = #{bbstalkmessage,jdbcType=VARCHAR}
+      BBSTalkMessage = #{bbstalkmessage,jdbcType=VARCHAR},
+      bbstalkTime = #{bbstalktime,jdbcType=TIMESTAMP}
     where talkID = #{talkid,jdbcType=INTEGER}
   </update>
 </mapper>

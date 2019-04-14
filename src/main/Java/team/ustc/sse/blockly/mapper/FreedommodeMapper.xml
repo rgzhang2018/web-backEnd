@@ -5,6 +5,7 @@
     <id column="freeModeID" property="freemodeid" jdbcType="INTEGER" />
     <result column="program" property="program" jdbcType="VARCHAR" />
     <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="freeModeSaveTime" property="freemodesavetime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    freeModeID, program, source
+    freeModeID, program, source, freeModeSaveTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.FreedommodeExample" >
     select
@@ -98,10 +99,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Freedommode" >
-    insert into freedommode (freeModeID, program, source
-      )
-    values (#{freemodeid,jdbcType=INTEGER}, #{program,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}
-      )
+    insert into freedommode (freeModeID, program, source, 
+      freeModeSaveTime)
+    values (#{freemodeid,jdbcType=INTEGER}, #{program,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{freemodesavetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Freedommode" >
     insert into freedommode
@@ -115,6 +116,9 @@
       <if test="source != null" >
         source,
       </if>
+      <if test="freemodesavetime != null" >
+        freeModeSaveTime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="freemodeid != null" >
@@ -125,6 +129,9 @@
       </if>
       <if test="source != null" >
         #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="freemodesavetime != null" >
+        #{freemodesavetime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -146,6 +153,9 @@
       <if test="record.source != null" >
         source = #{record.source,jdbcType=VARCHAR},
       </if>
+      <if test="record.freemodesavetime != null" >
+        freeModeSaveTime = #{record.freemodesavetime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -155,7 +165,8 @@
     update freedommode
     set freeModeID = #{record.freemodeid,jdbcType=INTEGER},
       program = #{record.program,jdbcType=VARCHAR},
-      source = #{record.source,jdbcType=VARCHAR}
+      source = #{record.source,jdbcType=VARCHAR},
+      freeModeSaveTime = #{record.freemodesavetime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -169,13 +180,17 @@
       <if test="source != null" >
         source = #{source,jdbcType=VARCHAR},
       </if>
+      <if test="freemodesavetime != null" >
+        freeModeSaveTime = #{freemodesavetime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where freeModeID = #{freemodeid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Freedommode" >
     update freedommode
     set program = #{program,jdbcType=VARCHAR},
-      source = #{source,jdbcType=VARCHAR}
+      source = #{source,jdbcType=VARCHAR},
+      freeModeSaveTime = #{freemodesavetime,jdbcType=TIMESTAMP}
     where freeModeID = #{freemodeid,jdbcType=INTEGER}
   </update>
 </mapper>

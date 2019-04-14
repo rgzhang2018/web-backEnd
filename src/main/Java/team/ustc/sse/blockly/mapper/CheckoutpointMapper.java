@@ -1,10 +1,9 @@
 package team.ustc.sse.blockly.mapper;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import team.ustc.sse.blockly.entity.Checkoutpoint;
 import team.ustc.sse.blockly.entity.CheckoutpointExample;
-
-import java.util.List;
 
 public interface CheckoutpointMapper {
     int countByExample(CheckoutpointExample example);

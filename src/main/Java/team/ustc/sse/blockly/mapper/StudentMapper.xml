@@ -4,9 +4,15 @@
   <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Student" >
     <id column="studentID" property="studentid" jdbcType="INTEGER" />
     <result column="studentName" property="studentname" jdbcType="VARCHAR" />
-    <result column="studentPassword" property="studentpassword" jdbcType="VARCHAR" />
     <result column="studentGender" property="studentgender" jdbcType="VARCHAR" />
-    <result column="studentAccount" property="studentaccount" jdbcType="VARCHAR" />
+    <result column="studentEmail" property="studentemail" jdbcType="VARCHAR" />
+    <result column="studentAge" property="studentage" jdbcType="INTEGER" />
+    <result column="studentPhone" property="studentphone" jdbcType="VARCHAR" />
+    <result column="studentSchool" property="studentschool" jdbcType="VARCHAR" />
+    <result column="studentNumber" property="studentnumber" jdbcType="VARCHAR" />
+    <result column="studentGrade" property="studentgrade" jdbcType="VARCHAR" />
+    <result column="studentRemark" property="studentremark" jdbcType="VARCHAR" />
+    <result column="studentRegisterTime" property="studentregistertime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    studentID, studentName, studentPassword, studentGender, studentAccount
+    studentID, studentName, studentGender, studentEmail, studentAge, studentPhone, studentSchool, 
+    studentNumber, studentGrade, studentRemark, studentRegisterTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.StudentExample" >
     select
@@ -100,10 +107,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Student" >
-    insert into student (studentID, studentName, studentPassword, 
-      studentGender, studentAccount)
-    values (#{studentid,jdbcType=INTEGER}, #{studentname,jdbcType=VARCHAR}, #{studentpassword,jdbcType=VARCHAR}, 
-      #{studentgender,jdbcType=VARCHAR}, #{studentaccount,jdbcType=VARCHAR})
+    insert into student (studentID, studentName, studentGender, 
+      studentEmail, studentAge, studentPhone, 
+      studentSchool, studentNumber, studentGrade, 
+      studentRemark, studentRegisterTime)
+    values (#{studentid,jdbcType=INTEGER}, #{studentname,jdbcType=VARCHAR}, #{studentgender,jdbcType=VARCHAR}, 
+      #{studentemail,jdbcType=VARCHAR}, #{studentage,jdbcType=INTEGER}, #{studentphone,jdbcType=VARCHAR}, 
+      #{studentschool,jdbcType=VARCHAR}, #{studentnumber,jdbcType=VARCHAR}, #{studentgrade,jdbcType=VARCHAR}, 
+      #{studentremark,jdbcType=VARCHAR}, #{studentregistertime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Student" >
     insert into student
@@ -114,14 +125,32 @@
       <if test="studentname != null" >
         studentName,
       </if>
-      <if test="studentpassword != null" >
-        studentPassword,
-      </if>
       <if test="studentgender != null" >
         studentGender,
       </if>
-      <if test="studentaccount != null" >
-        studentAccount,
+      <if test="studentemail != null" >
+        studentEmail,
+      </if>
+      <if test="studentage != null" >
+        studentAge,
+      </if>
+      <if test="studentphone != null" >
+        studentPhone,
+      </if>
+      <if test="studentschool != null" >
+        studentSchool,
+      </if>
+      <if test="studentnumber != null" >
+        studentNumber,
+      </if>
+      <if test="studentgrade != null" >
+        studentGrade,
+      </if>
+      <if test="studentremark != null" >
+        studentRemark,
+      </if>
+      <if test="studentregistertime != null" >
+        studentRegisterTime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -131,14 +160,32 @@
       <if test="studentname != null" >
         #{studentname,jdbcType=VARCHAR},
       </if>
-      <if test="studentpassword != null" >
-        #{studentpassword,jdbcType=VARCHAR},
-      </if>
       <if test="studentgender != null" >
         #{studentgender,jdbcType=VARCHAR},
       </if>
-      <if test="studentaccount != null" >
-        #{studentaccount,jdbcType=VARCHAR},
+      <if test="studentemail != null" >
+        #{studentemail,jdbcType=VARCHAR},
+      </if>
+      <if test="studentage != null" >
+        #{studentage,jdbcType=INTEGER},
+      </if>
+      <if test="studentphone != null" >
+        #{studentphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentschool != null" >
+        #{studentschool,jdbcType=VARCHAR},
+      </if>
+      <if test="studentnumber != null" >
+        #{studentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="studentgrade != null" >
+        #{studentgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="studentremark != null" >
+        #{studentremark,jdbcType=VARCHAR},
+      </if>
+      <if test="studentregistertime != null" >
+        #{studentregistertime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -157,14 +204,32 @@
       <if test="record.studentname != null" >
         studentName = #{record.studentname,jdbcType=VARCHAR},
       </if>
-      <if test="record.studentpassword != null" >
-        studentPassword = #{record.studentpassword,jdbcType=VARCHAR},
-      </if>
       <if test="record.studentgender != null" >
         studentGender = #{record.studentgender,jdbcType=VARCHAR},
       </if>
-      <if test="record.studentaccount != null" >
-        studentAccount = #{record.studentaccount,jdbcType=VARCHAR},
+      <if test="record.studentemail != null" >
+        studentEmail = #{record.studentemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentage != null" >
+        studentAge = #{record.studentage,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentphone != null" >
+        studentPhone = #{record.studentphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentschool != null" >
+        studentSchool = #{record.studentschool,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentnumber != null" >
+        studentNumber = #{record.studentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentgrade != null" >
+        studentGrade = #{record.studentgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentremark != null" >
+        studentRemark = #{record.studentremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentregistertime != null" >
+        studentRegisterTime = #{record.studentregistertime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -175,9 +240,15 @@
     update student
     set studentID = #{record.studentid,jdbcType=INTEGER},
       studentName = #{record.studentname,jdbcType=VARCHAR},
-      studentPassword = #{record.studentpassword,jdbcType=VARCHAR},
       studentGender = #{record.studentgender,jdbcType=VARCHAR},
-      studentAccount = #{record.studentaccount,jdbcType=VARCHAR}
+      studentEmail = #{record.studentemail,jdbcType=VARCHAR},
+      studentAge = #{record.studentage,jdbcType=INTEGER},
+      studentPhone = #{record.studentphone,jdbcType=VARCHAR},
+      studentSchool = #{record.studentschool,jdbcType=VARCHAR},
+      studentNumber = #{record.studentnumber,jdbcType=VARCHAR},
+      studentGrade = #{record.studentgrade,jdbcType=VARCHAR},
+      studentRemark = #{record.studentremark,jdbcType=VARCHAR},
+      studentRegisterTime = #{record.studentregistertime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -188,14 +259,32 @@
       <if test="studentname != null" >
         studentName = #{studentname,jdbcType=VARCHAR},
       </if>
-      <if test="studentpassword != null" >
-        studentPassword = #{studentpassword,jdbcType=VARCHAR},
-      </if>
       <if test="studentgender != null" >
         studentGender = #{studentgender,jdbcType=VARCHAR},
       </if>
-      <if test="studentaccount != null" >
-        studentAccount = #{studentaccount,jdbcType=VARCHAR},
+      <if test="studentemail != null" >
+        studentEmail = #{studentemail,jdbcType=VARCHAR},
+      </if>
+      <if test="studentage != null" >
+        studentAge = #{studentage,jdbcType=INTEGER},
+      </if>
+      <if test="studentphone != null" >
+        studentPhone = #{studentphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentschool != null" >
+        studentSchool = #{studentschool,jdbcType=VARCHAR},
+      </if>
+      <if test="studentnumber != null" >
+        studentNumber = #{studentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="studentgrade != null" >
+        studentGrade = #{studentgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="studentremark != null" >
+        studentRemark = #{studentremark,jdbcType=VARCHAR},
+      </if>
+      <if test="studentregistertime != null" >
+        studentRegisterTime = #{studentregistertime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where studentID = #{studentid,jdbcType=INTEGER}
@@ -203,9 +292,15 @@
   <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Student" >
     update student
     set studentName = #{studentname,jdbcType=VARCHAR},
-      studentPassword = #{studentpassword,jdbcType=VARCHAR},
       studentGender = #{studentgender,jdbcType=VARCHAR},
-      studentAccount = #{studentaccount,jdbcType=VARCHAR}
+      studentEmail = #{studentemail,jdbcType=VARCHAR},
+      studentAge = #{studentage,jdbcType=INTEGER},
+      studentPhone = #{studentphone,jdbcType=VARCHAR},
+      studentSchool = #{studentschool,jdbcType=VARCHAR},
+      studentNumber = #{studentnumber,jdbcType=VARCHAR},
+      studentGrade = #{studentgrade,jdbcType=VARCHAR},
+      studentRemark = #{studentremark,jdbcType=VARCHAR},
+      studentRegisterTime = #{studentregistertime,jdbcType=TIMESTAMP}
     where studentID = #{studentid,jdbcType=INTEGER}
   </update>
 </mapper>

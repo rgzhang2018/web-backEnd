@@ -1,11 +1,10 @@
 package team.ustc.sse.blockly.mapper;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import team.ustc.sse.blockly.entity.Apply;
 import team.ustc.sse.blockly.entity.ApplyExample;
 import team.ustc.sse.blockly.entity.ApplyKey;
-
-import java.util.List;
 
 public interface ApplyMapper {
     int countByExample(ApplyExample example);

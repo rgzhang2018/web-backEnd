@@ -9,25 +9,15 @@ public class ApplyKey {
         return guardianid;
     }
 
-    public ApplyKey setGuardianid(Integer guardianid) {
+    public void setGuardianid(Integer guardianid) {
         this.guardianid = guardianid;
-        return this;
     }
 
     public Integer getStudentid() {
         return studentid;
     }
 
-    public ApplyKey setStudentid(Integer studentid) {
+    public void setStudentid(Integer studentid) {
         this.studentid = studentid;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "ApplyKey{" +
-                "guardianid=" + guardianid +
-                ", studentid=" + studentid +
-                '}';
     }
 }

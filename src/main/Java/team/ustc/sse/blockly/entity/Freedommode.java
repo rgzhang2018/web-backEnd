@@ -1,5 +1,7 @@
 package team.ustc.sse.blockly.entity;
 
+import java.util.Date;
+
 public class Freedommode {
     private Integer freemodeid;
 
@@ -7,39 +9,37 @@ public class Freedommode {
 
     private String source;
 
+    private Date freemodesavetime;
+
     public Integer getFreemodeid() {
         return freemodeid;
     }
 
-    public Freedommode setFreemodeid(Integer freemodeid) {
+    public void setFreemodeid(Integer freemodeid) {
         this.freemodeid = freemodeid;
-        return this;
     }
 
     public String getProgram() {
         return program;
     }
 
-    public Freedommode setProgram(String program) {
-        this.program = program;
-        return this;
+    public void setProgram(String program) {
+        this.program = program == null ? null : program.trim();
     }
 
     public String getSource() {
         return source;
     }
 
-    public Freedommode setSource(String source) {
-        this.source = source;
-        return this;
+    public void setSource(String source) {
+        this.source = source == null ? null : source.trim();
     }
 
-    @Override
-    public String toString() {
-        return "Freedommode{" +
-                "freemodeid=" + freemodeid +
-                ", program='" + program + '\'' +
-                ", source='" + source + '\'' +
-                '}';
+    public Date getFreemodesavetime() {
+        return freemodesavetime;
+    }
+
+    public void setFreemodesavetime(Date freemodesavetime) {
+        this.freemodesavetime = freemodesavetime;
     }
 }

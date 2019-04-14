@@ -1,10 +1,9 @@
 package team.ustc.sse.blockly.mapper;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import team.ustc.sse.blockly.entity.Guardian;
 import team.ustc.sse.blockly.entity.GuardianExample;
-
-import java.util.List;
 
 public interface GuardianMapper {
     int countByExample(GuardianExample example);

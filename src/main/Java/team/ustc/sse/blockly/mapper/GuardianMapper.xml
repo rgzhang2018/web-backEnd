@@ -4,8 +4,13 @@
   <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Guardian" >
     <id column="guardianID" property="guardianid" jdbcType="INTEGER" />
     <result column="guardianName" property="guardianname" jdbcType="VARCHAR" />
-    <result column="guardianPassword" property="guardianpassword" jdbcType="VARCHAR" />
+    <result column="guardianGender" property="guardiangender" jdbcType="VARCHAR" />
     <result column="guardianEmail" property="guardianemail" jdbcType="VARCHAR" />
+    <result column="guardianAge" property="guardianage" jdbcType="INTEGER" />
+    <result column="guardianPhone" property="guardianphone" jdbcType="VARCHAR" />
+    <result column="guardianAddress" property="guardianaddress" jdbcType="VARCHAR" />
+    <result column="guardianRemark" property="guardianremark" jdbcType="VARCHAR" />
+    <result column="guardianRegisterTime" property="guardianregistertime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    guardianID, guardianName, guardianPassword, guardianEmail
+    guardianID, guardianName, guardianGender, guardianEmail, guardianAge, guardianPhone, 
+    guardianAddress, guardianRemark, guardianRegisterTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.GuardianExample" >
     select
@@ -99,10 +105,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Guardian" >
-    insert into guardian (guardianID, guardianName, guardianPassword, 
-      guardianEmail)
-    values (#{guardianid,jdbcType=INTEGER}, #{guardianname,jdbcType=VARCHAR}, #{guardianpassword,jdbcType=VARCHAR}, 
-      #{guardianemail,jdbcType=VARCHAR})
+    insert into guardian (guardianID, guardianName, guardianGender, 
+      guardianEmail, guardianAge, guardianPhone, 
+      guardianAddress, guardianRemark, guardianRegisterTime
+      )
+    values (#{guardianid,jdbcType=INTEGER}, #{guardianname,jdbcType=VARCHAR}, #{guardiangender,jdbcType=VARCHAR}, 
+      #{guardianemail,jdbcType=VARCHAR}, #{guardianage,jdbcType=INTEGER}, #{guardianphone,jdbcType=VARCHAR}, 
+      #{guardianaddress,jdbcType=VARCHAR}, #{guardianremark,jdbcType=VARCHAR}, #{guardianregistertime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Guardian" >
     insert into guardian
@@ -113,11 +123,26 @@
       <if test="guardianname != null" >
         guardianName,
       </if>
-      <if test="guardianpassword != null" >
-        guardianPassword,
+      <if test="guardiangender != null" >
+        guardianGender,
       </if>
       <if test="guardianemail != null" >
         guardianEmail,
+      </if>
+      <if test="guardianage != null" >
+        guardianAge,
+      </if>
+      <if test="guardianphone != null" >
+        guardianPhone,
+      </if>
+      <if test="guardianaddress != null" >
+        guardianAddress,
+      </if>
+      <if test="guardianremark != null" >
+        guardianRemark,
+      </if>
+      <if test="guardianregistertime != null" >
+        guardianRegisterTime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -127,11 +152,26 @@
       <if test="guardianname != null" >
         #{guardianname,jdbcType=VARCHAR},
       </if>
-      <if test="guardianpassword != null" >
-        #{guardianpassword,jdbcType=VARCHAR},
+      <if test="guardiangender != null" >
+        #{guardiangender,jdbcType=VARCHAR},
       </if>
       <if test="guardianemail != null" >
         #{guardianemail,jdbcType=VARCHAR},
+      </if>
+      <if test="guardianage != null" >
+        #{guardianage,jdbcType=INTEGER},
+      </if>
+      <if test="guardianphone != null" >
+        #{guardianphone,jdbcType=VARCHAR},
+      </if>
+      <if test="guardianaddress != null" >
+        #{guardianaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="guardianremark != null" >
+        #{guardianremark,jdbcType=VARCHAR},
+      </if>
+      <if test="guardianregistertime != null" >
+        #{guardianregistertime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -150,11 +190,26 @@
       <if test="record.guardianname != null" >
         guardianName = #{record.guardianname,jdbcType=VARCHAR},
       </if>
-      <if test="record.guardianpassword != null" >
-        guardianPassword = #{record.guardianpassword,jdbcType=VARCHAR},
+      <if test="record.guardiangender != null" >
+        guardianGender = #{record.guardiangender,jdbcType=VARCHAR},
       </if>
       <if test="record.guardianemail != null" >
         guardianEmail = #{record.guardianemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guardianage != null" >
+        guardianAge = #{record.guardianage,jdbcType=INTEGER},
+      </if>
+      <if test="record.guardianphone != null" >
+        guardianPhone = #{record.guardianphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guardianaddress != null" >
+        guardianAddress = #{record.guardianaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guardianremark != null" >
+        guardianRemark = #{record.guardianremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guardianregistertime != null" >
+        guardianRegisterTime = #{record.guardianregistertime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -165,8 +220,13 @@
     update guardian
     set guardianID = #{record.guardianid,jdbcType=INTEGER},
       guardianName = #{record.guardianname,jdbcType=VARCHAR},
-      guardianPassword = #{record.guardianpassword,jdbcType=VARCHAR},
-      guardianEmail = #{record.guardianemail,jdbcType=VARCHAR}
+      guardianGender = #{record.guardiangender,jdbcType=VARCHAR},
+      guardianEmail = #{record.guardianemail,jdbcType=VARCHAR},
+      guardianAge = #{record.guardianage,jdbcType=INTEGER},
+      guardianPhone = #{record.guardianphone,jdbcType=VARCHAR},
+      guardianAddress = #{record.guardianaddress,jdbcType=VARCHAR},
+      guardianRemark = #{record.guardianremark,jdbcType=VARCHAR},
+      guardianRegisterTime = #{record.guardianregistertime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -177,11 +237,26 @@
       <if test="guardianname != null" >
         guardianName = #{guardianname,jdbcType=VARCHAR},
       </if>
-      <if test="guardianpassword != null" >
-        guardianPassword = #{guardianpassword,jdbcType=VARCHAR},
+      <if test="guardiangender != null" >
+        guardianGender = #{guardiangender,jdbcType=VARCHAR},
       </if>
       <if test="guardianemail != null" >
         guardianEmail = #{guardianemail,jdbcType=VARCHAR},
+      </if>
+      <if test="guardianage != null" >
+        guardianAge = #{guardianage,jdbcType=INTEGER},
+      </if>
+      <if test="guardianphone != null" >
+        guardianPhone = #{guardianphone,jdbcType=VARCHAR},
+      </if>
+      <if test="guardianaddress != null" >
+        guardianAddress = #{guardianaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="guardianremark != null" >
+        guardianRemark = #{guardianremark,jdbcType=VARCHAR},
+      </if>
+      <if test="guardianregistertime != null" >
+        guardianRegisterTime = #{guardianregistertime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where guardianID = #{guardianid,jdbcType=INTEGER}
@@ -189,8 +264,13 @@
   <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Guardian" >
     update guardian
     set guardianName = #{guardianname,jdbcType=VARCHAR},
-      guardianPassword = #{guardianpassword,jdbcType=VARCHAR},
-      guardianEmail = #{guardianemail,jdbcType=VARCHAR}
+      guardianGender = #{guardiangender,jdbcType=VARCHAR},
+      guardianEmail = #{guardianemail,jdbcType=VARCHAR},
+      guardianAge = #{guardianage,jdbcType=INTEGER},
+      guardianPhone = #{guardianphone,jdbcType=VARCHAR},
+      guardianAddress = #{guardianaddress,jdbcType=VARCHAR},
+      guardianRemark = #{guardianremark,jdbcType=VARCHAR},
+      guardianRegisterTime = #{guardianregistertime,jdbcType=TIMESTAMP}
     where guardianID = #{guardianid,jdbcType=INTEGER}
   </update>
 </mapper>

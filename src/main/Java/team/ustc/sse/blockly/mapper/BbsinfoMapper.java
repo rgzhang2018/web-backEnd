@@ -1,10 +1,9 @@
 package team.ustc.sse.blockly.mapper;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import team.ustc.sse.blockly.entity.Bbsinfo;
 import team.ustc.sse.blockly.entity.BbsinfoExample;
-
-import java.util.List;
 
 public interface BbsinfoMapper {
     int countByExample(BbsinfoExample example);

@@ -1,26 +1,23 @@
 package team.ustc.sse.blockly.service.inte;
 
-import team.ustc.sse.blockly.entity.Student;
-import team.ustc.sse.blockly.entity.User;
-
-import java.util.List;
+import team.ustc.sse.blockly.entity.Studentlogin;
 
 public interface LoginService {
 
 
 
     //登录检测
-    boolean loginCheck(Student student);
+    boolean studentLoginCheck(Studentlogin studentlogin);
 
     //根据账户名查找用户
-    User findByAccount(String account) ;
+    Studentlogin findByStudentAccount(String account) ;
 
 
     //新建用户
-    void saveNewUser(User user) ;
+    void saveNewStudent(Studentlogin studentlogin) ;
 
 
     //根据用户名更新
-    void updateByName(String name, User user);
+    void updateByStudentNickname(String name, Studentlogin studentlogin);
 
 }

@@ -1,6 +1,7 @@
 package team.ustc.sse.blockly.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class GuardianExample {
@@ -234,73 +235,73 @@ public class GuardianExample {
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordIsNull() {
-            addCriterion("guardianPassword is null");
+        public Criteria andGuardiangenderIsNull() {
+            addCriterion("guardianGender is null");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordIsNotNull() {
-            addCriterion("guardianPassword is not null");
+        public Criteria andGuardiangenderIsNotNull() {
+            addCriterion("guardianGender is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordEqualTo(String value) {
-            addCriterion("guardianPassword =", value, "guardianpassword");
+        public Criteria andGuardiangenderEqualTo(String value) {
+            addCriterion("guardianGender =", value, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordNotEqualTo(String value) {
-            addCriterion("guardianPassword <>", value, "guardianpassword");
+        public Criteria andGuardiangenderNotEqualTo(String value) {
+            addCriterion("guardianGender <>", value, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordGreaterThan(String value) {
-            addCriterion("guardianPassword >", value, "guardianpassword");
+        public Criteria andGuardiangenderGreaterThan(String value) {
+            addCriterion("guardianGender >", value, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordGreaterThanOrEqualTo(String value) {
-            addCriterion("guardianPassword >=", value, "guardianpassword");
+        public Criteria andGuardiangenderGreaterThanOrEqualTo(String value) {
+            addCriterion("guardianGender >=", value, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordLessThan(String value) {
-            addCriterion("guardianPassword <", value, "guardianpassword");
+        public Criteria andGuardiangenderLessThan(String value) {
+            addCriterion("guardianGender <", value, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordLessThanOrEqualTo(String value) {
-            addCriterion("guardianPassword <=", value, "guardianpassword");
+        public Criteria andGuardiangenderLessThanOrEqualTo(String value) {
+            addCriterion("guardianGender <=", value, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordLike(String value) {
-            addCriterion("guardianPassword like", value, "guardianpassword");
+        public Criteria andGuardiangenderLike(String value) {
+            addCriterion("guardianGender like", value, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordNotLike(String value) {
-            addCriterion("guardianPassword not like", value, "guardianpassword");
+        public Criteria andGuardiangenderNotLike(String value) {
+            addCriterion("guardianGender not like", value, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordIn(List<String> values) {
-            addCriterion("guardianPassword in", values, "guardianpassword");
+        public Criteria andGuardiangenderIn(List<String> values) {
+            addCriterion("guardianGender in", values, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordNotIn(List<String> values) {
-            addCriterion("guardianPassword not in", values, "guardianpassword");
+        public Criteria andGuardiangenderNotIn(List<String> values) {
+            addCriterion("guardianGender not in", values, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordBetween(String value1, String value2) {
-            addCriterion("guardianPassword between", value1, value2, "guardianpassword");
+        public Criteria andGuardiangenderBetween(String value1, String value2) {
+            addCriterion("guardianGender between", value1, value2, "guardiangender");
             return (Criteria) this;
         }
 
-        public Criteria andGuardianpasswordNotBetween(String value1, String value2) {
-            addCriterion("guardianPassword not between", value1, value2, "guardianpassword");
+        public Criteria andGuardiangenderNotBetween(String value1, String value2) {
+            addCriterion("guardianGender not between", value1, value2, "guardiangender");
             return (Criteria) this;
         }
 
@@ -371,6 +372,336 @@ public class GuardianExample {
 
         public Criteria andGuardianemailNotBetween(String value1, String value2) {
             addCriterion("guardianEmail not between", value1, value2, "guardianemail");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageIsNull() {
+            addCriterion("guardianAge is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageIsNotNull() {
+            addCriterion("guardianAge is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageEqualTo(Integer value) {
+            addCriterion("guardianAge =", value, "guardianage");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageNotEqualTo(Integer value) {
+            addCriterion("guardianAge <>", value, "guardianage");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageGreaterThan(Integer value) {
+            addCriterion("guardianAge >", value, "guardianage");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageGreaterThanOrEqualTo(Integer value) {
+            addCriterion("guardianAge >=", value, "guardianage");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageLessThan(Integer value) {
+            addCriterion("guardianAge <", value, "guardianage");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageLessThanOrEqualTo(Integer value) {
+            addCriterion("guardianAge <=", value, "guardianage");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageIn(List<Integer> values) {
+            addCriterion("guardianAge in", values, "guardianage");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageNotIn(List<Integer> values) {
+            addCriterion("guardianAge not in", values, "guardianage");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageBetween(Integer value1, Integer value2) {
+            addCriterion("guardianAge between", value1, value2, "guardianage");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianageNotBetween(Integer value1, Integer value2) {
+            addCriterion("guardianAge not between", value1, value2, "guardianage");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneIsNull() {
+            addCriterion("guardianPhone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneIsNotNull() {
+            addCriterion("guardianPhone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneEqualTo(String value) {
+            addCriterion("guardianPhone =", value, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneNotEqualTo(String value) {
+            addCriterion("guardianPhone <>", value, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneGreaterThan(String value) {
+            addCriterion("guardianPhone >", value, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneGreaterThanOrEqualTo(String value) {
+            addCriterion("guardianPhone >=", value, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneLessThan(String value) {
+            addCriterion("guardianPhone <", value, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneLessThanOrEqualTo(String value) {
+            addCriterion("guardianPhone <=", value, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneLike(String value) {
+            addCriterion("guardianPhone like", value, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneNotLike(String value) {
+            addCriterion("guardianPhone not like", value, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneIn(List<String> values) {
+            addCriterion("guardianPhone in", values, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneNotIn(List<String> values) {
+            addCriterion("guardianPhone not in", values, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneBetween(String value1, String value2) {
+            addCriterion("guardianPhone between", value1, value2, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianphoneNotBetween(String value1, String value2) {
+            addCriterion("guardianPhone not between", value1, value2, "guardianphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressIsNull() {
+            addCriterion("guardianAddress is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressIsNotNull() {
+            addCriterion("guardianAddress is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressEqualTo(String value) {
+            addCriterion("guardianAddress =", value, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressNotEqualTo(String value) {
+            addCriterion("guardianAddress <>", value, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressGreaterThan(String value) {
+            addCriterion("guardianAddress >", value, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressGreaterThanOrEqualTo(String value) {
+            addCriterion("guardianAddress >=", value, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressLessThan(String value) {
+            addCriterion("guardianAddress <", value, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressLessThanOrEqualTo(String value) {
+            addCriterion("guardianAddress <=", value, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressLike(String value) {
+            addCriterion("guardianAddress like", value, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressNotLike(String value) {
+            addCriterion("guardianAddress not like", value, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressIn(List<String> values) {
+            addCriterion("guardianAddress in", values, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressNotIn(List<String> values) {
+            addCriterion("guardianAddress not in", values, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressBetween(String value1, String value2) {
+            addCriterion("guardianAddress between", value1, value2, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianaddressNotBetween(String value1, String value2) {
+            addCriterion("guardianAddress not between", value1, value2, "guardianaddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkIsNull() {
+            addCriterion("guardianRemark is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkIsNotNull() {
+            addCriterion("guardianRemark is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkEqualTo(String value) {
+            addCriterion("guardianRemark =", value, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkNotEqualTo(String value) {
+            addCriterion("guardianRemark <>", value, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkGreaterThan(String value) {
+            addCriterion("guardianRemark >", value, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkGreaterThanOrEqualTo(String value) {
+            addCriterion("guardianRemark >=", value, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkLessThan(String value) {
+            addCriterion("guardianRemark <", value, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkLessThanOrEqualTo(String value) {
+            addCriterion("guardianRemark <=", value, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkLike(String value) {
+            addCriterion("guardianRemark like", value, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkNotLike(String value) {
+            addCriterion("guardianRemark not like", value, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkIn(List<String> values) {
+            addCriterion("guardianRemark in", values, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkNotIn(List<String> values) {
+            addCriterion("guardianRemark not in", values, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkBetween(String value1, String value2) {
+            addCriterion("guardianRemark between", value1, value2, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianremarkNotBetween(String value1, String value2) {
+            addCriterion("guardianRemark not between", value1, value2, "guardianremark");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeIsNull() {
+            addCriterion("guardianRegisterTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeIsNotNull() {
+            addCriterion("guardianRegisterTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeEqualTo(Date value) {
+            addCriterion("guardianRegisterTime =", value, "guardianregistertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeNotEqualTo(Date value) {
+            addCriterion("guardianRegisterTime <>", value, "guardianregistertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeGreaterThan(Date value) {
+            addCriterion("guardianRegisterTime >", value, "guardianregistertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("guardianRegisterTime >=", value, "guardianregistertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeLessThan(Date value) {
+            addCriterion("guardianRegisterTime <", value, "guardianregistertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeLessThanOrEqualTo(Date value) {
+            addCriterion("guardianRegisterTime <=", value, "guardianregistertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeIn(List<Date> values) {
+            addCriterion("guardianRegisterTime in", values, "guardianregistertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeNotIn(List<Date> values) {
+            addCriterion("guardianRegisterTime not in", values, "guardianregistertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeBetween(Date value1, Date value2) {
+            addCriterion("guardianRegisterTime between", value1, value2, "guardianregistertime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuardianregistertimeNotBetween(Date value1, Date value2) {
+            addCriterion("guardianRegisterTime not between", value1, value2, "guardianregistertime");
             return (Criteria) this;
         }
     }

@@ -5,8 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import team.ustc.sse.blockly.entity.Student;
-import team.ustc.sse.blockly.service.impl.StudentLoginServiceImpl;
+
+import team.ustc.sse.blockly.entity.Studentlogin;
+import team.ustc.sse.blockly.service.impl.LoginServiceImpl;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
     @Autowired
-    StudentLoginServiceImpl studentLoginService;
+    LoginServiceImpl studentLoginService;
 
     @RequestMapping(value = "login",method = {RequestMethod.GET})
     public String loginUI(){
@@ -32,13 +33,12 @@ public class LoginController {
     * @Author: rgzhang
     */
     @RequestMapping(value = "studentLogin" ,method = {RequestMethod.POST})
-    public String loginControl(String studentaccount,String studentpassword , Boolean remember, HttpServletRequest request, HttpServletResponse response){
+    public String loginControl(Studentlogin student, Boolean remember, HttpServletRequest request, HttpServletResponse response){
 
-        Student student = new Student().setStudentaccount(studentaccount).setStudentpassword(studentpassword);
+//        Student student = new Student().setStudentaccount(studentaccount).setStudentpassword(studentpassword);
 
-        System.out.println(studentaccount+ " | 111| "+ student+ " "+ remember + " ");
-
-
+//        System.out.println(studentaccount+ " | 111| "+ student+ " "+ remember + " ");
+        System.out.println(student);
         HttpSession session = request.getSession();
         Cookie[] cookies = request.getCookies();
         //检测session和cookie
@@ -49,16 +49,15 @@ public class LoginController {
             return "success";
         }
 
+        
         for(Cookie cookie :cookies){
-
             if(cookie.getName().equals("loginAccount")){
                 System.out.println("in cookie , then reset cookie" );
                 return "hello";
             }
         }
 
-
-        boolean result = studentLoginService.loginCheck(student);
+        boolean result = studentLoginService.studentLoginCheck(student);
         if(!result)return "wrong";
         //set session
         session.setAttribute("loginFlag",true);

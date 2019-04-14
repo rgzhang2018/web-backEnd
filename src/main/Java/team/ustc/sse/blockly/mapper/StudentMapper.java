@@ -1,10 +1,9 @@
 package team.ustc.sse.blockly.mapper;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.StudentExample;
-
-import java.util.List;
 
 public interface StudentMapper {
     int countByExample(StudentExample example);
@@ -28,5 +27,4 @@ public interface StudentMapper {
     int updateByPrimaryKeySelective(Student record);
 
     int updateByPrimaryKey(Student record);
-
 }

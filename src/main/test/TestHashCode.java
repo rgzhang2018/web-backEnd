@@ -1,4 +1,3 @@
-package team.ustc.sse.blockly.test;
 
 import org.junit.Test;
 import team.ustc.sse.blockly.entity.Student;
@@ -19,11 +18,11 @@ public class TestHashCode {
         Student student1 = new Student();
         student1.setStudentid(1);
         student1.setStudentname("asd");
-        student1.setStudentpassword("aaa");
+
         Student student2 = new Student();
         student2.setStudentid(1);
         student2.setStudentname("asd");
-        student2.setStudentpassword("aaa");
+
         System.out.println("student1.equals(student2):"+ student1.equals(student2));
 
         Hashtable<Student,Integer> students = new Hashtable<>();

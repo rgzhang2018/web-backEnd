@@ -381,6 +381,66 @@ public class CheckoutpointExample {
             addCriterion("program not between", value1, value2, "program");
             return (Criteria) this;
         }
+
+        public Criteria andSavetimeIsNull() {
+            addCriterion("saveTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeIsNotNull() {
+            addCriterion("saveTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeEqualTo(Date value) {
+            addCriterion("saveTime =", value, "savetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeNotEqualTo(Date value) {
+            addCriterion("saveTime <>", value, "savetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeGreaterThan(Date value) {
+            addCriterion("saveTime >", value, "savetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("saveTime >=", value, "savetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeLessThan(Date value) {
+            addCriterion("saveTime <", value, "savetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeLessThanOrEqualTo(Date value) {
+            addCriterion("saveTime <=", value, "savetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeIn(List<Date> values) {
+            addCriterion("saveTime in", values, "savetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeNotIn(List<Date> values) {
+            addCriterion("saveTime not in", values, "savetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeBetween(Date value1, Date value2) {
+            addCriterion("saveTime between", value1, value2, "savetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSavetimeNotBetween(Date value1, Date value2) {
+            addCriterion("saveTime not between", value1, value2, "savetime");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

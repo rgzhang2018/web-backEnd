@@ -6,6 +6,7 @@
     <result column="studentID" property="studentid" jdbcType="INTEGER" />
     <result column="toalTime" property="toaltime" jdbcType="TIME" />
     <result column="program" property="program" jdbcType="VARCHAR" />
+    <result column="saveTime" property="savetime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    checkOutPointID, studentID, toalTime, program
+    checkOutPointID, studentID, toalTime, program, saveTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.CheckoutpointExample" >
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
     insert into checkoutpoint (checkOutPointID, studentID, toalTime, 
-      program)
+      program, saveTime)
     values (#{checkoutpointid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{toaltime,jdbcType=TIME}, 
-      #{program,jdbcType=VARCHAR})
+      #{program,jdbcType=VARCHAR}, #{savetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
     insert into checkoutpoint
@@ -119,6 +120,9 @@
       <if test="program != null" >
         program,
       </if>
+      <if test="savetime != null" >
+        saveTime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="checkoutpointid != null" >
@@ -132,6 +136,9 @@
       </if>
       <if test="program != null" >
         #{program,jdbcType=VARCHAR},
+      </if>
+      <if test="savetime != null" >
+        #{savetime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -156,6 +163,9 @@
       <if test="record.program != null" >
         program = #{record.program,jdbcType=VARCHAR},
       </if>
+      <if test="record.savetime != null" >
+        saveTime = #{record.savetime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +176,8 @@
     set checkOutPointID = #{record.checkoutpointid,jdbcType=INTEGER},
       studentID = #{record.studentid,jdbcType=INTEGER},
       toalTime = #{record.toaltime,jdbcType=TIME},
-      program = #{record.program,jdbcType=VARCHAR}
+      program = #{record.program,jdbcType=VARCHAR},
+      saveTime = #{record.savetime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +194,9 @@
       <if test="program != null" >
         program = #{program,jdbcType=VARCHAR},
       </if>
+      <if test="savetime != null" >
+        saveTime = #{savetime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where checkOutPointID = #{checkoutpointid,jdbcType=INTEGER}
   </update>
@@ -190,7 +204,8 @@
     update checkoutpoint
     set studentID = #{studentid,jdbcType=INTEGER},
       toalTime = #{toaltime,jdbcType=TIME},
-      program = #{program,jdbcType=VARCHAR}
+      program = #{program,jdbcType=VARCHAR},
+      saveTime = #{savetime,jdbcType=TIMESTAMP}
     where checkOutPointID = #{checkoutpointid,jdbcType=INTEGER}
   </update>
 </mapper>

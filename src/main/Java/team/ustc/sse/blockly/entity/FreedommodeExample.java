@@ -1,6 +1,7 @@
 package team.ustc.sse.blockly.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FreedommodeExample {
@@ -301,6 +302,66 @@ public class FreedommodeExample {
 
         public Criteria andSourceNotBetween(String value1, String value2) {
             addCriterion("source not between", value1, value2, "source");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeIsNull() {
+            addCriterion("freeModeSaveTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeIsNotNull() {
+            addCriterion("freeModeSaveTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeEqualTo(Date value) {
+            addCriterion("freeModeSaveTime =", value, "freemodesavetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeNotEqualTo(Date value) {
+            addCriterion("freeModeSaveTime <>", value, "freemodesavetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeGreaterThan(Date value) {
+            addCriterion("freeModeSaveTime >", value, "freemodesavetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("freeModeSaveTime >=", value, "freemodesavetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeLessThan(Date value) {
+            addCriterion("freeModeSaveTime <", value, "freemodesavetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeLessThanOrEqualTo(Date value) {
+            addCriterion("freeModeSaveTime <=", value, "freemodesavetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeIn(List<Date> values) {
+            addCriterion("freeModeSaveTime in", values, "freemodesavetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeNotIn(List<Date> values) {
+            addCriterion("freeModeSaveTime not in", values, "freemodesavetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeBetween(Date value1, Date value2) {
+            addCriterion("freeModeSaveTime between", value1, value2, "freemodesavetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreemodesavetimeNotBetween(Date value1, Date value2) {
+            addCriterion("freeModeSaveTime not between", value1, value2, "freemodesavetime");
             return (Criteria) this;
         }
     }

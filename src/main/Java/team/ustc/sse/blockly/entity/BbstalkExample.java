@@ -1,6 +1,7 @@
 package team.ustc.sse.blockly.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BbstalkExample {
@@ -471,6 +472,66 @@ public class BbstalkExample {
 
         public Criteria andBbstalkmessageNotBetween(String value1, String value2) {
             addCriterion("BBSTalkMessage not between", value1, value2, "bbstalkmessage");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeIsNull() {
+            addCriterion("bbstalkTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeIsNotNull() {
+            addCriterion("bbstalkTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeEqualTo(Date value) {
+            addCriterion("bbstalkTime =", value, "bbstalktime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeNotEqualTo(Date value) {
+            addCriterion("bbstalkTime <>", value, "bbstalktime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeGreaterThan(Date value) {
+            addCriterion("bbstalkTime >", value, "bbstalktime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("bbstalkTime >=", value, "bbstalktime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeLessThan(Date value) {
+            addCriterion("bbstalkTime <", value, "bbstalktime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeLessThanOrEqualTo(Date value) {
+            addCriterion("bbstalkTime <=", value, "bbstalktime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeIn(List<Date> values) {
+            addCriterion("bbstalkTime in", values, "bbstalktime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeNotIn(List<Date> values) {
+            addCriterion("bbstalkTime not in", values, "bbstalktime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeBetween(Date value1, Date value2) {
+            addCriterion("bbstalkTime between", value1, value2, "bbstalktime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBbstalktimeNotBetween(Date value1, Date value2) {
+            addCriterion("bbstalkTime not between", value1, value2, "bbstalktime");
             return (Criteria) this;
         }
     }
