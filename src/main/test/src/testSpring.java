@@ -1,4 +1,4 @@
-package team.ustc.sse.blockly.test;
+package src;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

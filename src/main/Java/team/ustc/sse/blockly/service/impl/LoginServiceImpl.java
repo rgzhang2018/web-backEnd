@@ -9,7 +9,8 @@ import team.ustc.sse.blockly.mapper.StudentMapper;
 import team.ustc.sse.blockly.mapper.StudentloginMapper;
 import team.ustc.sse.blockly.mapper.StudentloginmessageMapper;
 import team.ustc.sse.blockly.service.inte.LoginService;
-import team.ustc.sse.blockly.util.IPTool;
+import team.ustc.sse.blockly.util.NetworkUtil;
+
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -22,22 +23,22 @@ import java.util.List;
 public class LoginServiceImpl implements LoginService {
 
 
-//    private final HttpServletRequest request ;
-//    private final HttpServletResponse response ;
+    private final HttpServletRequest request ;
+    private final HttpServletResponse response ;
     private final StudentloginMapper studentloginMapper;
     private final StudentMapper studentMapper;
     private final StudentloginmessageMapper studentloginmessageMapper;
 
 
     //注：idea建议 使用构造器的方式注入，而非@Autowired
-    public LoginServiceImpl(StudentloginMapper studentloginMapper, StudentMapper studentMapper, StudentloginmessageMapper studentloginmessageMapper) {
+    public LoginServiceImpl(StudentloginMapper studentloginMapper, StudentMapper studentMapper, StudentloginmessageMapper studentloginmessageMapper, HttpServletRequest request, HttpServletResponse response) {
         this.studentloginMapper = studentloginMapper;
         this.studentMapper = studentMapper;
         this.studentloginmessageMapper = studentloginmessageMapper;
 
-//        this.request = request;
-//        this.response = response;
-//        , HttpServletRequest request, HttpServletResponse response,
+        this.request = request;
+        this.response = response;
+
     }
 
     @Override
@@ -49,10 +50,10 @@ public class LoginServiceImpl implements LoginService {
             return false;//密码错误或者不存在用户
         }
 
-        //设置session和cookie
-//        setLoginSession(studentInDB,remember);
-        //记录登录IP等信息
-//        setStudentLoginMessage(studentInDB.getStudentid());
+//        设置session和cookie
+        setLoginSession(studentInDB,remember);
+//        记录登录IP等信息
+        setStudentLoginMessage(studentInDB.getStudentid());
         return true;
     }
 
@@ -62,8 +63,8 @@ public class LoginServiceImpl implements LoginService {
         student.setStudentregistertime(new Date());
         student.setStudentid(id);
         studentMapper.insertSelective(student);
-        System.out.println("测试插入完成之后，主键是否会传回来："+ studentlogin.getStudentid());
-//        setStudentLoginMessage(id);
+//        System.out.println("测试插入完成之后，主键是否会传回来："+ studentlogin.getStudentid());
+        setStudentLoginMessage(student.getStudentid());
 
         return false;
     }
@@ -87,56 +88,56 @@ public class LoginServiceImpl implements LoginService {
     public void updateByStudentNickname(String name, Studentlogin studentlogin) {
 
     }
-//
-//    private void setStudentLoginMessage(int studentID){
-//        String ip = IPTool.getLocalIp(request);
-//        Studentloginmessage studentloginmessage = new Studentloginmessage()
-//                .setLogindata(new Date()).setStudentid(studentID).setLoginip(ip);
-//        studentloginmessageMapper.insertSelective(studentloginmessage);
+
+    private void setStudentLoginMessage(int studentID){
+        String ip = NetworkUtil.getIpAddress(request);
+        Studentloginmessage studentloginmessage = new Studentloginmessage()
+                .setLogindata(new Date()).setStudentid(studentID).setLoginip(ip);
+        studentloginmessageMapper.insertSelective(studentloginmessage);
 //        System.out.println("test primary key ===>"+ studentloginmessage.getStudentloginid());
-//    }
-//
-//
-//    private void setLoginSession(Studentlogin studentlogin,boolean remember){
-//        HttpSession session = request.getSession();
-//        //set session
-//        session.setAttribute("loginFlag",true);
-//        session.setAttribute("loginAccount",studentlogin.getStudentaccount());
-//        //set cookie
-//        if(remember){
-//            Cookie cookie = new Cookie("loginAccount",studentlogin.getStudentaccount());
-//            cookie.setMaxAge(60 * 60 * 24 *7 );
-//            response.addCookie(cookie);
-//        }
-////        testCookieAndSession(session);
-//    }
-//
-//
-//    //显示当前session和cookie的保存状态
-//    private void testCookieAndSession(HttpSession session){
-//        System.out.println("session:======>" + session.getAttribute("loginFlag"));
-//        Cookie[] cookies = request.getCookies();
-//        for(Cookie cookie :cookies){
-//            if(cookie.getName().equals("loginAccount")){
-//                System.out.println("cookie:======>"+cookie.getName() +" | "+ cookie.getValue());
-//            }
-//        }
-//    }
-//
-//    //从session或者cookie中获取登录用户，先放到这里了，后面再做切面
-//    private void getMessgeFromSession(){
-//        HttpSession session = request.getSession();
-//        Cookie[] cookies = request.getCookies();
-//        //检测session和cookie
-//        if(session.getAttribute("loginFlag")!=null &&  session.getAttribute("loginFlag").equals(true)){
+    }
+
+
+    private void setLoginSession(Studentlogin studentlogin,boolean remember){
+        HttpSession session = request.getSession();
+        //set session
+        session.setAttribute("loginFlag",true);
+        session.setAttribute("loginAccount",studentlogin.getStudentaccount());
+        //set cookie
+        if(remember){
+            Cookie cookie = new Cookie("loginAccount",studentlogin.getStudentaccount());
+            cookie.setMaxAge(60 * 60 * 24 *7 );
+            response.addCookie(cookie);
+        }
+//        testCookieAndSession(session);
+    }
+
+
+    //显示当前session和cookie的保存状态
+    private void testCookieAndSession(HttpSession session){
+        System.out.println("session:======>" + session.getAttribute("loginFlag"));
+        Cookie[] cookies = request.getCookies();
+        for(Cookie cookie :cookies){
+            if(cookie.getName().equals("loginAccount")){
+                System.out.println("cookie:======>"+cookie.getName() +" | "+ cookie.getValue());
+            }
+        }
+    }
+
+    //从session或者cookie中获取登录用户，先放到这里了，后面再做切面
+    private void getMessgeFromSession(){
+        HttpSession session = request.getSession();
+        Cookie[] cookies = request.getCookies();
+        //检测session和cookie
+        if(session.getAttribute("loginFlag")!=null &&  session.getAttribute("loginFlag").equals(true)){
 //            System.out.println("in session , then reset session" );
-//            session.setAttribute("loginFlag",false);
-//        }
-//
-//        for(Cookie cookie :cookies){
-//            if(cookie.getName().equals("loginAccount")){
+            session.setAttribute("loginFlag",false);
+        }
+
+        for(Cookie cookie :cookies){
+            if(cookie.getName().equals("loginAccount")){
 //                System.out.println("in cookie , then reset cookie" );
-//            }
-//        }
-//    }
+            }
+        }
+    }
 }

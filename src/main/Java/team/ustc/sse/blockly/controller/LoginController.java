@@ -11,6 +11,9 @@ import team.ustc.sse.blockly.entity.Studentlogin;
 import team.ustc.sse.blockly.service.impl.LoginServiceImpl;
 
 
+import javax.servlet.http.HttpServletRequest;
+
+
 @Controller
 @RequestMapping("/loginControl")
 public class LoginController {
@@ -18,7 +21,9 @@ public class LoginController {
     LoginServiceImpl studentLoginService;
 
     @RequestMapping(value = "/login",method = {RequestMethod.GET})
-    public String login(){
+    public String login(HttpServletRequest request){
+        System.out.println(request.getRequestURI());
+
         return "visitor_login";
     }
 

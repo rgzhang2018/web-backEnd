@@ -1,3 +1,4 @@
+package src;
 
 import org.junit.Test;
 import team.ustc.sse.blockly.entity.Student;

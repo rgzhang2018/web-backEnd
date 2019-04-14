@@ -55,7 +55,9 @@
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
-
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
 
 
     <!--编码格式配置，强制全部转化为UTF-8-->
