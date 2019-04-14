@@ -6,68 +6,43 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.Studentlogin;
 import team.ustc.sse.blockly.service.impl.LoginServiceImpl;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 
 @Controller
+@RequestMapping("/loginControl")
 public class LoginController {
     @Autowired
     LoginServiceImpl studentLoginService;
 
-    @RequestMapping(value = "login",method = {RequestMethod.GET})
-    public String loginUI(){
+    @RequestMapping(value = "/login",method = {RequestMethod.GET})
+    public String login(){
         return "visitor_login";
     }
 
+    @RequestMapping(value = "/register",method = {RequestMethod.GET})
+    public String register(){
+        return "visitor_register";
+    }
 
-    /**
-    * @Description: 登录信息验证，目前简单实现后期再加上加密等
-    * @Param: [account, password, saveFlag, time]
-    * @return: java.lang.String
-    * @Author: rgzhang
-    */
-    @RequestMapping(value = "studentLogin" ,method = {RequestMethod.POST})
-    public String loginControl(Studentlogin student, Boolean remember, HttpServletRequest request, HttpServletResponse response){
 
-//        Student student = new Student().setStudentaccount(studentaccount).setStudentpassword(studentpassword);
-
-//        System.out.println(studentaccount+ " | 111| "+ student+ " "+ remember + " ");
-        System.out.println(student);
-        HttpSession session = request.getSession();
-        Cookie[] cookies = request.getCookies();
-        //检测session和cookie
-
-        if(session.getAttribute("loginFlag")!=null &&  session.getAttribute("loginFlag").equals(true)){
-            System.out.println("in session , then reset session" );
-            session.setAttribute("loginFlag",false);
-            return "success";
-        }
-
-        
-        for(Cookie cookie :cookies){
-            if(cookie.getName().equals("loginAccount")){
-                System.out.println("in cookie , then reset cookie" );
-                return "hello";
-            }
-        }
-
-        boolean result = studentLoginService.studentLoginCheck(student);
+    @RequestMapping(value = "/studentLogin" ,method = {RequestMethod.POST})
+    public String studentLogin(Studentlogin studentLogin, Boolean remember){
+        System.out.println(studentLogin);
+        if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "wrong";
+        boolean result = studentLoginService.studentLogin(studentLogin,remember );
         if(!result)return "wrong";
-        //set session
-        session.setAttribute("loginFlag",true);
-        session.setAttribute("loginAccount",student.getStudentaccount());
+        return "success";
+    }
 
-        if(remember){
-            Cookie cookie = new Cookie("loginAccount",student.getStudentaccount());
-            cookie.setMaxAge(60 * 60 * 24 *7 );
-            response.addCookie(cookie);
-        }
+    @RequestMapping(value = "/studentRegister" ,method = {RequestMethod.POST})
+    public String studentRegister(Studentlogin studentLogin, Student student){
+        System.out.println(studentLogin);
+        if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "wrong";
+        boolean result = studentLoginService.studentRegister( studentLogin,student);
+        if(!result)return "wrong";
         return "success";
     }
 

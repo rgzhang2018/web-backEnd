@@ -3,11 +3,12 @@ package team.ustc.sse.blockly.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import team.ustc.sse.blockly.entity.Checkoutpoint;
-import team.ustc.sse.blockly.entity.Student;
+import team.ustc.sse.blockly.entity.CheckoutpointExample;
 import team.ustc.sse.blockly.mapper.CheckoutpointMapper;
 import team.ustc.sse.blockly.mapper.CheckpointMapper;
-import team.ustc.sse.blockly.mapper.FreedommodeMapper;
 import team.ustc.sse.blockly.service.inte.GameService;
+
+import java.util.List;
 
 /**
  * description:
@@ -27,17 +28,18 @@ public class GameServiceImpl implements GameService {
 
 
     @Override
-    public Checkoutpoint getLastCheckpoint(Student student) {
-        return null;
+    public Checkoutpoint getCheckoutPoint(int studentID, int checkpointID) {
+        CheckoutpointExample checkoutpointExample = new CheckoutpointExample();
+        CheckoutpointExample.Criteria criteria = checkoutpointExample.createCriteria();
+        criteria.andStudentidEqualTo(studentID);
+        List<Checkoutpoint> list = checkoutpointMapper.selectByExample(checkoutpointExample);
+        return list.get(0);
     }
 
     @Override
-    public boolean saveCheckpoint(int totalTime, Student student, String program, int saveTime) {
+    public boolean saveCheckoutPoint(int totalTime, int studentID, String program, int saveTime) {
         return false;
     }
 
-    @Override
-    public boolean saveFreemode() {
-        return false;
-    }
+
 }

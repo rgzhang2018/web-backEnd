@@ -1,23 +1,47 @@
 package team.ustc.sse.blockly.service.inte;
 
+import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.Studentlogin;
 
 public interface LoginService {
 
 
 
-    //登录检测
-    boolean studentLoginCheck(Studentlogin studentlogin);
+    /**
+    * @Description: 登录检测确认信息
+    * @Param: [studentlogin]
+    * @return: boolean
+    * @Author: rgzhang
+    */
+    boolean studentLogin(Studentlogin studentlogin, boolean remember);
 
-    //根据账户名查找用户
+
+    /**
+     * @Description: 新建用户
+     * @Param: [studentlogin]
+     * @return: void
+     * @Author: rgzhang
+     */
+    boolean studentRegister(Studentlogin studentlogin, Student student);
+
+    /**
+    * @Description: 根据账户名查找用户
+    * @Param: [account]
+    * @return: team.ustc.sse.blockly.entity.Studentlogin
+    * @Author: rgzhang
+    */
     Studentlogin findByStudentAccount(String account) ;
 
 
-    //新建用户
-    void saveNewStudent(Studentlogin studentlogin) ;
 
 
-    //根据用户名更新
+
+    /**
+    * @Description: 根据用户名更新
+    * @Param: [name, studentlogin]
+    * @return: void
+    * @Author: rgzhang
+    */
     void updateByStudentNickname(String name, Studentlogin studentlogin);
 
 }

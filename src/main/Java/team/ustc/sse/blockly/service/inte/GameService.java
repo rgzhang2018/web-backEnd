@@ -1,13 +1,25 @@
 package team.ustc.sse.blockly.service.inte;
 
 import team.ustc.sse.blockly.entity.Checkoutpoint;
-import team.ustc.sse.blockly.entity.Student;
 
 public interface GameService {
 
-    Checkoutpoint getLastCheckpoint(Student student);
+    /**
+    * @Description: 根据学生ID和关卡ID checkpointID查询学生存储的代码记录
+    * @Param: [studentID, checkpointID]
+    * @return: team.ustc.sse.blockly.entity.Checkoutpoint
+    * @Author: rgzhang
+    */
+    Checkoutpoint getCheckoutPoint(int studentID, int checkpointID);
 
-    boolean saveCheckpoint(int totalTime,Student student,String program,int saveTime);
+
+    /**
+    * @Description: 保存某个学生的闯关记录
+    * @Param: [totalTime, studentID, program, saveTime]
+    * @return: boolean
+    * @Author: rgzhang
+    */
+    boolean saveCheckoutPoint(int totalTime, int studentID, String program, int saveTime);
 
 
 }
