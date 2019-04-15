@@ -2,8 +2,14 @@ package src;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.request.RequestContextListener;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.StudentExample;
 import team.ustc.sse.blockly.entity.Studentlogin;
@@ -11,6 +17,7 @@ import team.ustc.sse.blockly.mapper.StudentMapper;
 import team.ustc.sse.blockly.mapper.StudentloginMapper;
 
 
+import javax.servlet.ServletRequestEvent;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
@@ -40,6 +47,8 @@ public class TestStudent {
     @Before
     public void init() {
         //获取applicationContext
+//        applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
+
         applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
     }
 

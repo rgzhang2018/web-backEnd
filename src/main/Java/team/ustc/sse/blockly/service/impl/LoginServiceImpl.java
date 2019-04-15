@@ -1,5 +1,7 @@
 package team.ustc.sse.blockly.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.Studentlogin;
@@ -12,10 +14,7 @@ import team.ustc.sse.blockly.service.inte.LoginService;
 import team.ustc.sse.blockly.util.NetworkUtil;
 
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.util.Date;
 import java.util.List;
 
@@ -23,21 +22,21 @@ import java.util.List;
 public class LoginServiceImpl implements LoginService {
 
 
-    private final HttpServletRequest request ;
-    private final HttpServletResponse response ;
+    @Autowired
+    private HttpServletRequest request ;
+
     private final StudentloginMapper studentloginMapper;
     private final StudentMapper studentMapper;
     private final StudentloginmessageMapper studentloginmessageMapper;
 
 
     //注：idea建议 使用构造器的方式注入，而非@Autowired
-    public LoginServiceImpl(StudentloginMapper studentloginMapper, StudentMapper studentMapper, StudentloginmessageMapper studentloginmessageMapper, HttpServletRequest request, HttpServletResponse response) {
+    public LoginServiceImpl( StudentloginMapper studentloginMapper, StudentMapper studentMapper, StudentloginmessageMapper studentloginmessageMapper) {
+
         this.studentloginMapper = studentloginMapper;
         this.studentMapper = studentMapper;
         this.studentloginmessageMapper = studentloginmessageMapper;
 
-        this.request = request;
-        this.response = response;
 
     }
 
@@ -103,22 +102,28 @@ public class LoginServiceImpl implements LoginService {
         //set session
         session.setAttribute("loginFlag",true);
         session.setAttribute("loginAccount",studentlogin.getStudentaccount());
+        session.setAttribute("1111",true);
+        System.out.println("======> set session in service");
         //set cookie
-        if(remember){
+//        if(remember){
             Cookie cookie = new Cookie("loginAccount",studentlogin.getStudentaccount());
             cookie.setMaxAge(60 * 60 * 24 *7 );
-            response.addCookie(cookie);
-        }
+//            response.addCookie(cookie);
+            Cookie cookie2 = new Cookie("testMYService",studentlogin.getStudentaccount());
+            cookie2.setMaxAge(60 * 60 * 24 *7 );
+//            response.addCookie(cookie2);
+            System.out.println("======> set cookie in service");
+//        }
 //        testCookieAndSession(session);
     }
 
 
     //显示当前session和cookie的保存状态
     private void testCookieAndSession(HttpSession session){
-        System.out.println("session:======>" + session.getAttribute("loginFlag"));
+//        System.out.println("session:======>" + session.getAttribute("loginFlag"));
         Cookie[] cookies = request.getCookies();
         for(Cookie cookie :cookies){
-            if(cookie.getName().equals("loginAccount")){
+            if(cookie.getName().equals("testMYService")){
                 System.out.println("cookie:======>"+cookie.getName() +" | "+ cookie.getValue());
             }
         }

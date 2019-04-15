@@ -29,115 +29,87 @@ public class Student {
         return studentid;
     }
 
-    public Student setStudentid(Integer studentid) {
+    public void setStudentid(Integer studentid) {
         this.studentid = studentid;
-        return this;
     }
 
     public String getStudentname() {
         return studentname;
     }
 
-    public Student setStudentname(String studentname) {
-        this.studentname = studentname;
-        return this;
+    public void setStudentname(String studentname) {
+        this.studentname = studentname == null ? null : studentname.trim();
     }
 
     public String getStudentgender() {
         return studentgender;
     }
 
-    public Student setStudentgender(String studentgender) {
-        this.studentgender = studentgender;
-        return this;
+    public void setStudentgender(String studentgender) {
+        this.studentgender = studentgender == null ? null : studentgender.trim();
     }
 
     public String getStudentemail() {
         return studentemail;
     }
 
-    public Student setStudentemail(String studentemail) {
-        this.studentemail = studentemail;
-        return this;
+    public void setStudentemail(String studentemail) {
+        this.studentemail = studentemail == null ? null : studentemail.trim();
     }
 
     public Integer getStudentage() {
         return studentage;
     }
 
-    public Student setStudentage(Integer studentage) {
+    public void setStudentage(Integer studentage) {
         this.studentage = studentage;
-        return this;
     }
 
     public String getStudentphone() {
         return studentphone;
     }
 
-    public Student setStudentphone(String studentphone) {
-        this.studentphone = studentphone;
-        return this;
+    public void setStudentphone(String studentphone) {
+        this.studentphone = studentphone == null ? null : studentphone.trim();
     }
 
     public String getStudentschool() {
         return studentschool;
     }
 
-    public Student setStudentschool(String studentschool) {
-        this.studentschool = studentschool;
-        return this;
+    public void setStudentschool(String studentschool) {
+        this.studentschool = studentschool == null ? null : studentschool.trim();
     }
 
     public String getStudentnumber() {
         return studentnumber;
     }
 
-    public Student setStudentnumber(String studentnumber) {
-        this.studentnumber = studentnumber;
-        return this;
+    public void setStudentnumber(String studentnumber) {
+        this.studentnumber = studentnumber == null ? null : studentnumber.trim();
     }
 
     public String getStudentgrade() {
         return studentgrade;
     }
 
-    public Student setStudentgrade(String studentgrade) {
-        this.studentgrade = studentgrade;
-        return this;
+    public void setStudentgrade(String studentgrade) {
+        this.studentgrade = studentgrade == null ? null : studentgrade.trim();
     }
 
     public String getStudentremark() {
         return studentremark;
     }
 
-    public Student setStudentremark(String studentremark) {
-        this.studentremark = studentremark;
-        return this;
+    public void setStudentremark(String studentremark) {
+        this.studentremark = studentremark == null ? null : studentremark.trim();
     }
 
     public Date getStudentregistertime() {
         return studentregistertime;
     }
 
-    public Student setStudentregistertime(Date studentregistertime) {
+    public void setStudentregistertime(Date studentregistertime) {
         this.studentregistertime = studentregistertime;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "studentid=" + studentid +
-                ", studentname='" + studentname + '\'' +
-                ", studentgender='" + studentgender + '\'' +
-                ", studentemail='" + studentemail + '\'' +
-                ", studentage=" + studentage +
-                ", studentphone='" + studentphone + '\'' +
-                ", studentschool='" + studentschool + '\'' +
-                ", studentnumber='" + studentnumber + '\'' +
-                ", studentgrade='" + studentgrade + '\'' +
-                ", studentremark='" + studentremark + '\'' +
-                ", studentregistertime=" + studentregistertime +
-                '}';
     }
 }

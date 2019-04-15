@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.ustc.sse.blockly.mapper.StudentloginmessageMapper" >
+  <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Studentloginmessage" >
+    <id column="studentLoginID" property="studentloginid" jdbcType="INTEGER" />
+    <result column="studentID" property="studentid" jdbcType="INTEGER" />
+    <result column="loginIP" property="loginip" jdbcType="VARCHAR" />
+    <result column="loginData" property="logindata" jdbcType="TIMESTAMP" />
+    <result column="loginMessage" property="loginmessage" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    studentLoginID, studentID, loginIP, loginData, loginMessage
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.StudentloginmessageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from studentloginmessage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from studentloginmessage
+    where studentLoginID = #{studentloginid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from studentloginmessage
+    where studentLoginID = #{studentloginid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.StudentloginmessageExample" >
+    delete from studentloginmessage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Studentloginmessage" useGeneratedKeys="true" keyProperty="studentloginid">
+<!--    <selectKey resultType="java.lang.Integer" keyProperty="studentloginid" order="AFTER" >-->
+<!--      SELECT LAST_INSERT_ID()-->
+<!--    </selectKey>-->
+    insert into studentloginmessage (studentID, loginIP, loginData, 
+      loginMessage)
+    values (#{studentid,jdbcType=INTEGER}, #{loginip,jdbcType=VARCHAR}, #{logindata,jdbcType=TIMESTAMP}, 
+      #{loginmessage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Studentloginmessage" >
+    <selectKey resultType="java.lang.Integer" keyProperty="studentloginid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into studentloginmessage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentid != null" >
+        studentID,
+      </if>
+      <if test="loginip != null" >
+        loginIP,
+      </if>
+      <if test="logindata != null" >
+        loginData,
+      </if>
+      <if test="loginmessage != null" >
+        loginMessage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentid != null" >
+        #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="loginip != null" >
+        #{loginip,jdbcType=VARCHAR},
+      </if>
+      <if test="logindata != null" >
+        #{logindata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginmessage != null" >
+        #{loginmessage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="team.ustc.sse.blockly.entity.StudentloginmessageExample" resultType="java.lang.Integer" >
+    select count(*) from studentloginmessage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update studentloginmessage
+    <set >
+      <if test="record.studentloginid != null" >
+        studentLoginID = #{record.studentloginid,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentid != null" >
+        studentID = #{record.studentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginip != null" >
+        loginIP = #{record.loginip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logindata != null" >
+        loginData = #{record.logindata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.loginmessage != null" >
+        loginMessage = #{record.loginmessage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update studentloginmessage
+    set studentLoginID = #{record.studentloginid,jdbcType=INTEGER},
+      studentID = #{record.studentid,jdbcType=INTEGER},
+      loginIP = #{record.loginip,jdbcType=VARCHAR},
+      loginData = #{record.logindata,jdbcType=TIMESTAMP},
+      loginMessage = #{record.loginmessage,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="team.ustc.sse.blockly.entity.Studentloginmessage" >
+    update studentloginmessage
+    <set >
+      <if test="studentid != null" >
+        studentID = #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="loginip != null" >
+        loginIP = #{loginip,jdbcType=VARCHAR},
+      </if>
+      <if test="logindata != null" >
+        loginData = #{logindata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginmessage != null" >
+        loginMessage = #{loginmessage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where studentLoginID = #{studentloginid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Studentloginmessage" >
+    update studentloginmessage
+    set studentID = #{studentid,jdbcType=INTEGER},
+      loginIP = #{loginip,jdbcType=VARCHAR},
+      loginData = #{logindata,jdbcType=TIMESTAMP},
+      loginMessage = #{loginmessage,jdbcType=VARCHAR}
+    where studentLoginID = #{studentloginid,jdbcType=INTEGER}
+  </update>
+</mapper>

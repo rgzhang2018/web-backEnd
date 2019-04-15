@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.ustc.sse.blockly.mapper.AdminMapper" >
+  <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Admin" >
+    <id column="adminID" property="adminid" jdbcType="INTEGER" />
+    <result column="adminAccount" property="adminaccount" jdbcType="VARCHAR" />
+    <result column="adminPassword" property="adminpassword" jdbcType="VARCHAR" />
+    <result column="adminLeval" property="adminleval" jdbcType="INTEGER" />
+    <result column="adminMessage" property="adminmessage" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    adminID, adminAccount, adminPassword, adminLeval, adminMessage
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.AdminExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where adminID = #{adminid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from admin
+    where adminID = #{adminid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.AdminExample" >
+    delete from admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Admin" >
+    <selectKey resultType="java.lang.Integer" keyProperty="adminid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into admin (adminAccount, adminPassword, adminLeval, 
+      adminMessage)
+    values (#{adminaccount,jdbcType=VARCHAR}, #{adminpassword,jdbcType=VARCHAR}, #{adminleval,jdbcType=INTEGER}, 
+      #{adminmessage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Admin" >
+    <selectKey resultType="java.lang.Integer" keyProperty="adminid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adminaccount != null" >
+        adminAccount,
+      </if>
+      <if test="adminpassword != null" >
+        adminPassword,
+      </if>
+      <if test="adminleval != null" >
+        adminLeval,
+      </if>
+      <if test="adminmessage != null" >
+        adminMessage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adminaccount != null" >
+        #{adminaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="adminpassword != null" >
+        #{adminpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="adminleval != null" >
+        #{adminleval,jdbcType=INTEGER},
+      </if>
+      <if test="adminmessage != null" >
+        #{adminmessage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="team.ustc.sse.blockly.entity.AdminExample" resultType="java.lang.Integer" >
+    select count(*) from admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update admin
+    <set >
+      <if test="record.adminid != null" >
+        adminID = #{record.adminid,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminaccount != null" >
+        adminAccount = #{record.adminaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminpassword != null" >
+        adminPassword = #{record.adminpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminleval != null" >
+        adminLeval = #{record.adminleval,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminmessage != null" >
+        adminMessage = #{record.adminmessage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update admin
+    set adminID = #{record.adminid,jdbcType=INTEGER},
+      adminAccount = #{record.adminaccount,jdbcType=VARCHAR},
+      adminPassword = #{record.adminpassword,jdbcType=VARCHAR},
+      adminLeval = #{record.adminleval,jdbcType=INTEGER},
+      adminMessage = #{record.adminmessage,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="team.ustc.sse.blockly.entity.Admin" >
+    update admin
+    <set >
+      <if test="adminaccount != null" >
+        adminAccount = #{adminaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="adminpassword != null" >
+        adminPassword = #{adminpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="adminleval != null" >
+        adminLeval = #{adminleval,jdbcType=INTEGER},
+      </if>
+      <if test="adminmessage != null" >
+        adminMessage = #{adminmessage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where adminID = #{adminid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Admin" >
+    update admin
+    set adminAccount = #{adminaccount,jdbcType=VARCHAR},
+      adminPassword = #{adminpassword,jdbcType=VARCHAR},
+      adminLeval = #{adminleval,jdbcType=INTEGER},
+      adminMessage = #{adminmessage,jdbcType=VARCHAR}
+    where adminID = #{adminid,jdbcType=INTEGER}
+  </update>
+</mapper>

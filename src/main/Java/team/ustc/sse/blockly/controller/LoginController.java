@@ -11,7 +11,10 @@ import team.ustc.sse.blockly.entity.Studentlogin;
 import team.ustc.sse.blockly.service.impl.LoginServiceImpl;
 
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -28,7 +31,14 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/register",method = {RequestMethod.GET})
-    public String register(){
+    public String register(HttpServletResponse response ,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.setAttribute("testMYService",true);
+        System.out.println("======> set session in controller");
+        Cookie cookie2 = new Cookie("testMYService","1111");
+        cookie2.setMaxAge(60 * 60 * 24 *7 );
+        response.addCookie(cookie2);
+        System.out.println("======> set cookie in controller");
         return "visitor_register";
     }
 

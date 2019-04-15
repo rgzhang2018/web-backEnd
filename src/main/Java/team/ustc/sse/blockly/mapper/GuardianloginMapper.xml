@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.ustc.sse.blockly.mapper.GuardianloginMapper" >
+  <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Guardianlogin" >
+    <id column="guardianID" property="guardianid" jdbcType="INTEGER" />
+    <result column="guardianAccount" property="guardianaccount" jdbcType="VARCHAR" />
+    <result column="guardianPassword" property="guardianpassword" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    guardianID, guardianAccount, guardianPassword, nickname
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.GuardianloginExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from guardianlogin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from guardianlogin
+    where guardianID = #{guardianid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from guardianlogin
+    where guardianID = #{guardianid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.GuardianloginExample" >
+    delete from guardianlogin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Guardianlogin" >
+    <selectKey resultType="java.lang.Integer" keyProperty="guardianid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into guardianlogin (guardianAccount, guardianPassword, 
+      nickname)
+    values (#{guardianaccount,jdbcType=VARCHAR}, #{guardianpassword,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Guardianlogin" >
+    <selectKey resultType="java.lang.Integer" keyProperty="guardianid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into guardianlogin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="guardianaccount != null" >
+        guardianAccount,
+      </if>
+      <if test="guardianpassword != null" >
+        guardianPassword,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="guardianaccount != null" >
+        #{guardianaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="guardianpassword != null" >
+        #{guardianpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="team.ustc.sse.blockly.entity.GuardianloginExample" resultType="java.lang.Integer" >
+    select count(*) from guardianlogin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update guardianlogin
+    <set >
+      <if test="record.guardianid != null" >
+        guardianID = #{record.guardianid,jdbcType=INTEGER},
+      </if>
+      <if test="record.guardianaccount != null" >
+        guardianAccount = #{record.guardianaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guardianpassword != null" >
+        guardianPassword = #{record.guardianpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickname != null" >
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update guardianlogin
+    set guardianID = #{record.guardianid,jdbcType=INTEGER},
+      guardianAccount = #{record.guardianaccount,jdbcType=VARCHAR},
+      guardianPassword = #{record.guardianpassword,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="team.ustc.sse.blockly.entity.Guardianlogin" >
+    update guardianlogin
+    <set >
+      <if test="guardianaccount != null" >
+        guardianAccount = #{guardianaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="guardianpassword != null" >
+        guardianPassword = #{guardianpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where guardianID = #{guardianid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Guardianlogin" >
+    update guardianlogin
+    set guardianAccount = #{guardianaccount,jdbcType=VARCHAR},
+      guardianPassword = #{guardianpassword,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR}
+    where guardianID = #{guardianid,jdbcType=INTEGER}
+  </update>
+</mapper>
