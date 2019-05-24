@@ -3,6 +3,8 @@ package team.ustc.sse.blockly.service.inte;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.Studentlogin;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface LoginService {
 
 
@@ -13,7 +15,7 @@ public interface LoginService {
     * @return: boolean
     * @Author: rgzhang
     */
-    boolean studentLogin(Studentlogin studentlogin, boolean remember);
+    boolean studentLogin(Studentlogin studentlogin, boolean remember, HttpServletRequest request);
 
 
     /**
@@ -22,7 +24,7 @@ public interface LoginService {
      * @return: void
      * @Author: rgzhang
      */
-    boolean studentRegister(Studentlogin studentlogin, Student student);
+    boolean studentRegister(Studentlogin studentlogin, Student student, HttpServletRequest request);
 
     /**
     * @Description: 根据账户名查找用户

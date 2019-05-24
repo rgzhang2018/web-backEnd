@@ -19,7 +19,7 @@ public interface GameService {
     * @return: boolean
     * @Author: rgzhang
     */
-    boolean saveCheckoutPoint(int totalTime, int studentID, String program, int saveTime);
+    boolean saveCheckoutPoint(Checkoutpoint checkoutpoint);
 
 
 }

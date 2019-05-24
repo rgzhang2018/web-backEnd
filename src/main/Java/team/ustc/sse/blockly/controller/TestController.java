@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import team.ustc.sse.blockly.service.impl.TestServiceImpl;
 
 import javax.servlet.http.Cookie;
@@ -23,6 +24,19 @@ public class TestController {
 
     @Autowired
     TestServiceImpl testService;
+
+
+    @RequestMapping("request")
+    public String testRequest(HttpServletRequest request){
+        System.out.println(request.getClass());
+        try {
+            throw new Exception("request stack trace");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     /**
     * @Description: test
@@ -50,4 +64,8 @@ public class TestController {
     }
 
 
+    @RequestMapping(value = "/ajax",method = {RequestMethod.GET})
+    public String testAjax(HttpServletRequest request){
+        return "ajaxDemo";
+    }
 }

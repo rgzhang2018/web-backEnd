@@ -19,47 +19,53 @@ public class Checkoutpoint {
         return checkoutpointid;
     }
 
-    public void setCheckoutpointid(Integer checkoutpointid) {
+    public Checkoutpoint setCheckoutpointid(Integer checkoutpointid) {
         this.checkoutpointid = checkoutpointid;
+        return this;
     }
 
     public Integer getStudentid() {
         return studentid;
     }
 
-    public void setStudentid(Integer studentid) {
+    public Checkoutpoint setStudentid(Integer studentid) {
         this.studentid = studentid;
+        return this;
     }
 
     public Integer getCheckpointid() {
         return checkpointid;
     }
 
-    public void setCheckpointid(Integer checkpointid) {
+    public Checkoutpoint setCheckpointid(Integer checkpointid) {
         this.checkpointid = checkpointid;
+        return this;
     }
 
     public Date getToaltime() {
         return toaltime;
     }
 
-    public void setToaltime(Date toaltime) {
+    public Checkoutpoint setToaltime(Date toaltime) {
         this.toaltime = toaltime;
+        return this;
     }
 
     public String getProgram() {
         return program;
     }
 
-    public void setProgram(String program) {
-        this.program = program == null ? null : program.trim();
+    public Checkoutpoint setProgram(String program) {
+        this.program = program;
+        return this;
     }
 
     public Date getSavetime() {
         return savetime;
     }
 
-    public void setSavetime(Date savetime) {
+    public Checkoutpoint setSavetime(Date savetime) {
         this.savetime = savetime;
+        return this;
     }
 }

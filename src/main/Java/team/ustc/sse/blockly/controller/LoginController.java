@@ -44,19 +44,19 @@ public class LoginController {
 
 
     @RequestMapping(value = "/studentLogin" ,method = {RequestMethod.POST})
-    public String studentLogin(Studentlogin studentLogin, Boolean remember){
+    public String studentLogin(Studentlogin studentLogin, Boolean remember,HttpServletRequest request){
         System.out.println(studentLogin);
         if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "wrong";
-        boolean result = studentLoginService.studentLogin(studentLogin,remember );
+        boolean result = studentLoginService.studentLogin(studentLogin,remember,request );
         if(!result)return "wrong";
         return "success";
     }
 
     @RequestMapping(value = "/studentRegister" ,method = {RequestMethod.POST})
-    public String studentRegister(Studentlogin studentLogin, Student student){
+    public String studentRegister(Studentlogin studentLogin, Student student,HttpServletRequest request){
         System.out.println(studentLogin);
         if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "wrong";
-        boolean result = studentLoginService.studentRegister( studentLogin,student);
+        boolean result = studentLoginService.studentRegister( studentLogin,student,request);
         if(!result)return "wrong";
         return "success";
     }

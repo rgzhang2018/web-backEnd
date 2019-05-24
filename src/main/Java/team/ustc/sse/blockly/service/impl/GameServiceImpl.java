@@ -37,7 +37,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public boolean saveCheckoutPoint(int totalTime, int studentID, String program, int saveTime) {
+    public boolean saveCheckoutPoint(Checkoutpoint checkoutpoint) {
         return false;
     }
 
