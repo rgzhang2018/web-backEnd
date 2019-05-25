@@ -105,66 +105,6 @@ public class FreedommodeExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andFreemodeidIsNull() {
-            addCriterion("freeModeID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidIsNotNull() {
-            addCriterion("freeModeID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidEqualTo(Integer value) {
-            addCriterion("freeModeID =", value, "freemodeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidNotEqualTo(Integer value) {
-            addCriterion("freeModeID <>", value, "freemodeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidGreaterThan(Integer value) {
-            addCriterion("freeModeID >", value, "freemodeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("freeModeID >=", value, "freemodeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidLessThan(Integer value) {
-            addCriterion("freeModeID <", value, "freemodeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidLessThanOrEqualTo(Integer value) {
-            addCriterion("freeModeID <=", value, "freemodeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidIn(List<Integer> values) {
-            addCriterion("freeModeID in", values, "freemodeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidNotIn(List<Integer> values) {
-            addCriterion("freeModeID not in", values, "freemodeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidBetween(Integer value1, Integer value2) {
-            addCriterion("freeModeID between", value1, value2, "freemodeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFreemodeidNotBetween(Integer value1, Integer value2) {
-            addCriterion("freeModeID not between", value1, value2, "freemodeid");
-            return (Criteria) this;
-        }
-
         public Criteria andStudentidIsNull() {
             addCriterion("studentID is null");
             return (Criteria) this;
@@ -422,6 +362,66 @@ public class FreedommodeExample {
 
         public Criteria andFreemodesavetimeNotBetween(Date value1, Date value2) {
             addCriterion("freeModeSaveTime not between", value1, value2, "freemodesavetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeIsNull() {
+            addCriterion("toaltime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeIsNotNull() {
+            addCriterion("toaltime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeEqualTo(Integer value) {
+            addCriterion("toaltime =", value, "toaltime");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeNotEqualTo(Integer value) {
+            addCriterion("toaltime <>", value, "toaltime");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeGreaterThan(Integer value) {
+            addCriterion("toaltime >", value, "toaltime");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("toaltime >=", value, "toaltime");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeLessThan(Integer value) {
+            addCriterion("toaltime <", value, "toaltime");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeLessThanOrEqualTo(Integer value) {
+            addCriterion("toaltime <=", value, "toaltime");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeIn(List<Integer> values) {
+            addCriterion("toaltime in", values, "toaltime");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeNotIn(List<Integer> values) {
+            addCriterion("toaltime not in", values, "toaltime");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeBetween(Integer value1, Integer value2) {
+            addCriterion("toaltime between", value1, value2, "toaltime");
+            return (Criteria) this;
+        }
+
+        public Criteria andToaltimeNotBetween(Integer value1, Integer value2) {
+            addCriterion("toaltime not between", value1, value2, "toaltime");
             return (Criteria) this;
         }
     }

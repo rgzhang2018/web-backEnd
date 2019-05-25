@@ -316,7 +316,7 @@ DROP INDEX `guardianID_UNIQUE` ;
 
 /*==============================================================*/
 /* 2019.5.25  rgzhang增加： 自增列。                 */
-/* 修改CheckoutPoint表 和 freedomMod表 结构 配合studentID做联合主键        */
+/* 修改CheckoutPoint表 和 freedomMod表 结构      */
 /* 修改CheckoutPoint表 新增getpass字段，        */
 /*==============================================================*/
 ALTER TABLE `code`.`freedommode`
@@ -334,5 +334,15 @@ ALTER TABLE `code`.`checkoutpoint`
 CHANGE COLUMN `toalTime` `toalTime` INT NULL DEFAULT NULL ;
 ALTER TABLE `code`.`checkoutpoint`
 ADD COLUMN `isSuccess` INT(1) NULL DEFAULT 0 AFTER `saveTime`;
+ALTER TABLE `code`.`freedommode`
+ADD COLUMN `toaltime` INT NULL AFTER `freeModeSaveTime`;
+ALTER TABLE `code`.`freedommode`
+CHANGE COLUMN `freeModeID` `freeModeID` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `code`.`freedommode`
+DROP COLUMN `freeModeID`,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`studentID`);
+;
+
 
 

@@ -2,12 +2,24 @@ package team.ustc.sse.blockly.entity;
 
 import java.util.Date;
 
-public class Freedommode extends FreedommodeKey {
+public class Freedommode {
+    private Integer studentid;
+
     private String program;
 
     private String source;
 
     private Date freemodesavetime;
+
+    private Integer toaltime;
+
+    public Integer getStudentid() {
+        return studentid;
+    }
+
+    public void setStudentid(Integer studentid) {
+        this.studentid = studentid;
+    }
 
     public String getProgram() {
         return program;
@@ -33,12 +45,11 @@ public class Freedommode extends FreedommodeKey {
         this.freemodesavetime = freemodesavetime;
     }
 
-    @Override
-    public String toString() {
-        return "Freedommode{" +
-                "program='" + program + '\'' +
-                ", source='" + source + '\'' +
-                ", freemodesavetime=" + freemodesavetime +
-                '}';
+    public Integer getToaltime() {
+        return toaltime;
+    }
+
+    public void setToaltime(Integer toaltime) {
+        this.toaltime = toaltime;
     }
 }

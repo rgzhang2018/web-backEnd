@@ -109,6 +109,9 @@
     values (#{studentid,jdbcType=INTEGER}, #{checkpointid,jdbcType=INTEGER}, #{toaltime,jdbcType=INTEGER}, 
       #{program,jdbcType=VARCHAR}, #{savetime,jdbcType=TIMESTAMP}, #{issuccess,jdbcType=INTEGER}
       )
+      ON DUPLICATE KEY UPDATE
+        toaltime += #{toaltime,jdbcType=INTEGER},program=#{program,jdbcType=VARCHAR},
+        savetime = #{savetime,jdbcType=TIMESTAMP}, issuccess = #{issuccess,jdbcType=INTEGER}
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
     insert into checkoutpoint

@@ -51,7 +51,7 @@ public class TestGame {
     public void testSaveCheckoutPoint(){
         Checkoutpoint checkoutpoint = new Checkoutpoint();
         checkoutpoint.setCheckpointid(1);
-        checkoutpoint.setProgram("hello");
+        checkoutpoint.setProgram("hello23e88823");
         checkoutpoint.setStudentid(1);
         checkoutpoint.setSavetime(new Date());
 

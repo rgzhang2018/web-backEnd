@@ -4,14 +4,13 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import team.ustc.sse.blockly.entity.Freedommode;
 import team.ustc.sse.blockly.entity.FreedommodeExample;
-import team.ustc.sse.blockly.entity.FreedommodeKey;
 
 public interface FreedommodeMapper {
     int countByExample(FreedommodeExample example);
 
     int deleteByExample(FreedommodeExample example);
 
-    int deleteByPrimaryKey(FreedommodeKey key);
+    int deleteByPrimaryKey(Integer studentid);
 
     int insert(Freedommode record);
 
@@ -19,7 +18,7 @@ public interface FreedommodeMapper {
 
     List<Freedommode> selectByExample(FreedommodeExample example);
 
-    Freedommode selectByPrimaryKey(FreedommodeKey key);
+    Freedommode selectByPrimaryKey(Integer studentid);
 
     int updateByExampleSelective(@Param("record") Freedommode record, @Param("example") FreedommodeExample example);
 
