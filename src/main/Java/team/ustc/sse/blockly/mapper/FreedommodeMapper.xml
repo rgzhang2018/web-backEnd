@@ -106,7 +106,7 @@
       #{freemodesavetime,jdbcType=TIMESTAMP}, #{toaltime,jdbcType=INTEGER})
       ON DUPLICATE KEY UPDATE
         program=#{program,jdbcType=VARCHAR},source = #{source,jdbcType=VARCHAR},
-        freemodesavetime = #{freemodesavetime,jdbcType=TIMESTAMP}, toaltime += #{toaltime,jdbcType=INTEGER}
+        freemodesavetime = #{freemodesavetime,jdbcType=TIMESTAMP}, toaltime = toaltime + #{toaltime,jdbcType=INTEGER}
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Freedommode" >
     insert into freedommode

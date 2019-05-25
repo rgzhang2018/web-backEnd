@@ -54,7 +54,7 @@ public class TestGame {
         checkoutpoint.setProgram("hello23e88823");
         checkoutpoint.setStudentid(1);
         checkoutpoint.setSavetime(new Date());
-
+        checkoutpoint.setToaltime(1);
         GameService gameService = applicationContext.getBean(GameServiceImpl.class);
         gameService.saveCheckoutPoint(checkoutpoint);
     }
