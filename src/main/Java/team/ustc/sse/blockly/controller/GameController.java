@@ -12,6 +12,7 @@ import team.ustc.sse.blockly.util.HttpServletRequestReader;
 
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * description: 读取游戏关卡信息、保存游戏进度信息、读取游戏进度信息
@@ -31,17 +32,12 @@ public class GameController {
     * @Author: rgzhang
     */
     @RequestMapping(value = "/saveCheckoutPoint",method = {RequestMethod.POST})
-    public @ResponseBody void saveCheckoutPoint(@RequestBody Checkoutpoint checkoutpoint, HttpServletRequest request){
+    public @ResponseBody boolean saveCheckoutPoint(@RequestBody Checkoutpoint checkoutpoint, HttpServletResponse response){
 
-//        Checkoutpoint checkoutpoint = new Checkoutpoint();
-//        checkoutpoint.setProgram(request.getParameter("code"))
-//                .setCheckpointid(Integer.valueOf(request.getParameter("checkpointID")))
-//                .setStudentid(Integer.valueOf(request.getParameter("studentID")))
-//                .setSavetime(new Date());
-
-        System.out.println(checkoutpoint.getProgram());
-        System.out.println(HttpServletRequestReader.ReadAsChars(request));
+//        System.out.println(checkoutpoint.getProgram());
         boolean result = gameServiceImpl.saveCheckoutPoint(checkoutpoint);
+        response.setContentType("application/json; charset=utf-8");     //请求json，相应json，二者必须都是json格式
+        return true;
 
     }
 
@@ -52,12 +48,10 @@ public class GameController {
     * @Author: rgzhang
     */
     @RequestMapping(value = "/getCheckoutPoint",method = {RequestMethod.POST})
-    public void getCheckoutPoint(HttpServletRequest request){
-        int studentID = Integer.valueOf(request.getParameter("studentID"));
-        int checkpointID = Integer.valueOf(request.getParameter("checkpointID"));
-        System.out.println(request.getRequestURI());
-        Checkoutpoint checkoutpoint = gameServiceImpl.getCheckoutPoint(studentID,checkpointID);
+    public @ResponseBody Checkoutpoint getCheckoutPoint(@RequestBody Checkoutpoint checkoutpoint, HttpServletResponse response){
 
+        response.setContentType("application/json; charset=utf-8");     //请求json，相应json，二者必须都是json格式
+        return checkoutpoint;
     }
 
 

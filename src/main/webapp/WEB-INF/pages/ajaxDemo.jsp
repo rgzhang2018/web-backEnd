@@ -135,8 +135,8 @@
                                         </c:otherwise>
                                     </c:choose>
                             />
-                            <input id="btn1" type="button" value="post方式：提交Form表单" />
-                            <input id="btn2" type="button" class="c_botton" value="post方式：提交Form表单(方法二)"/>
+                            <input id="btn1" type="button" value="ajax:getCheckoutPoint" />
+                            <input id="btn2" type="button" class="c_botton" value="ajax:saveCheckoutPoint"/>
                             <input id="btn3" type="button" value="post方式：提交多个对象" />
                             <input id="btn4" type="button" value="get方式" />
                             <input id="btn5" type="button" value="post传参，方式一" />
@@ -172,21 +172,32 @@
 
     //提交Form表单
     $("#btn1").click(function() {
-        var jsonuserinfo = JSON.stringify($('#form1').serializeObject());
-        alert(jsonuserinfo);
+        var url='<%=request.getContextPath()%>/rest/gameController/getCheckoutPoint';
+        alert("url="+url);
+        var data={
+            "studentid":3,
+            "checkpointid":3,
+            "program":"printf(hello spring)"
+        };
+        // "savetime":"2018-2-28"
+        // "toaltime":300,
         $.ajax({
-            type : 'POST',
-            contentType : 'application/json',
-            url : '<%=request.getContextPath()%>/User/addUserInfo',
-            data : jsonuserinfo,
-            dataType : 'json',
-            success : function(data) {
-                alert("新增成功！");
+            type:'POST',
+            contentType : 'application/json;charset=utf-8',
+            url:url,
+            dataType:"json",
+            data:JSON.stringify(data),
+            success:function(data){
+                alert(data);
+                alert(data['program']);
+                alert(data['studentid']);
             },
-            error : function(data) {
-                alert("error")
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
             }
-        });
+        })
     });
 
 
@@ -195,9 +206,6 @@
     $("#btn2").click(function(){
         var url='<%=request.getContextPath()%>/rest/gameController/saveCheckoutPoint';
         alert("url="+url);
-        // var data={"user_name":$("#userName").val(),"user_sex":$("#userSex").val(),"user_age":$("#userAge").val(),
-        //     "user_email":$("#userEmail").val(),"user_telephone":$("#userTelephone").val(),"user_education":$("#userEducation").val(),
-        //     "user_title":$("#userTitle").val()};
         var data={
             "studentid":3,
             "checkpointid":3,
@@ -213,7 +221,8 @@
             data:JSON.stringify(data),
             // data:data,
             success:function(data){
-                alert("新增成功！");
+                alert("保存成功！");
+                alert(data);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
                 alert(XMLHttpRequest.status);
