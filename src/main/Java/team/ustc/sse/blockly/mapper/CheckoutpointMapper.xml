@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ustc.sse.blockly.mapper.CheckoutpointMapper" >
   <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Checkoutpoint" >
-    <id column="checkOutPointID" property="checkoutpointid" jdbcType="INTEGER" />
-    <result column="studentID" property="studentid" jdbcType="INTEGER" />
-    <result column="checkpointID" property="checkpointid" jdbcType="INTEGER" />
-    <result column="toalTime" property="toaltime" jdbcType="TIME" />
+    <id column="studentID" property="studentid" jdbcType="INTEGER" />
+    <id column="checkpointID" property="checkpointid" jdbcType="INTEGER" />
+    <result column="toalTime" property="toaltime" jdbcType="INTEGER" />
     <result column="program" property="program" jdbcType="VARCHAR" />
     <result column="saveTime" property="savetime" jdbcType="TIMESTAMP" />
+    <result column="isSuccess" property="issuccess" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    checkOutPointID, studentID, checkpointID, toalTime, program, saveTime
+    studentID, checkpointID, toalTime, program, saveTime, isSuccess
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.CheckoutpointExample" >
     select
@@ -84,15 +84,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.CheckoutpointKey" >
     select 
     <include refid="Base_Column_List" />
     from checkoutpoint
-    where checkOutPointID = #{checkoutpointid,jdbcType=INTEGER}
+    where studentID = #{studentid,jdbcType=INTEGER}
+      and checkpointID = #{checkpointid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.CheckoutpointKey" >
     delete from checkoutpoint
-    where checkOutPointID = #{checkoutpointid,jdbcType=INTEGER}
+    where studentID = #{studentid,jdbcType=INTEGER}
+      and checkpointID = #{checkpointid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.CheckoutpointExample" >
     delete from checkoutpoint
@@ -101,18 +103,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
-    <selectKey resultType="java.lang.Integer" keyProperty="checkoutpointid" order="AFTER" >
-      SELECT LAST_INSERT_ID()
-    </selectKey>
     insert into checkoutpoint (studentID, checkpointID, toalTime, 
-      program, saveTime)
-    values (#{studentid,jdbcType=INTEGER}, #{checkpointid,jdbcType=INTEGER}, #{toaltime,jdbcType=TIME}, 
-      #{program,jdbcType=VARCHAR}, #{savetime,jdbcType=TIMESTAMP})
+      program, saveTime, isSuccess
+      )
+    values (#{studentid,jdbcType=INTEGER}, #{checkpointid,jdbcType=INTEGER}, #{toaltime,jdbcType=INTEGER}, 
+      #{program,jdbcType=VARCHAR}, #{savetime,jdbcType=TIMESTAMP}, #{issuccess,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
-    <selectKey resultType="java.lang.Integer" keyProperty="checkoutpointid" order="AFTER" >
-      SELECT LAST_INSERT_ID()
-    </selectKey>
     insert into checkoutpoint
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="studentid != null" >
@@ -130,6 +128,9 @@
       <if test="savetime != null" >
         saveTime,
       </if>
+      <if test="issuccess != null" >
+        isSuccess,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="studentid != null" >
@@ -139,13 +140,16 @@
         #{checkpointid,jdbcType=INTEGER},
       </if>
       <if test="toaltime != null" >
-        #{toaltime,jdbcType=TIME},
+        #{toaltime,jdbcType=INTEGER},
       </if>
       <if test="program != null" >
         #{program,jdbcType=VARCHAR},
       </if>
       <if test="savetime != null" >
         #{savetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issuccess != null" >
+        #{issuccess,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -158,9 +162,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update checkoutpoint
     <set >
-      <if test="record.checkoutpointid != null" >
-        checkOutPointID = #{record.checkoutpointid,jdbcType=INTEGER},
-      </if>
       <if test="record.studentid != null" >
         studentID = #{record.studentid,jdbcType=INTEGER},
       </if>
@@ -168,13 +169,16 @@
         checkpointID = #{record.checkpointid,jdbcType=INTEGER},
       </if>
       <if test="record.toaltime != null" >
-        toalTime = #{record.toaltime,jdbcType=TIME},
+        toalTime = #{record.toaltime,jdbcType=INTEGER},
       </if>
       <if test="record.program != null" >
         program = #{record.program,jdbcType=VARCHAR},
       </if>
       <if test="record.savetime != null" >
         saveTime = #{record.savetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.issuccess != null" >
+        isSuccess = #{record.issuccess,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -183,12 +187,12 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update checkoutpoint
-    set checkOutPointID = #{record.checkoutpointid,jdbcType=INTEGER},
-      studentID = #{record.studentid,jdbcType=INTEGER},
+    set studentID = #{record.studentid,jdbcType=INTEGER},
       checkpointID = #{record.checkpointid,jdbcType=INTEGER},
-      toalTime = #{record.toaltime,jdbcType=TIME},
+      toalTime = #{record.toaltime,jdbcType=INTEGER},
       program = #{record.program,jdbcType=VARCHAR},
-      saveTime = #{record.savetime,jdbcType=TIMESTAMP}
+      saveTime = #{record.savetime,jdbcType=TIMESTAMP},
+      isSuccess = #{record.issuccess,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -196,14 +200,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
     update checkoutpoint
     <set >
-      <if test="studentid != null" >
-        studentID = #{studentid,jdbcType=INTEGER},
-      </if>
-      <if test="checkpointid != null" >
-        checkpointID = #{checkpointid,jdbcType=INTEGER},
-      </if>
       <if test="toaltime != null" >
-        toalTime = #{toaltime,jdbcType=TIME},
+        toalTime = #{toaltime,jdbcType=INTEGER},
       </if>
       <if test="program != null" >
         program = #{program,jdbcType=VARCHAR},
@@ -211,16 +209,20 @@
       <if test="savetime != null" >
         saveTime = #{savetime,jdbcType=TIMESTAMP},
       </if>
+      <if test="issuccess != null" >
+        isSuccess = #{issuccess,jdbcType=INTEGER},
+      </if>
     </set>
-    where checkOutPointID = #{checkoutpointid,jdbcType=INTEGER}
+    where studentID = #{studentid,jdbcType=INTEGER}
+      and checkpointID = #{checkpointid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
     update checkoutpoint
-    set studentID = #{studentid,jdbcType=INTEGER},
-      checkpointID = #{checkpointid,jdbcType=INTEGER},
-      toalTime = #{toaltime,jdbcType=TIME},
+    set toalTime = #{toaltime,jdbcType=INTEGER},
       program = #{program,jdbcType=VARCHAR},
-      saveTime = #{savetime,jdbcType=TIMESTAMP}
-    where checkOutPointID = #{checkoutpointid,jdbcType=INTEGER}
+      saveTime = #{savetime,jdbcType=TIMESTAMP},
+      isSuccess = #{issuccess,jdbcType=INTEGER}
+    where studentID = #{studentid,jdbcType=INTEGER}
+      and checkpointID = #{checkpointid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -2,82 +2,54 @@ package team.ustc.sse.blockly.entity;
 
 import java.util.Date;
 
-public class Checkoutpoint {
-    private Integer checkoutpointid;
-
-    private Integer studentid;
-
-    private Integer checkpointid;
-
-    private Date toaltime;
+public class Checkoutpoint extends CheckoutpointKey {
+    private Integer toaltime;
 
     private String program;
 
     private Date savetime;
 
-    public Integer getCheckoutpointid() {
-        return checkoutpointid;
-    }
+    private Integer issuccess;
 
-    public Checkoutpoint setCheckoutpointid(Integer checkoutpointid) {
-        this.checkoutpointid = checkoutpointid;
-        return this;
-    }
-
-    public Integer getStudentid() {
-        return studentid;
-    }
-
-    public Checkoutpoint setStudentid(Integer studentid) {
-        this.studentid = studentid;
-        return this;
-    }
-
-    public Integer getCheckpointid() {
-        return checkpointid;
-    }
-
-    public Checkoutpoint setCheckpointid(Integer checkpointid) {
-        this.checkpointid = checkpointid;
-        return this;
-    }
-
-    public Date getToaltime() {
+    public Integer getToaltime() {
         return toaltime;
     }
 
-    public Checkoutpoint setToaltime(Date toaltime) {
+    public void setToaltime(Integer toaltime) {
         this.toaltime = toaltime;
-        return this;
     }
 
     public String getProgram() {
         return program;
     }
 
-    public Checkoutpoint setProgram(String program) {
-        this.program = program;
-        return this;
+    public void setProgram(String program) {
+        this.program = program == null ? null : program.trim();
     }
 
     public Date getSavetime() {
         return savetime;
     }
 
-    public Checkoutpoint setSavetime(Date savetime) {
+    public void setSavetime(Date savetime) {
         this.savetime = savetime;
-        return this;
+    }
+
+    public Integer getIssuccess() {
+        return issuccess;
+    }
+
+    public void setIssuccess(Integer issuccess) {
+        this.issuccess = issuccess;
     }
 
     @Override
     public String toString() {
         return "Checkoutpoint{" +
-                "checkoutpointid=" + checkoutpointid +
-                ", studentid=" + studentid +
-                ", checkpointid=" + checkpointid +
-                ", toaltime=" + toaltime +
+                "toaltime=" + toaltime +
                 ", program='" + program + '\'' +
                 ", savetime=" + savetime +
+                ", issuccess=" + issuccess +
                 '}';
     }
 }

@@ -3,6 +3,7 @@
 <mapper namespace="team.ustc.sse.blockly.mapper.FreedommodeMapper" >
   <resultMap id="BaseResultMap" type="team.ustc.sse.blockly.entity.Freedommode" >
     <id column="freeModeID" property="freemodeid" jdbcType="INTEGER" />
+    <id column="studentID" property="studentid" jdbcType="INTEGER" />
     <result column="program" property="program" jdbcType="VARCHAR" />
     <result column="source" property="source" jdbcType="VARCHAR" />
     <result column="freeModeSaveTime" property="freemodesavetime" jdbcType="TIMESTAMP" />
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    freeModeID, program, source, freeModeSaveTime
+    freeModeID, studentID, program, source, freeModeSaveTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.FreedommodeExample" >
     select
@@ -82,15 +83,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.FreedommodeKey" >
     select 
     <include refid="Base_Column_List" />
     from freedommode
     where freeModeID = #{freemodeid,jdbcType=INTEGER}
+      and studentID = #{studentid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.FreedommodeKey" >
     delete from freedommode
     where freeModeID = #{freemodeid,jdbcType=INTEGER}
+      and studentID = #{studentid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="team.ustc.sse.blockly.entity.FreedommodeExample" >
     delete from freedommode
@@ -102,10 +105,10 @@
     <selectKey resultType="java.lang.Integer" keyProperty="freemodeid" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into freedommode (program, source, freeModeSaveTime
-      )
-    values (#{program,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{freemodesavetime,jdbcType=TIMESTAMP}
-      )
+    insert into freedommode (studentID, program, source, 
+      freeModeSaveTime)
+    values (#{studentid,jdbcType=INTEGER}, #{program,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{freemodesavetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Freedommode" >
     <selectKey resultType="java.lang.Integer" keyProperty="freemodeid" order="AFTER" >
@@ -113,6 +116,9 @@
     </selectKey>
     insert into freedommode
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentid != null" >
+        studentID,
+      </if>
       <if test="program != null" >
         program,
       </if>
@@ -124,6 +130,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentid != null" >
+        #{studentid,jdbcType=INTEGER},
+      </if>
       <if test="program != null" >
         #{program,jdbcType=VARCHAR},
       </if>
@@ -147,6 +156,9 @@
       <if test="record.freemodeid != null" >
         freeModeID = #{record.freemodeid,jdbcType=INTEGER},
       </if>
+      <if test="record.studentid != null" >
+        studentID = #{record.studentid,jdbcType=INTEGER},
+      </if>
       <if test="record.program != null" >
         program = #{record.program,jdbcType=VARCHAR},
       </if>
@@ -164,6 +176,7 @@
   <update id="updateByExample" parameterType="map" >
     update freedommode
     set freeModeID = #{record.freemodeid,jdbcType=INTEGER},
+      studentID = #{record.studentid,jdbcType=INTEGER},
       program = #{record.program,jdbcType=VARCHAR},
       source = #{record.source,jdbcType=VARCHAR},
       freeModeSaveTime = #{record.freemodesavetime,jdbcType=TIMESTAMP}
@@ -185,6 +198,7 @@
       </if>
     </set>
     where freeModeID = #{freemodeid,jdbcType=INTEGER}
+      and studentID = #{studentid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="team.ustc.sse.blockly.entity.Freedommode" >
     update freedommode
@@ -192,5 +206,6 @@
       source = #{source,jdbcType=VARCHAR},
       freeModeSaveTime = #{freemodesavetime,jdbcType=TIMESTAMP}
     where freeModeID = #{freemodeid,jdbcType=INTEGER}
+      and studentID = #{studentid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -2,7 +2,6 @@ package team.ustc.sse.blockly.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class CheckoutpointExample {
@@ -104,92 +103,6 @@ public class CheckoutpointExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                timeList.add(new java.sql.Time(iter.next().getTime()));
-            }
-            addCriterion(condition, timeList, property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);
-        }
-
-        public Criteria andCheckoutpointidIsNull() {
-            addCriterion("checkOutPointID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidIsNotNull() {
-            addCriterion("checkOutPointID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidEqualTo(Integer value) {
-            addCriterion("checkOutPointID =", value, "checkoutpointid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidNotEqualTo(Integer value) {
-            addCriterion("checkOutPointID <>", value, "checkoutpointid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidGreaterThan(Integer value) {
-            addCriterion("checkOutPointID >", value, "checkoutpointid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("checkOutPointID >=", value, "checkoutpointid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidLessThan(Integer value) {
-            addCriterion("checkOutPointID <", value, "checkoutpointid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidLessThanOrEqualTo(Integer value) {
-            addCriterion("checkOutPointID <=", value, "checkoutpointid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidIn(List<Integer> values) {
-            addCriterion("checkOutPointID in", values, "checkoutpointid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidNotIn(List<Integer> values) {
-            addCriterion("checkOutPointID not in", values, "checkoutpointid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidBetween(Integer value1, Integer value2) {
-            addCriterion("checkOutPointID between", value1, value2, "checkoutpointid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckoutpointidNotBetween(Integer value1, Integer value2) {
-            addCriterion("checkOutPointID not between", value1, value2, "checkoutpointid");
-            return (Criteria) this;
         }
 
         public Criteria andStudentidIsNull() {
@@ -322,53 +235,53 @@ public class CheckoutpointExample {
             return (Criteria) this;
         }
 
-        public Criteria andToaltimeEqualTo(Date value) {
-            addCriterionForJDBCTime("toalTime =", value, "toaltime");
+        public Criteria andToaltimeEqualTo(Integer value) {
+            addCriterion("toalTime =", value, "toaltime");
             return (Criteria) this;
         }
 
-        public Criteria andToaltimeNotEqualTo(Date value) {
-            addCriterionForJDBCTime("toalTime <>", value, "toaltime");
+        public Criteria andToaltimeNotEqualTo(Integer value) {
+            addCriterion("toalTime <>", value, "toaltime");
             return (Criteria) this;
         }
 
-        public Criteria andToaltimeGreaterThan(Date value) {
-            addCriterionForJDBCTime("toalTime >", value, "toaltime");
+        public Criteria andToaltimeGreaterThan(Integer value) {
+            addCriterion("toalTime >", value, "toaltime");
             return (Criteria) this;
         }
 
-        public Criteria andToaltimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("toalTime >=", value, "toaltime");
+        public Criteria andToaltimeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("toalTime >=", value, "toaltime");
             return (Criteria) this;
         }
 
-        public Criteria andToaltimeLessThan(Date value) {
-            addCriterionForJDBCTime("toalTime <", value, "toaltime");
+        public Criteria andToaltimeLessThan(Integer value) {
+            addCriterion("toalTime <", value, "toaltime");
             return (Criteria) this;
         }
 
-        public Criteria andToaltimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("toalTime <=", value, "toaltime");
+        public Criteria andToaltimeLessThanOrEqualTo(Integer value) {
+            addCriterion("toalTime <=", value, "toaltime");
             return (Criteria) this;
         }
 
-        public Criteria andToaltimeIn(List<Date> values) {
-            addCriterionForJDBCTime("toalTime in", values, "toaltime");
+        public Criteria andToaltimeIn(List<Integer> values) {
+            addCriterion("toalTime in", values, "toaltime");
             return (Criteria) this;
         }
 
-        public Criteria andToaltimeNotIn(List<Date> values) {
-            addCriterionForJDBCTime("toalTime not in", values, "toaltime");
+        public Criteria andToaltimeNotIn(List<Integer> values) {
+            addCriterion("toalTime not in", values, "toaltime");
             return (Criteria) this;
         }
 
-        public Criteria andToaltimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("toalTime between", value1, value2, "toaltime");
+        public Criteria andToaltimeBetween(Integer value1, Integer value2) {
+            addCriterion("toalTime between", value1, value2, "toaltime");
             return (Criteria) this;
         }
 
-        public Criteria andToaltimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("toalTime not between", value1, value2, "toaltime");
+        public Criteria andToaltimeNotBetween(Integer value1, Integer value2) {
+            addCriterion("toalTime not between", value1, value2, "toaltime");
             return (Criteria) this;
         }
 
@@ -499,6 +412,66 @@ public class CheckoutpointExample {
 
         public Criteria andSavetimeNotBetween(Date value1, Date value2) {
             addCriterion("saveTime not between", value1, value2, "savetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessIsNull() {
+            addCriterion("isSuccess is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessIsNotNull() {
+            addCriterion("isSuccess is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessEqualTo(Integer value) {
+            addCriterion("isSuccess =", value, "issuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessNotEqualTo(Integer value) {
+            addCriterion("isSuccess <>", value, "issuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessGreaterThan(Integer value) {
+            addCriterion("isSuccess >", value, "issuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessGreaterThanOrEqualTo(Integer value) {
+            addCriterion("isSuccess >=", value, "issuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessLessThan(Integer value) {
+            addCriterion("isSuccess <", value, "issuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessLessThanOrEqualTo(Integer value) {
+            addCriterion("isSuccess <=", value, "issuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessIn(List<Integer> values) {
+            addCriterion("isSuccess in", values, "issuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessNotIn(List<Integer> values) {
+            addCriterion("isSuccess not in", values, "issuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessBetween(Integer value1, Integer value2) {
+            addCriterion("isSuccess between", value1, value2, "issuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andIssuccessNotBetween(Integer value1, Integer value2) {
+            addCriterion("isSuccess not between", value1, value2, "issuccess");
             return (Criteria) this;
         }
     }

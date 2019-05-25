@@ -4,13 +4,14 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import team.ustc.sse.blockly.entity.Checkoutpoint;
 import team.ustc.sse.blockly.entity.CheckoutpointExample;
+import team.ustc.sse.blockly.entity.CheckoutpointKey;
 
 public interface CheckoutpointMapper {
     int countByExample(CheckoutpointExample example);
 
     int deleteByExample(CheckoutpointExample example);
 
-    int deleteByPrimaryKey(Integer checkoutpointid);
+    int deleteByPrimaryKey(CheckoutpointKey key);
 
     int insert(Checkoutpoint record);
 
@@ -18,7 +19,7 @@ public interface CheckoutpointMapper {
 
     List<Checkoutpoint> selectByExample(CheckoutpointExample example);
 
-    Checkoutpoint selectByPrimaryKey(Integer checkoutpointid);
+    Checkoutpoint selectByPrimaryKey(CheckoutpointKey key);
 
     int updateByExampleSelective(@Param("record") Checkoutpoint record, @Param("example") CheckoutpointExample example);
 
