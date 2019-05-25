@@ -313,3 +313,20 @@ ALTER TABLE `code`.`guardianloginmessage`
 DROP INDEX `guardianID_UNIQUE` ;
 ;
 
+
+/*==============================================================*/
+/* 2019.5.25  rgzhang增加： 自增列。                 */
+/* 修改CheckoutPoint表 和 freedomMod表 结构 配合studentID做联合主键        */
+/*==============================================================*/
+ALTER TABLE `code`.`freedommode`
+ADD COLUMN `studentID` INT NOT NULL AFTER `freeModeID`,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`freeModeID`, `studentID`);
+;
+ALTER TABLE `code`.`checkoutpoint`
+DROP COLUMN `checkOutPointID`,
+CHANGE COLUMN `checkpointID` `checkpointID` INT(11) NOT NULL ,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`studentID`, `checkpointID`);
+;
+
