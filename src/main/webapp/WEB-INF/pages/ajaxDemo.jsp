@@ -135,14 +135,14 @@
                                         </c:otherwise>
                                     </c:choose>
                             />
-                            <input id="btn1" type="button" class="c_botton" value="post方式：提交Form表单" />
-                            <input id="btn2" type="button" class="c_botton" value="post方式：提交Form表单(方法二)" />
-                            <input id="btn3" type="button" class="c_botton" value="post方式：提交多个对象" />
-                            <input id="btn4" type="button" class="c_botton" value="get方式" />
-                            <input id="btn5" type="button" class="c_botton" value="post传参，方式一" />
-                            <input id="btn6" type="button" class="c_botton" value="post传参，方式二" />
-                            <input id="btn7" type="button" class="c_botton" value="post传参，方式三" />
-                            <input id="btn8" type="button" class="c_botton" value="post方式提交，map接收" />
+                            <input id="btn1" type="button" value="post方式：提交Form表单" />
+                            <input id="btn2" type="button" class="c_botton" value="post方式：提交Form表单(方法二)"/>
+                            <input id="btn3" type="button" value="post方式：提交多个对象" />
+                            <input id="btn4" type="button" value="get方式" />
+                            <input id="btn5" type="button" value="post传参，方式一" />
+                            <input id="btn6" type="button" value="post传参，方式二" />
+                            <input id="btn7" type="button" value="post传参，方式三" />
+                            <input id="btn8" type="button" value="post方式提交，map接收" />
                         </td>
                     </tr>
                 </table>
@@ -152,7 +152,7 @@
 </form>
 
 
-<script type="javascript">
+<script>
     //将一个表单的数据返回成JSON对象
     $.fn.serializeObject = function() {
         var o = {};
@@ -169,8 +169,6 @@
         });
         return o;
     };
-
-
 
     //提交Form表单
     $("#btn1").click(function() {
@@ -191,6 +189,39 @@
         });
     });
 
+
+
+    //提交Form表单，另一种方式
+    $("#btn2").click(function(){
+        var url='<%=request.getContextPath()%>/rest/gameController/saveCheckoutPoint';
+        alert("url="+url);
+        // var data={"user_name":$("#userName").val(),"user_sex":$("#userSex").val(),"user_age":$("#userAge").val(),
+        //     "user_email":$("#userEmail").val(),"user_telephone":$("#userTelephone").val(),"user_education":$("#userEducation").val(),
+        //     "user_title":$("#userTitle").val()};
+        var data={
+            "studentid":3,
+            "checkpointid":3,
+            "program":"printf(hello spring)"
+        };
+        // "savetime":"2018-2-28"
+        // "toaltime":300,
+        $.ajax({
+            type:'POST',
+            contentType : 'application/json;charset=utf-8',
+            url:url,
+            dataType:"json",
+            data:JSON.stringify(data),
+            // data:data,
+            success:function(data){
+                alert("新增成功！");
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
+            }
+        })
+    })
 </script>
 
 </body>

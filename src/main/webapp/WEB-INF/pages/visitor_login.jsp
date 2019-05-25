@@ -24,6 +24,11 @@ To change this template use File | Settings | File Templates.
 
 
 <body style="background-color: #e9e9e9">
+<h1 id="my_url">${pageContext.request.contextPath }</h1>
+<script>
+    var text = document.getElementById("my_url").innerText;
+    alert(text);
+</script>
 
 <div class="am-u-md-12" id="bg_index" >
     <br>

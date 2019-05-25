@@ -68,4 +68,16 @@ public class Checkoutpoint {
         this.savetime = savetime;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Checkoutpoint{" +
+                "checkoutpointid=" + checkoutpointid +
+                ", studentid=" + studentid +
+                ", checkpointid=" + checkpointid +
+                ", toaltime=" + toaltime +
+                ", program='" + program + '\'' +
+                ", savetime=" + savetime +
+                '}';
+    }
 }

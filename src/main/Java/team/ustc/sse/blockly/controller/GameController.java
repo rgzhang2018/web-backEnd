@@ -2,10 +2,14 @@ package team.ustc.sse.blockly.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import team.ustc.sse.blockly.entity.Checkoutpoint;
 import team.ustc.sse.blockly.service.inte.GameService;
+import team.ustc.sse.blockly.util.HttpServletRequestReader;
+
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
  * create time: 2019-04-14
  **/
 @Controller
-@RequestMapping("/gameControl")
+@RequestMapping("/gameController")
 public class GameController {
     @Autowired
     GameService gameServiceImpl;
@@ -27,15 +31,16 @@ public class GameController {
     * @Author: rgzhang
     */
     @RequestMapping(value = "/saveCheckoutPoint",method = {RequestMethod.POST})
-    public void saveCheckoutPoint(Checkoutpoint checkoutpoint){
+    public @ResponseBody void saveCheckoutPoint(@RequestBody Checkoutpoint checkoutpoint, HttpServletRequest request){
+
 //        Checkoutpoint checkoutpoint = new Checkoutpoint();
 //        checkoutpoint.setProgram(request.getParameter("code"))
 //                .setCheckpointid(Integer.valueOf(request.getParameter("checkpointID")))
 //                .setStudentid(Integer.valueOf(request.getParameter("studentID")))
 //                .setSavetime(new Date());
 
-
-
+        System.out.println(checkoutpoint.getProgram());
+        System.out.println(HttpServletRequestReader.ReadAsChars(request));
         boolean result = gameServiceImpl.saveCheckoutPoint(checkoutpoint);
 
     }

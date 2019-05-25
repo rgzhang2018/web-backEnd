@@ -24,11 +24,6 @@ public class LoginServiceImpl implements LoginService {
     private final StudentloginmessageMapper studentloginmessageMapper;
 
 
-    private static int i = 0;
-    static {
-        i++;
-        System.out.println("xxxxx =================> load service and i = "+i);
-    }
 
 
     //注：idea建议 使用构造器的方式注入，而非@Autowired
@@ -36,10 +31,6 @@ public class LoginServiceImpl implements LoginService {
         this.studentloginMapper = studentloginMapper;
         this.studentMapper = studentMapper;
         this.studentloginmessageMapper = studentloginmessageMapper;
-
-        i++;
-        System.out.println("xxxxx =================> load service and i = "+i);
-
     }
 
     @Override
@@ -91,12 +82,6 @@ public class LoginServiceImpl implements LoginService {
 
     //写入登录信息
     private void setStudentLoginMessage(int studentID,HttpServletRequest request){
-        try {
-            throw new Exception();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
         String ip = NetworkUtil.getIpAddress(request);
         Studentloginmessage studentloginmessage = new Studentloginmessage()
                 .setLogindata(new Date()).setStudentid(studentID).setLoginip(ip);

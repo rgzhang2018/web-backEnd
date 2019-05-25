@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.Studentlogin;
 import team.ustc.sse.blockly.service.impl.LoginServiceImpl;
+import team.ustc.sse.blockly.util.HttpServletRequestReader;
 
 
 import javax.servlet.http.Cookie;
@@ -45,7 +46,7 @@ public class LoginController {
 
     @RequestMapping(value = "/studentLogin" ,method = {RequestMethod.POST})
     public String studentLogin(Studentlogin studentLogin, Boolean remember,HttpServletRequest request){
-        System.out.println(studentLogin);
+        if(remember == null)remember=false;
         if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "wrong";
         boolean result = studentLoginService.studentLogin(studentLogin,remember,request );
         if(!result)return "wrong";

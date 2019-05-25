@@ -68,4 +68,10 @@ public class TestController {
     public String testAjax(HttpServletRequest request){
         return "ajaxDemo";
     }
+
+
+    @RequestMapping(value = "/ajaxSend",method = {RequestMethod.GET})
+    public String ajaxSend(HttpServletRequest request){
+        return "ajaxSend";
+    }
 }
