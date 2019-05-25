@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.ustc.sse.blockly.entity.Checkoutpoint;
 import team.ustc.sse.blockly.service.inte.GameService;
-import team.ustc.sse.blockly.util.HttpServletRequestReader;
 
-import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

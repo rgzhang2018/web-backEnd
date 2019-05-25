@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.Studentlogin;
 import team.ustc.sse.blockly.service.impl.LoginServiceImpl;
-import team.ustc.sse.blockly.util.HttpServletRequestReader;
 
 
 import javax.servlet.http.Cookie;
