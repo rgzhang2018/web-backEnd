@@ -1,6 +1,7 @@
 package team.ustc.sse.blockly.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import team.ustc.sse.blockly.entity.*;
 import team.ustc.sse.blockly.mapper.*;
 import team.ustc.sse.blockly.service.inte.AdminService;
@@ -14,6 +15,7 @@ import java.util.List;
  * author: rgzhang
  * create time: 2019-05-26
  **/
+@Service
 public class AdminServiceImpl implements AdminService {
     @Autowired
     AdminMapper adminMapper;
