@@ -38,9 +38,9 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public boolean saveCheckoutPoint(Checkoutpoint checkoutpoint) {
-        int result = checkoutpointMapper.insert(checkoutpoint);
-        System.out.println(result);
-        return false;
+        int result = checkoutpointMapper.insert(checkoutpoint);     //注意result=1表示成功插入，result=2表示已存在，进行了update
+//        System.out.println(result);
+        return result>=1;
     }
 
 

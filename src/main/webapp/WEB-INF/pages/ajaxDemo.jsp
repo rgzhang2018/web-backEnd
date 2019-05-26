@@ -170,14 +170,13 @@
         return o;
     };
 
-    //提交Form表单
+    //ajax:getCheckoutPoint
     $("#btn1").click(function() {
         var url='<%=request.getContextPath()%>/rest/gameController/getCheckoutPoint';
         alert("url="+url);
         var data={
             "studentid":3,
             "checkpointid":3,
-            "program":"printf(hello spring)"
         };
         // "savetime":"2018-2-28"
         // "toaltime":300,

@@ -47,7 +47,7 @@ public class GameController {
     */
     @RequestMapping(value = "/getCheckoutPoint",method = {RequestMethod.POST})
     public @ResponseBody Checkoutpoint getCheckoutPoint(@RequestBody Checkoutpoint checkoutpoint, HttpServletResponse response){
-
+        checkoutpoint = gameServiceImpl.getCheckoutPoint(checkoutpoint.getStudentid(),checkoutpoint.getCheckpointid());
         response.setContentType("application/json; charset=utf-8");     //请求json，相应json，二者必须都是json格式
         return checkoutpoint;
     }

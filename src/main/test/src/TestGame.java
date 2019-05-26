@@ -51,10 +51,10 @@ public class TestGame {
     public void testSaveCheckoutPoint(){
         Checkoutpoint checkoutpoint = new Checkoutpoint();
         checkoutpoint.setCheckpointid(1);
-        checkoutpoint.setProgram("hello23e88823");
+        checkoutpoint.setProgram("h3333");
         checkoutpoint.setStudentid(1);
         checkoutpoint.setSavetime(new Date());
-        checkoutpoint.setToaltime(1);
+        checkoutpoint.setToaltime(3);
         GameService gameService = applicationContext.getBean(GameServiceImpl.class);
         gameService.saveCheckoutPoint(checkoutpoint);
     }
