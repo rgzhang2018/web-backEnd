@@ -47,7 +47,7 @@ public class AdminServiceImpl implements AdminService {
         //set session
         session.setAttribute("loginFlag",true);
         session.setAttribute("AdminFlag",true);
-        session.setAttribute("loginAccount",admin.getAdminaccount());
+        session.setAttribute("adminAccount",admin.getAdminaccount());
         System.out.println("======> set admin session in adminService");
         return true;
     }

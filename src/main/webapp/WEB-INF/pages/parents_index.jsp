@@ -15,8 +15,7 @@ To change this template use File | Settings | File Templates.
         <br>
         <br>
         <h1 class="am-topbar-brand" >
-            <a href="#" style="color: #FFFFFF">监护控制</a>
-
+            <a href="#" style="color: #FFFFFF">管理员中心</a>
         </h1>
 
 
@@ -25,10 +24,10 @@ To change this template use File | Settings | File Templates.
 
 
             <li ><a href="#">中心首页</a></li>
-            <li><a href="#">监管总览</a></li>
-            <li><a href="#">添加子账户</a></li>
-            <li><a href="#">关联子账户</a></li>
-            <li><a href="#">维护信息</a></li>
+            <li><a href="#">用户总览</a></li>
+            <li><a href="#">修改密码</a></li>
+            <li><a href="#">查看闯关情况</a></li>
+            <li><a href="#"></a></li>
         </ul>
 
     </div>

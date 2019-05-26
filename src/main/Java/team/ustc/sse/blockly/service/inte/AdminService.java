@@ -20,6 +20,10 @@ public interface AdminService {
     boolean adminRegister(Admin admin, HttpServletRequest request);
 
 
+    boolean changeAdminPassword(Admin admin,String newPassword);
+
+
+
     List<Student> getAllStudents();
 
 
@@ -32,7 +36,6 @@ public interface AdminService {
     List<Studentloginmessage> getStudentLoginMessages(String studentAccount);
 
 
-
     List<Checkoutpoint> getCheckoutpointByStudentID(int studentID);
 
 
@@ -40,5 +43,5 @@ public interface AdminService {
 
     boolean changeStudentPassword(String studentAccount,String newPassword);
 
-    boolean changeAdminPassword(Admin admin,String newPassword);
+
 }

@@ -2,12 +2,14 @@ package team.ustc.sse.blockly.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import team.ustc.sse.blockly.entity.Admin;
+import team.ustc.sse.blockly.entity.*;
 import team.ustc.sse.blockly.service.inte.AdminService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * description:
@@ -22,15 +24,62 @@ public class AdminController {
 
     @RequestMapping(value = "/login",method = {RequestMethod.GET})
     public String login(HttpServletRequest request){
-        System.out.println(request.getRequestURI());
         return "admin_login";
     }
 
 
-    @RequestMapping(value = "/loginControl",method = {RequestMethod.GET})
+    @RequestMapping(value = "/adminIndex",method = {RequestMethod.GET})
+    public String adminIndex(HttpServletRequest request){
+        return "adminIndex";
+    }
+
+
+
+    @RequestMapping(value = "/changeAdminPassword",method = {RequestMethod.GET})
+    public String changeAdminPassword(){
+        return "changeAdminPassword";
+    }
+
+    @RequestMapping(value = "/setAdminPassword",method = {RequestMethod.POST})
+    public String changeAdminPassword(String oldPassword, String newPassword, HttpServletRequest request){
+        String account = (String) request.getSession().getAttribute("adminAccount");
+        Admin admin = new Admin();
+        admin.setAdminaccount(account);
+        admin.setAdminpassword(oldPassword);
+        adminServiceImpl.changeAdminPassword(admin,newPassword);
+        return "adminIndex";
+    }
+
+    @RequestMapping(value = "/getStudents",method = {RequestMethod.GET})
+    public String getStudents(HttpServletRequest request,Model model){
+        List<Studentlogin> studentlogins = adminServiceImpl.getAllStudentLogins();
+        List<Student>students = adminServiceImpl.getAllStudents();
+        model.addAttribute("studentLoginList",studentlogins);
+        model.addAttribute("studentList",students);
+        return "getStudents";
+    }
+
+    @RequestMapping(value = "/showCheckoutPoint",method = {RequestMethod.POST})
+    public String showCheckoutPoint(int studentID,Model model){
+        List<Checkoutpoint> checkoutpointList = adminServiceImpl.getCheckoutpointByStudentID(studentID);
+        model.addAttribute("checkoutpointList",checkoutpointList);
+        return "showCheckoutPoint";
+    }
+
+    @RequestMapping(value = "/showStudentLoginMessage",method = {RequestMethod.POST})
+    public String showStudentLoginMessage(int studentID,Model model){
+        List<Studentloginmessage> Studentloginmessage = adminServiceImpl.getStudentLoginMessages(studentID);
+        model.addAttribute("LoginMessageList",Studentloginmessage);
+        return "showStudentLoginMessage";
+    }
+
+
+    @RequestMapping(value = "/loginControl",method = {RequestMethod.POST})
     public String loginControl(Admin admin, HttpServletRequest request){
-        System.out.println(request.getRequestURI());
-        return "admin_login";
+        if(admin.getAdminaccount() == null || admin.getAdminpassword()==null)return "wrong";
+        boolean result = adminServiceImpl.adminLogin(admin,request);
+        if(result)return "admin_index";
+        else return "admin_login";
     }
 
 
