@@ -20,23 +20,25 @@ public interface AdminService {
     boolean adminRegister(Admin admin, HttpServletRequest request);
 
 
-    List<Studentlogin> getAllStudentLogins() ;
-
-
-    List<Studentloginmessage> getStudnetLoginMessages(int studentID);
-
-
-    List<Studentloginmessage> getStudnetLoginMessages(String studentAccount);
-
-
     List<Student> getAllStudents();
 
 
-    List<Checkoutpoint> getCheckoutpointByStudentID();
+    List<Studentlogin> getAllStudentLogins() ;
 
 
-    boolean deletStudentByAccount(String studentAccount);
+    List<Studentloginmessage> getStudentLoginMessages(int studentID);
 
 
-    void changeAdminPassword(Admin admin,String newPassword);
+    List<Studentloginmessage> getStudentLoginMessages(String studentAccount);
+
+
+
+    List<Checkoutpoint> getCheckoutpointByStudentID(int studentID);
+
+
+    boolean deleteStudentByAccount(String studentAccount);
+
+    boolean changeStudentPassword(String studentAccount,String newPassword);
+
+    boolean changeAdminPassword(Admin admin,String newPassword);
 }
