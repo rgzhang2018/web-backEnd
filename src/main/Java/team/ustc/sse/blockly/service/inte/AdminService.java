@@ -30,6 +30,8 @@ public interface AdminService {
     List<Studentlogin> getAllStudentLogins() ;
 
 
+    List<Studentloginmessage> getTenStudentLoginMessages();
+
     List<Studentloginmessage> getStudentLoginMessages(int studentID);
 
 

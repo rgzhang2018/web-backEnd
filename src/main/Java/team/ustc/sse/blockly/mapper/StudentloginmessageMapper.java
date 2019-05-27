@@ -18,6 +18,8 @@ public interface StudentloginmessageMapper {
 
     List<Studentloginmessage> selectByExample(StudentloginmessageExample example);
 
+    List<Studentloginmessage> selectLastTen();
+
     Studentloginmessage selectByPrimaryKey(Integer studentloginid);
 
     int updateByExampleSelective(@Param("record") Studentloginmessage record, @Param("example") StudentloginmessageExample example);
@@ -27,4 +29,6 @@ public interface StudentloginmessageMapper {
     int updateByPrimaryKeySelective(Studentloginmessage record);
 
     int updateByPrimaryKey(Studentloginmessage record);
+
+
 }

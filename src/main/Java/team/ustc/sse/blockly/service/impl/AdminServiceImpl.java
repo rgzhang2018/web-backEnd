@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import team.ustc.sse.blockly.entity.*;
 import team.ustc.sse.blockly.mapper.*;
 import team.ustc.sse.blockly.service.inte.AdminService;
+import team.ustc.sse.blockly.util.SessionUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -41,14 +42,7 @@ public class AdminServiceImpl implements AdminService {
         if(adminInDB == null || !adminInDB.getAdminpassword().equals(admin.getAdminpassword())){
             return false;
         }
-
-        //把admin信息写入session
-        HttpSession session = request.getSession();
-        //set session
-        session.setAttribute("loginFlag",true);
-        session.setAttribute("AdminFlag",true);
-        session.setAttribute("adminAccount",admin.getAdminaccount());
-        System.out.println("======> set admin session in adminService");
+        SessionUtil.setAdminLogin(adminInDB,request);
         return true;
     }
 
@@ -76,6 +70,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public List<Studentloginmessage> getTenStudentLoginMessages() {
+        List<Studentloginmessage> lists = studentloginmessageMapper.selectLastTen();
+        return lists;
+    }
+
+    @Override
     public List<Studentloginmessage> getStudentLoginMessages(int studentID) {
         StudentloginmessageExample studentloginmessageExample = new StudentloginmessageExample();
         StudentloginmessageExample.Criteria criteria = studentloginmessageExample.createCriteria();
@@ -90,12 +90,10 @@ public class AdminServiceImpl implements AdminService {
         return getStudentLoginMessages(id);
     }
 
+    //获得通过状态，不检索program字段以提升检索效率
     @Override
     public List<Checkoutpoint> getCheckoutpointByStudentID(int studentID) {
-        CheckoutpointExample checkoutpointExample = new CheckoutpointExample();
-        CheckoutpointExample.Criteria criteria = checkoutpointExample.createCriteria();
-        criteria.andStudentidEqualTo(studentID);
-        return checkoutpointMapper.selectByExample(checkoutpointExample);
+        return  checkoutpointMapper.getIsSuccessByStudentID(studentID);
     }
 
 

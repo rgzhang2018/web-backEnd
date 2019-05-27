@@ -27,7 +27,7 @@ public class LoginController {
     public String login(HttpServletRequest request){
         System.out.println(request.getRequestURI());
 
-        return "visitor_login";
+        return "student_login";
     }
 
     @RequestMapping(value = "/register",method = {RequestMethod.GET})
@@ -39,7 +39,7 @@ public class LoginController {
         cookie2.setMaxAge(60 * 60 * 24 *7 );
         response.addCookie(cookie2);
         System.out.println("======> set cookie in controller");
-        return "visitor_register";
+        return "student_register";
     }
 
 
@@ -58,7 +58,7 @@ public class LoginController {
         if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "wrong";
         boolean result = studentLoginService.studentRegister( studentLogin,student,request);
         if(!result)return "wrong";
-        return "success";
+        return "student_login";
     }
 
 

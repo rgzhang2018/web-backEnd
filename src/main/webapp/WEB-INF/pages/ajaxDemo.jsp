@@ -170,16 +170,14 @@
         return o;
     };
 
-    //ajax:getCheckoutPoint
+    //ajax:通过
     $("#btn1").click(function() {
         var url='<%=request.getContextPath()%>/rest/gameController/getCheckoutPoint';
         alert("url="+url);
         var data={
             "studentid":3,
-            "checkpointid":3,
+            "checkpointid":3
         };
-        // "savetime":"2018-2-28"
-        // "toaltime":300,
         $.ajax({
             type:'POST',
             contentType : 'application/json;charset=utf-8',
@@ -201,17 +199,16 @@
 
 
 
-    //提交Form表单，另一种方式
+    //ajax:存储代码
     $("#btn2").click(function(){
         var url='<%=request.getContextPath()%>/rest/gameController/saveCheckoutPoint';
-        alert("url="+url);
+        //数据示例：
         var data={
             "studentid":3,
             "checkpointid":3,
             "program":"printf(hello spring)"
         };
-        // "savetime":"2018-2-28"
-        // "toaltime":300,
+        // "toaltime":300,  注：这个字段也可以加上，记录总游戏时间，可以在js里设置个计时器也传输过去
         $.ajax({
             type:'POST',
             contentType : 'application/json;charset=utf-8',
@@ -223,7 +220,7 @@
                 alert("保存成功！");
                 alert(data);
             },
-            error: function(XMLHttpRequest, textStatus, errorThrown){
+            error: function(XMLHttpRequest, textStatus){
                 alert(XMLHttpRequest.status);
                 alert(XMLHttpRequest.readyState);
                 alert(textStatus);

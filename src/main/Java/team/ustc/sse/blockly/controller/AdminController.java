@@ -28,16 +28,18 @@ public class AdminController {
     }
 
 
-    @RequestMapping(value = "/adminIndex",method = {RequestMethod.GET})
-    public String adminIndex(HttpServletRequest request){
-        return "adminIndex";
+    @RequestMapping(value = "/index",method = {RequestMethod.GET})
+    public String adminIndex(Model model){
+        List<Studentloginmessage> list = adminServiceImpl.getTenStudentLoginMessages();
+        model.addAttribute("list",list);
+        return "admin_index";
     }
 
 
 
     @RequestMapping(value = "/changeAdminPassword",method = {RequestMethod.GET})
     public String changeAdminPassword(){
-        return "changeAdminPassword";
+        return "admin_changeAdminPassword";
     }
 
     @RequestMapping(value = "/setAdminPassword",method = {RequestMethod.POST})
@@ -47,7 +49,7 @@ public class AdminController {
         admin.setAdminaccount(account);
         admin.setAdminpassword(oldPassword);
         adminServiceImpl.changeAdminPassword(admin,newPassword);
-        return "adminIndex";
+        return "admin_Index";
     }
 
     @RequestMapping(value = "/getStudents",method = {RequestMethod.GET})
@@ -56,21 +58,21 @@ public class AdminController {
         List<Student>students = adminServiceImpl.getAllStudents();
         model.addAttribute("studentLoginList",studentlogins);
         model.addAttribute("studentList",students);
-        return "getStudents";
+        return "admin_getStudents";
     }
 
     @RequestMapping(value = "/showCheckoutPoint",method = {RequestMethod.POST})
     public String showCheckoutPoint(int studentID,Model model){
         List<Checkoutpoint> checkoutpointList = adminServiceImpl.getCheckoutpointByStudentID(studentID);
         model.addAttribute("checkoutpointList",checkoutpointList);
-        return "showCheckoutPoint";
+        return "admin_showCheckoutPoint";
     }
 
     @RequestMapping(value = "/showStudentLoginMessage",method = {RequestMethod.POST})
     public String showStudentLoginMessage(int studentID,Model model){
         List<Studentloginmessage> Studentloginmessage = adminServiceImpl.getStudentLoginMessages(studentID);
         model.addAttribute("LoginMessageList",Studentloginmessage);
-        return "showStudentLoginMessage";
+        return "admin_showStudentLoginMessage";
     }
 
 

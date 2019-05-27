@@ -11,7 +11,7 @@ public class Studentloginmessage {
 
     private Date logindata;
 
-    private String loginmessage;
+    private String loginmessage;    //格式为：用户名(后期可以改为签到状态)
 
     public Integer getStudentloginid() {
         return studentloginid;

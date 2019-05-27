@@ -9,7 +9,8 @@ import team.ustc.sse.blockly.mapper.StudentMapper;
 import team.ustc.sse.blockly.mapper.StudentloginMapper;
 import team.ustc.sse.blockly.mapper.StudentloginmessageMapper;
 import team.ustc.sse.blockly.service.inte.LoginService;
-import team.ustc.sse.blockly.util.NetworkUtil;
+import team.ustc.sse.blockly.util.HttpUtil;
+import team.ustc.sse.blockly.util.SessionUtil;
 
 
 import javax.servlet.http.*;
@@ -42,8 +43,8 @@ public class LoginServiceImpl implements LoginService {
         }
 
 //        设置session和cookie
-        setLoginSession(studentInDB,remember,request);
-//        记录登录IP等信息
+        SessionUtil.setStudentLogin(studentInDB,remember,request);
+//        记录登录IP等信息到数据库
         setStudentLoginMessage(studentInDB.getStudentid(),request);
         return true;
     }
@@ -53,11 +54,9 @@ public class LoginServiceImpl implements LoginService {
         int id = studentloginMapper.insertSelective(studentlogin);
         student.setStudentregistertime(new Date());
         student.setStudentid(id);
-        studentMapper.insertSelective(student);
-//        System.out.println("测试插入完成之后，主键是否会传回来："+ studentlogin.getStudentid());
-        setStudentLoginMessage(student.getStudentid(),request);
-
-        return false;
+        int result = studentMapper.insertSelective(student);
+//        setStudentLoginMessage(student.getStudentid(),request);
+        return result>0;
     }
 
 
@@ -82,20 +81,12 @@ public class LoginServiceImpl implements LoginService {
 
     //写入登录信息
     private void setStudentLoginMessage(int studentID,HttpServletRequest request){
-        String ip = NetworkUtil.getIpAddress(request);
+        String ip = HttpUtil.getIpAddress(request);
         Studentloginmessage studentloginmessage = new Studentloginmessage()
                 .setLogindata(new Date()).setStudentid(studentID).setLoginip(ip);
         studentloginmessageMapper.insertSelective(studentloginmessage);
 //        System.out.println("test primary key ===>"+ studentloginmessage.getStudentloginid());
     }
 
-    //写入session
-    private void setLoginSession(Studentlogin studentlogin,boolean remember,HttpServletRequest request){
-        HttpSession session = request.getSession();
-        //set session
-        session.setAttribute("loginFlag",true);
-        session.setAttribute("loginAccount",studentlogin.getStudentaccount());
-        System.out.println("======> set session in service");
-    }
 
 }

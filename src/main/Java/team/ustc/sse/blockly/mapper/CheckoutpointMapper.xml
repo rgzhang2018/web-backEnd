@@ -70,6 +70,16 @@
   <sql id="Base_Column_List" >
     studentID, checkpointID, toalTime, program, saveTime, isSuccess
   </sql>
+
+
+  <select id="getIsSuccessByStudentID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    checkpointID,saveTime,isSuccess,toalTime
+    from checkoutpoint
+    where studentID = #{studentid,jdbcType=INTEGER}
+  </select>
+
+
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.ustc.sse.blockly.entity.CheckoutpointExample" >
     select
     <if test="distinct" >

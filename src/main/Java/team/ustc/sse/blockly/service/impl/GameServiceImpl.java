@@ -31,9 +31,17 @@ public class GameServiceImpl implements GameService {
     public Checkoutpoint getCheckoutPoint(int studentID, int checkpointID) {
         CheckoutpointExample checkoutpointExample = new CheckoutpointExample();
         CheckoutpointExample.Criteria criteria = checkoutpointExample.createCriteria();
-        criteria.andStudentidEqualTo(studentID);
+        criteria.andStudentidEqualTo(studentID).andCheckpointidEqualTo(checkpointID);
         List<Checkoutpoint> list = checkoutpointMapper.selectByExample(checkoutpointExample);
         return list.get(0);
+    }
+
+
+    //获得闯关信息，不检测program字段，提升检索效率
+    @Override
+    public List<Checkoutpoint> getSuccessMessageByStudent(int studentID) {
+        List<Checkoutpoint> list = checkoutpointMapper.getIsSuccessByStudentID(studentID);
+        return list;
     }
 
     @Override

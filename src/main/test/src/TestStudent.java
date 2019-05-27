@@ -13,8 +13,10 @@ import org.springframework.web.context.request.RequestContextListener;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.StudentExample;
 import team.ustc.sse.blockly.entity.Studentlogin;
+import team.ustc.sse.blockly.entity.Studentloginmessage;
 import team.ustc.sse.blockly.mapper.StudentMapper;
 import team.ustc.sse.blockly.mapper.StudentloginMapper;
+import team.ustc.sse.blockly.mapper.StudentloginmessageMapper;
 
 
 import javax.servlet.ServletRequestEvent;
@@ -97,6 +99,12 @@ public class TestStudent {
         System.out.println(studentlogin.getStudentid());
     }
 
-
-
+    @Test
+    public void testLoginMessage(){
+        StudentloginmessageMapper studentloginmessageMapper = applicationContext.getBean(StudentloginmessageMapper.class);
+        List<Studentloginmessage>list = studentloginmessageMapper.selectLastTen();
+        for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i).getLogindata());
+        }
+    }
 }

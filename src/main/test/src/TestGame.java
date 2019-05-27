@@ -7,11 +7,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import team.ustc.sse.blockly.entity.Checkoutpoint;
 import team.ustc.sse.blockly.service.impl.GameServiceImpl;
 import team.ustc.sse.blockly.service.inte.GameService;
+import team.ustc.sse.blockly.util.SessionUtil;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
 import java.util.Date;
+import java.util.List;
 
 /**
  * description:
@@ -57,5 +59,15 @@ public class TestGame {
         checkoutpoint.setToaltime(3);
         GameService gameService = applicationContext.getBean(GameServiceImpl.class);
         gameService.saveCheckoutPoint(checkoutpoint);
+    }
+
+
+    @Test
+    public void getStudentIsSuccess(){
+        GameService gameService = applicationContext.getBean(GameServiceImpl.class);
+        List<Checkoutpoint> checkoutpoints = gameService.getCheckoutPointsByStudent(1);
+        for(int i=0;i<checkoutpoints.size();i++){
+            System.out.println(checkoutpoints.get(i));
+        }
     }
 }
