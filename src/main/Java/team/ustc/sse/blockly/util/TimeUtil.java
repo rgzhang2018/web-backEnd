@@ -1,6 +1,7 @@
 package team.ustc.sse.blockly.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 /**
  * description:
@@ -36,6 +37,14 @@ public class TimeUtil {
         return dateFormat.format(new Date(timeInMillis));
     }
 
+
+    public static Date getPastDate(Date date,int pastDays){
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DAY_OF_MONTH, -pastDays);
+        Date result = c.getTime();
+        return result;
+    }
 
     public static String getTime(long timeInMillis) {
         return getTime(timeInMillis, DATE_FORMAT_DATE_S);

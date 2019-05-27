@@ -170,12 +170,12 @@
         return o;
     };
 
-    //ajax:通过
+    //ajax:获取到闯关信息(需要传入：当前checkoutponitID)
+    //如果未登录：传出null
     $("#btn1").click(function() {
         var url='<%=request.getContextPath()%>/rest/gameController/getCheckoutPoint';
         alert("url="+url);
         var data={
-            "studentid":3,
             "checkpointid":3
         };
         $.ajax({
@@ -184,10 +184,9 @@
             url:url,
             dataType:"json",
             data:JSON.stringify(data),
-            success:function(data){
+            success:function(data){ //data就是返回的数据，data['program']就是闯关信息
                 alert(data);
                 alert(data['program']);
-                alert(data['studentid']);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
                 alert(XMLHttpRequest.status);

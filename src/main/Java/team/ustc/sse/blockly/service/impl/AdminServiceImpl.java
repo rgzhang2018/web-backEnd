@@ -6,9 +6,11 @@ import team.ustc.sse.blockly.entity.*;
 import team.ustc.sse.blockly.mapper.*;
 import team.ustc.sse.blockly.service.inte.AdminService;
 import team.ustc.sse.blockly.util.SessionUtil;
+import team.ustc.sse.blockly.util.TimeUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -76,6 +78,16 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public List<Studentloginmessage> getLoginMessagePast(int pastDay) {
+        Date date = TimeUtil.getPastDate(new Date(),pastDay);
+        StudentloginmessageExample studentloginmessageExample = new StudentloginmessageExample();
+        StudentloginmessageExample.Criteria criteria = studentloginmessageExample.createCriteria();
+        criteria.andLogindataGreaterThanOrEqualTo(date);
+        List<Studentloginmessage> list = studentloginmessageMapper.selectByExample(studentloginmessageExample);
+        return list;
+    }
+
+    @Override
     public List<Studentloginmessage> getStudentLoginMessages(int studentID) {
         StudentloginmessageExample studentloginmessageExample = new StudentloginmessageExample();
         StudentloginmessageExample.Criteria criteria = studentloginmessageExample.createCriteria();
@@ -88,6 +100,16 @@ public class AdminServiceImpl implements AdminService {
     public List<Studentloginmessage> getStudentLoginMessages(String studentAccount) {
         int id = getStudentIdByAccount(studentAccount);
         return getStudentLoginMessages(id);
+    }
+
+    @Override
+    public int getCheckoutpointCountsPast(int pastDay) {
+        Date date = TimeUtil.getPastDate(new Date(),pastDay);
+        CheckoutpointExample example = new CheckoutpointExample();
+        CheckoutpointExample.Criteria criteria = example.createCriteria();
+        criteria.andSavetimeGreaterThan(date);
+        int count = checkoutpointMapper.countByExample(example);
+        return count;
     }
 
     //获得通过状态，不检索program字段以提升检索效率

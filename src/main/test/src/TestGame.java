@@ -65,7 +65,7 @@ public class TestGame {
     @Test
     public void getStudentIsSuccess(){
         GameService gameService = applicationContext.getBean(GameServiceImpl.class);
-        List<Checkoutpoint> checkoutpoints = gameService.getCheckoutPointsByStudent(1);
+        List<Checkoutpoint> checkoutpoints = gameService.getSuccessMessageByStudent(1);
         for(int i=0;i<checkoutpoints.size();i++){
             System.out.println(checkoutpoints.get(i));
         }

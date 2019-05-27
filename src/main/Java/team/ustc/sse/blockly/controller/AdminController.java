@@ -28,29 +28,33 @@ public class AdminController {
     }
 
 
+    //最近一周内登录次数
+    //总注册用户数
+    //最近一周闯关次数
     @RequestMapping(value = "/index",method = {RequestMethod.GET})
     public String adminIndex(Model model){
-        List<Studentloginmessage> list = adminServiceImpl.getTenStudentLoginMessages();
-        model.addAttribute("list",list);
+        int studentSize = adminServiceImpl.getAllStudents().size();
+        int loginTimes = adminServiceImpl.getLoginMessagePast(7).size();   //获取最近一周的访问次数
+        int checkoutpointCounts = adminServiceImpl.getCheckoutpointCountsPast(7);
+        model.addAttribute("studentSize",studentSize);
+        model.addAttribute("loginTimes",loginTimes);
+        model.addAttribute("checkoutpointCounts",checkoutpointCounts);
         return "admin_index";
     }
 
-
+    @RequestMapping(value = "/recentLoginMessage",method = {RequestMethod.GET})
+    public String recentLoginMessage(Model model){
+        List<Studentloginmessage> list = adminServiceImpl.getTenStudentLoginMessages();
+        model.addAttribute("list",list);
+        return "admin_recentLoginMessage";
+    }
 
     @RequestMapping(value = "/changeAdminPassword",method = {RequestMethod.GET})
     public String changeAdminPassword(){
         return "admin_changeAdminPassword";
     }
 
-    @RequestMapping(value = "/setAdminPassword",method = {RequestMethod.POST})
-    public String changeAdminPassword(String oldPassword, String newPassword, HttpServletRequest request){
-        String account = (String) request.getSession().getAttribute("adminAccount");
-        Admin admin = new Admin();
-        admin.setAdminaccount(account);
-        admin.setAdminpassword(oldPassword);
-        adminServiceImpl.changeAdminPassword(admin,newPassword);
-        return "admin_Index";
-    }
+
 
     @RequestMapping(value = "/getStudents",method = {RequestMethod.GET})
     public String getStudents(HttpServletRequest request,Model model){
@@ -84,6 +88,14 @@ public class AdminController {
         else return "admin_login";
     }
 
-
+    @RequestMapping(value = "/setAdminPassword",method = {RequestMethod.POST})
+    public String changeAdminPassword(String oldPassword, String newPassword, HttpServletRequest request){
+        String account = (String) request.getSession().getAttribute("adminAccount");
+        Admin admin = new Admin();
+        admin.setAdminaccount(account);
+        admin.setAdminpassword(oldPassword);
+        adminServiceImpl.changeAdminPassword(admin,newPassword);
+        return "admin_Index";
+    }
 
 }

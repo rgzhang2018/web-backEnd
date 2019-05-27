@@ -32,11 +32,14 @@ public interface AdminService {
 
     List<Studentloginmessage> getTenStudentLoginMessages();
 
+    List<Studentloginmessage> getLoginMessagePast(int pastDay);
+
     List<Studentloginmessage> getStudentLoginMessages(int studentID);
 
 
     List<Studentloginmessage> getStudentLoginMessages(String studentAccount);
 
+    int getCheckoutpointCountsPast(int pastDay);
 
     List<Checkoutpoint> getCheckoutpointByStudentID(int studentID);
 

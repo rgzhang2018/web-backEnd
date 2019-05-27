@@ -32,13 +32,8 @@ public class LoginController {
 
     @RequestMapping(value = "/register",method = {RequestMethod.GET})
     public String register(HttpServletResponse response ,HttpServletRequest request){
-        HttpSession session = request.getSession();
-        session.setAttribute("testMYService",true);
-        System.out.println("======> set session in controller");
-        Cookie cookie2 = new Cookie("testMYService","1111");
-        cookie2.setMaxAge(60 * 60 * 24 *7 );
-        response.addCookie(cookie2);
-        System.out.println("======> set cookie in controller");
+
+
         return "student_register";
     }
 

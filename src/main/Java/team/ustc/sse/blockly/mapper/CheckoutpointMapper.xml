@@ -121,7 +121,7 @@
       )
       ON DUPLICATE KEY UPDATE
         toaltime = toaltime + #{toaltime,jdbcType=INTEGER},program=#{program,jdbcType=VARCHAR},
-        savetime = #{savetime,jdbcType=TIMESTAMP}, issuccess = #{issuccess,jdbcType=INTEGER}
+        savetime = #{savetime,jdbcType=TIMESTAMP}
   </insert>
   <insert id="insertSelective" parameterType="team.ustc.sse.blockly.entity.Checkoutpoint" >
     insert into checkoutpoint

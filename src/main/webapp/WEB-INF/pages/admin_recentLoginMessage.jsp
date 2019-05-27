@@ -18,38 +18,37 @@ To change this template use File | Settings | File Templates.
 
 <div class="am-u-sm-10" style="background-color: #ffffff ;height: 700px ;text-align:center">
     <br>
-    <h1> 总览</h1>
+    <h1> 最近访问情况总览</h1>
     <br>
-    <hr>
-    <br>
-    <div class="am-u-sm-centered am-u-sm-7">
-    <table class="am-u-sm-6 am-u-sm-centered am-table am-table-bordered am-table-radius am-table-striped">
+
+    <table class="am-u-sm-offset-1 am-table am-table-bordered am-table-radius am-table-striped">
         <thead>
         <tr>
-            <th>项目名</th>
-            <th>统计次数</th>
+            <th>用户id</th>
+            <th>用户名</th>
+            <th>登录ip</th>
+            <th>登录时间</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
+        <c:forEach var="studentLoginMessage" items="${list}">
             <tr>
-                <th>总注册数</th>
-                <td>${studentSize}</td>
-
+                <td>${studentLoginMessage.studentid}</td>
+                <td>${studentLoginMessage.loginmessage}</td>
+                <td>${studentLoginMessage.loginip}</td>
+                <td>${studentLoginMessage.logindata}</td>
+                <td>
+                    <div class="am-u-sm-12">
+                        <button class="am-btn am-btn-default am-btn-block">查看详情</button>
+                    </div>
+                </td>
             </tr>
-            <tr>
-                <th>本周访问次数</th>
-                <td>${loginTimes}</td>
-            </tr>
-            <tr>
-                <th>本周闯关次数</th>
-                <td> ${checkoutpointCounts}</td>
-            </tr>
-
-
+        </c:forEach>
         </tbody>
 
     </table>
-    </div>
+        
 </div>
 
 

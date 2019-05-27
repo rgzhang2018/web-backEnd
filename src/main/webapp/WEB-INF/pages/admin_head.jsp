@@ -25,9 +25,9 @@
 
         <li ><a href="#">中心首页</a></li>
         <li><a href="#">用户总览</a></li>
+        <li><a href="#">访问统计</a></li>
+        <li><a href="#">闯关情况</a></li>
         <li><a href="#">修改密码</a></li>
-        <li><a href="#">查看闯关情况</a></li>
-        <li><a href="#"></a></li>
     </ul>
 
 </div>

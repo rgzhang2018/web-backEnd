@@ -41,21 +41,6 @@ public class GameController {
         return true;
     }
 
-    /**
-    * @Description: 打开闯关页面，返回的successLists表示已经通过的关卡
-    * @Param: [request, model]
-    * @return: java.lang.String
-    * @Author: rgzhang
-    */
-    @RequestMapping(value = "/checkpoints",method = {RequestMethod.GET})
-    public String getCheckPoints(HttpServletRequest request, Model model){
-        if(SessionUtil.checkStudentLogin(request)){
-            Integer studentID = SessionUtil.getStudentID(request);
-            List<Checkoutpoint> successLists = gameServiceImpl.getSuccessMessageByStudent(studentID);
-            model.addAttribute("successLists",successLists);
-        }
-        return "checkpoints";
-    }
 
 
     /**
@@ -72,9 +57,6 @@ public class GameController {
     }
 
 
-
-
-
     /**
     * @Description: 获取到当前关卡的信息(待完成)
     * @Param: [request]
@@ -86,6 +68,23 @@ public class GameController {
         System.out.println(request.getRequestURI());
 
         return "student_login";
+    }
+
+
+    /**
+     * @Description: 打开闯关页面，返回的successLists表示已经通过的关卡
+     * @Param: [request, model]
+     * @return: java.lang.String
+     * @Author: rgzhang
+     */
+    @RequestMapping(value = "/checkpoints",method = {RequestMethod.GET})
+    public String getCheckPoints(HttpServletRequest request, Model model){
+        if(SessionUtil.checkStudentLogin(request)){
+            Integer studentID = SessionUtil.getStudentID(request);
+            List<Checkoutpoint> successLists = gameServiceImpl.getSuccessMessageByStudent(studentID);
+            model.addAttribute("successLists",successLists);
+        }
+        return "checkpoints";
     }
 
 }
