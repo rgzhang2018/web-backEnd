@@ -45,7 +45,7 @@ public class LoginServiceImpl implements LoginService {
 //        设置session和cookie
         SessionUtil.setStudentLogin(studentInDB,remember,request);
 //        记录登录IP等信息到数据库
-        setStudentLoginMessage(studentInDB.getStudentid(),request);
+        setStudentLoginMessage(studentInDB,request);
         return true;
     }
 
@@ -80,10 +80,13 @@ public class LoginServiceImpl implements LoginService {
     }
 
     //写入登录信息
-    private void setStudentLoginMessage(int studentID,HttpServletRequest request){
+    private void setStudentLoginMessage(Studentlogin studentlogin,HttpServletRequest request){
         String ip = HttpUtil.getIpAddress(request);
         Studentloginmessage studentloginmessage = new Studentloginmessage()
-                .setLogindata(new Date()).setStudentid(studentID).setLoginip(ip);
+                .setLogindata(new Date())
+                .setStudentid(studentlogin.getStudentid())
+                .setLoginip(ip)
+                .setLoginmessage(studentlogin.getStudentaccount());
         studentloginmessageMapper.insertSelective(studentloginmessage);
 //        System.out.println("test primary key ===>"+ studentloginmessage.getStudentloginid());
     }

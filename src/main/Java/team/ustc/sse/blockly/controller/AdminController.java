@@ -42,6 +42,7 @@ public class AdminController {
         return "admin_index";
     }
 
+    //最近10次的loginmessage
     @RequestMapping(value = "/recentLoginMessage",method = {RequestMethod.GET})
     public String recentLoginMessage(Model model){
         List<Studentloginmessage> list = adminServiceImpl.getTenStudentLoginMessages();
@@ -72,6 +73,7 @@ public class AdminController {
         return "admin_showCheckoutPoint";
     }
 
+    //单个学生的loginmessage
     @RequestMapping(value = "/showStudentLoginMessage",method = {RequestMethod.POST})
     public String showStudentLoginMessage(int studentID,Model model){
         List<Studentloginmessage> Studentloginmessage = adminServiceImpl.getStudentLoginMessages(studentID);
@@ -80,6 +82,7 @@ public class AdminController {
     }
 
 
+    //部分post请求
     @RequestMapping(value = "/loginControl",method = {RequestMethod.POST})
     public String loginControl(Admin admin, HttpServletRequest request){
         if(admin.getAdminaccount() == null || admin.getAdminpassword()==null)return "wrong";
