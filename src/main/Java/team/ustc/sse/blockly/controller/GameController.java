@@ -34,8 +34,6 @@ public class GameController {
     */
     @RequestMapping(value = "/saveCheckoutPoint",method = {RequestMethod.POST})
     public @ResponseBody boolean saveCheckoutPoint(@RequestBody Checkoutpoint checkoutpoint, HttpServletResponse response){
-
-//        System.out.println(checkoutpoint.getProgram());
         boolean result = gameServiceImpl.saveCheckoutPoint(checkoutpoint);
         response.setContentType("application/json; charset=utf-8");     //请求json，相应json，二者必须都是json格式
         return true;
@@ -64,7 +62,7 @@ public class GameController {
     * @Author: rgzhang
     */
     @RequestMapping(value = "/getCheckpoint",method = {RequestMethod.POST})
-    public String getCheckpoint(HttpServletRequest request, Model model){
+    public String getCheckpoint(HttpServletRequest request){
         System.out.println(request.getRequestURI());
         return "student_login";
     }
@@ -77,11 +75,11 @@ public class GameController {
      * @Author: rgzhang
      */
     @RequestMapping(value = "/checkpoints",method = {RequestMethod.GET})
-    public String checkPoints(HttpServletRequest request, Model model){
+    public String checkPoints(HttpServletRequest request){
         if(SessionUtil.checkStudentLogin(request)){
             Integer studentID = SessionUtil.getStudentID(request);
             List<Checkoutpoint> successLists = gameServiceImpl.getSuccessMessageByStudent(studentID);
-            model.addAttribute("successLists",successLists);
+            request.setAttribute("successLists",successLists);
         }
         return "student_checkpoints";
     }

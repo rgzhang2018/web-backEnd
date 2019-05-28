@@ -20,7 +20,7 @@ public class StudentController {
      * @Date: 2019/3/10
      */
     @RequestMapping(value = "index",method = {RequestMethod.GET})
-    public String index(HttpServletRequest request, Model model){
+    public String index(){
         return "index";
     }
 

@@ -23,7 +23,7 @@ public class AdminController {
     private AdminService adminServiceImpl;
 
     @RequestMapping(value = "/login",method = {RequestMethod.GET})
-    public String login(HttpServletRequest request, Model model){
+    public String login(){
         return "admin_login";
     }
 
@@ -32,21 +32,22 @@ public class AdminController {
     //总注册用户数
     //最近一周闯关次数
     @RequestMapping(value = "/index",method = {RequestMethod.GET})
-    public String index(HttpServletRequest request,Model model){
+    public String index(HttpServletRequest request){
         int studentSize = adminServiceImpl.getAllStudents().size();
         int loginTimes = adminServiceImpl.getLoginMessagePast(7).size();   //获取最近一周的访问次数
         int checkoutpointCounts = adminServiceImpl.getCheckoutpointCountsPast(7);
-        model.addAttribute("studentSize",studentSize);
-        model.addAttribute("loginTimes",loginTimes);
-        model.addAttribute("checkoutpointCounts",checkoutpointCounts);
+        request.setAttribute("studentSize",studentSize);
+//        model.addAttribute("studentSize",studentSize);
+        request.setAttribute("loginTimes",loginTimes);
+        request.setAttribute("checkoutpointCounts",checkoutpointCounts);
         return "admin_index";
     }
 
     //最近10次的loginmessage
     @RequestMapping(value = "/recentLoginMessage",method = {RequestMethod.GET})
-    public String recentLoginMessage(HttpServletRequest request,Model model){
+    public String recentLoginMessage(HttpServletRequest request){
         List<Studentloginmessage> list = adminServiceImpl.getTenStudentLoginMessages();
-        model.addAttribute("list",list);
+        request.setAttribute("list",list);
         return "admin_recentLoginMessage";
     }
 
@@ -58,18 +59,18 @@ public class AdminController {
 
 
     @RequestMapping(value = "/getStudents",method = {RequestMethod.GET})
-    public String getStudents(HttpServletRequest request,Model model){
+    public String getStudents(HttpServletRequest request){
         List<Studentlogin> studentlogins = adminServiceImpl.getAllStudentLogins();
         List<Student>students = adminServiceImpl.getAllStudents();
-        model.addAttribute("studentLoginList",studentlogins);
-        model.addAttribute("studentList",students);
+        request.setAttribute("studentLoginList",studentlogins);
+        request.setAttribute("studentList",students);
         return "admin_getStudents";
     }
 
     @RequestMapping(value = "/showCheckoutPoint",method = {RequestMethod.POST})
-    public String showCheckoutPoint(int studentID,HttpServletRequest request,Model model){
+    public String showCheckoutPoint(int studentID,HttpServletRequest request){
         List<Checkoutpoint> checkoutpointList = adminServiceImpl.getCheckoutpointByStudentID(studentID);
-        model.addAttribute("checkoutpointList",checkoutpointList);
+        request.setAttribute("checkoutpointList",checkoutpointList);
         return "admin_showCheckoutPoint";
     }
 

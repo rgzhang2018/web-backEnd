@@ -1,9 +1,15 @@
 package team.ustc.sse.blockly.aop;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
+import team.ustc.sse.blockly.util.SessionUtil;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * description:
@@ -16,5 +22,29 @@ import org.springframework.stereotype.Component;
 public class AdminCheckAspect {
 
     @Pointcut("(execution(public * team.ustc.sse.blockly.controller.AdminController.admin*(..)))")
-    public void declearJoinPointExpression(){}
+    public void declearJoinPointExpression() {
+    }
+
+
+    @Before("declearJoinPointExpression()") //该标签声明次方法是一个前置通知：在目标方法开始之前执行
+    public void beforeMethod(JoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        HttpServletRequest request;
+        for (int i = 0; i < args.length; i++) {
+            if (args[i] instanceof HttpServletRequest) {
+                request = (HttpServletRequest) args[i];
+                if (SessionUtil.checkAdminLogin(request)) {
+                    System.out.println("===========>this is an admin");
+                    for (int j = 0; j < args.length; j++) {
+                        if (args[j] instanceof Model) {
+                            request.setAttribute("isAdmin", true);    //对isAdmin的检查放在admin_head.jsp页面里
+                            request.setAttribute("adminName", SessionUtil.getStudentNickname(request));
+                            System.out.println("============>in aspect set model attribute");
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 }

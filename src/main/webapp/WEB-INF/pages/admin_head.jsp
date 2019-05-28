@@ -7,7 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
+<%
+    boolean f = true;
+    if(!f){
+%>
+        <jsp:forward page="wrong.jsp" />;
+<%
+    }
+%>
 
 <body style="background-color: #464c5c">
 

@@ -40,13 +40,13 @@ public class TestController {
 
 
     @RequestMapping(value = "/ajax",method = {RequestMethod.GET})
-    public String testAjax(HttpServletRequest request){
+    public String testAjax(){
         return "ajaxDemo";
     }
 
 
     @RequestMapping(value = "/ajaxSend",method = {RequestMethod.GET})
-    public String ajaxSend(HttpServletRequest request){
+    public String ajaxSend(){
         return "ajaxSend";
     }
 }
