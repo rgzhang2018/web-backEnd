@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import team.ustc.sse.blockly.entity.*;
 import team.ustc.sse.blockly.service.inte.AdminService;
+import team.ustc.sse.blockly.util.SessionUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -93,12 +94,16 @@ public class AdminController {
 
     @RequestMapping(value = "/setAdminPassword",method = {RequestMethod.POST})
     public String changeAdminPassword(String oldPassword, String newPassword, HttpServletRequest request){
-        String account = (String) request.getSession().getAttribute("adminAccount");
+        String account = SessionUtil.getAdminAccout(request);
         Admin admin = new Admin();
         admin.setAdminaccount(account);
         admin.setAdminpassword(oldPassword);
-        adminServiceImpl.changeAdminPassword(admin,newPassword);
-        return "admin/admin_index";
+        boolean result = adminServiceImpl.changeAdminPassword(admin,newPassword);
+        if(!result){
+            request.setAttribute("message","密码错误");
+            return "demo/wrong";
+        }
+        return "admin/changeAdminPassword";
     }
 
 }

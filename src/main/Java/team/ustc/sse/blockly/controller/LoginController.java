@@ -57,15 +57,18 @@ public class LoginController {
         if(!result){
             request.setAttribute("message","注册失败，请重新尝试");
             return "demo/wrong";
+        }else{
+            request.setAttribute("redirectUrl","/rest/loginControl/login");
+            request.setAttribute("message","注册成功，即将转跳到登录页面");
+            return "demo/loginSuccess";
         }
-        return "students/student_login";
+
     }
 
     @RequestMapping(value = "/checkStudentAccount" ,method = {RequestMethod.POST})
     public @ResponseBody String checkStudentAccount(@RequestBody Studentlogin studentlogin, HttpServletResponse response){
         response.setContentType("application/json; charset=utf-8");
         if(studentlogin == null || studentlogin.getStudentaccount()==null)return "0";
-        System.out.println(studentlogin.getStudentaccount()+"||||");
         Studentlogin result = studentLoginService.findByStudentAccount(studentlogin.getStudentaccount());
         if(result == null)return "1";
         return "0";

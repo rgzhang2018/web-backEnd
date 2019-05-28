@@ -11,8 +11,16 @@
     <title>失败</title>
 </head>
 <body>
+<%
+    if(request.getAttribute("message")!=null){
+%>
 <h3 style="color: red"> ${message }</h3>
 <h5>将在三秒后返回</h5>
+<%
+    }
+%>
+
+<h5>发生错误，将在三秒后返回</h5>
 <script>
 
     setTimeout(function () {

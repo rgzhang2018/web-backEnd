@@ -36,21 +36,21 @@ To change this template use File | Settings | File Templates.
                 <div class="am-form-group">
                     <label for="log-password" class="am-u-sm-3 am-form-label">原始密码</label>
                     <div class="am-u-sm-9">
-                        <input id="log-password" type="password" name="password"  placeholder="请输入原始密码">
+                        <input id="log-password" type="password" name="oldPassword"  placeholder="请输入原始密码">
                     </div>
                 </div>
 
                 <div class="am-form-group">
                     <label for="pwd1" class="am-u-sm-3 am-form-label">新密码</label>
                     <div class="am-u-sm-9">
-                        <input id="pwd1" type="password" name="password1"  placeholder="请输入新的密码" >
+                        <input id="pwd1" type="password" name="newPassword"  placeholder="请输入新的密码" >
                     </div>
                 </div>
 
                 <div class="am-form-group">
                     <label for="pwd2" class="am-u-sm-3 am-form-label">重复确认</label>
                     <div class="am-u-sm-9">
-                        <input id="pwd2" type="password" name="password2"  placeholder="重复确认" onblur="validate1()">
+                        <input id="pwd2" type="password" name="newPassword2"  placeholder="重复确认" onblur="validate1()">
                     </div>
                 </div>
 
