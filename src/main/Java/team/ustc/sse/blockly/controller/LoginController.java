@@ -3,14 +3,16 @@ package team.ustc.sse.blockly.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import org.springframework.web.bind.annotation.ResponseBody;
 import team.ustc.sse.blockly.entity.Student;
 import team.ustc.sse.blockly.entity.Studentlogin;
 import team.ustc.sse.blockly.service.impl.LoginServiceImpl;
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpServletResponse;
 
 
 @Controller
@@ -58,5 +60,16 @@ public class LoginController {
         }
         return "students/student_login";
     }
+
+    @RequestMapping(value = "/checkStudentAccount" ,method = {RequestMethod.POST})
+    public @ResponseBody String checkStudentAccount(@RequestBody Studentlogin studentlogin, HttpServletResponse response){
+        response.setContentType("application/json; charset=utf-8");
+        if(studentlogin == null || studentlogin.getStudentaccount()==null)return "0";
+        System.out.println(studentlogin.getStudentaccount()+"||||");
+        Studentlogin result = studentLoginService.findByStudentAccount(studentlogin.getStudentaccount());
+        if(result == null)return "1";
+        return "0";
+    }
+
 
 }

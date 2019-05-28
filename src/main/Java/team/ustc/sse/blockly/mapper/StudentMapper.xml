@@ -110,11 +110,11 @@
     <selectKey resultType="java.lang.Integer" keyProperty="studentid" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into student (studentName, studentGender, studentEmail, 
+    insert into student (studentID, studentName, studentGender, studentEmail,
       studentAge, studentPhone, studentSchool, 
       studentNumber, studentGrade, studentRemark, 
       studentRegisterTime)
-    values (#{studentname,jdbcType=VARCHAR}, #{studentgender,jdbcType=VARCHAR}, #{studentemail,jdbcType=VARCHAR}, 
+    values (#{studentid,jdbcType=INTEGER},#{studentname,jdbcType=VARCHAR}, #{studentgender,jdbcType=VARCHAR}, #{studentemail,jdbcType=VARCHAR},
       #{studentage,jdbcType=INTEGER}, #{studentphone,jdbcType=VARCHAR}, #{studentschool,jdbcType=VARCHAR}, 
       #{studentnumber,jdbcType=VARCHAR}, #{studentgrade,jdbcType=VARCHAR}, #{studentremark,jdbcType=VARCHAR}, 
       #{studentregistertime,jdbcType=TIMESTAMP})

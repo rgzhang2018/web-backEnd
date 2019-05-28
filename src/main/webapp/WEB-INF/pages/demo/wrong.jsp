@@ -11,6 +11,14 @@
     <title>失败</title>
 </head>
 <body>
-失败
+<h3 style="color: red"> ${message }</h3>
+<h5>将在三秒后返回</h5>
+<script>
+
+    setTimeout(function () {
+        window.history.back(-1);
+    },3000)
+
+</script>
 </body>
 </html>

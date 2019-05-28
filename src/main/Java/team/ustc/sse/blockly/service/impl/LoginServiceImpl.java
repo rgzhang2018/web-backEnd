@@ -51,11 +51,13 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public boolean studentRegister(Studentlogin studentlogin, Student student, HttpServletRequest request) {
-        int id = studentloginMapper.insertSelective(studentlogin);
+        int result = studentloginMapper.insertSelective(studentlogin);  //写入登录检查表(登录信息)
+        if(result<=0)return false;
         student.setStudentregistertime(new Date());
-        student.setStudentid(id);
-        int result = studentMapper.insertSelective(student);
-//        setStudentLoginMessage(student.getStudentid(),request);
+        student.setStudentid(studentlogin.getStudentid());
+        System.out.println("===============>"+student);
+//        result = studentMapper.insertSelective(student);
+        result = studentMapper.insert(student);          //写入学生表(个人详细信息)。注：这里修改了mapper.xml，保证主键插入成功
         return result>0;
     }
 

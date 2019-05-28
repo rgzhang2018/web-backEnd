@@ -47,9 +47,9 @@ To change this template use File | Settings | File Templates.
         </div>
 
         <div class="am-form-group">
-            <label for="reg-user" class="am-u-sm-2 am-form-label">用户名</label>
+            <label for="reg-account" class="am-u-sm-2 am-form-label">用户名</label>
             <div class="am-u-sm-10">
-                <input type="text" name="studentaccount" id="reg-user" placeholder="可以是邮箱/手机号等" onblur="emailChick()">
+                <input type="text" name="studentaccount" id="reg-account" placeholder="可以是邮箱/手机号等" onblur="accountCheck()">
             </div>
         </div>
 
@@ -81,7 +81,7 @@ To change this template use File | Settings | File Templates.
         <div class="am-form-group">
             <label for="reg-email" class="am-u-sm-2 am-form-label">邮件</label>
             <div class="am-u-sm-10">
-                <input type="email" name="email" id="reg-email" placeholder="输入你的电子邮件" onblur="emailChick()">
+                <input type="email" name="studentemail" id="reg-email" placeholder="输入你的电子邮件" onblur="accountCheck()">
             </div>
         </div>
         <div class="am-form-group">
@@ -124,7 +124,7 @@ To change this template use File | Settings | File Templates.
 
 
 <script>
-    var flag_email = 1;
+    var flag_account = 0;
     var flag_password = 0;
     var flag_name = 0;
     function validate() {
@@ -159,9 +159,9 @@ To change this template use File | Settings | File Templates.
     //检测所有信息，符合条件后可以注册
     var submitBtn = document.getElementById("reg-submit");
     submitBtn.onclick = function checkAll( e ){
-        if(flag_password===1 && flag_email === 1 &&flag_name===1){
+        if(flag_password===1 && flag_account === 1 &&flag_name===1){
             alert("格式正确，转跳注册");
-        }else if(flag_email === 0){
+        }else if(flag_account === 0){
             alert("用户名已存在！请重新输入");
             if(e&&e.preventDefault){
                 e.preventDefault();
@@ -186,40 +186,37 @@ To change this template use File | Settings | File Templates.
 
     };
 
-    var xmlHttp;
-    function S_xmlhttprequest(){
-        if(window.ActiveXObject){
-            xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
-        }else if(window.XMLHttpRequest){
-            xmlHttp = new XMLHttpRequest();
-        }
-    }
-    function emailChick(){
-        var f = document.getElementById("reg-email").value;//获取文本框内容
-        S_xmlhttprequest();
-        xmlHttp.open("GET","../DatabaseController/checkEmail?email="+f,true);//找开请求
-        xmlHttp.onreadystatechange = byphp;//准备就绪执行
-        xmlHttp.send(null);//发送
 
-    }
-    function byphp(){
-        //判断状态
-        if(xmlHttp.readyState===1){//Ajax状态
-            document.getElementById('reg-msg').innerHTML = "正在检测";
-        }
-        else if(xmlHttp.readyState===4){//Ajax状态
-            if(xmlHttp.status===200){//服务器端状态
-                flag_email = xmlHttp.responseText;
-                if(flag_email  === '0') {
-                    document.getElementById('reg-msg').innerHTML = "用户名已存在";
-                }else {
+    function accountCheck(){
+        var account = document.getElementById("reg-account").value;//获取文本框内容
+        alert(account);
+        var url='<%=request.getContextPath()%>/rest/loginControl/checkStudentAccount';
+        var data={
+            "studentaccount":account
+        };
+        $.ajax({
+            type:'POST',
+            contentType : 'application/json;charset=utf-8',
+            url:url,
+            dataType:"json",
+            data:JSON.stringify(data),
+            success:function(data){ //data就是返回的数据，data['program']就是闯关信息
+                alert(data);
+                if(data  == '1') {
                     document.getElementById('reg-msg').innerHTML = "用户名可以使用";
+                    flag_account=1;
+                }else {
+                    document.getElementById('reg-msg').innerHTML = "用户名已存在";
+                    flag_account=0;
                 }
-            }
-        }
-        else {
-            document.getElementById('reg-msg').innerHTML = "检测中";
-        }
+            },
+            // error: function(XMLHttpRequest, textStatus, errorThrown){
+            //     alert("服务器内部错误");
+            //     alert(XMLHttpRequest.status);
+            //     alert(XMLHttpRequest.readyState);
+            //     alert(textStatus);
+            // }
+        })
     }
 
 
