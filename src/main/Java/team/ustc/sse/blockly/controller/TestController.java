@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import team.ustc.sse.blockly.service.impl.TestServiceImpl;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * @program: childrenCode
@@ -41,12 +38,12 @@ public class TestController {
 
     @RequestMapping(value = "/ajax",method = {RequestMethod.GET})
     public String testAjax(){
-        return "ajaxDemo";
+        return "demo/ajaxDemo";
     }
 
 
     @RequestMapping(value = "/ajaxSend",method = {RequestMethod.GET})
     public String ajaxSend(){
-        return "ajaxSend";
+        return "demo/ajaxSend";
     }
 }

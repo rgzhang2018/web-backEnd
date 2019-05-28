@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import team.ustc.sse.blockly.entity.*;
 import team.ustc.sse.blockly.service.inte.AdminService;
-import team.ustc.sse.blockly.util.SessionUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -24,7 +23,7 @@ public class AdminController {
 
     @RequestMapping(value = "/login",method = {RequestMethod.GET})
     public String login(){
-        return "admin_login";
+        return "admin/admin_login";
     }
 
 
@@ -40,7 +39,7 @@ public class AdminController {
 //        model.addAttribute("studentSize",studentSize);
         request.setAttribute("loginTimes",loginTimes);
         request.setAttribute("checkoutpointCounts",checkoutpointCounts);
-        return "admin_index";
+        return "admin/admin_index";
     }
 
     //最近10次的loginmessage
@@ -48,12 +47,12 @@ public class AdminController {
     public String recentLoginMessage(HttpServletRequest request){
         List<Studentloginmessage> list = adminServiceImpl.getTenStudentLoginMessages();
         request.setAttribute("list",list);
-        return "admin_recentLoginMessage";
+        return "admin/admin_recentLoginMessage";
     }
 
     @RequestMapping(value = "/changeAdminPassword",method = {RequestMethod.GET})
     public String changeAdminPassword(){
-        return "admin_changeAdminPassword";
+        return "admin/admin_changeAdminPassword";
     }
 
 
@@ -64,7 +63,7 @@ public class AdminController {
         List<Student>students = adminServiceImpl.getAllStudents();
         request.setAttribute("studentLoginList",studentlogins);
         request.setAttribute("studentList",students);
-        return "admin_getStudents";
+        return "admin/admin_getStudents";
     }
 
     @RequestMapping(value = "/showCheckoutPoint",method = {RequestMethod.POST})
@@ -86,10 +85,10 @@ public class AdminController {
     //部分post请求
     @RequestMapping(value = "/loginControl",method = {RequestMethod.POST})
     public String login(Admin admin, HttpServletRequest request){
-        if(admin.getAdminaccount() == null || admin.getAdminpassword()==null)return "wrong";
+        if(admin.getAdminaccount() == null || admin.getAdminpassword()==null)return "demo/wrong";
         boolean result = adminServiceImpl.adminLogin(admin,request);
-        if(result)return "admin_index";
-        else return "admin_login";
+        if(result)return "admin/admin_index";
+        else return "admin/admin_login";
     }
 
     @RequestMapping(value = "/setAdminPassword",method = {RequestMethod.POST})
@@ -99,7 +98,7 @@ public class AdminController {
         admin.setAdminaccount(account);
         admin.setAdminpassword(oldPassword);
         adminServiceImpl.changeAdminPassword(admin,newPassword);
-        return "admin_Index";
+        return "admin/admin_index";
     }
 
 }

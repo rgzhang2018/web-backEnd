@@ -11,7 +11,7 @@ Time: 19:32
 To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="html_head.jsp"%>
+<%@ include file="../demo/html_head.jsp"%>
 <%@ include file="admin_head.jsp"%>
 
 

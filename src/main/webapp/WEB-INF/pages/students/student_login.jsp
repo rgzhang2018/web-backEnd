@@ -7,14 +7,22 @@ To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ include file="visitorHeader.jsp"%>
-<style type="text/css">
-
+<%@ include file="../demo/header.jsp"%>
+<style>
+    html,body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color:#F0F0F0;
+        overflow:scroll;overflow-y:hidden;/* 禁止滚动条 */
+    }
     #bg_index{
-        background: url(${pageContext.request.contextPath }/lib/assets/myImg/newLogin.jpg);
+        background: url(${pageContext.request.contextPath }/static/lib/pictures/homePage/4.jpg) no-repeat;
+        background-size: 100% 100%;
         box-sizing: border-box;
         max-width: 100%;
-        height: 700px;
+        height: 100%;
         vertical-align: middle;
         border: 0;
     }
@@ -24,11 +32,6 @@ To change this template use File | Settings | File Templates.
 
 
 <body style="background-color: #e9e9e9">
-<h1 id="my_url">${pageContext.request.contextPath }</h1>
-<script>
-    var text = document.getElementById("my_url").innerText;
-    alert(text);
-</script>
 
 <div class="am-u-md-12" id="bg_index" >
     <br>
@@ -90,8 +93,8 @@ To change this template use File | Settings | File Templates.
 </div>
 
 </div>
+<%@ include file="../demo/footer.jsp"%>
 
-<%@ include file="visitorFooter.jsp"%>
 
 
 

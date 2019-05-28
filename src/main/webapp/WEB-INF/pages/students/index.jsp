@@ -3,110 +3,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<%@ include file="visitorHeader.jsp"%>
+<%@ include file="../demo/header.jsp"%>
 
 
-
-
-<script type = text/css>
-
-    .get {
-        background: #1E5B94;
-        color: #fff;
-        text-align: center;
-        padding: 100px 0;
-    }
-
-    .get-title {
-        font-size: 200%;
-        border: 2px solid #fff;
-        padding: 20px;
-        display: inline-block;
-    }
-
-    .get-btn {
-        background: #fff;
-    }
-
-    .detail {
-        background: #fff;
-    }
-
-    .detail-h2 {
-        text-align: center;
-        font-size: 150%;
-        margin: 40px 0;
-    }
-
-    .detail-h3 {
-        color: #1f8dd6;
-    }
-
-    .detail-p {
-        color: #7f8c8d;
-    }
-
-    .detail-mb {
-        margin-bottom: 30px;
-    }
-
-    .hope {
-        background: #0bb59b;
-        padding: 50px 0;
-    }
-
-    .hope-img {
-        text-align: center;
-    }
-
-    .hope-hr {
-        border-color: #149C88;
-    }
-
-    .hope-title {
-        font-size: 140%;
-    }
-
-    .about {
-        background: #fff;
-        padding: 40px 0;
-        color: #7f8c8d;
-    }
-
-    .about-color {
-        color: #34495e;
-    }
-
-    .about-title {
-        font-size: 180%;
-        padding: 30px 0 50px 0;
-        text-align: center;
-    }
-
-    .footer p {
-        color: #7f8c8d;
-        margin: 0;
-        padding: 15px 0;
-        text-align: center;
-        background: #2d3e50;
-    }
-
-
-</script>
 
 
 <!--在这里编写你的代码-->
+<div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
+    <ul class="am-slides">
+        <li>
+            <img src="${pageContext.request.contextPath }/static/lib/pictures/homePage/2.jpg">
+
+        </li>
+    </ul>
+</div>
+
+
+
 <div class="get">
     <div class="am-g">
         <div class="am-u-lg-12">
-            <h1 class="get-title">让编码变得简单</h1>
+            <h1 class="get-title">提供面向10-18岁青少年的优质编程教育</h1>
 
             <p>
-                边玩游戏边学编程
+                设计了有趣的编程课程，让编程就像玩游戏一样简单有趣
+                在不知不觉中提高孩子的逻辑能力、想象力和创造力
             </p>
 
             <p>
-                <a href="http://amazeui.org" class="am-btn am-btn-sm get-btn">了解更多√</a>
+                <a href="${pageContext.request.contextPath }/rest//game/checkpoints" class="am-btn am-btn-warning">开始学习√</a>
             </p>
         </div>
     </div>
@@ -114,9 +39,8 @@
 
 <div class="hope">
     <div class="am-g am-container">
-        <div class="am-u-lg-4 am-u-md-6 am-u-sm-12 hope-img">
-            <img src="${pageContext.request.contextPath }/static/lib/assets/i/examples/landing.png" alt="" data-am-scrollspy="{animation:'slide-left', repeat: false}">
-            <hr class="am-article-divider am-show-sm-only hope-hr">
+        <div class="am-u-lg-4 am-u-md-6 am-u-sm-12">
+            <img src="${pageContext.request.contextPath }/static/lib/pictures/homePage/3.jpg" alt="" width="300" height="200">
         </div>
         <div class="am-u-lg-8 am-u-md-6 am-u-sm-12">
             <h2 class="hope-title">让孩子成为一个创造者！</h2>
@@ -164,4 +88,5 @@
     </div>
 </div>
 
-<%@ include file="visitorFooter.jsp"%>
+
+<%@ include file="../demo/footer.jsp"%>

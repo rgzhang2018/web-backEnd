@@ -20,7 +20,7 @@ import java.util.List;
  * create time: 2019-04-14
  **/
 @Controller
-@RequestMapping("/gameController")
+@RequestMapping("/game")
 public class GameController {
     @Autowired
     GameService gameServiceImpl;
@@ -63,7 +63,7 @@ public class GameController {
     @RequestMapping(value = "/getCheckpoint",method = {RequestMethod.POST})
     public String getCheckpoint(HttpServletRequest request){
         System.out.println(request.getRequestURI());
-        return "student_login";
+        return "students/student_login";
     }
 
 
@@ -80,7 +80,7 @@ public class GameController {
             List<Checkoutpoint> successLists = gameServiceImpl.getSuccessMessageByStudent(studentID);
             request.setAttribute("successLists",successLists);
         }
-        return "student_checkpoints";
+        return "students/checkpoints";
     }
 
 }

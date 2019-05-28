@@ -22,31 +22,31 @@ public class LoginController {
     @RequestMapping(value = "/login",method = {RequestMethod.GET})
     public String login(HttpServletRequest request){
         System.out.println(request.getRequestURI());
-        return "student_login";
+        return "students/student_login";
     }
 
     @RequestMapping(value = "/register",method = {RequestMethod.GET})
     public String register(){
-        return "student_register";
+        return "students/student_register";
     }
 
 
     @RequestMapping(value = "/studentLogin" ,method = {RequestMethod.POST})
     public String studentLogin(Studentlogin studentLogin, Boolean remember,HttpServletRequest request){
         if(remember == null)remember=false;
-        if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "wrong";
+        if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "demo/wrong";
         boolean result = studentLoginService.studentLogin(studentLogin,remember,request );
-        if(!result)return "wrong";
-        return "success";
+        if(!result)return "demo/wrong";
+        return "demo/success";
     }
 
     @RequestMapping(value = "/studentRegister" ,method = {RequestMethod.POST})
     public String studentRegister(Studentlogin studentLogin, Student student,HttpServletRequest request){
         System.out.println(studentLogin);
-        if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "wrong";
+        if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "demo/wrong";
         boolean result = studentLoginService.studentRegister( studentLogin,student,request);
-        if(!result)return "wrong";
-        return "student_login";
+        if(!result)return "demo/wrong";
+        return "students/student_login";
     }
 
 }

@@ -7,14 +7,15 @@ To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ include file="visitorHeader.jsp"%>
+<%@ include file="../demo/header.jsp"%>
 <style type="text/css">
 
     #bg_index{
-        background: url(${pageContext.request.contextPath }/lib/assets/myImg/newResigner.jpg);
+        background: url(${pageContext.request.contextPath }/static/lib/assets/myImg/newResigner.jpg);
+        background-size: 100% 100%;
         box-sizing: border-box;
         max-width: 100%;
-        height: 700px;
+        height: 100%;
         vertical-align: middle;
         border: 0;
     }
@@ -74,17 +75,33 @@ To change this template use File | Settings | File Templates.
             </div>
         </div>
 
+        <div class="am-form-group " style="text-align:center">
+            非必填:
+        </div>
         <div class="am-form-group">
-            <div class="am-u-sm-offset-4 am-u-sm-8">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name = "remember"  value="no" onclick="parentsWarningMsg(this)"> 家长注册
-                    </label>
-                </div>
+            <label for="reg-email" class="am-u-sm-2 am-form-label">邮件</label>
+            <div class="am-u-sm-10">
+                <input type="email" name="email" id="reg-email" placeholder="输入你的电子邮件" onblur="emailChick()">
             </div>
         </div>
-
-
+        <div class="am-form-group">
+            <label for="reg-studentage" class="am-u-sm-2 am-form-label">年龄</label>
+            <div class="am-u-sm-10">
+                <input type="number" name="studentage" id="reg-studentage" placeholder="输入你的年龄" onblur="ageChick()">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="reg-studentphone" class="am-u-sm-2 am-form-label">手机号</label>
+            <div class="am-u-sm-10">
+                <input type="number" name="studentphone" id="reg-studentphone" placeholder="输入你的手机号码" onblur="phoneChick()">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="reg-studentschool" class="am-u-sm-2 am-form-label">学校名</label>
+            <div class="am-u-sm-10">
+                <input type="text" name="studentschool" id="reg-studentschool" placeholder="输入你的学校名" onblur="schoolChick()">
+            </div>
+        </div>
         <div class="am-form-group">
             <br>
         </div>
@@ -206,15 +223,6 @@ To change this template use File | Settings | File Templates.
     }
 
 
-function parentsWarningMsg(e){
-    if(e.checked){
-        alert("将以家长的身份进行注册，您可以稍后添加儿童子账号");
-    }
-    else {
-        alert("将以儿童身份注册，完成注册后即可开始编程练习");
-    }
-}
-
 </script>
 
-<%@ include file="visitorFooter.jsp"%>
+<%@ include file="../demo/footer.jsp"%>

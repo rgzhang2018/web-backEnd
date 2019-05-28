@@ -11,7 +11,7 @@
     Boolean f = (Boolean) request.getAttribute("isAdmin");
     if(f==null || !f){
 %>
-        <jsp:forward page="wrong.jsp" />;
+        <jsp:forward page="../demo/wrong.jsp" />;
 <%
     }
 %>
