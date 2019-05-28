@@ -35,16 +35,12 @@ public class AdminCheckAspect {
                 request = (HttpServletRequest) args[i];
                 if (SessionUtil.checkAdminLogin(request)) {
                     System.out.println("===========>this is an admin");
-                    for (int j = 0; j < args.length; j++) {
-                        if (args[j] instanceof Model) {
-                            request.setAttribute("isAdmin", true);    //对isAdmin的检查放在admin_head.jsp页面里
-                            request.setAttribute("adminName", SessionUtil.getStudentNickname(request));
-                            System.out.println("============>in aspect set model attribute");
-                        }
-                    }
+                    request.setAttribute("adminFlag", true);    //对isAdmin的检查放在admin_head.jsp页面里
+                    request.setAttribute("adminAccount", SessionUtil.getStudentNickname(request));
                 }
             }
         }
-
     }
+
 }
+

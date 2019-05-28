@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    boolean f = true;
-    if(!f){
+    Boolean f = (Boolean) request.getAttribute("isAdmin");
+    if(f==null || !f){
 %>
         <jsp:forward page="wrong.jsp" />;
 <%

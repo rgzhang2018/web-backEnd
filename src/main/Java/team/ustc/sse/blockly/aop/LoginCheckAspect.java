@@ -44,13 +44,9 @@ public class LoginCheckAspect {
                 HttpServletRequest request = (HttpServletRequest) args[i];
                 if(SessionUtil.checkStudentLogin(request)){
                     System.out.println("===========>this is an user");
-                    for(int j = 0;j<args.length ; j++){
-                        if(args[j] instanceof Model){
-                            request.setAttribute("isLogin",true);
-                            request.setAttribute("userName",SessionUtil.getStudentNickname(request));
-                            System.out.println("============>in aspect set model attribute");
-                        }
-                    }
+                    request.setAttribute("loginFlag",true);
+                    request.setAttribute("studentNickname",SessionUtil.getStudentNickname(request));
+                    System.out.println("============>in aspect set model attribute");
                 }
 
             }

@@ -2,11 +2,11 @@ package team.ustc.sse.blockly.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import team.ustc.sse.blockly.entity.*;
 import team.ustc.sse.blockly.service.inte.AdminService;
+import team.ustc.sse.blockly.util.SessionUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -33,6 +33,7 @@ public class AdminController {
     //最近一周闯关次数
     @RequestMapping(value = "/index",method = {RequestMethod.GET})
     public String index(HttpServletRequest request){
+        SessionUtil.setAdminLogin(new Admin(),request );
         int studentSize = adminServiceImpl.getAllStudents().size();
         int loginTimes = adminServiceImpl.getLoginMessagePast(7).size();   //获取最近一周的访问次数
         int checkoutpointCounts = adminServiceImpl.getCheckoutpointCountsPast(7);
@@ -76,16 +77,16 @@ public class AdminController {
 
     //单个学生的loginmessage
     @RequestMapping(value = "/showStudentLoginMessage",method = {RequestMethod.POST})
-    public String showStudentLoginMessage(int studentID,HttpServletRequest request,Model model){
+    public String showStudentLoginMessage(int studentID,HttpServletRequest request){
         List<Studentloginmessage> Studentloginmessage = adminServiceImpl.getStudentLoginMessages(studentID);
-        model.addAttribute("LoginMessageList",Studentloginmessage);
+        request.setAttribute("LoginMessageList",Studentloginmessage);
         return "admin_showStudentLoginMessage";
     }
 
 
     //部分post请求
     @RequestMapping(value = "/loginControl",method = {RequestMethod.POST})
-    public String login(Admin admin, HttpServletRequest request,Model model){
+    public String login(Admin admin, HttpServletRequest request){
         if(admin.getAdminaccount() == null || admin.getAdminpassword()==null)return "wrong";
         boolean result = adminServiceImpl.adminLogin(admin,request);
         if(result)return "admin_index";
@@ -93,7 +94,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/setAdminPassword",method = {RequestMethod.POST})
-    public String changeAdminPassword(String oldPassword, String newPassword, HttpServletRequest request,Model model){
+    public String changeAdminPassword(String oldPassword, String newPassword, HttpServletRequest request){
         String account = (String) request.getSession().getAttribute("adminAccount");
         Admin admin = new Admin();
         admin.setAdminaccount(account);
