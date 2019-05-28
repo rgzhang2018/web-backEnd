@@ -33,7 +33,6 @@ public class AdminController {
     //最近一周闯关次数
     @RequestMapping(value = "/index",method = {RequestMethod.GET})
     public String index(HttpServletRequest request){
-        SessionUtil.setAdminLogin(new Admin(),request );
         int studentSize = adminServiceImpl.getAllStudents().size();
         int loginTimes = adminServiceImpl.getLoginMessagePast(7).size();   //获取最近一周的访问次数
         int checkoutpointCounts = adminServiceImpl.getCheckoutpointCountsPast(7);
