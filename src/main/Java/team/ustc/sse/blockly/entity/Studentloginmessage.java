@@ -57,4 +57,15 @@ public class Studentloginmessage {
         this.loginmessage = loginmessage;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Studentloginmessage{" +
+                "studentloginid=" + studentloginid +
+                ", studentid=" + studentid +
+                ", loginip='" + loginip + '\'' +
+                ", logindata=" + logindata +
+                ", loginmessage='" + loginmessage + '\'' +
+                '}';
+    }
 }

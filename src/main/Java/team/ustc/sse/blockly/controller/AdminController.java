@@ -22,7 +22,7 @@ public class AdminController {
     private AdminService adminServiceImpl;
 
     @RequestMapping(value = "/login",method = {RequestMethod.GET})
-    public String login(){
+    public String login(HttpServletRequest request){
         return "admin/admin_login";
     }
 
@@ -51,7 +51,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/changeAdminPassword",method = {RequestMethod.GET})
-    public String changeAdminPassword(){
+    public String changeAdminPassword(HttpServletRequest request){
         return "admin/admin_changeAdminPassword";
     }
 

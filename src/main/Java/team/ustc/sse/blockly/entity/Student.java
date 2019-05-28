@@ -112,4 +112,21 @@ public class Student {
     public void setStudentregistertime(Date studentregistertime) {
         this.studentregistertime = studentregistertime;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentid=" + studentid +
+                ", studentname='" + studentname + '\'' +
+                ", studentgender='" + studentgender + '\'' +
+                ", studentemail='" + studentemail + '\'' +
+                ", studentage=" + studentage +
+                ", studentphone='" + studentphone + '\'' +
+                ", studentschool='" + studentschool + '\'' +
+                ", studentnumber='" + studentnumber + '\'' +
+                ", studentgrade='" + studentgrade + '\'' +
+                ", studentremark='" + studentremark + '\'' +
+                ", studentregistertime=" + studentregistertime +
+                '}';
+    }
 }

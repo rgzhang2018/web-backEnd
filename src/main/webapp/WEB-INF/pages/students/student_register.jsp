@@ -49,7 +49,7 @@ To change this template use File | Settings | File Templates.
         <div class="am-form-group">
             <label for="reg-user" class="am-u-sm-2 am-form-label">用户名</label>
             <div class="am-u-sm-10">
-                <input type="text" name="studentaccount" id="reg-user" placeholder="可以是邮箱/手机号" onblur="emailChick()">
+                <input type="text" name="studentaccount" id="reg-user" placeholder="可以是邮箱/手机号等" onblur="emailChick()">
             </div>
         </div>
 

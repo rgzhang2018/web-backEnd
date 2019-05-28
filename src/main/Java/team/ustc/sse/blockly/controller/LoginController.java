@@ -26,7 +26,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/register",method = {RequestMethod.GET})
-    public String register(){
+    public String register(HttpServletRequest request){
         return "students/student_register";
     }
 
@@ -34,18 +34,28 @@ public class LoginController {
     @RequestMapping(value = "/studentLogin" ,method = {RequestMethod.POST})
     public String studentLogin(Studentlogin studentLogin, Boolean remember,HttpServletRequest request){
         if(remember == null)remember=false;
-        if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "demo/wrong";
+        if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null){
+            request.setAttribute("message","请输入用户名或和密码");
+            return "demo/wrong";
+        }
         boolean result = studentLoginService.studentLogin(studentLogin,remember,request );
-        if(!result)return "demo/wrong";
-        return "demo/success";
+        if(!result){
+            request.setAttribute("message","用户名或密码错误");
+            return "demo/wrong";
+        }
+        return "students/checkpoints";
     }
 
     @RequestMapping(value = "/studentRegister" ,method = {RequestMethod.POST})
     public String studentRegister(Studentlogin studentLogin, Student student,HttpServletRequest request){
         System.out.println(studentLogin);
+        System.out.println(student);
         if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "demo/wrong";
         boolean result = studentLoginService.studentRegister( studentLogin,student,request);
-        if(!result)return "demo/wrong";
+        if(!result){
+            request.setAttribute("message","注册失败，请重新尝试");
+            return "demo/wrong";
+        }
         return "students/student_login";
     }
 

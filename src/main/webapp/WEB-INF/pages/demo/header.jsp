@@ -22,7 +22,7 @@ To change this template use File | Settings | File Templates.
 
     <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
         <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li class="am-active"><a href="${pageContext.request.contextPath }/rest//student/index">首页</a></li>
+            <li><a href="${pageContext.request.contextPath }/rest//student/index">首页</a></li>
             <li><a href="${pageContext.request.contextPath }/rest//game/checkpoints">开始游戏</a></li>
             <li><a href="#">联系我们</a></li>
 
@@ -38,21 +38,31 @@ To change this template use File | Settings | File Templates.
             <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
                 <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle>其他 <span class="am-icon-caret-down"></span></button>
                 <ul class="am-dropdown-content">
-                    <li><a href="visitor_register.html">注册</a></li>
-                    <li><a href="#">随便看看</a></li>
+                    <li><a href="${pageContext.request.contextPath }/rest//loginControl/register">注册</a></li>
+                    <li><a href="https://github.com/ustc-group" >关于我们</a></li>
+                    <li><a href="https://github.com/ustc-group">GitHub</a></li>
                 </ul>
             </div>
         </div>
 
+        <%
+            Boolean f = (Boolean) request.getAttribute("loginFlag");
+            if(f==null || !f){
+        %>
         <div class="am-topbar-right">
             <a href="visitor_login.html" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</a>
         </div>
-
+        <%
+            }else{
+        %>
         <div class="am-topbar-right">
-            <a href="#">
-                <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><i class="am-icon-github am-icon-fw am-u-sm-left "></i>GitHub</button>
-            </a>
+            <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm">欢迎您，${studentNickname}</a>
         </div>
+        <%
+            }
+        %>
+
+
 
     </div>
 </header>

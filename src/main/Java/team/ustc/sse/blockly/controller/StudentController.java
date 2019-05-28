@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/student")
 public class StudentController {
@@ -17,7 +19,7 @@ public class StudentController {
      * @Date: 2019/3/10
      */
     @RequestMapping(value = "index",method = {RequestMethod.GET})
-    public String index(){
+    public String index(HttpServletRequest request){
         return "students/index";
     }
 

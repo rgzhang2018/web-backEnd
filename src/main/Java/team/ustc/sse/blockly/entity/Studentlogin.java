@@ -40,4 +40,14 @@ public class Studentlogin {
     public void setNickname(String nickname) {
         this.nickname = nickname == null ? null : nickname.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Studentlogin{" +
+                "studentid=" + studentid +
+                ", studentaccount='" + studentaccount + '\'' +
+                ", studentpassword='" + studentpassword + '\'' +
+                ", nickname='" + nickname + '\'' +
+                '}';
+    }
 }

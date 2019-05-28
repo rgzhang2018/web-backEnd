@@ -41,13 +41,28 @@ ${pageContext.request.contextPath }/static/lib/assets/
 
     <div id="topbar" style="display: flex;justify-content: space-between;">
         <div id="topbar-left">
-            <a href="HomePage.html" class="am-icon-btn am-secondary am-icon-reddit-alien"></a>
-            <a href="Menu.html" style="color: white;padding-left:20px;">课程分类</a>
+            <a href="${pageContext.request.contextPath }/rest/student/index" class="am-icon-btn am-secondary am-icon-reddit-alien"></a>
+            <a href="#" style="color: white;padding-left:20px;">课程分类</a>
         </div>
 
 
+
+
         <div id="header-right" class="am-btn-group">
-            <a href="visitor_login.html" class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="border:2px solid white;border-radius: 5px;margin-top:10px;background-color: #0e90d2;">登录</a>
+            <%
+                Boolean f = (Boolean) request.getAttribute("loginFlag");
+                if(f==null || !f){
+            %>
+            <a href="visitor_login.html" class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="border:2px solid white;border-radius: 5px;margin-top:10px;background-color: #0e90d2;">
+                登录&nbsp;&nbsp;&nbsp;
+            </a>
+            <%
+            }else{
+            %>
+            <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm">欢迎您，${studentNickname} &nbsp;&nbsp;&nbsp;</a>
+            <%
+                }
+            %>
 
             <div class="am-dropdown" data-am-dropdown>
                 <button data-am-dropdown-toggle
@@ -57,8 +72,10 @@ ${pageContext.request.contextPath }/static/lib/assets/
                     <!-- <i class="am-icon-bars"></i> -->
                 </button>
                 <ul class="am-dropdown-content" style="background-color: #0e90d2;">
-                    <li><a href="Menu.html" >课程分类</a></li>
-                    <li><a href="#" >关于我们</a></li>
+                    <li><a href="${pageContext.request.contextPath }/rest/student/index" >回到主页</a></li>
+                    <li><a href="${pageContext.request.contextPath }/rest//loginControl/register" >注册新用户</a></li>
+                    <li><a href="https://github.com/ustc-group" >关于我们</a></li>
+                    <li><a href="https://github.com/ustc-group" >GitHub</a></li>
                 </ul>
             </div>
 
