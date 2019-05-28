@@ -23,7 +23,7 @@ public class AdminController {
     private AdminService adminServiceImpl;
 
     @RequestMapping(value = "/login",method = {RequestMethod.GET})
-    public String login(HttpServletRequest request){
+    public String login(HttpServletRequest request, Model model){
         return "admin_login";
     }
 
@@ -32,7 +32,7 @@ public class AdminController {
     //总注册用户数
     //最近一周闯关次数
     @RequestMapping(value = "/index",method = {RequestMethod.GET})
-    public String adminIndex(Model model){
+    public String index(HttpServletRequest request,Model model){
         int studentSize = adminServiceImpl.getAllStudents().size();
         int loginTimes = adminServiceImpl.getLoginMessagePast(7).size();   //获取最近一周的访问次数
         int checkoutpointCounts = adminServiceImpl.getCheckoutpointCountsPast(7);
@@ -44,7 +44,7 @@ public class AdminController {
 
     //最近10次的loginmessage
     @RequestMapping(value = "/recentLoginMessage",method = {RequestMethod.GET})
-    public String recentLoginMessage(Model model){
+    public String recentLoginMessage(HttpServletRequest request,Model model){
         List<Studentloginmessage> list = adminServiceImpl.getTenStudentLoginMessages();
         model.addAttribute("list",list);
         return "admin_recentLoginMessage";
@@ -67,7 +67,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/showCheckoutPoint",method = {RequestMethod.POST})
-    public String showCheckoutPoint(int studentID,Model model){
+    public String showCheckoutPoint(int studentID,HttpServletRequest request,Model model){
         List<Checkoutpoint> checkoutpointList = adminServiceImpl.getCheckoutpointByStudentID(studentID);
         model.addAttribute("checkoutpointList",checkoutpointList);
         return "admin_showCheckoutPoint";
@@ -75,7 +75,7 @@ public class AdminController {
 
     //单个学生的loginmessage
     @RequestMapping(value = "/showStudentLoginMessage",method = {RequestMethod.POST})
-    public String showStudentLoginMessage(int studentID,Model model){
+    public String showStudentLoginMessage(int studentID,HttpServletRequest request,Model model){
         List<Studentloginmessage> Studentloginmessage = adminServiceImpl.getStudentLoginMessages(studentID);
         model.addAttribute("LoginMessageList",Studentloginmessage);
         return "admin_showStudentLoginMessage";
@@ -84,7 +84,7 @@ public class AdminController {
 
     //部分post请求
     @RequestMapping(value = "/loginControl",method = {RequestMethod.POST})
-    public String loginControl(Admin admin, HttpServletRequest request){
+    public String login(Admin admin, HttpServletRequest request,Model model){
         if(admin.getAdminaccount() == null || admin.getAdminpassword()==null)return "wrong";
         boolean result = adminServiceImpl.adminLogin(admin,request);
         if(result)return "admin_index";
@@ -92,7 +92,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/setAdminPassword",method = {RequestMethod.POST})
-    public String changeAdminPassword(String oldPassword, String newPassword, HttpServletRequest request){
+    public String changeAdminPassword(String oldPassword, String newPassword, HttpServletRequest request,Model model){
         String account = (String) request.getSession().getAttribute("adminAccount");
         Admin admin = new Admin();
         admin.setAdminaccount(account);

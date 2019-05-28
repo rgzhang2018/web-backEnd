@@ -63,28 +63,27 @@ public class GameController {
     * @return: java.lang.String
     * @Author: rgzhang
     */
-    @RequestMapping(value = "/getCheckpoint",method = {RequestMethod.GET})
-    public String getCheckpoint(HttpServletRequest request){
+    @RequestMapping(value = "/getCheckpoint",method = {RequestMethod.POST})
+    public String getCheckpoint(HttpServletRequest request, Model model){
         System.out.println(request.getRequestURI());
-
         return "student_login";
     }
 
 
     /**
-     * @Description: 打开闯关页面，返回的successLists表示已经通过的关卡
+     * @Description: 学生打开闯关页面，返回的successLists表示已经通过的关卡
      * @Param: [request, model]
      * @return: java.lang.String
      * @Author: rgzhang
      */
     @RequestMapping(value = "/checkpoints",method = {RequestMethod.GET})
-    public String getCheckPoints(HttpServletRequest request, Model model){
+    public String checkPoints(HttpServletRequest request, Model model){
         if(SessionUtil.checkStudentLogin(request)){
             Integer studentID = SessionUtil.getStudentID(request);
             List<Checkoutpoint> successLists = gameServiceImpl.getSuccessMessageByStudent(studentID);
             model.addAttribute("successLists",successLists);
         }
-        return "checkpoints";
+        return "student_checkpoints";
     }
 
 }

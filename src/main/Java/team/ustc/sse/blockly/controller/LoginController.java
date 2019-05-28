@@ -3,6 +3,7 @@ package team.ustc.sse.blockly.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -31,15 +32,14 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/register",method = {RequestMethod.GET})
-    public String register(HttpServletResponse response ,HttpServletRequest request){
-
+    public String register(HttpServletResponse response , Model model){
 
         return "student_register";
     }
 
 
     @RequestMapping(value = "/studentLogin" ,method = {RequestMethod.POST})
-    public String studentLogin(Studentlogin studentLogin, Boolean remember,HttpServletRequest request){
+    public String studentLogin(Studentlogin studentLogin, Boolean remember,HttpServletRequest request,Model model){
         if(remember == null)remember=false;
         if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "wrong";
         boolean result = studentLoginService.studentLogin(studentLogin,remember,request );
@@ -48,14 +48,12 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/studentRegister" ,method = {RequestMethod.POST})
-    public String studentRegister(Studentlogin studentLogin, Student student,HttpServletRequest request){
+    public String studentRegister(Studentlogin studentLogin, Student student,HttpServletRequest request,Model model){
         System.out.println(studentLogin);
         if(studentLogin.getStudentaccount() ==null || studentLogin.getStudentpassword() == null)return "wrong";
         boolean result = studentLoginService.studentRegister( studentLogin,student,request);
         if(!result)return "wrong";
         return "student_login";
     }
-
-
 
 }
