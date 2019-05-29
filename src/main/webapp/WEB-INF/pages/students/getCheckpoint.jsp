@@ -87,4 +87,8 @@
         }
     %>
 
+
+
+
+<%@ include file="checkpointAjax.jsp"%>
 <%@ include file="../demo/footer.jsp"%>

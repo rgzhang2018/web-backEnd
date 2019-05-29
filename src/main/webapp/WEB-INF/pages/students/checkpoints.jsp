@@ -128,35 +128,35 @@ ${pageContext.request.contextPath }/static/lib/assets/
             <tr>
                 <td>2.迷宫与蜜蜂</td>
                 <td>
-                    <a href="Course2-1.html" type="button" class="am-btn am-btn-success am-round">1</a>
-                    <a href="Course2-2.html" type="button" class="am-btn am-btn-default am-round">2</a>
-                    <a href="Course2-3.html" id="2-3" type="button" class="am-btn am-btn-default am-round">3</a>
-                    <a href="Course2-4.html" type="button" class="am-btn am-btn-default am-round">4</a>
-                    <a href="Course2-5.html" type="button" class="am-btn am-btn-default am-round">5</a>
-                    <a href="Course2-6.html" type="button" class="am-btn am-btn-default am-round">6</a>
-                    <a href="Course2-7.html" type="button" class="am-btn am-btn-default am-round">7</a>
-                    <a href="Course2-8.html" type="button" class="am-btn am-btn-default am-round">8</a>
-                    <a href="Course2-9.html" type="button" class="am-btn am-btn-default am-round">9</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=2-1.html" id="2-1" type="button" class="am-btn am-btn-success am-round">1</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=2-2.html" id="2-2" type="button" class="am-btn am-btn-default am-round">2</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=2-3.html" id="2-3" type="button" class="am-btn am-btn-default am-round">3</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=2-4.html" id="2-4" type="button" class="am-btn am-btn-default am-round">4</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=2-5.html"  id="2-5" type="button" class="am-btn am-btn-default am-round">5</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=2-6.html"  id="2-6" type="button" class="am-btn am-btn-default am-round">6</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=2-7.html"  id="2-7" type="button" class="am-btn am-btn-default am-round">7</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=2-8.html"  id="2-8" type="button" class="am-btn am-btn-default am-round">8</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=2-9.html"  id="2-9" type="button" class="am-btn am-btn-default am-round">9</a>
                 </td>
             </tr>
             <tr>
                 <td>3.小艺术家</td>
                 <td>
-                    <a href="Course2-1.html" type="button" class="am-btn am-btn-default am-round">1</a>
-                    <a href="Course2-2.html" type="button" class="am-btn am-btn-default am-round">2</a>
-                    <a href="Course2-3.html" type="button" class="am-btn am-btn-default am-round">3</a>
-                    <a href="Course2-4.html" type="button" class="am-btn am-btn-default am-round">4</a>
-                    <a href="Course2-5.html" type="button" class="am-btn am-btn-default am-round">5</a>
-                    <a href="Course2-6.html" type="button" class="am-btn am-btn-default am-round">6</a>
-                    <a href="Course2-7.html" type="button" class="am-btn am-btn-default am-round">7</a>
-                    <a href="Course2-8.html" type="button" class="am-btn am-btn-default am-round">8</a>
-                    <a href="Course2-9.html" type="button" class="am-btn am-btn-default am-round">9</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=3-1.html" type="button" class="am-btn am-btn-default am-round">1</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=3-2.html" type="button" class="am-btn am-btn-default am-round">2</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=3-3.html" type="button" class="am-btn am-btn-default am-round">3</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=3-4.html" type="button" class="am-btn am-btn-default am-round">4</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=3-5.html" type="button" class="am-btn am-btn-default am-round">5</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=3-6.html" type="button" class="am-btn am-btn-default am-round">6</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=3-7.html" type="button" class="am-btn am-btn-default am-round">7</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=3-8.html" type="button" class="am-btn am-btn-default am-round">8</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=3-9.html" type="button" class="am-btn am-btn-default am-round">9</a>
                 </td>
             </tr>
             <tr>
                 <td>4.离线：封装变量</td>
                 <td>
-                    <button type="button" class="am-btn am-btn-default am-round">线下的活动</button>
+                    <button type="button" class="am-btn am-btn-default am-round"><a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=4-1.html">线下的活动</a></button>
                 </td>
             </tr>
             <tr>
@@ -202,15 +202,15 @@ ${pageContext.request.contextPath }/static/lib/assets/
             <tr>
                 <td>9.蜜蜂：计数循环</td>
                 <td>
-                    <a href="Course2-1.html" type="button" class="am-btn am-btn-default am-round">1</a>
-                    <a href="Course2-2.html" type="button" class="am-btn am-btn-default am-round">2</a>
-                    <a href="Course2-3.html" type="button" class="am-btn am-btn-default am-round">3</a>
-                    <a href="Course2-4.html" type="button" class="am-btn am-btn-default am-round">4</a>
-                    <a href="Course2-5.html" type="button" class="am-btn am-btn-default am-round">5</a>
-                    <a href="Course2-6.html" type="button" class="am-btn am-btn-default am-round">6</a>
-                    <a href="Course2-7.html" type="button" class="am-btn am-btn-default am-round">7</a>
-                    <a href="Course2-8.html" type="button" class="am-btn am-btn-default am-round">8</a>
-                    <a href="Course2-9.html" type="button" class="am-btn am-btn-default am-round">9</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=9-1" type="button" class="am-btn am-btn-default am-round">1</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=9-2" type="button" class="am-btn am-btn-default am-round">2</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=9-3" type="button" class="am-btn am-btn-default am-round">3</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=9-4" type="button" class="am-btn am-btn-default am-round">4</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=9-5" type="button" class="am-btn am-btn-default am-round">5</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=9-6" type="button" class="am-btn am-btn-default am-round">6</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=9-7" type="button" class="am-btn am-btn-default am-round">7</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=9-8" type="button" class="am-btn am-btn-default am-round">8</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=9-9" type="button" class="am-btn am-btn-default am-round">9</a>
                 </td>
             </tr>
             <tr>
@@ -244,7 +244,7 @@ ${pageContext.request.contextPath }/static/lib/assets/
             <tr>
                 <td>12.小艺术家：函数</td>
                 <td>
-                    <a href="Course2-1.html" type="button" class="am-btn am-btn-default am-round">1</a>
+                    <a href="${pageContext.request.contextPath }/rest/game/getCheckpoint?level=12-1.html" type="button" class="am-btn am-btn-default am-round">1</a>
                     <a href="Course2-2.html" type="button" class="am-btn am-btn-default am-round">2</a>
                     <a href="Course2-3.html" type="button" class="am-btn am-btn-default am-round">3</a>
                     <a href="Course2-4.html" type="button" class="am-btn am-btn-default am-round">4</a>

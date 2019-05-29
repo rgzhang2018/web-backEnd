@@ -103,9 +103,12 @@ public class GameController {
     public String getCheckpoint(HttpServletRequest request,String level){
         if(level != null){      //get请求到具体的关卡
             System.out.println(level);
-            int counts = GameUtil.getCounts(level);
+            if(level.endsWith(".html")){
+                level = level.substring(0,level.length()-5);
+            }
+//            int counts = GameUtil.getCounts(level);
             request.setAttribute("level",level);
-            request.setAttribute("counts",counts);
+//            request.setAttribute("counts",counts);
         }
         return "students/getCheckpoint";
     }
