@@ -81,6 +81,11 @@ public class LoginServiceImpl implements LoginService {
 
     //写入登录信息
     private void setStudentLoginMessage(Studentlogin studentlogin,HttpServletRequest request){
+        try {
+            throw new Exception("test aop exception");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         String ip = HttpUtil.getIpAddress(request);
         Studentloginmessage studentloginmessage = new Studentloginmessage()
                 .setLogindata(new Date())

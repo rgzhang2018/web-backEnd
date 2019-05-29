@@ -37,6 +37,14 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/lib/assets/css/amazeui.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/lib/assets/css/app.css">
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<![endif]-->
+
     <style>
         .get {
             background: #1E5B94;

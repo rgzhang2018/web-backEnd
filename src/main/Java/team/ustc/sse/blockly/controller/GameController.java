@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.ustc.sse.blockly.entity.Checkoutpoint;
 import team.ustc.sse.blockly.service.inte.GameService;
-import team.ustc.sse.blockly.util.CheckpointUtil;
+import team.ustc.sse.blockly.util.GameUtil;
 import team.ustc.sse.blockly.util.SessionUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -76,20 +76,34 @@ public class GameController {
      */
     @RequestMapping(value = "/checkpoints",method = {RequestMethod.GET})
     public String checkPoints(HttpServletRequest request){
+//        if(SessionUtil.checkStudentLogin(request)){
+//            Integer studentID = SessionUtil.getStudentID(request);
+//            List<Checkoutpoint> checkoutpointList = gameServiceImpl.getSuccessMessageByStudent(studentID);
+//            List<List<Boolean>> successLists = GameUtil.turnSuccessToList(checkoutpointList);
+//            request.setAttribute("successLists",successLists);
+//        }
+        return "students/checkpoints";
+    }
+
+    @RequestMapping(value = "/checkpointsAjax",method = {RequestMethod.POST})
+    public @ResponseBody List<String> checkPointsAjax(HttpServletRequest request,HttpServletResponse response){
+        response.setContentType("application/json; charset=utf-8");
         if(SessionUtil.checkStudentLogin(request)){
             Integer studentID = SessionUtil.getStudentID(request);
-            List<Checkoutpoint> successLists = gameServiceImpl.getSuccessMessageByStudent(studentID);
-            request.setAttribute("successLists",successLists);
+            List<Checkoutpoint> checkoutpointList = gameServiceImpl.getSuccessMessageByStudent(studentID);
+            List<String> successList = GameUtil.turnSuccessToString(checkoutpointList);
+            System.out.println(successList);
+            return successList;
         }
-        return "students/checkpoints";
+        return null;
     }
 
 
     @RequestMapping(value = "/getCheckpoint",method = {RequestMethod.GET})
-    public String getCheckpoints(HttpServletRequest request,String level){
-        if(level != null){
+    public String getCheckpoint(HttpServletRequest request,String level){
+        if(level != null){      //get请求到具体的关卡
             System.out.println(level);
-            int counts = CheckpointUtil.getCounts(level);
+            int counts = GameUtil.getCounts(level);
             request.setAttribute("level",level);
             request.setAttribute("counts",counts);
         }

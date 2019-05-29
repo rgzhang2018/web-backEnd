@@ -130,7 +130,7 @@ ${pageContext.request.contextPath }/static/lib/assets/
                 <td>
                     <a href="Course2-1.html" type="button" class="am-btn am-btn-success am-round">1</a>
                     <a href="Course2-2.html" type="button" class="am-btn am-btn-default am-round">2</a>
-                    <a href="Course2-3.html" type="button" class="am-btn am-btn-default am-round">3</a>
+                    <a href="Course2-3.html" id="2-3" type="button" class="am-btn am-btn-default am-round">3</a>
                     <a href="Course2-4.html" type="button" class="am-btn am-btn-default am-round">4</a>
                     <a href="Course2-5.html" type="button" class="am-btn am-btn-default am-round">5</a>
                     <a href="Course2-6.html" type="button" class="am-btn am-btn-default am-round">6</a>
@@ -168,15 +168,15 @@ ${pageContext.request.contextPath }/static/lib/assets/
             <tr>
                 <td>6.小艺术家：变量</td>
                 <td>
-                    <a href="Course2-1.html" type="button" class="am-btn am-btn-default am-round">1</a>
-                    <a href="Course2-2.html" type="button" class="am-btn am-btn-default am-round">2</a>
-                    <a href="Course2-3.html" type="button" class="am-btn am-btn-default am-round">3</a>
-                    <a href="Course2-4.html" type="button" class="am-btn am-btn-default am-round">4</a>
-                    <a href="Course2-5.html" type="button" class="am-btn am-btn-default am-round">5</a>
-                    <a href="Course2-6.html" type="button" class="am-btn am-btn-default am-round">6</a>
-                    <a href="Course2-7.html" type="button" class="am-btn am-btn-default am-round">7</a>
-                    <a href="Course2-8.html" type="button" class="am-btn am-btn-default am-round">8</a>
-                    <a href="Course2-9.html" type="button" class="am-btn am-btn-default am-round">9</a>
+                    <a href="Course2-1.html" id="6-1" type="button" class="am-btn am-btn-default am-round">1</a>
+                    <a href="Course2-2.html" id="6-2" type="button" class="am-btn am-btn-default am-round">2</a>
+                    <a href="Course2-3.html" id="6-3" type="button" class="am-btn am-btn-default am-round">3</a>
+                    <a href="Course2-4.html" id="6-4" type="button" class="am-btn am-btn-default am-round">4</a>
+                    <a href="Course2-5.html" id="6-5" type="button" class="am-btn am-btn-default am-round">5</a>
+                    <a href="Course2-6.html" id="6-6" type="button" class="am-btn am-btn-default am-round">6</a>
+                    <a href="Course2-7.html" id="6-7" type="button" class="am-btn am-btn-default am-round">7</a>
+                    <a href="Course2-8.html" id="6-8" type="button" class="am-btn am-btn-default am-round">8</a>
+                    <a href="Course2-9.html" id="6-9" type="button" class="am-btn am-btn-default am-round">9</a>
                 </td>
             </tr>
             <tr>
@@ -343,5 +343,49 @@ ${pageContext.request.contextPath }/static/lib/assets/
     </div>
 </div>
 
+
+<script>
+
+    //ajax：获取到闯关结果信息，修改对应关卡颜色
+    function getSuccessMessage() {
+        var url='<%=request.getContextPath()%>/rest/game/checkpointsAjax';
+        // alert("url="+url);
+        var data={
+        };
+        $.ajax({
+            type:'POST',
+            contentType : 'application/json;charset=utf-8',
+            url:url,
+            dataType:"json",
+            data:JSON.stringify(data),
+            success:function(successList){ //data就是返回的数据，data['program']就是闯关信息
+                // alert(successList);
+                if(successList !=null)setSuccess(successList);
+            },
+            // error: function(XMLHttpRequest, textStatus, errorThrown){
+            //     alert(XMLHttpRequest.status);
+            //     alert(XMLHttpRequest.readyState);
+            //     alert(textStatus);
+            // }
+        })
+    }
+
+    function setSuccess(successList) {
+        for( var i=0;i<successList.length ;i++){
+            // alert(successList[i]);
+            var elementID = successList[i];
+            var e = document.getElementById(elementID);
+            // var classVal = e.getAttribute("class");
+            // classVal.replace("am-btn-default","");
+            // classVal.concat(" am-btn-success");
+            // e.setAttribute("class",classVal);
+            e.classList.remove("am-btn-default");
+            e.classList.add("am-btn-success");
+
+        }
+    }
+
+    getSuccessMessage();
+</script>
 
 <%@ include file="../demo/footer.jsp"%>
