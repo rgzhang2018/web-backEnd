@@ -2,6 +2,7 @@ package team.ustc.sse.blockly.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import team.ustc.sse.blockly.entity.*;
@@ -86,6 +87,7 @@ public class AdminController {
     //部分post请求
     @RequestMapping(value = "/loginControl",method = {RequestMethod.POST})
     public String login(Admin admin, HttpServletRequest request){
+        System.out.println(admin);
         if(admin.getAdminaccount() == null || admin.getAdminpassword()==null)return "demo/wrong";
         boolean result = adminServiceImpl.adminLogin(admin,request);
         if(result)return "admin/admin_index";

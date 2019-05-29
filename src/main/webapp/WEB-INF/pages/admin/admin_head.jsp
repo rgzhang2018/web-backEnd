@@ -9,7 +9,8 @@
 
 <%
     Boolean f = (Boolean) request.getAttribute("adminFlag");
-    if(f==null || !f){
+    Boolean ses = (Boolean) request.getSession().getAttribute("adminFlag");
+    if(f==null && ses ==null){
 %>
 <jsp:forward page="../demo/wrong.jsp" />;
 <%

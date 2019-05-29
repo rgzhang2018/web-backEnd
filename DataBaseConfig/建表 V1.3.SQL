@@ -343,6 +343,8 @@ DROP COLUMN `freeModeID`,
 DROP PRIMARY KEY,
 ADD PRIMARY KEY (`studentID`);
 ;
+ALTER TABLE `code`.`checkoutpoint`
+CHANGE COLUMN `program` `program` VARCHAR(2000) NULL DEFAULT NULL ;
 
 
 

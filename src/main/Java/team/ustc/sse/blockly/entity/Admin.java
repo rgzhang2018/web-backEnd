@@ -50,4 +50,15 @@ public class Admin {
     public void setAdminmessage(String adminmessage) {
         this.adminmessage = adminmessage == null ? null : adminmessage.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "adminid=" + adminid +
+                ", adminaccount='" + adminaccount + '\'' +
+                ", adminpassword='" + adminpassword + '\'' +
+                ", adminleval=" + adminleval +
+                ", adminmessage='" + adminmessage + '\'' +
+                '}';
+    }
 }

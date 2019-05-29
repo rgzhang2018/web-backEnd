@@ -6,17 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!doctype html>
-<html class="no-js">
-<head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
-    <title>#</title>
-
     <!-- Set render engine for 360 browser -->
     <meta name="renderer" content="webkit">
 
@@ -138,5 +134,5 @@
             background-color: #0e90d2;
         }
     </style>
-</head>
+
 

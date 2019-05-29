@@ -7,8 +7,13 @@ ${pageContext.request.contextPath }/static/lib/assets/
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="../demo/html_head.jsp"%>
 
+<!doctype html>
+<html class="no-js">
+<head>
+    <title>关卡选择</title>
+    <%@ include file="../demo/html_head.jsp"%>
+</head>
 <style>
     html,body {
         margin: 0;
@@ -94,7 +99,7 @@ ${pageContext.request.contextPath }/static/lib/assets/
             当这节课结束的时候，同学们将得以真正地编写程序来展现他们所学会的多种技能，
             包括用于循环的函数与带有参数的函数。建议4-8年级同学学习。
         </small>
-
+        <a href="./getCheckpoint?level=12-3">asdasdaaa</a>
     </div>
     <div id="image">
         <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" width="140" height="140" alt="140*140"/>
@@ -123,7 +128,7 @@ ${pageContext.request.contextPath }/static/lib/assets/
             <tr>
                 <td>2.迷宫与蜜蜂</td>
                 <td>
-                    <a href="Course2-1.html" type="button" class="am-btn am-btn-default am-round">1</a>
+                    <a href="Course2-1.html" type="button" class="am-btn am-btn-success am-round">1</a>
                     <a href="Course2-2.html" type="button" class="am-btn am-btn-default am-round">2</a>
                     <a href="Course2-3.html" type="button" class="am-btn am-btn-default am-round">3</a>
                     <a href="Course2-4.html" type="button" class="am-btn am-btn-default am-round">4</a>

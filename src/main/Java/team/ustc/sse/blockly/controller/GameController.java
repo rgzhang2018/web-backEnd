@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.ustc.sse.blockly.entity.Checkoutpoint;
 import team.ustc.sse.blockly.service.inte.GameService;
+import team.ustc.sse.blockly.util.CheckpointUtil;
 import team.ustc.sse.blockly.util.SessionUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -81,6 +82,18 @@ public class GameController {
             request.setAttribute("successLists",successLists);
         }
         return "students/checkpoints";
+    }
+
+
+    @RequestMapping(value = "/getCheckpoint",method = {RequestMethod.GET})
+    public String getCheckpoints(HttpServletRequest request,String level){
+        if(level != null){
+            System.out.println(level);
+            int counts = CheckpointUtil.getCounts(level);
+            request.setAttribute("level",level);
+            request.setAttribute("counts",counts);
+        }
+        return "students/getCheckpoint";
     }
 
 }
