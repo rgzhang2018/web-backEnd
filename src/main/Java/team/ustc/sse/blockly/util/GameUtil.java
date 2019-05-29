@@ -13,8 +13,8 @@ import java.util.logging.Level;
  * create time: 2019-05-28
  **/
 public class GameUtil {
-    private static final Integer MAX_LEVEL = 20;
-    private static final Integer[] LEVEL_COUNTS = {0,1,9,9,1,1,9,9,1,9,9,9,9,1,9,9,9,1,9,9};    //第0个下标设置为0
+    public static final Integer MAX_LEVEL = 20;
+    public static final Integer[] LEVEL_COUNTS = {0,1,9,9,1,1,9,9,1,9,9,9,9,1,9,9,9,1,9,9};    //第0个下标设置为0
     public static final String[] LEVEL_NAME = {
             "0.null","1.离线：七巧板","2.迷宫与蜜蜂","3.小艺术家","4.离线：封装变量","5.离线：疯狂填词","6.小艺术家：变量",
             "7.游戏实验室：变量","8.离线：计数循环的乐趣","9.蜜蜂：计数循环","10.小艺术家：计数循环"

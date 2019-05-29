@@ -16,7 +16,7 @@
         return "";
     }
 
-    alert(GetQueryString("level"))
+    // alert(GetQueryString("level"))
 
     function setSuccessAjax() {
         var url='<%=request.getContextPath()%>/rest/gameController/saveCheckoutPoint';

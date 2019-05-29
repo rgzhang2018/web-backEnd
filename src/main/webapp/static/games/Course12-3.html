@@ -1,11 +1,8 @@
 
 <body>
-
+	<!-- 引入个人js -->
+	<script src="/static/lib/myblock/zy_blocks.js"></script>
 	<!-- 导航条 -->
-
-		 <!-- 引入个人js -->
-	 <script src="/static/lib/myblock/zy_blocks.js"></script>
-
 	<div id="topbar" style="display: flex;justify-content: space-between;">
 		<div id="topbar-left">
 				<a href="##" class="am-icon-btn am-secondary am-icon-reddit-alien"></a>
@@ -16,9 +13,9 @@
 						<a href="HomePage.html" style="color:white">课程12：小艺术家：函数</a>
 				</div>
 				<div id="pagination" style="border:2px solid white;border-radius: 5px;padding:2px 0;margin:5px 0;background-color: #0e90d2;">
-						<a href="./getCheckpoint?level=12-1" type="button" class="am-btn am-btn-primary am-round am-active">1</a>
+						<a href="./getCheckpoint?level=12-1" type="button" class="am-btn am-btn-primary am-round">1</a>
 						<a href="./getCheckpoint?level=12-2" type="button" class="am-btn am-btn-primary am-round">2</a>
-						<a href="./getCheckpoint?level=12-3" type="button" class="am-btn am-btn-primary am-round">3</a>
+						<a href="./getCheckpoint?level=12-3" type="button" class="am-btn am-btn-primary am-round am-active">3</a>
 						<a href="./getCheckpoint?level=12-4" type="button" class="am-btn am-btn-primary am-round">4</a>
 						<a href="./getCheckpoint?level=12-5" type="button" class="am-btn am-btn-primary am-round">5</a>
 						<a href="./getCheckpoint?level=12-6" type="button" class="am-btn am-btn-primary am-round">6</a>
@@ -49,7 +46,51 @@
 			
 		</div>
 	</div>
+	<!--定义多层canvas的css信息-->
+	<style>
+		html,body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			background-color:#F0F0F0;
+			overflow:scroll;overflow-y:hidden;/* 禁止滚动条 */
+		}
+		#topbar{
+			background-color: #0e90d2;
+		}
+		#canvas-monkey {
+			position: absolute;
+		}
 
+		#canvas-path {
+			position: absolute;
+		}
+		#canvas-display {
+			position: absolute;
+			background-color: white;
+		}
+		#content-left{
+			width: 405px;
+			height: 90%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+		}
+		#content-right{
+
+			height: 100%;
+		}
+		#content{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap:nowrap;
+			margin-top: 10px;
+		}
+	</style>
 	<!-- 导航条下面的内容 -->
 <div id="content" >
 	<!-- 左边 -->
@@ -99,7 +140,7 @@
 				</div>
 				<div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
 				padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
-					<p>你能用重复循环，来画一个边长100像素的正方形吗？</p>
+					<p>你能用重复循环，来画一个边长100像素的三角形吗？</p>
 				</div>
 			</div>
 		<div id="headers" style="display: flex;justify-content: space-between;">
@@ -187,53 +228,50 @@
         var code = Blockly.JavaScript.workspaceToCode(workspace);
         Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
         try {
-
             alert(code);
             eval(code);
 						isRightResult();
         } catch (e) {
             alert(e);
         }
-				}else{
-					document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 运行';
-					//清除路径和猴子
-					var canvas = document.getElementById('canvas-path');
-					var context=canvas.getContext("2d");
-					context.clearRect(0,0,canvas.width,canvas.height);
-					context.beginPath();
-					var canvas = document.getElementById('canvas-monkey');
-					var context=canvas.getContext("2d");
-					context.clearRect(0,0,canvas.width,canvas.height);
-					context.beginPath();
+        }else{
+            document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 运行';
+            //清除路径和猴子
+            var canvas = document.getElementById('canvas-path');
+            var context=canvas.getContext("2d");
+            context.clearRect(0,0,canvas.width,canvas.height);
+            context.beginPath();
+            var canvas = document.getElementById('canvas-monkey');
+            var context=canvas.getContext("2d");
+            context.clearRect(0,0,canvas.width,canvas.height);
+            context.beginPath();
 
-					//重绘画布
-					 count = 0;  //用以对块计数判断
-					 direction = 0;   //记录运动的方向
-					 monkeyX = 150-40-5, monkeyY = 243-40-5;   //记录人物的位置用于重画
-					 lineX=150, lineY=243;//记录画线的初始位置
-					 imgMonkey;
-					 imgData;//画布中的像素信息，
-					$(document).ready(function(){				
-						var c=document.getElementById("canvas-display");
-						var ctx = c.getContext('2d');
-						ctx.moveTo(150,243);
-						ctx.lineTo(250,243);
-						ctx.lineTo(250,143);
-						ctx.lineTo(150,143);
-								ctx.lineTo(150,243);
-						ctx.lineWidth=5;
-						ctx.strokeStyle="grey";
-						ctx.stroke();
-						var canvasMonkey = document.getElementById('canvas-monkey');
-						var ctxMonkey = canvasMonkey.getContext('2d');
-						imgMonkey = new Image();
-						imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
-						ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
-						}); 
-					
-				}
-        
-		}
+            //重绘画布
+                count = 0;  //用以对块计数判断
+                direction = 0;   //记录运动的方向
+                monkeyX = 150-40-5, monkeyY = 243-40-5;   //记录人物的位置用于重画
+                lineX=150, lineY=243;//记录画线的初始位置
+                imgMonkey;
+                imgData;//画布中的像素信息，
+            $(document).ready(function(){				
+                var c=document.getElementById("canvas-display");
+                var ctx = c.getContext('2d');
+                ctx.moveTo(150,243);
+                ctx.lineTo(250,243);
+                ctx.lineTo(200,157);
+                ctx.lineTo(150,243);
+                ctx.lineTo(150,243);
+                ctx.lineWidth=5;
+                ctx.strokeStyle="grey";
+                ctx.stroke();
+                var canvasMonkey = document.getElementById('canvas-monkey');
+                var ctxMonkey = canvasMonkey.getContext('2d');
+                imgMonkey = new Image();
+                imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
+                ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
+                });    
+        }     
+	}
 		
 	function generateCode() {
         // Generate JavaScript code and show it.
@@ -266,9 +304,8 @@
 		var ctx = c.getContext('2d');
 		ctx.moveTo(150,243);
 		ctx.lineTo(250,243);
-		ctx.lineTo(250,143);
-		ctx.lineTo(150,143);
-        ctx.lineTo(150,243);
+		ctx.lineTo(200,157);
+		ctx.lineTo(150,243);
 		ctx.lineWidth=5;
 		ctx.strokeStyle="grey";
 		ctx.stroke();
@@ -335,12 +372,12 @@
 		var ctxPath=document.getElementById("canvas-path").getContext('2d');
 		/* var imgData=ctxPath.getImageData(0,0,400,400);
 		console.log(imgData.length); */
-		var bool=ctxPath.isPointInPath(150,143)&&ctxPath.isPointInPath(150,243);//判断点是否在canva-path中
+		var bool=ctxPath.isPointInPath(200,156)&&ctxPath.isPointInPath(150,243);//判断点是否在canva-path中
 	    if (bool) {
 	        $('#success-confirm').modal({
 	            relatedTarget: this,
 	            onConfirm: function () {
-	                window.location.replace("./getCheckpoint?level=12-2");
+	                window.location.replace("./getCheckpoint?level=12-4");
 	            },
 	            onCancel: function () {
 	
@@ -497,18 +534,6 @@
 	      }
 	    });
 </script>
-<!-- <script>
-	$(function() {
-    var $toggleButton = $('#runButton');
-    $toggleButton.on('click', function() {
-      setButtonStatus();
-    });
 
-    function setButtonStatus() {
-      var status = $toggleButton.hasClass('am-active') ? '未激活' : '激活';
-      $('#doc-single-toggle-status').text(status);
-    }
-  })
-</script> -->
 </body>
 </html>

@@ -1,11 +1,9 @@
 
 <body>
 
+	<!-- 引入个人js -->
+	<script src="/static/lib/myblock/zy_blocks.js"></script>
 	<!-- 导航条 -->
-
-		 <!-- 引入个人js -->
-	 <script src="/static/lib/myblock/zy_blocks.js"></script>
-
 	<div id="topbar" style="display: flex;justify-content: space-between;">
 		<div id="topbar-left">
 				<a href="##" class="am-icon-btn am-secondary am-icon-reddit-alien"></a>
@@ -16,8 +14,8 @@
 						<a href="HomePage.html" style="color:white">课程12：小艺术家：函数</a>
 				</div>
 				<div id="pagination" style="border:2px solid white;border-radius: 5px;padding:2px 0;margin:5px 0;background-color: #0e90d2;">
-						<a href="./getCheckpoint?level=12-1" type="button" class="am-btn am-btn-primary am-round am-active">1</a>
-						<a href="./getCheckpoint?level=12-2" type="button" class="am-btn am-btn-primary am-round">2</a>
+						<a href="./getCheckpoint?level=12-1" type="button" class="am-btn am-btn-primary am-round">1</a>
+						<a href="./getCheckpoint?level=12-2" type="button" class="am-btn am-btn-primary am-round am-active">2</a>
 						<a href="./getCheckpoint?level=12-3" type="button" class="am-btn am-btn-primary am-round">3</a>
 						<a href="./getCheckpoint?level=12-4" type="button" class="am-btn am-btn-primary am-round">4</a>
 						<a href="./getCheckpoint?level=12-5" type="button" class="am-btn am-btn-primary am-round">5</a>
@@ -99,7 +97,7 @@
 				</div>
 				<div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
 				padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
-					<p>你能用重复循环，来画一个边长100像素的正方形吗？</p>
+					<p>你能画两个正方形，每个之间相隔20像素吗？提示：每个正方形的边长是100像素</p>
 				</div>
 			</div>
 		<div id="headers" style="display: flex;justify-content: space-between;">
@@ -135,6 +133,14 @@
   <block type="turn">
     <field name="direction">turnLeft</field>
     <field name="degree">90</field>
+  </block>
+  <block type="jump">
+    <field name="jumpDirection">jumpForward</field>
+    <value name="pixel">
+      <block type="math_number">
+        <field name="NUM">100</field>
+      </block>
+    </value>
   </block>
 	<block type="controls_repeat_ext">
 	  <value name="TIMES">
@@ -173,66 +179,72 @@
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 <script>
-	//运行、重置代码
-		var bool=false;
+	var bool=false;
     function runCode() {
-				// Generate JavaScript code and run it.
-				//切换按钮的样式
-				bool=!bool;
-				if(bool){	
-					document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
-					window.LoopTrap = 1000;
+        // Generate JavaScript code and run it.
+        //切换按钮的样式
+        bool=!bool;
+        if(bool){	
+            document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
+            window.LoopTrap = 1000;
         Blockly.JavaScript.INFINITE_LOOP_TRAP =
             'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
         var code = Blockly.JavaScript.workspaceToCode(workspace);
         Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
         try {
-
             alert(code);
             eval(code);
-						isRightResult();
+			isRightResult();
         } catch (e) {
             alert(e);
         }
 				}else{
-					document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 运行';
-					//清除路径和猴子
-					var canvas = document.getElementById('canvas-path');
-					var context=canvas.getContext("2d");
-					context.clearRect(0,0,canvas.width,canvas.height);
-					context.beginPath();
-					var canvas = document.getElementById('canvas-monkey');
-					var context=canvas.getContext("2d");
-					context.clearRect(0,0,canvas.width,canvas.height);
-					context.beginPath();
-
-					//重绘画布
-					 count = 0;  //用以对块计数判断
-					 direction = 0;   //记录运动的方向
-					 monkeyX = 150-40-5, monkeyY = 243-40-5;   //记录人物的位置用于重画
-					 lineX=150, lineY=243;//记录画线的初始位置
-					 imgMonkey;
-					 imgData;//画布中的像素信息，
-					$(document).ready(function(){				
-						var c=document.getElementById("canvas-display");
-						var ctx = c.getContext('2d');
-						ctx.moveTo(150,243);
-						ctx.lineTo(250,243);
-						ctx.lineTo(250,143);
-						ctx.lineTo(150,143);
-								ctx.lineTo(150,243);
-						ctx.lineWidth=5;
-						ctx.strokeStyle="grey";
-						ctx.stroke();
-						var canvasMonkey = document.getElementById('canvas-monkey');
-						var ctxMonkey = canvasMonkey.getContext('2d');
-						imgMonkey = new Image();
-						imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
-						ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
-						}); 
-					
-				}
-        
+                    document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 运行';
+                    //清除路径和猴子
+                    var canvas = document.getElementById('canvas-path');
+                    var context=canvas.getContext("2d");
+                    context.clearRect(0,0,canvas.width,canvas.height);
+                    context.beginPath();
+                    var canvas = document.getElementById('canvas-monkey');
+                    var context=canvas.getContext("2d");
+                    context.clearRect(0,0,canvas.width,canvas.height);
+                    context.beginPath();
+                    //重绘画布
+					count = 0;  //用以对块计数判断
+                    direction = 0;   //记录运动的方向
+                    monkeyX = 150-40-5, monkeyY = 243-40-5;   //记录人物的位置用于重画
+                    lineX=150, lineY=243;//记录画线的初始位置
+                    imgMonkey;
+                    imgData;//画布中的像素信息，
+                    $(document).ready(function(){				
+                        var c=document.getElementById("canvas-display");
+                        var ctx = c.getContext('2d');
+                        ctx.moveTo(150,243);
+                        ctx.lineTo(250,243);
+                        ctx.lineTo(250,143);
+                        ctx.lineTo(150,143);
+                        ctx.lineTo(150,243);
+                        ctx.lineWidth=5;
+                        ctx.strokeStyle="grey";
+                        ctx.stroke();
+                        
+                        ctx.moveTo(150+120,243);
+                        ctx.lineTo(250+120,243);
+                        ctx.lineTo(250+120,143);
+                        ctx.lineTo(150+120,143);
+                        ctx.lineTo(150+120,243);
+                        ctx.lineWidth=5;
+                        ctx.strokeStyle="grey";
+                        ctx.stroke();
+                        
+                        var canvasMonkey = document.getElementById('canvas-monkey');
+                        var ctxMonkey = canvasMonkey.getContext('2d');
+                        imgMonkey = new Image();
+                        imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
+                        ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
+                        }); 
+                                }
+                        
 		}
 		
 	function generateCode() {
@@ -271,7 +283,17 @@
         ctx.lineTo(150,243);
 		ctx.lineWidth=5;
 		ctx.strokeStyle="grey";
-		ctx.stroke();
+        ctx.stroke();
+        
+        ctx.moveTo(150+120,243);
+		ctx.lineTo(250+120,243);
+		ctx.lineTo(250+120,143);
+		ctx.lineTo(150+120,143);
+        ctx.lineTo(150+120,243);
+		ctx.lineWidth=5;
+		ctx.strokeStyle="grey";
+        ctx.stroke();
+        
 		var canvasMonkey = document.getElementById('canvas-monkey');
 		var ctxMonkey = canvasMonkey.getContext('2d');
 		imgMonkey = new Image();
@@ -328,19 +350,51 @@
 		ctxMonkey.drawImage(imgMonkey,-40 / 2, -40 / 2, 40, 40);
 		ctxMonkey.restore();	
 	}
-	
+	function jump(jumpDire, pixel){
+        if (jumpDire === "jumpBackwards") {
+		    direction = (direction + Math.PI) % (Math.PI * 2);
+        }
+        var ctxPath = document.getElementById('canvas-path').getContext('2d');
+        var ctxMonkey = document.getElementById('canvas-monkey').getContext('2d');		
+        var distinx = Math.round(lineX + (pixel) * Math.cos(direction));
+        var distiny = Math.round(lineY + (pixel) * Math.sin(direction));
+        monkeyX = distinx-40;    //调整小人的位置信息
+        monkeyY = distiny-40;		
+        //在绘制线段前保存现场
+        ctxPath.save();
+        //画线过程，目标点依据弧度制的计算，x = x + step*Math.cos(direction),y= y + step*Math.sin(direction)
+        ctxPath.beginPath();
+        ctxPath.moveTo(lineX, lineY);
+        ctxPath.lineWidth = 5;
+        ctxPath.strokeStyle="blue";
+        ctxPath.lineTo(distinx, distiny);		
+        //ctxPath.stroke();
+        ctxPath.restore();		
+        lineX = distinx;
+        lineY = distiny;	
+        //alert(boyx + " " + boyy);
+        //移动小人过程，同时需要进行图片旋转
+        ctxMonkey.clearRect(0, 0, 400, 400);
+        ctxMonkey.save();
+        //alert("boyx:" + boyx + " boyy:" + boyy);
+        ctxMonkey.translate(monkeyX + 20, monkeyY + 20);   //移动到的位置是boyx,boyy
+        //ctxboy.rotate(direction);
+        ctxMonkey.drawImage(imgMonkey, -40 / 2, -40 / 2, 40, 40);
+        ctxMonkey.restore();
+        count = count - 1;
+    }
 	
 	//判断是否是正确的结果
 	function isRightResult() {
 		var ctxPath=document.getElementById("canvas-path").getContext('2d');
 		/* var imgData=ctxPath.getImageData(0,0,400,400);
 		console.log(imgData.length); */
-		var bool=ctxPath.isPointInPath(150,143)&&ctxPath.isPointInPath(150,243);//判断点是否在canva-path中
+		var bool=ctxPath.isPointInPath(150+120,143)&&ctxPath.isPointInPath(150+120,243);//判断点是否在canva-path中
 	    if (bool) {
 	        $('#success-confirm').modal({
 	            relatedTarget: this,
 	            onConfirm: function () {
-	                window.location.replace("./getCheckpoint?level=12-2");
+	                window.location.replace("./getCheckpoint?level=12-3");
 	            },
 	            onCancel: function () {
 	
@@ -358,7 +412,7 @@
 	        });
 	    }
 	}
-	
+
 	
 	//以下为运用js解释器实现的步进功能
 	//此处往下是通过javascript解释器实现的步进功能

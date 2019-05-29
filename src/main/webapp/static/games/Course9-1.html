@@ -5,7 +5,7 @@
 	<!-- 引入个人blockly -->
 
   <script src="/static/lib/myblock/lr_blocks.js"></script>
-  <script src="/static/lib/assets/js/wait_block.js"></script>
+
 
 
   <h1 class="am-topbar-brand">
@@ -18,17 +18,17 @@
 
   <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
     <div class="am-btn-group am-topbar-center">
-      <a href="./getCheckPoint?level=9-1" type="button" class="am-btn am-btn-primary am-round am-active">1</a>
-      <a href="./getCheckPoint?level=9-2" type="button" class="am-btn am-btn-primary am-round">2</a>
-      <a href="./getCheckPoint?level=9-3" type="button" class="am-btn am-btn-primary am-round">3</a>
-      <a href="./getCheckPoint?level=9-4" type="button" class="am-btn am-btn-primary am-round">4</a>
-      <a href="./getCheckPoint?level=9-5" type="button" class="am-btn am-btn-primary am-round">5</a>
-      <a href="./getCheckPoint?level=9-6" type="button" class="am-btn am-btn-primary am-round">6</a>
-      <a href="./getCheckPoint?level=9-7" type="button" class="am-btn am-btn-primary am-round">7</a>
-      <a href="./getCheckPoint?level=9-8" type="button" class="am-btn am-btn-primary am-round">8</a>
-      <a href="./getCheckPoint?level=9-9" type="button" class="am-btn am-btn-primary am-round">9</a>
-      <a href="./getCheckPoint?level=9-10" type="button" class="am-btn am-btn-primary am-round">10</a>
-      <a href="./getCheckPoint?level=9-11" type="button" class="am-btn am-btn-primary am-round">11</a>
+      <a href="./getCheckpoint?level=9-1" type="button" class="am-btn am-btn-primary am-round am-active">1</a>
+      <a href="./getCheckpoint?level=9-2" type="button" class="am-btn am-btn-primary am-round">2</a>
+      <a href="./getCheckpoint?level=9-3" type="button" class="am-btn am-btn-primary am-round">3</a>
+      <a href="./getCheckpoint?level=9-4" type="button" class="am-btn am-btn-primary am-round">4</a>
+      <a href="./getCheckpoint?level=9-5" type="button" class="am-btn am-btn-primary am-round">5</a>
+      <a href="./getCheckpoint?level=9-6" type="button" class="am-btn am-btn-primary am-round">6</a>
+      <a href="./getCheckpoint?level=9-7" type="button" class="am-btn am-btn-primary am-round">7</a>
+      <a href="./getCheckpoint?level=9-8" type="button" class="am-btn am-btn-primary am-round">8</a>
+      <a href="./getCheckpoint?level=9-9" type="button" class="am-btn am-btn-primary am-round">9</a>
+      <a href="./getCheckpoint?level=9-10" type="button" class="am-btn am-btn-primary am-round">10</a>
+      <a href="./getCheckpoint?level=9-11" type="button" class="am-btn am-btn-primary am-round">11</a>
 
 <!--       <button onclick="window.location.href='Course9-2.html'" type="button" class="am-btn am-btn-primary am-round">2</button>
       <button onclick="window.location.href='Course9-3.html'" type="button" class="am-btn am-btn-primary am-round">3</button>
@@ -65,10 +65,10 @@
 
 <div class="am-g doc-am-g">    
   <div class="am-u-sm-18 am-u-lg-4">
-    <div id="beediv" style="width:400px; height:400px;background:url(pictures/nine/course9-1.jpg) no-repeat">
+    <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/nine/course9-1.jpg) no-repeat">
 
       <div style="padding-left:50px;padding-top:150px">
-        <img id="bee" src="pictures/nine/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
+        <img id="bee" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
            <div style="left: 160px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower1">1</span></p></div>
 
            <div style="left: 210px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower2">1</span></p></div>
@@ -161,7 +161,7 @@
 </div>
 <div id="output"></div>
 
-<script type="text/javascript" src="myblock/workspace.js"></script>
+
 
 
 <script>
@@ -175,23 +175,23 @@ var flower3=1;
 var flower4=1;
 var flower5=1;
 
-   /* function runCode() {
-    // Generate JavaScript code and run it.
-    window.LoopTrap = 1000;
-    Blockly.JavaScript.INFINITE_LOOP_TRAP =
-        'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
-    var code = Blockly.JavaScript.workspaceToCode(workspace);
-    Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-    try {
-        //code = code;
-       // alert(code);
-        count = code.split(";").length - 1;
-        eval(code);
-        isRightResult();
-    } catch (e) {
-        alert(e);
-    }
-}*/
+// function runCode() {
+//     // Generate JavaScript code and run it.
+//     window.LoopTrap = 1000;
+//     Blockly.JavaScript.INFINITE_LOOP_TRAP =
+//         'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+//     var code = Blockly.JavaScript.workspaceToCode(workspace);
+//     Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+//     try {
+//         //code = code;
+//        // alert(code);
+//         count = code.split(";").length - 1;
+//         eval(code);
+//         isRightResult();
+//     } catch (e) {
+//         alert(e);
+//     }
+// }
 
 var code = Blockly.JavaScript.workspaceToCode(workspace);
 var myInterpreter = new Interpreter(code);
@@ -311,7 +311,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckPoint?level=9-1");
+                    window.location.replace("./getCheckpoint?level=9-1");
                 },
                 onCancel: function () {
 
@@ -512,7 +512,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckPoint?level=9-2");
+                    window.location.replace("./getCheckpoint?level=9-2");
                 },
                 onCancel: function () {
 
@@ -560,25 +560,25 @@ function isRightResult() {
 
 </script>
 <script>
-    $(document).ready(function () {
-        var rotate = function () {
-            $("#bee2").rotate({
-                angle: 0,
-                animateTo: 360,
-                duration: 5000,
-                callback: rotate,
-                easing: function (x, t, b, c, d) {
-                    return c * (t / d) + b;
-                },
-                bind: {
-                    click: function () {
-                        $(this).stopRotate();
-                    }
-                }
-            });
-        }
-        rotate();
-    });
+    // $(document).ready(function () {
+    //     var rotate = function () {
+    //         $("#bee2").rotate({
+    //             angle: 0,
+    //             animateTo: 360,
+    //             duration: 5000,
+    //             callback: rotate,
+    //             easing: function (x, t, b, c, d) {
+    //                 return c * (t / d) + b;
+    //             },
+    //             bind: {
+    //                 click: function () {
+    //                     $(this).stopRotate();
+    //                 }
+    //             }
+    //         });
+    //     }
+    //     rotate();
+    // });
 </script>
 
 

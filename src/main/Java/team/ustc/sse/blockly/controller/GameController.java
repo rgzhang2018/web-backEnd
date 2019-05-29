@@ -13,6 +13,7 @@ import team.ustc.sse.blockly.util.SessionUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -76,6 +77,8 @@ public class GameController {
      */
     @RequestMapping(value = "/checkpoints",method = {RequestMethod.GET})
     public String checkPoints(HttpServletRequest request){
+        request.setAttribute("levelName",GameUtil.LEVEL_NAME);
+        request.setAttribute("levels", GameUtil.LEVEL_COUNTS);
 //        if(SessionUtil.checkStudentLogin(request)){
 //            Integer studentID = SessionUtil.getStudentID(request);
 //            List<Checkoutpoint> checkoutpointList = gameServiceImpl.getSuccessMessageByStudent(studentID);
