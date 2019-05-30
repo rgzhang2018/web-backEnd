@@ -13,7 +13,6 @@ import team.ustc.sse.blockly.util.SessionUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -34,10 +33,15 @@ public class GameController {
     * @Author: rgzhang
     */
     @RequestMapping(value = "/saveCheckoutPoint",method = {RequestMethod.POST})
-    public @ResponseBody boolean saveCheckoutPoint(@RequestBody Checkoutpoint checkoutpoint, HttpServletResponse response){
-        boolean result = gameServiceImpl.saveCheckoutPoint(checkoutpoint);
-        response.setContentType("application/json; charset=utf-8");     //请求json，相应json，二者必须都是json格式
-        return true;
+    public @ResponseBody boolean saveCheckoutPointAjax(@RequestBody Checkoutpoint checkoutpoint, HttpServletResponse response,HttpServletRequest request){
+        if(SessionUtil.checkStudentLogin(request)){
+            checkoutpoint.setStudentid(SessionUtil.getStudentID(request));
+            boolean result = gameServiceImpl.saveCheckoutPoint(checkoutpoint);
+            response.setContentType("application/json; charset=utf-8");     //请求json，相应json，二者必须都是json格式
+            return true;
+        }
+
+        return false;
     }
 
 
@@ -77,8 +81,8 @@ public class GameController {
      */
     @RequestMapping(value = "/checkpoints",method = {RequestMethod.GET})
     public String checkPoints(HttpServletRequest request){
-        request.setAttribute("levelName",GameUtil.LEVEL_NAME);
-        request.setAttribute("levels", GameUtil.LEVEL_COUNTS);
+        String htmlCheckpoints = GameUtil.getHtmlCheckpoints();
+        request.setAttribute("htmlCheckpoints",htmlCheckpoints);
 //        if(SessionUtil.checkStudentLogin(request)){
 //            Integer studentID = SessionUtil.getStudentID(request);
 //            List<Checkoutpoint> checkoutpointList = gameServiceImpl.getSuccessMessageByStudent(studentID);
@@ -109,11 +113,18 @@ public class GameController {
             if(level.endsWith(".html")){
                 level = level.substring(0,level.length()-5);
             }
-//            int counts = GameUtil.getCounts(level);
+            String levelName = GameUtil.getLevelName(level);    //得到大关卡的名字
+            int count = GameUtil.getThisCount(level);   //得到这一小关数字具体是几
+            int major = GameUtil.getThisMajor(level);   //得到这关具体大关编号
+            int countNum = GameUtil.getCounts(level);     //得到这一大关有多少小关
             request.setAttribute("level",level);
-//            request.setAttribute("counts",counts);
+            request.setAttribute("levelName",levelName);
+            request.setAttribute("major",major);
+            request.setAttribute("count",count);
+            request.setAttribute("countNum",countNum);
+            return "students/getCheckpoint";
         }
-        return "students/getCheckpoint";
+        return "students/checkpoints";  //传入string为空时，返回关卡选择
     }
 
 }

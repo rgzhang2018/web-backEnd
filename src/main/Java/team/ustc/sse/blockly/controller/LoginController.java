@@ -45,7 +45,9 @@ public class LoginController {
             request.setAttribute("message","用户名或密码错误");
             return "demo/wrong";
         }
-        return "students/checkpoints";
+        request.setAttribute("message","登录成功");
+        request.setAttribute("redirectUrl","/rest/game/checkpoints");
+        return "demo/success";
     }
 
     @RequestMapping(value = "/studentRegister" ,method = {RequestMethod.POST})

@@ -11,7 +11,7 @@
 %>
 <html>
 <head>
-    <meta http-equiv=refresh content=10;url=<%=url %>>
+    <meta http-equiv=refresh >
 </head>
 <body>
 <div align="center">
@@ -34,7 +34,7 @@
             setTimeout("countDown("+secs+" )",1000);
     }
     countDown(3);
-    jumpToIndex();
+    setTimeout("jumpToIndex()",3500);
     function jumpToIndex(){
         window.location.href='<%=url %>';
     }
