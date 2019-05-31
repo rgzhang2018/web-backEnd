@@ -23,8 +23,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/game")
 public class GameController {
-    @Autowired
-    GameService gameServiceImpl;
+
+    private final GameService gameServiceImpl;
+
+    public GameController(GameService gameServiceImpl) {
+        this.gameServiceImpl = gameServiceImpl;
+    }
 
     /**
     * @Description: 通过ajax对当前关卡信息进行保存
@@ -92,6 +96,12 @@ public class GameController {
         return "students/checkpoints";
     }
 
+    /**
+    * @Description: 用于闯关首页，ajax传输学生已通过的关卡并单独标记。
+    * @Param: [request, response]
+    * @return: java.util.List<java.lang.String> 传出格式为：2-1,3-2,12-1 等
+    * @Author: rgzhang
+    */
     @RequestMapping(value = "/checkpointsAjax",method = {RequestMethod.POST})
     public @ResponseBody List<String> checkPointsAjax(HttpServletRequest request,HttpServletResponse response){
         response.setContentType("application/json; charset=utf-8");
@@ -105,7 +115,12 @@ public class GameController {
         return null;
     }
 
-
+    /**
+    * @Description: 关卡页面的渲染，根据GET请求获取到不同的关卡，渲染不同的关卡
+    * @Param: [request, level]
+    * @return: java.lang.String
+    * @Author: rgzhang
+    */
     @RequestMapping(value = "/getCheckpoint",method = {RequestMethod.GET})
     public String getCheckpoint(HttpServletRequest request,String level){
         if(level != null){      //get请求到具体的关卡

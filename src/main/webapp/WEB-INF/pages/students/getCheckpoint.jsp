@@ -86,12 +86,12 @@
 
 <div id="topbar" style="display: flex;justify-content: space-between;">
     <div id="topbar-left">
-        <a href="#" class="am-icon-btn am-secondary am-icon-reddit-alien"></a>
+        <a href="${pageContext.request.contextPath }/rest/student/index" class="am-icon-btn am-secondary am-icon-reddit-alien"></a>
     </div>
 
     <div id="topbarr-center" style="display: inline-flex">
         <div style="padding-top:15px;margin-right: 10px;">
-            <a href="${pageContext.request.contextPath }/rest/game/checkpoints" style="color:white">${levelName}</a>
+            <a href="${pageContext.request.contextPath }/rest/game/checkpoints" style="color:white">课程${levelName}</a>
         </div>
         <div id="pagination" style="border:2px solid white;border-radius: 5px;padding:2px 0;margin:5px 0;background-color: #0e90d2;">
 
@@ -116,8 +116,20 @@
     </div>
 
     <div id="header-right" class="am-btn-group">
-        <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="border:2px solid white;border-radius: 5px;margin-top:10px;background-color: #0e90d2;"
-        >登录</button>
+        <%
+            Boolean f = (Boolean) request.getSession().getAttribute("loginFlag");
+            if(f==null || !f){
+        %>
+        <a href="${pageContext.request.contextPath }/rest/loginControl/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="border:2px solid white;border-radius: 5px;margin-top:10px;background-color: #0e90d2;">
+            登录&nbsp;&nbsp;&nbsp;
+        </a>
+        <%
+        }else{
+        %>
+        <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm">欢迎您，${studentNickname} &nbsp;&nbsp;&nbsp;</a>
+        <%
+            }
+        %>
         <div class="am-dropdown" data-am-dropdown>
             <button data-am-dropdown-toggle
                     class="am-btn am-btn-primary am-topbar-btn am-btn-sm am-dropdown-toggle"
@@ -126,8 +138,11 @@
                 <!-- <i class="am-icon-bars"></i> -->
             </button>
             <ul class="am-dropdown-content" style="background-color: #0e90d2;">
+                <li><a href="${pageContext.request.contextPath }/rest/student/index" >回到主页</a></li>
                 <li><a href="${pageContext.request.contextPath }/rest/game/checkpoints" >课程分类</a></li>
-                <li><a href="#" >关于我们</a></li>
+                <li><a href="${pageContext.request.contextPath }/rest//loginControl/register" >注册新用户</a></li>
+                <li><a href="https://github.com/ustc-group" >关于我们</a></li>
+                <li><a href="https://github.com/ustc-group" >GitHub</a></li>
             </ul>
         </div>
 
@@ -138,21 +153,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <jsp:include page="${pageContext.request.contextPath }/static/games/Course${level}.html" flush="true" />
-
-
-
-
 
 
 

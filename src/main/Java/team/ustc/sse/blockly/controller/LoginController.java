@@ -18,21 +18,43 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("/loginControl")
 public class LoginController {
-    @Autowired
-    LoginServiceImpl studentLoginService;
 
+    private final  LoginServiceImpl studentLoginService;
+
+    public LoginController(LoginServiceImpl studentLoginService) {
+        this.studentLoginService = studentLoginService;
+    }
+
+    /**
+    * @Description: 登录页面
+    * @Param: [request]
+    * @return: java.lang.String
+    * @Author: rgzhang
+    */
     @RequestMapping(value = "/login",method = {RequestMethod.GET})
     public String login(HttpServletRequest request){
         System.out.println(request.getRequestURI());
         return "students/student_login";
     }
 
+    /**
+     * @Description: 注册页面
+     * @Param: [request]
+     * @return: java.lang.String
+     * @Author: rgzhang
+     */
     @RequestMapping(value = "/register",method = {RequestMethod.GET})
     public String register(HttpServletRequest request){
         return "students/student_register";
     }
 
 
+    /**
+    * @Description: 登录页面PSOT表单验证（未加密）
+    * @Param: [studentLogin, remember, request]
+    * @return: java.lang.String
+    * @Author: rgzhang
+    */
     @RequestMapping(value = "/studentLogin" ,method = {RequestMethod.POST})
     public String studentLogin(Studentlogin studentLogin, Boolean remember,HttpServletRequest request){
         if(remember == null)remember=false;
@@ -50,6 +72,12 @@ public class LoginController {
         return "demo/success";
     }
 
+    /**
+    * @Description: 注册页面PSOT表单验证
+    * @Param: [studentLogin, student, request]
+    * @return: java.lang.String
+    * @Author: rgzhang
+    */
     @RequestMapping(value = "/studentRegister" ,method = {RequestMethod.POST})
     public String studentRegister(Studentlogin studentLogin, Student student,HttpServletRequest request){
         System.out.println(studentLogin);
@@ -67,8 +95,14 @@ public class LoginController {
 
     }
 
-    @RequestMapping(value = "/checkStudentAccount" ,method = {RequestMethod.POST})
-    public @ResponseBody String checkStudentAccount(@RequestBody Studentlogin studentlogin, HttpServletResponse response){
+    /**
+    * @Description: Ajax用户登录检测
+    * @Param: [studentlogin, response]
+    * @return: java.lang.String
+    * @Author: rgzhang
+    */
+    @RequestMapping(value = "/checkStudentAccountAjax" ,method = {RequestMethod.POST})
+    public @ResponseBody String checkStudentAccountAjax(@RequestBody Studentlogin studentlogin, HttpServletResponse response){
         response.setContentType("application/json; charset=utf-8");
         if(studentlogin == null || studentlogin.getStudentaccount()==null)return "0";
         Studentlogin result = studentLoginService.findByStudentAccount(studentlogin.getStudentaccount());

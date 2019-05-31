@@ -28,18 +28,13 @@ To change this template use File | Settings | File Templates.
 <div class="am-u-md-12" id="bg_index" >
 
     <br>
-    <br>
-    <br>
-
     <!--  here  -->
 
     <div class="am-u-md-5 am-u-sm-centered"  style="background-color: #FFFFFF ;box-shadow: 10px 10px 5px">
         <hr>
         <br>
     <form class="am-form am-form-horizontal" action="${pageContext.request.contextPath }/rest/loginControl/studentRegister" method="post">
-        <div class="am-form-group">
-            <br>
-        </div>
+
 
         <div class="am-form-group" style="text-align:center">
             <h1>注册</h1>
@@ -65,41 +60,42 @@ To change this template use File | Settings | File Templates.
                 <input type="password" name="studentPassword2" id="reg-pwd2" placeholder="请再次输入密码" onblur="validate()">
             </div>
         </div>
-        <div class="am-form-group " style="text-align:center">
-            <label id = "reg-msg" style="font-size: 1.4rem"></label>
-        </div>
+
         <div class="am-form-group">
             <label for="reg-name" class="am-u-sm-2 am-form-label">昵称</label>
             <div class="am-u-sm-10">
                 <input type="text" name="nickname" id="reg-name" placeholder="起个昵称吧" onblur="nameChick()">
             </div>
         </div>
+        <div class="am-u-sm-centered " style="text-align:center">
+            <label id = "reg-msg" style="font-size: 1.4rem"></label>
+        </div>
 
-        <div class="am-form-group " style="text-align:center">
+        <div class="am-u-sm-10 am-u-sm-offset-2">
             非必填:
         </div>
         <div class="am-form-group">
             <label for="reg-email" class="am-u-sm-2 am-form-label">邮件</label>
             <div class="am-u-sm-10">
-                <input type="email" name="studentemail" id="reg-email" placeholder="输入你的电子邮件" onblur="accountCheck()">
+                <input type="email" name="studentemail" id="reg-email" placeholder="输入你的电子邮件" >
             </div>
         </div>
         <div class="am-form-group">
             <label for="reg-studentage" class="am-u-sm-2 am-form-label">年龄</label>
             <div class="am-u-sm-10">
-                <input type="number" name="studentage" id="reg-studentage" placeholder="输入你的年龄" onblur="ageChick()">
+                <input type="number" name="studentage" id="reg-studentage" placeholder="输入你的年龄" >
             </div>
         </div>
         <div class="am-form-group">
             <label for="reg-studentphone" class="am-u-sm-2 am-form-label">手机号</label>
             <div class="am-u-sm-10">
-                <input type="number" name="studentphone" id="reg-studentphone" placeholder="输入你的手机号码" onblur="phoneChick()">
+                <input type="number" name="studentphone" id="reg-studentphone" placeholder="输入你的手机号码" >
             </div>
         </div>
         <div class="am-form-group">
             <label for="reg-studentschool" class="am-u-sm-2 am-form-label">学校名</label>
             <div class="am-u-sm-10">
-                <input type="text" name="studentschool" id="reg-studentschool" placeholder="输入你的学校名" onblur="schoolChick()">
+                <input type="text" name="studentschool" id="reg-studentschool" placeholder="输入你的学校名" >
             </div>
         </div>
         <div class="am-form-group">
@@ -189,7 +185,6 @@ To change this template use File | Settings | File Templates.
 
     function accountCheck(){
         var account = document.getElementById("reg-account").value;//获取文本框内容
-        alert(account);
         var url='<%=request.getContextPath()%>/rest/loginControl/checkStudentAccount';
         var data={
             "studentaccount":account
@@ -201,7 +196,6 @@ To change this template use File | Settings | File Templates.
             dataType:"json",
             data:JSON.stringify(data),
             success:function(data){ //data就是返回的数据，data['program']就是闯关信息
-                alert(data);
                 if(data  == '1') {
                     document.getElementById('reg-msg').innerHTML = "用户名可以使用";
                     flag_account=1;

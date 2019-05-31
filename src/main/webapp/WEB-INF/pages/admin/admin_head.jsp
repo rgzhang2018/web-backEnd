@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    Boolean f = (Boolean) request.getAttribute("adminFlag");
+    Boolean f = (Boolean) request.getSession().getAttribute("adminFlag");
     Boolean ses = (Boolean) request.getSession().getAttribute("adminFlag");
     if(f==null && ses ==null){
 %>
@@ -64,12 +64,12 @@
                 <p class="am-topbar-brand">您好!xxxx</p>
 
 
-                <a href="${pageContext.request.contextPath }/index.do">
+                <a href="${pageContext.request.contextPath }/rest//admin/index">
                     <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm">回到首页</button>
                 </a>
 
 
-                <a href='${pageContext.request.contextPath }/login.do'>
+                <a href='${pageContext.request.contextPath }/rest/admin/logout'>
                     <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm">点击注销</button>
                 </a>
             </div>

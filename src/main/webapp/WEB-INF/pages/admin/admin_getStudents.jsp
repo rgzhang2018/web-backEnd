@@ -28,7 +28,8 @@ To change this template use File | Settings | File Templates.
                     <th>用户名</th>
                     <th>昵称</th>
                     <th>密码</th>
-                    <th>操作</th>
+                    <th>游戏操作</th>
+                    <th>用户操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,13 +39,22 @@ To change this template use File | Settings | File Templates.
                         <td>${studentLogin.studentaccount}</td>
                         <td>${studentLogin.nickname}</td>
                         <td>${studentLogin.studentpassword}</td>
+
                         <td>
-                            <div class="am-u-sm-6">
-                                <button class="am-btn am-btn-default am-btn-block">查看闯关</button>
-                            </div>
-                            <div class="am-u-sm-6">
-                                <button class="am-btn am-btn-default am-btn-block">修改信息</button>
-                            </div>
+                            <form action="/rest/admin/showCheckoutPoint" method="get">
+                                <input type="hidden" name="studentid"  value="${studentLogin.studentid}">
+                                <div class="am-u-sm-10">
+                                    <button type="submit" name="" class="am-btn am-btn-default am-btn-block">查看闯关</button>
+                                </div>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/rest//admin/changeStudentMessage" method="get">
+                                <input type="hidden" name="studentid" value="${studentLogin.studentid}">
+                                <div class="am-u-sm-10">
+                                    <button class="am-btn am-btn-default am-btn-block">修改信息</button>
+                                </div>
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>

@@ -20,20 +20,13 @@ import java.util.List;
  **/
 @Service
 public class AdminServiceImpl implements AdminService {
-    @Autowired
-    AdminMapper adminMapper;
 
-    @Autowired
-    StudentMapper studentMapper;
+    private final  AdminMapper adminMapper;
 
-    @Autowired
-    StudentloginMapper studentloginMapper;
+    public AdminServiceImpl(AdminMapper adminMapper) {
+        this.adminMapper = adminMapper;
+    }
 
-    @Autowired
-    StudentloginmessageMapper studentloginmessageMapper;
-
-    @Autowired
-    CheckoutpointMapper checkoutpointMapper;
 
     @Override
     public boolean adminLogin(Admin admin, HttpServletRequest request) {
@@ -53,83 +46,7 @@ public class AdminServiceImpl implements AdminService {
         return false;
     }
 
-    @Override
-    public List<Student> getAllStudents() {
-        StudentExample studentExample = new StudentExample();
-        StudentExample.Criteria criteria = studentExample.createCriteria();
-        criteria.andStudentidIsNotNull();
-        List<Student> students = studentMapper.selectByExample(studentExample);
-        return students;
-    }
 
-    @Override
-    public List<Studentlogin> getAllStudentLogins() {
-        StudentloginExample studentloginExample = new StudentloginExample();
-        StudentloginExample.Criteria criteria = studentloginExample.createCriteria();
-        criteria.andStudentidIsNotNull();
-        List<Studentlogin> studentlogins = studentloginMapper.selectByExample(studentloginExample);
-        return studentlogins;
-    }
-
-    @Override
-    public List<Studentloginmessage> getTenStudentLoginMessages() {
-        List<Studentloginmessage> lists = studentloginmessageMapper.selectLastTen();
-        return lists;
-    }
-
-    @Override
-    public List<Studentloginmessage> getLoginMessagePast(int pastDay) {
-        Date date = TimeUtil.getPastDate(new Date(),pastDay);
-        StudentloginmessageExample studentloginmessageExample = new StudentloginmessageExample();
-        StudentloginmessageExample.Criteria criteria = studentloginmessageExample.createCriteria();
-        criteria.andLogindataGreaterThanOrEqualTo(date);
-        List<Studentloginmessage> list = studentloginmessageMapper.selectByExample(studentloginmessageExample);
-        return list;
-    }
-
-    @Override
-    public List<Studentloginmessage> getStudentLoginMessages(int studentID) {
-        StudentloginmessageExample studentloginmessageExample = new StudentloginmessageExample();
-        StudentloginmessageExample.Criteria criteria = studentloginmessageExample.createCriteria();
-        criteria.andStudentidEqualTo(studentID);
-        List<Studentloginmessage> studentloginmessages = studentloginmessageMapper.selectByExample(studentloginmessageExample);
-        return studentloginmessages;
-    }
-
-    @Override
-    public List<Studentloginmessage> getStudentLoginMessages(String studentAccount) {
-        int id = getStudentIdByAccount(studentAccount);
-        return getStudentLoginMessages(id);
-    }
-
-    @Override
-    public int getCheckoutpointCountsPast(int pastDay) {
-        Date date = TimeUtil.getPastDate(new Date(),pastDay);
-        CheckoutpointExample example = new CheckoutpointExample();
-        CheckoutpointExample.Criteria criteria = example.createCriteria();
-        criteria.andSavetimeGreaterThan(date);
-        int count = checkoutpointMapper.countByExample(example);
-        return count;
-    }
-
-    //获得通过状态，不检索program字段以提升检索效率
-    @Override
-    public List<Checkoutpoint> getCheckoutpointByStudentID(int studentID) {
-        return  checkoutpointMapper.getIsSuccessByStudentID(studentID);
-    }
-
-
-    @Override
-    public boolean deleteStudentByAccount(String studentAccount) {
-        return false;
-    }
-
-    @Override
-    public boolean changeStudentPassword(String studentAccount,String newPassword) {
-        int studentID = getStudentIdByAccount(studentAccount);
-
-        return false;
-    }
 
     @Override
     public boolean changeAdminPassword(Admin admin, String newPassword) {
@@ -142,14 +59,6 @@ public class AdminServiceImpl implements AdminService {
     }
 
 
-    private int getStudentIdByAccount(String studentAccount){
-        StudentloginExample studentExample = new StudentloginExample();
-        StudentloginExample.Criteria criteria = studentExample.createCriteria();
-        criteria.andStudentaccountEqualTo(studentAccount);
-        List<Studentlogin> studentList = studentloginMapper.selectByExample(studentExample);
-        if(studentList.isEmpty()){
-            return -1;
-        }
-        return studentList.get(0).getStudentid();
-    }
+
+
 }

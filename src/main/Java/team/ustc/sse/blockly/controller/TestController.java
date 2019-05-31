@@ -1,11 +1,9 @@
 package team.ustc.sse.blockly.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import team.ustc.sse.blockly.service.impl.TestServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,9 +15,6 @@ import javax.servlet.http.HttpServletRequest;
  **/
 @Controller
 public class TestController {
-
-    @Autowired
-    TestServiceImpl testService;
 
 
     @RequestMapping("request")

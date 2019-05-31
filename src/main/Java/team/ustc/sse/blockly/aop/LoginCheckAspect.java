@@ -36,21 +36,20 @@ public class LoginCheckAspect {
      */
     @Before("declearJoinPointExpression()") //该标签声明次方法是一个前置通知：在目标方法开始之前执行
     public void beforeMethod(JoinPoint joinPoint){
-        String methodName = joinPoint.getSignature().getName();
-        Object[] args = joinPoint.getArgs();
-        System.out.println("in LoginCheck , this method "+methodName+" begin. param<"+ args.length+">");
-        for(int i=0;i<args.length;i++){
-            if(args[i] instanceof HttpServletRequest){
-                HttpServletRequest request = (HttpServletRequest) args[i];
-                if(SessionUtil.checkStudentLogin(request)){
-                    System.out.println("===========>this is an user");
-                    request.setAttribute("loginFlag",true);
-                    request.setAttribute("studentNickname",SessionUtil.getStudentNickname(request));
-                    System.out.println("============>in aspect set model attribute");
-                }
-
-            }
-        }
+//        String methodName = joinPoint.getSignature().getName();
+//        Object[] args = joinPoint.getArgs();
+//        System.out.println("in LoginCheck , this method "+methodName+" begin. param<"+ args.length+">");
+//        for(int i=0;i<args.length;i++){
+//            if(args[i] instanceof HttpServletRequest){
+//                HttpServletRequest request = (HttpServletRequest) args[i];
+//                if(SessionUtil.checkStudentLogin(request)){
+//                    System.out.println("===========>this is an user");
+//                    request.setAttribute("loginFlag",true);
+//                    request.setAttribute("studentNickname",SessionUtil.getStudentNickname(request));
+//                    System.out.println("============>in aspect set model attribute");
+//                }
+//            }
+//        }
 
     }
 

@@ -48,7 +48,7 @@ public class GameUtil {
 
     public static String getLevelName(String level){
         int checkpointID = turnStringToInt(level);
-        int count = checkpointID%100;
+        int count = checkpointID/100;
         if(count<LEVEL_NAME.length){
             return LEVEL_NAME[count];
         }

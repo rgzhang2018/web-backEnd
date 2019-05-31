@@ -55,10 +55,10 @@ ${pageContext.request.contextPath }/static/lib/assets/
 
         <div id="header-right" class="am-btn-group">
             <%
-                Boolean f = (Boolean) request.getAttribute("loginFlag");
+                Boolean f = (Boolean) request.getSession().getAttribute("loginFlag");
                 if(f==null || !f){
             %>
-            <a href="visitor_login.html" class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="border:2px solid white;border-radius: 5px;margin-top:10px;background-color: #0e90d2;">
+            <a href="${pageContext.request.contextPath }/rest/loginControl/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="border:2px solid white;border-radius: 5px;margin-top:10px;background-color: #0e90d2;">
                 登录&nbsp;&nbsp;&nbsp;
             </a>
             <%
@@ -81,6 +81,7 @@ ${pageContext.request.contextPath }/static/lib/assets/
                     <li><a href="${pageContext.request.contextPath }/rest//loginControl/register" >注册新用户</a></li>
                     <li><a href="https://github.com/ustc-group" >关于我们</a></li>
                     <li><a href="https://github.com/ustc-group" >GitHub</a></li>
+
                 </ul>
             </div>
 
@@ -99,7 +100,6 @@ ${pageContext.request.contextPath }/static/lib/assets/
             当这节课结束的时候，同学们将得以真正地编写程序来展现他们所学会的多种技能，
             包括用于循环的函数与带有参数的函数。建议4-8年级同学学习。
         </small>
-        <a href="./getCheckpoint?level=12-3">asdasdaaa</a>
     </div>
     <div id="image">
         <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" width="140" height="140" alt="140*140"/>
@@ -108,7 +108,7 @@ ${pageContext.request.contextPath }/static/lib/assets/
         <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" width="140" height="140" alt="140*140"/>
     </div>
     <div id="buttons">
-        <a href="Course2-1.html" type="button" class="am-btn am-btn-warning">马上试试</a>
+        <a href="./getCheckpoint?level=2-1" type="button" class="am-btn am-btn-warning">马上试试</a>
     </div>
     <div id="list">
         <table class="am-table am-table-bordered am-table-striped">
@@ -121,31 +121,6 @@ ${pageContext.request.contextPath }/static/lib/assets/
             <tbody>
 
 
-
-
-
-
-<%--<%--%>
-<%--  String[] levelName = (String[]) request.getAttribute("levelName");--%>
-<%--  Integer[] levels = (Integer[]) request.getAttribute("levels");--%>
-<%--  StringBuilder result = new StringBuilder();--%>
-<%--  for(int i=1;i<GameUtil.MAX_LEVEL;i++){--%>
-<%--      result.append("<tr><td>").append(levelName[i]).append("</td>");--%>
-<%--      if(levels[i]==1){--%>
-<%--          result.append("<td><button type='button' class='am-btn am-btn-default am-round'>线下的活动</button></td>");--%>
-<%--      }else{--%>
-<%--          result.append("<td>\n");--%>
-<%--          for(int j=1;j<levels[i]+1;j++){--%>
-<%--              String s = i+"-"+j;--%>
-<%--              result.append("<a href=\"/rest/game/getCheckpoint?level=").append(s).append("\" id=\"").append(s)--%>
-<%--                      .append("\" type=\"button\" class=\"am-btn am-btn-default  am-round\"> ").append(j).append(" </a>\n");--%>
-<%--          }--%>
-<%--          result.append("</td>\n");--%>
-<%--      }--%>
-<%--  }--%>
-<%--  request.setAttribute("pointcounts",new String(result));--%>
-
-<%--%>--%>
 
 
 

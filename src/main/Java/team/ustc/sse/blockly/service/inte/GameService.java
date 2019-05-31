@@ -32,6 +32,21 @@ public interface GameService {
     boolean saveCheckoutPoint(Checkoutpoint checkoutpoint);
 
 
+    /**
+     * @Description: 最近pastDay天的闯关信息
+     * @Param: [pastDay]
+     * @return: int
+     * @Author: rgzhang
+     */
+    int getCheckoutpointCountsPast(int pastDay);
+
+    /**
+     * @Description: 根据学生id获得该学生所有闯关信息
+     * @Param: [studentID]
+     * @return: java.util.List<team.ustc.sse.blockly.entity.Checkoutpoint>
+     * @Author: rgzhang
+     */
+    List<Checkoutpoint> getCheckoutpointByStudentID(int studentID);
 
 
 }

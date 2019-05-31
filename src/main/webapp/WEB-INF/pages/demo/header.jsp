@@ -41,16 +41,17 @@ To change this template use File | Settings | File Templates.
                     <li><a href="${pageContext.request.contextPath }/rest//loginControl/register">注册</a></li>
                     <li><a href="https://github.com/ustc-group" >关于我们</a></li>
                     <li><a href="https://github.com/ustc-group">GitHub</a></li>
+                    <li><a href="${pageContext.request.contextPath }/rest//admin/login" >admin</a></li>
                 </ul>
             </div>
         </div>
 
         <%
-            Boolean f = (Boolean) request.getAttribute("loginFlag");
+            Boolean f = (Boolean) request.getSession().getAttribute("loginFlag");
             if(f==null || !f){
         %>
         <div class="am-topbar-right">
-            <a href="visitor_login.html" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</a>
+            <a href="${pageContext.request.contextPath }/rest//loginControl/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</a>
         </div>
         <%
             }else{
