@@ -160,6 +160,7 @@ public class AdminController {
     public String showCheckoutPoint(int studentid,HttpServletRequest request){
         List<Checkoutpoint> checkoutpointList = gameServiceImpl.getCheckoutpointByStudentID(studentid);
         request.setAttribute("checkoutpointList",checkoutpointList);
+        request.setAttribute("studentid",studentid);
         return "admin/admin_getStudentGameMessage";
     }
 

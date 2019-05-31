@@ -49,7 +49,7 @@ To change this template use File | Settings | File Templates.
                             </form>
                         </td>
                         <td>
-                            <form action="/rest//admin/changeStudentMessage" method="get">
+                            <form action="/rest//admin/getStudentMessage" method="get">
                                 <input type="hidden" name="studentid" value="${studentLogin.studentid}">
                                 <div class="am-u-sm-10">
                                     <button class="am-btn am-btn-default am-btn-block">修改信息</button>

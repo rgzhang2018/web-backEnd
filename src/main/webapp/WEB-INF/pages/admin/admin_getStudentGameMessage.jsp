@@ -18,32 +18,29 @@ To change this template use File | Settings | File Templates.
 
 <div class="am-u-sm-10" style="background-color: #ffffff ;height: 700px ;text-align:center">
     <br>
-    <h1>  用户信息管理</h1>
+    <h1>  用户${studentid}的闯关信息管理</h1>
     <br>
 
     <table class="am-u-sm-offset-1 am-table am-table-bordered am-table-radius am-table-striped">
         <thead>
         <tr>
-            <th>用户id</th>
-            <th>用户名</th>
-            <th>昵称</th>
-            <th>密码</th>
+            <th>关卡id</th>
+            <th>总用时</th>
+            <th>保存时间</th>
+            <th>通过状态</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="studentLogin" items="${studentLoginList}">
+        <c:forEach var="checkoutpoint" items="${checkoutpointList}">
             <tr>
-                <td>${studentLogin.studentid}</td>
-                <td>${studentLogin.studentaccount}</td>
-                <td>${studentLogin.nickname}</td>
-                <td>${studentLogin.studentpassword}</td>
+                <td>${checkoutpoint.checkpointid}</td>
+                <td>${checkoutpoint.toaltime}</td>
+                <td>${checkoutpoint.savetime}</td>
+                <td>${checkoutpoint.issuccess}</td>
                 <td>
-                    <div class="am-u-sm-6">
-                        <button class="am-btn am-btn-default am-btn-block">查看闯关</button>
-                    </div>
-                    <div class="am-u-sm-6">
-                        <button class="am-btn am-btn-default am-btn-block">修改信息</button>
+                    <div class="am-u-sm-10">
+                        <button class="am-btn am-btn-default am-btn-block">删除记录</button>
                     </div>
                 </td>
             </tr>

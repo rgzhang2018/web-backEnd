@@ -49,6 +49,8 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public boolean saveCheckoutPoint(Checkoutpoint checkoutpoint) {
+        checkoutpoint.setSavetime(new Date());
+        checkoutpoint.setToaltime(1);  //前端未设置总时间计时器
         int result = checkoutpointMapper.insert(checkoutpoint);     //注意result=1表示成功插入，result=2表示已存在，进行了update
 //        System.out.println(result);
         return result>=1;
