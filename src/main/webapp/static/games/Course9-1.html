@@ -1,23 +1,80 @@
 
+<body>
 
-<script src="/static/lib/myblock/lr_blocks.js"></script>
+<header class="am-topbar am-topbar-inverse">
+	<!-- 引入个人blockly -->
+
+  <script src="/static/lib/myblock/lr_blocks.js"></script>
 
 
+
+  <h1 class="am-topbar-brand">
+    <a href="HomePage.html" class="am-icon-home am-icon-lg">课程9:蜜蜂：计数循环</a>
+  </h1>
+
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+          data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+          class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+    <div class="am-btn-group am-topbar-center">
+      <a href="./getCheckPoint?level=9-1" type="button" class="am-btn am-btn-primary am-round am-active">1</a>
+      <a href="./getCheckPoint?level=9-2" type="button" class="am-btn am-btn-primary am-round">2</a>
+      <a href="./getCheckPoint?level=9-3" type="button" class="am-btn am-btn-primary am-round">3</a>
+      <a href="./getCheckPoint?level=9-4" type="button" class="am-btn am-btn-primary am-round">4</a>
+      <a href="./getCheckPoint?level=9-5" type="button" class="am-btn am-btn-primary am-round">5</a>
+      <a href="./getCheckPoint?level=9-6" type="button" class="am-btn am-btn-primary am-round">6</a>
+      <a href="./getCheckPoint?level=9-7" type="button" class="am-btn am-btn-primary am-round">7</a>
+      <a href="./getCheckPoint?level=9-8" type="button" class="am-btn am-btn-primary am-round">8</a>
+      <a href="./getCheckPoint?level=9-9" type="button" class="am-btn am-btn-primary am-round">9</a>
+      <a href="./getCheckPoint?level=9-10" type="button" class="am-btn am-btn-primary am-round">10</a>
+      <a href="./getCheckPoint?level=9-11" type="button" class="am-btn am-btn-primary am-round">11</a>
+
+<!--       <button onclick="window.location.href='Course9-2.html'" type="button" class="am-btn am-btn-primary am-round">2</button>
+      <button onclick="window.location.href='Course9-3.html'" type="button" class="am-btn am-btn-primary am-round">3</button>
+      <button onclick="window.location.href='Course9-4.html'" type="button" class="am-btn am-btn-primary am-round">4</button>
+      <button onclick="window.location.href='Course9-5.html'" type="button" class="am-btn am-btn-primary am-round">5</button>
+      <button onclick="window.location.href='Course9-6.html'" type="button" class="am-btn am-btn-primary am-round">6</button>
+      <button onclick="window.location.href='Course9-7.html'" type="button" class="am-btn am-btn-primary am-round">7</button>
+      <button onclick="window.location.href='Course9-8.html'" type="button" class="am-btn am-btn-primary am-round">8</button>
+      <button onclick="window.location.href='Course9-9.html'" type="button" class="am-btn am-btn-primary am-round">9</button>
+      <button onclick="window.location.href='Course9-10.html'" type="button" class="am-btn am-btn-primary am-round">10</button>
+      <button onclick="window.location.href='Course9-11.html'" type="button" class="am-btn am-btn-primary am-round">11</button>
+    </div> -->
+    <button class="am-btn am-btn-primary">更多
+      <i class="am-icon-chevron-circle-down"></i>
+    </button>
+    <div class="am-topbar-right">
+      <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
+        <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</button>
+        <button data-am-dropdown-toggle class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle">
+          <i class="am-icon-bars"></i>
+        </button>
+        <ul class="am-dropdown-content">
+          <li><a href="#">注册</a></li>
+          <li><a href="#">随便看看</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+</header>
 
 <!--在这里编写你的代码-->
 
-<div class="am-g doc-am-g">
+<div class="am-g doc-am-g">    
   <div class="am-u-sm-18 am-u-lg-4">
     <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/nine/course9-1.jpg) no-repeat">
 
       <div style="padding-left:50px;padding-top:150px">
         <img id="bee" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
-        <div style="left: 160px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower1">1</span></p></div>
+           <div style="left: 160px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower1">1</span></p></div>
 
-        <div style="left: 210px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower2">1</span></p></div>
-        <div style="left: 260px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower3">1</span></p></div>
-        <div style="left: 310px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower4">1</span></p></div>
-        <div style="left: 358px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower5">1</span></p></div>
+           <div style="left: 210px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower2">1</span></p></div>
+           <div style="left: 260px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower3">1</span></p></div>
+           <div style="left: 310px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower4">1</span></p></div>
+           <div style="left: 358px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower5">1</span></p></div>
       </div>
     </div>
     <div class="am-g" style="width:430px;">
@@ -61,6 +118,8 @@
 </div>
 
 
+
+
 <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
   <block type="start_block"></block>
 </xml>
@@ -70,8 +129,8 @@
   <block type="lr_gatherhoney"></block>
   <block type="controls_repeat_ext"></block>
   <block type="math_number">
-    <field name="NUM">123</field>
-  </block>
+        <field name="NUM">123</field>
+      </block>
 
 </xml>
 
@@ -104,98 +163,99 @@
 
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
+
 <script>
-  var beemap = document.getElementById('beediv');   //地图，用以计算相对位置
-  var beeimg = document.getElementById('bee');
-  var count = 0;  //用以对块计数判断
-  var bee_location = 0;  //判断蜜蜂是否移动到指定位置
-  var flower1=1;
-  var flower2=1;
-  var flower3=1;
-  var flower4=1;
-  var flower5=1;
-  var dire = 0;
+var beemap = document.getElementById('beediv');   //地图，用以计算相对位置
+var beeimg = document.getElementById('bee');
+var count = 0;  //用以对块计数判断
+var bee_location = 0;  //判断蜜蜂是否移动到指定位置
+var flower1=1;
+var flower2=1;
+var flower3=1;
+var flower4=1;
+var flower5=1;
+var dire = 0;
 
-  var orilocation = $('#bee').offset();
+var orilocation = $('#bee').offset();
 
 
-  var bool = false;
-  function runCode() {
+var bool = false;
+function runCode() {
 
-    // Generate JavaScript code and run it.
-    //切换按钮的样式
-    bool=!bool;
-    if(bool){
-      document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
-      window.LoopTrap = 1000;
-      Blockly.JavaScript.INFINITE_LOOP_TRAP =
-              'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
-      var code = Blockly.JavaScript.workspaceToCode(workspace);
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-      try {
-        alert(code);
-        code += "isRightResult();";
-        myInterpreter = new Interpreter(code,initApi);
-        runStepCode();
-      } catch (e) {
-        alert(e);
-      }
-    }else{
-      document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 运行';
-
-      document.getElementById('beediv');
-      $('#bee').rotate(90 * 0);
-
-      document.getElementById("flower1").innerHTML=1;
-      document.getElementById("flower2").innerHTML=1;
-      document.getElementById("flower3").innerHTML=1;
-      document.getElementById("flower4").innerHTML=1;
-      document.getElementById("flower5").innerHTML=1;
-      flower1=1;
-      flower2=1;
-      flower3=1;
-      flower4=1;
-      flower5=1;
-      bee_location=0;
-      dire=0;
-      // $('#bee').attr('marginLeft','1px');
-      //alert(orilocation.left);
-      $('#bee').offset({left:orilocation.left,top:orilocation.top});
+        // Generate JavaScript code and run it.
+        //切换按钮的样式
+        bool=!bool;
+        if(bool){ 
+          document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
+          window.LoopTrap = 1000;
+        Blockly.JavaScript.INFINITE_LOOP_TRAP =
+            'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+        var code = Blockly.JavaScript.workspaceToCode(workspace);
+        Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+        try {
+            alert(code);
+            code += "isRightResult();";
+            myInterpreter = new Interpreter(code,initApi);
+    		runStepCode();
+        } catch (e) {
+            alert(e);
+        }
+        }else{
+          document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 运行';
+            
+                document.getElementById('beediv');
+                $('#bee').rotate(90 * 0);
+       
+          document.getElementById("flower1").innerHTML=1;
+          document.getElementById("flower2").innerHTML=1;
+          document.getElementById("flower3").innerHTML=1;
+          document.getElementById("flower4").innerHTML=1;
+          document.getElementById("flower5").innerHTML=1;
+          flower1=1;
+          flower2=1;
+          flower3=1;
+          flower4=1;
+          flower5=1;
+          bee_location=0;
+          dire=0;
+          // $('#bee').attr('marginLeft','1px');
+          //alert(orilocation.left);
+          $('#bee').offset({left:orilocation.left,top:orilocation.top});
+        }
+        
     }
 
-  }
-
-  function runStepCode(){
-    if(myInterpreter.step()){
-      window.setTimeout(runStepCode,20);
+    function runStepCode(){
+    	if(myInterpreter.step()){
+    		window.setTimeout(runStepCode,20);
+    	}
     }
-  }
 
-  function restart() {
+function restart() {
     location.reload();
-  }
+}
 
-  //run the code,control the direction and move
+//run the code,control the direction and move
 
 
-  var move = function () {
-    bee_location = bee_location+1;
+var move = function () {
+	  bee_location = bee_location+1;
 
     var stepsum = 50;
     if (dire == 0) {
-      $('#bee').animate({
-        marginLeft: "+=" + stepsum + "px"
-      }, 500);
+        $('#bee').animate({
+            marginLeft: "+=" + stepsum + "px"
+        }, 500);
     } else if (dire == 1) {
-      $('#bee').animate({
-        marginTop: "-=" + stepsum + "px"
-      }, 500);
+        $('#bee').animate({
+            marginTop: "-=" + stepsum + "px"
+        }, 500);
     } else if (dire == 2) {
-      $('#bee').animate({
-        marginLeft: "-=" + stepsum + "px"
-
-      }, 500);
-
+        $('#bee').animate({
+            marginLeft: "-=" + stepsum + "px"
+            
+        }, 500);
+        
     }
     //should try is the bee is the right place
     //避开tnt的判断
@@ -204,32 +264,32 @@
     }
 
     //alert("move");
-  }
+}
 
-  function turnleft() {
+function turnleft() {
     document.getElementById('beediv');
     dire += 1;
     dire %= 4;
     $('#bee').rotate(-90 * dire);
     count = count - 1;
-  }
+}
 
-  function turnright() {
+function turnright() {
     document.getElementById('beediv');
     dire -= 1;
     dire %= 4;
     $('#bee').rotate(90 * dire);
     count = count - 1;
-  }
+}
 
 
 
-  function lr_gatherhoney(){
-    var marginleft = beeimg.offsetLeft - beemap.offsetLeft;
+function lr_gatherhoney(){
+	var marginleft = beeimg.offsetLeft - beemap.offsetLeft;
     var margintop = beeimg.offsetTop - beemap.offsetTop;
+  
 
-
-    if(bee_location>=5 && flower5 > 0){
+	if(bee_location>=5 && flower5 > 0){
       document.getElementById("flower5").innerHTML=flower5-1;
       flower5=flower5-1;
 
@@ -251,201 +311,201 @@
       flower1=flower1-1;
     }
     //alert("take");
-  }
+}
 
-  //判断是否是正确的结果
-  function isRightResult() {
+//判断是否是正确的结果
+function isRightResult() {
     //isRightResult作为检查正确位置的激活
     var c=1;
     setInterval(function () {
-      if (!$('#bee').is(":animated") && c === 1) {
-        var marginleft = beeimg.offsetLeft - beemap.offsetLeft;
-        var margintop = beeimg.offsetTop - beemap.offsetTop;
-
-        if (marginleft === 300 && margintop === 150 && flower1===0 &&flower2===0 &&flower3===0 &&flower4===0 &&flower5===0){
-          //run success
-          $('#success-confirm').modal({
-            relatedTarget: this,
-            onConfirm: function () {
-              window.location.replace("./getCheckPoint?level=9-1");
-            },
-            onCancel: function () {
-
-            }
-          });
-
-        } else {
-          //run failed
-          //alert(marginleft + "," + margintop);
-          $('#failed-confirm').modal({
-            relatedTarget: this,
-            onConfirm: function () {
-              restart();
-            },
-            onCancel: function () {
-
-            }
-          });
-        }
-        c = c - 1;
-      }
-    }, 100);
-  }
-
-
-  //以下为运用js解释器实现的步进功能
-  //此处往下是通过javascript解释器实现的步进功能
-  var outputArea = document.getElementById('output');
-  var stepButton = document.getElementById('stepButton');
-  var myInterpreter = null;
-
-  function initApi(interpreter, scope) {
-    // Add an API function for the alert() block, generated for "text_print" blocks.
-    interpreter.setProperty(scope, 'move',
-            interpreter.createNativeFunction(function(text,number) {
-              text = text ? text.toString() : '';
-
-              //alert(number);
-              move(text,number);
-            }));
-
-
-    var wrapper = interpreter.createAsyncFunction(
-            function(timeInSeconds, callback) {
-              // Delay the call to the callback.
-              //alert(callback);
-              setTimeout(callback, timeInSeconds * 300);
-            });
-    interpreter.setProperty(scope, 'isRightResult',
-            interpreter.createNativeFunction(function() {
-
-              //alert(number);
-              isRightResult();
-            }));
-
-    interpreter.setProperty(scope, 'lr_gatherhoney',
-            interpreter.createNativeFunction(function(text,number) {
-              text = text ? text.toString() : '';
-              // angle = angle?angle.toString():' ';
-              //alert(number);
-              lr_gatherhoney(text,number);
-            }));
-
-    // Add an API function for highlighting blocks.
-    var wrapper = function(id) {
-      id = id ? id.toString() : '';
-      return interpreter.createPrimitive(highlightBlock(id));
-    };
-    interpreter.setProperty(scope, 'highlightBlock',
-            interpreter.createNativeFunction(wrapper));
-  }
-
-  var highlightPause = false;
-  var latestCode = '';
-
-  function highlightBlock(id) {
-    workspace.highlightBlock(id);
-    highlightPause = true;
-  }
-
-  function resetStepUi(clearOutput) {
-    workspace.highlightBlock(null);
-    highlightPause = false;
-
-    if (clearOutput) {
-      //outputArea.value = 'Program output:\n=================';
-    }
-  }
-
-  function generateCodeAndLoadIntoInterpreter() {
-    // Generate JavaScript code and parse it.
-
-    Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
-    Blockly.JavaScript.addReservedWords('highlightBlock');
-    latestCode = Blockly.JavaScript.workspaceToCode(workspace);
-    //alert(latestCode);
-    resetStepUi(true);
-  }
-
-  function stepCode() {
-
-    document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 重置';
-    bool=true;
-
-    if (!myInterpreter) {
-      // First statement of this code.
-      // Clear the program output.
-      resetStepUi(true);
-      myInterpreter = new Interpreter(latestCode, initApi);
-
-      // And then show generated code in an alert.
-      // In a timeout to allow the outputArea.value to reset first.
-      setTimeout(function() {
-        // alert('Ready to execute the following code\n' + '===================================\n' + latestCode);
-        highlightPause = true;
-        stepCode();
-      }, 1);
-      return;
-    }
-    highlightPause = false;
-    do {
-      try {
-        var hasMoreCode = myInterpreter.step();
-
-        var c=1;
-        setInterval(function () {
-          if (!$('#bee').is(":animated") && c === 1) {
+        if (!$('#bee').is(":animated") && c === 1) {
             var marginleft = beeimg.offsetLeft - beemap.offsetLeft;
             var margintop = beeimg.offsetTop - beemap.offsetTop;
-
+            
             if (marginleft === 300 && margintop === 150 && flower1===0 &&flower2===0 &&flower3===0 &&flower4===0 &&flower5===0){
-              //run success
-              $('#success-confirm').modal({
+                //run success
+            $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                  window.location.replace("./getCheckPoint?level=9-2");
+                    window.location.replace("./getCheckPoint?level=9-1");
                 },
                 onCancel: function () {
 
                 }
-              });
+            });
 
+            } else {
+                //run failed
+                //alert(marginleft + "," + margintop);
+                $('#failed-confirm').modal({
+                    relatedTarget: this,
+                    onConfirm: function () {
+                        restart();
+                    },
+                    onCancel: function () {
+
+                    }
+                });
             }
             c = c - 1;
-          }
-        }, 100);
+        }
+    }, 100);
+}
 
 
+//以下为运用js解释器实现的步进功能
+  //此处往下是通过javascript解释器实现的步进功能
+      var outputArea = document.getElementById('output');
+      var stepButton = document.getElementById('stepButton');
+      var myInterpreter = null;
 
-      } finally {
-        if (!hasMoreCode) {
-          // Program complete, no more code to execute.
+    function initApi(interpreter, scope) {
+      // Add an API function for the alert() block, generated for "text_print" blocks.
+      interpreter.setProperty(scope, 'move',
+          interpreter.createNativeFunction(function(text,number) {
+        text = text ? text.toString() : '';
+        
+        //alert(number);
+        move(text,number);
+      }));
 
-          myInterpreter = null;
-          resetStepUi(false);
 
-          // Cool down, to discourage accidentally restarting the program.
-          stepButton.disabled = 'disabled';
-          setTimeout(function() {
-            stepButton.disabled = '';
-          }, 2000);
+      var wrapper = interpreter.createAsyncFunction(
+    function(timeInSeconds, callback) {
+      // Delay the call to the callback.
+      //alert(callback);
+      setTimeout(callback, timeInSeconds * 300);
+    });
+  interpreter.setProperty(scope, 'isRightResult',
+          interpreter.createNativeFunction(function() {
+        
+        //alert(number);
+        isRightResult();
+      }));
 
-          return;
+      interpreter.setProperty(scope, 'lr_gatherhoney',
+          interpreter.createNativeFunction(function(text,number) {
+        text = text ? text.toString() : '';
+       // angle = angle?angle.toString():' ';
+        //alert(number);
+        lr_gatherhoney(text,number);
+      }));
+
+      // Add an API function for highlighting blocks.
+      var wrapper = function(id) {
+        id = id ? id.toString() : '';
+        return interpreter.createPrimitive(highlightBlock(id));
+      };
+      interpreter.setProperty(scope, 'highlightBlock',
+          interpreter.createNativeFunction(wrapper));
+    }
+
+    var highlightPause = false;
+      var latestCode = '';
+  
+      function highlightBlock(id) {
+        workspace.highlightBlock(id);
+        highlightPause = true;
+      }
+  
+      function resetStepUi(clearOutput) {
+        workspace.highlightBlock(null);
+        highlightPause = false;
+  
+        if (clearOutput) {
+          //outputArea.value = 'Program output:\n=================';
         }
       }
-      // Keep executing until a highlight statement is reached,
-      // or the code completes or errors.
-    } while (hasMoreCode && !highlightPause);
-  }
+  
+      function generateCodeAndLoadIntoInterpreter() {
+        // Generate JavaScript code and parse it.
+  
+        Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
+        Blockly.JavaScript.addReservedWords('highlightBlock');
+        latestCode = Blockly.JavaScript.workspaceToCode(workspace);
+        //alert(latestCode);
+        resetStepUi(true);
+      }
 
-  // Load the interpreter now, and upon future changes.
-  generateCodeAndLoadIntoInterpreter();
-  workspace.addChangeListener(function(event) {
-    if (!(event instanceof Blockly.Events.Ui)) {
-      // Something changed. Parser needs to be reloaded.
-      generateCodeAndLoadIntoInterpreter();
+    function stepCode() {
+
+    	document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 重置';
+        bool=true;
+
+      if (!myInterpreter) {
+        // First statement of this code.
+        // Clear the program output.
+        resetStepUi(true);
+        myInterpreter = new Interpreter(latestCode, initApi);
+
+        // And then show generated code in an alert.
+        // In a timeout to allow the outputArea.value to reset first.
+        setTimeout(function() {
+         // alert('Ready to execute the following code\n' + '===================================\n' + latestCode);
+          highlightPause = true;
+          stepCode();
+        }, 1);
+        return;
+      }
+      highlightPause = false;
+      do {
+        try {
+          var hasMoreCode = myInterpreter.step();
+        	
+            var c=1;
+           setInterval(function () {
+            if (!$('#bee').is(":animated") && c === 1) {
+            var marginleft = beeimg.offsetLeft - beemap.offsetLeft;
+            var margintop = beeimg.offsetTop - beemap.offsetTop;
+            
+            if (marginleft === 300 && margintop === 150 && flower1===0 &&flower2===0 &&flower3===0 &&flower4===0 &&flower5===0){
+                //run success
+            $('#success-confirm').modal({
+                relatedTarget: this,
+                onConfirm: function () {
+                    window.location.replace("./getCheckPoint?level=9-2");
+                },
+                onCancel: function () {
+
+                }
+            });
+
+            } 
+            c = c - 1;
+        }
+    }, 100);
+
+
+
+        } finally {
+          if (!hasMoreCode) {
+            // Program complete, no more code to execute.
+
+            myInterpreter = null;
+            resetStepUi(false);
+
+            // Cool down, to discourage accidentally restarting the program.
+            stepButton.disabled = 'disabled';
+            setTimeout(function() {
+              stepButton.disabled = '';
+            }, 2000);
+
+            return;
+          }
+        }
+        // Keep executing until a highlight statement is reached,
+        // or the code completes or errors.
+      } while (hasMoreCode && !highlightPause);
     }
-  });
+
+    // Load the interpreter now, and upon future changes.
+      generateCodeAndLoadIntoInterpreter();
+      workspace.addChangeListener(function(event) {
+        if (!(event instanceof Blockly.Events.Ui)) {
+          // Something changed. Parser needs to be reloaded.
+          generateCodeAndLoadIntoInterpreter();
+        }
+      });
 
 
 

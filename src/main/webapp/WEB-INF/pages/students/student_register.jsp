@@ -185,7 +185,7 @@ To change this template use File | Settings | File Templates.
 
     function accountCheck(){
         var account = document.getElementById("reg-account").value;//获取文本框内容
-        var url='<%=request.getContextPath()%>/rest/loginControl/checkStudentAccount';
+        var url='<%=request.getContextPath()%>/rest/loginControl/checkStudentAccountAjax';
         var data={
             "studentaccount":account
         };

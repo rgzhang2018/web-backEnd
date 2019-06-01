@@ -1,10 +1,9 @@
 
 <body>
 <header class="am-topbar am-topbar-inverse">
-	<!-- 引入个人blockly -->
-
+	<!-- 引入个人的blockly的js -->
   <script src="/static/lib/myblock/lr_blocks.js"></script>
-
+  
   <h1 class="am-topbar-brand">
     <a href="HomePage.html" class="am-icon-home am-icon-lg">课程9:蜜蜂：计数循环</a>
   </h1>
@@ -15,17 +14,14 @@
 
   <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
     <div class="am-btn-group am-topbar-center">
-      <a href="./getCheckPoint?level=9-1" type="button" class="am-btn am-btn-primary am-round">1</a>
-      <a href="./getCheckPoint?level=9-2" type="button" class="am-btn am-btn-primary am-round">2</a>
-      <a href="./getCheckPoint?level=9-3" type="button" class="am-btn am-btn-primary am-round">3</a>
-      <a href="./getCheckPoint?level=9-4" type="button" class="am-btn am-btn-primary am-round">4</a>
-      <a href="./getCheckPoint?level=9-5" type="button" class="am-btn am-btn-primary am-round">5</a>
-      <a href="./getCheckPoint?level=9-6" type="button" class="am-btn am-btn-primary am-round">6</a>
-      <a href="./getCheckPoint?level=9-7" type="button" class="am-btn am-btn-primary am-round am-active">7</a>
-      <a href="./getCheckPoint?level=9-8" type="button" class="am-btn am-btn-primary am-round">8</a>
-      <a href="./getCheckPoint?level=9-9" type="button" class="am-btn am-btn-primary am-round">9</a>
-      <a href="./getCheckPoint?level=9-10" type="button" class="am-btn am-btn-primary am-round">10</a>
-      <a href="./getCheckPoint?level=9-11" type="button" class="am-btn am-btn-primary am-round">11</a>
+      <a href="./getCheckPoint?level=16-1" type="button" class="am-btn am-btn-primary am-round">1</a>
+      <a href="./getCheckPoint?level=16-2" type="button" class="am-btn am-btn-primary am-round">2</a>
+      <a href="./getCheckPoint?level=16-3" type="button" class="am-btn am-btn-primary am-round">3</a>
+      <a href="./getCheckPoint?level=16-4" type="button" class="am-btn am-btn-primary am-round">4</a>
+      <a href="./getCheckPoint?level=16-5" type="button" class="am-btn am-btn-primary am-round">5</a>
+      <a href="./getCheckPoint?level=16-6" type="button" class="am-btn am-btn-primary am-round">6</a>
+      <a href="./getCheckPoint?level=16-7" type="button" class="am-btn am-btn-primary am-round am-active">7</a>
+      <a href="./getCheckPoint?level=16-8" type="button" class="am-btn am-btn-primary am-round">8</a>
     </div>
     <button class="am-btn am-btn-primary">更多
       <i class="am-icon-chevron-circle-down"></i>
@@ -51,21 +47,22 @@
 
 <div class="am-g doc-am-g">    
   <div class="am-u-sm-18 am-u-lg-4">
-    <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/nine/course9-7.jpg) no-repeat">
+    <div id="bediv" style="width:400px; height:400px;background:url(/static/lib/pictures/nine/course16-7.jpg) no-repeat">
 
-      <div style="padding-left:50px;padding-top:200px">
-        <img id="bee" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
-           <div style="left: 160px;position: absolute;top: 230px;color:#FFFFFF"><p><span id="flower1">1</span></p></div>
-
-           <div style="left: 210px;position: absolute;top: 230px;color:#FFFFFF"><p><span id="flower2">3</span></p></div>
-           <div style="left: 260px;position: absolute;top: 230px;color:#FFFFFF"><p><span id="flower3">5</span></p></div>
-           <div style="left: 310px;position: absolute;top: 230px;color:#FFFFFF"><p><span id="flower4">7</span></p></div>
-
+      <div style="padding-left:200px;padding-top:50px">
+        <img id="be" src="/static/lib/pictures/nine/be.jpg" class="am-circle am-img-responsive am-img-xs" alt="beimg">
+           <div style="left: 160px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower1">5</span></p></div>
+           <div style="left: 351px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower2">10</span></p></div>
+           <div style="left: 151px;position: absolute;top: 280px;color:#FFFFFF"><p><span id="flower3">15</span></p></div>
+           <div style="left: 351px;position: absolute;top: 280px;color:#FFFFFF"><p><span id="flower4">20</span></p></div>
+           <div style="left: 151px;position: absolute;top: 380px;color:#FFFFFF"><p><span id="flower5">25</span></p></div>
+           <div style="left: 351px;position: absolute;top: 380px;color:#FFFFFF"><p><span id="flower6">30</span></p></div>
+        
       </div>
     </div>
     <div class="am-g" style="width:430px;">
       <div class="am-u-sm-6">
-        <button id = "runButton" type="button" id="runButton" class="am-btn am-btn-primary am-radius am-btn-xl am-fl" onclick="runCode()">
+        <button type="button" id="runButton" class="am-btn am-btn-primary am-radius am-btn-xl am-fl" onclick="runCode()">
           <i class="am-icon-play"></i>
           运行</button>
       </div>
@@ -77,8 +74,8 @@
   </div>
   <div  id="blocklyArea" class="am-u-sm-12 am-u-lg-8 am-u-end" style="background-color:LightSteelBlue">
     <div class="am-container">
-      <img id="bee2" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-fl">
-      <p class="am-center">循环里的最后一个数字叫做“增量”。每次循环执行时，计数器变量都会改变“增量”这么多。试着用增量2来收集所有花蜜。</p>
+      <img id="be2" src="/static/lib/pictures/nine/be.jpg" class="am-circle am-fl">
+      <p class="am-center">试着用新函数来收集所有花蜜。</p>
     </div>
     <div class="am-g" style="background-color:SteelBlue">
       <div class="am-u-sm-4 am-u-md-2 am-u-lg-2">
@@ -105,36 +102,42 @@
 
 
 <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
-  <block type="start_block"></block>
+  <block type="start_block" id="A/3}biDE0:cC]4V!B}fl" x="150" y="33"></block>
 </xml>
 <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-  <block type="move"></block>
+      <category name="操作" colour="%{BKY_LISTS_HUE}">
+      <block type="moveback"></block>
+      <block type="move"></block>
+      <block type="turnright"></block>
+      <block type="turnleft"></block>
+      <block type="lr_gatherhoney"></block>
+    </category>
 
-  <block type="controls_for">
-        <field name="VAR">i</field>
-        <value name="FROM">
-          <block type="math_number">
-            <field name="NUM">???</field>
-          </block>
-        </value>
-        <value name="TO">
-          <block type="math_number">
-            <field name="NUM">???</field>
-          </block>
-        </value>
-        <value name="BY">
-          <block type="math_number">
-            <field name="NUM">-1</field>
-          </block>
+    <category name="循环" colour="%{BKY_COLOUR_HUE}">
+      <block type="lr_gatherhoney"></block>
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">？</field>
+          </shadow>
         </value>
       </block>
-  
-  <block type="lr_gatherhoney"></block>
-  <block type="controls_repeat_ext"></block>
-  <block type="variables_get">
-    <field name="VAR">i</field>
-  </block>
+    </category>
 
+    <category name="数学" colour="%{BKY_MATH_HUE}">
+      <block type="math_number">
+        <field name="NUM">0</field>
+      </block>
+    </category>
+
+    <category name="逻辑" colour="%{BKY_LOGIC_HUE}">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_ternary"></block>
+    </category>
+
+    <category name="函数" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
+    <category name="变量" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
 </xml>
 
 <div class="am-modal am-modal-confirm" tabindex="-1" id="success-confirm">
@@ -169,17 +172,18 @@
 
 
 <script>
-var beemap = document.getElementById('beediv');   //地图，用以计算相对位置
-var beeimg = document.getElementById('bee');
+var bemap = document.getElementById('bediv');   //地图，用以计算相对位置
+var beimg = document.getElementById('be');
 var count = 0;  //用以对块计数判断
 var be_location = 0;  //判断蜜蜂是否移动到指定位置
-var be_gather=0;
-var flower1=1;
-var flower2=3;
-var flower3=5;
-var flower4=7;
+var flower1=5;
+var flower2=10;
+var flower3=15;
+var flower4=20;
+var flower5=25;
+var flower6=30;
 
-var orilocation = $('#bee').offset();
+var orilocation = $('#be').offset();
 
 
 var bool = false;
@@ -199,37 +203,39 @@ function runCode() {
             alert(code);
             code += "isRightResult();";
             myInterpreter = new Interpreter(code,initApi);
-    		runStepCode();
+        runStepCode();
         } catch (e) {
             alert(e);
         }
         }else{
           document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 运行';
-            
-                document.getElementById('beediv');
-                $('#bee').rotate(90 * 0);
-       
-          document.getElementById("flower1").innerHTML=1;
-          document.getElementById("flower2").innerHTML=3;
-          document.getElementById("flower3").innerHTML=5;
-          document.getElementById("flower4").innerHTML=7;
-          flower1=1;
-          flower2=3;
-          flower3=5;
-          flower4=7;
+          document.getElementById('bediv');
+                $('#be').rotate(90 * 0);
+                dire=0;
+          document.getElementById("flower1").innerHTML=5;
+          document.getElementById("flower2").innerHTML=10;
+          document.getElementById("flower3").innerHTML=15;
+          document.getElementById("flower4").innerHTML=20;
+          document.getElementById("flower5").innerHTML=25;
+          document.getElementById("flower6").innerHTML=30;
+          flower1=5;
+          flower2=10;
+          flower3=15;
+          flower4=20;
+          flower5=25;
+          flower6=30;
           be_location=0;
-          dire=0;
           // $('#bee').attr('marginLeft','1px');
-          //alert(orilocation.left);
-          $('#bee').offset({left:orilocation.left,top:orilocation.top});
+          // alert(orilocation.left);
+          $('#be').offset({left:orilocation.left,top:orilocation.top});
         }
         
     }
 
     function runStepCode(){
-    	if(myInterpreter.step()){
-    		window.setTimeout(runStepCode,5);
-    	}
+      if(myInterpreter.step()){
+        window.setTimeout(runStepCode,20);
+      }
     }
 
 function restart() {
@@ -244,15 +250,22 @@ var move = function () {
 
     var stepsum = 50;
     if (dire == 0) {
-        $('#bee').animate({
-            marginLeft: "+=" + stepsum + "px"
+        $('#be').animate({
+            marginTop: "+=" + stepsum + "px"
         }, 500);
     } else if (dire == 1) {
-        $('#bee').animate({
-            marginTop: "-=" + stepsum + "px"
+        $('#be').animate({
+            marginLeft: "+=" + stepsum + "px"
         }, 500);
     } else if (dire == 2) {
-        $('#bee').animate({
+        $('#be').animate({
+            marginTop: "-=" + stepsum + "px"
+            
+        }, 500);
+        
+    }
+    else{
+        $('#be').animate({
             marginLeft: "-=" + stepsum + "px"
             
         }, 500);
@@ -267,59 +280,88 @@ var move = function () {
     count = count - 1;
 }
 
-function turnleft() {
-    document.getElementById('beediv');
-    dire += 1;
-    dire %= 4;
-    $('#bee').rotate(-90 * dire);
+var moveback = function () {
+  be_location = be_location+1;
+
+    var stepsum = 50;
+    if (dire == 0) {
+        $('#be').animate({
+            marginTop: "-=" + stepsum + "px"
+        }, 500);
+    } else if (dire == 1) {
+        $('#be').animate({
+            marginLeft: "-=" + stepsum + "px"
+        }, 500);
+    } else if (dire == 2) {
+        $('#be').animate({
+            marginTop: "+=" + stepsum + "px"
+            
+        }, 500);
+        
+    }
+    else{
+        $('#be').animate({
+            marginLeft: "+=" + stepsum + "px"
+            
+        }, 500);
+        
+    }
+    //should try is the bee is the right place
+    //避开tnt的判断
+    if (true) {
+
+    }
+
     count = count - 1;
 }
 
-function generateCode() {
-        // Generate JavaScript code and show it.
-        window.LoopTrap = 1000;
-        Blockly.JavaScript.INFINITE_LOOP_TRAP =
-            'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
-        var code = Blockly.JavaScript.workspaceToCode(workspace);
-        Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-        try {
-            alert(code);
-        } catch (e) {
-            alert(e);
-        }
-    }
-  function restart() {
-  location.reload();
-  }
+function turnleft() {
+    document.getElementById('bediv');
+    dire += 1;
+    dire %= 4;
+    $('#be').rotate(-90 * dire);
+    count = count - 1;
+}
 
 function turnright() {
-    document.getElementById('beediv');
-    dire -= 1;
+    document.getElementById('bediv');
+    dire += 3;
     dire %= 4;
-    $('#bee').rotate(90 * dire);
+    $('#be').rotate(-90 * dire);
     count = count - 1;
 }
 
 function lr_gatherhoney(){
-	var marginleft = beeimg.offsetLeft - beemap.offsetLeft;
-	var margintop = beeimg.offsetTop - beemap.offsetTop;
+    var marginleft = beimg.offsetLeft - bemap.offsetLeft;
+    var margintop = beimg.offsetTop - bemap.offsetTop;
 
-    if(be_location>=4 && flower4 > 0){
+    if(be_location>=28 && marginleft === 300 && margintop === 350 && flower6 > 0){
+      document.getElementById("flower6").innerHTML=flower6-1;
+      flower6=flower6-1;
+    }
+    else if(be_location>=24 && marginleft === 100 && margintop === 350 && flower5 > 0){
+      document.getElementById("flower5").innerHTML=flower5-1;
+      flower5=flower5-1;
+
+    }
+    else if(be_location>=18 && marginleft === 300 && margintop === 250 && flower4 > 0){
       document.getElementById("flower4").innerHTML=flower4-1;
       flower4=flower4-1;
     }
-    else if(be_location>=3 && flower3 > 0){
+    else if(be_location>=14 && marginleft === 100 && margintop === 250 && flower3 > 0){
       document.getElementById("flower3").innerHTML=flower3-1;
       flower3=flower3-1;
     }
-    else if(be_location>=2 && flower2 > 0){
+    else if(be_location>=8 && marginleft === 300 && margintop === 150 && flower2 > 0){
       document.getElementById("flower2").innerHTML=flower2-1;
       flower2=flower2-1;
     }
-    else if(be_location>=1 && flower1 > 0){
+    else if(be_location>=4 && marginleft === 100 && margintop === 150 && flower1 > 0){
       document.getElementById("flower1").innerHTML=flower1-1;
       flower1=flower1-1;
     }
+
+
     count = count - 1;
 
 }
@@ -329,16 +371,16 @@ function isRightResult() {
     //isRightResult作为检查正确位置的激活
     var c=1;
     setInterval(function () {
-        if (!$('#bee').is(":animated") && c === 1) {
-            var marginleft = beeimg.offsetLeft - beemap.offsetLeft;
-            var margintop = beeimg.offsetTop - beemap.offsetTop;
+        if (!$('#be').is(":animated") && c === 1) {
+            var marginleft = beimg.offsetLeft - bemap.offsetLeft;
+            var margintop = beimg.offsetTop - bemap.offsetTop;
             
-            if (marginleft === 250 && margintop === 200 && flower1===0 &&flower2===0 &&flower3===0 &&flower4===0){
+            if (marginleft === 200 && margintop === 350&& flower1===0 &&flower2===0 &&flower3===0 &&flower4===0 &&flower5===0 &&flower6===0){
                 //run success
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckPoint?level=9-8");
+                    window.location.replace("./getCheckPoint?level=16-8");
                 },
                 onCancel: function () {
 
@@ -380,6 +422,36 @@ function isRightResult() {
         move(text,number);
       }));
 
+      interpreter.setProperty(scope, 'isRightResult',
+          interpreter.createNativeFunction(function() {
+        
+        //alert(number);
+        isRightResult();
+      }));
+
+      interpreter.setProperty(scope, 'moveback',
+          interpreter.createNativeFunction(function(text,number) {
+        text = text ? text.toString() : '';
+        
+        //alert(number);
+        moveback(text,number);
+      }));
+
+   interpreter.setProperty(scope, 'turnright',
+          interpreter.createNativeFunction(function(text,number) {
+        text = text ? text.toString() : '';
+        
+        //alert(number);
+        turnright(text,number);
+      }));
+
+   interpreter.setProperty(scope, 'turnleft',
+          interpreter.createNativeFunction(function(text,number) {
+        text = text ? text.toString() : '';
+        
+        //alert(number);
+        turnleft(text,number);
+      }));
 
       var wrapper = interpreter.createAsyncFunction(
     function(timeInSeconds, callback) {
@@ -387,13 +459,13 @@ function isRightResult() {
       //alert(callback);
       setTimeout(callback, timeInSeconds * 300);
     });
+  interpreter.setProperty(scope, 'waitForSeconds', wrapper);
 
-      interpreter.setProperty(scope, 'isRightResult',
-          interpreter.createNativeFunction(function() {
-        
-        //alert(number);
-        isRightResult();
-      }));
+      // Add an API function for the prompt() block.
+      var wrapper = function(text) {
+        text = text ? text.toString() : '';
+        return interpreter.createPrimitive(prompt(text));
+      };
 
       interpreter.setProperty(scope, 'lr_gatherhoney',
           interpreter.createNativeFunction(function(text,number) {
@@ -441,7 +513,7 @@ function isRightResult() {
 
 
     function stepCode() {
-    	document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 重置';
+      document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 重置';
         bool=true;
 
       if (!myInterpreter) {
@@ -466,16 +538,16 @@ function isRightResult() {
           
             var c=1;
            setInterval(function () {
-            if (!$('#bee').is(":animated") && c === 1) {
-            var marginleft = beeimg.offsetLeft - beemap.offsetLeft;
-            var margintop = beeimg.offsetTop - beemap.offsetTop;
+            if (!$('#be').is(":animated") && c === 1) {
+            var marginleft = beimg.offsetLeft - bemap.offsetLeft;
+            var margintop = beimg.offsetTop - bemap.offsetTop;
             
-            if (marginleft === 250 && margintop === 200 && flower1===0 &&flower2===0 &&flower3===0 &&flower4===0){
+            if (marginleft === 300 && margintop === 350&& flower1===0 &&flower2===0 &&flower3===0 &&flower4===0 &&flower5===0 &&flower6===0){
                 //run success
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckPoint?level=9-8");
+                    window.location.replace("./getCheckPoint?level=16-8");
                 },
                 onCancel: function () {
 
@@ -518,6 +590,7 @@ function isRightResult() {
           generateCodeAndLoadIntoInterpreter();
         }
       });
+
 
 </script>
 
