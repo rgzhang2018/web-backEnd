@@ -130,6 +130,9 @@
 <div id="output"></div>
 
 
+<script>
+  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
+</script>
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 
@@ -339,7 +342,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckPoint?level=16-7");
+                    window.location.replace("./getCheckpoint?level=16-7");
                 },
                 onCancel: function () {
 
@@ -507,7 +510,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckPoint?level=16-7");
+                    window.location.replace("./getCheckpoint?level=16-7");
                 },
                 onCancel: function () {
 

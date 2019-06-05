@@ -1,51 +1,6 @@
 
 <body>
-<header class="am-topbar am-topbar-inverse">
-	<!-- 引入个人blockly -->
-  
-  <script src="/static/lib/myblock/lr_blocks.js"></script>
 
-  <h1 class="am-topbar-brand">
-    <a href="HomePage.html" class="am-icon-home am-icon-lg">课程9:蜜蜂：计数循环</a>
-  </h1>
-
-  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
-          data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
-          class="am-icon-bars"></span></button>
-
-  <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
-    <div class="am-btn-group am-topbar-center">
-      <a href="./getCheckPoint?level=9-1" type="button" class="am-btn am-btn-primary am-round">1</a>
-      <a href="./getCheckPoint?level=9-2" type="button" class="am-btn am-btn-primary am-round">2</a>
-      <a href="./getCheckPoint?level=9-3" type="button" class="am-btn am-btn-primary am-round am-active">3</a>
-      <a href="./getCheckPoint?level=9-4" type="button" class="am-btn am-btn-primary am-round">4</a>
-      <a href="./getCheckPoint?level=9-5" type="button" class="am-btn am-btn-primary am-round">5</a>
-      <a href="./getCheckPoint?level=9-6" type="button" class="am-btn am-btn-primary am-round">6</a>
-      <a href="./getCheckPoint?level=9-7" type="button" class="am-btn am-btn-primary am-round">7</a>
-      <a href="./getCheckPoint?level=9-8" type="button" class="am-btn am-btn-primary am-round">8</a>
-      <a href="./getCheckPoint?level=9-9" type="button" class="am-btn am-btn-primary am-round">9</a>
-      <a href="./getCheckPoint?level=9-10" type="button" class="am-btn am-btn-primary am-round">10</a>
-      <a href="./getCheckPoint?level=9-11" type="button" class="am-btn am-btn-primary am-round">11</a>
-    </div>
-    <button class="am-btn am-btn-primary">更多
-      <i class="am-icon-chevron-circle-down"></i>
-    </button>
-    <div class="am-topbar-right">
-      <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
-        <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</button>
-        <button data-am-dropdown-toggle class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle">
-          <i class="am-icon-bars"></i>
-        </button>
-        <ul class="am-dropdown-content">
-          <li><a href="#">注册</a></li>
-          <li><a href="#">随便看看</a></li>
-        </ul>
-      </div>
-    </div>
-
-
-  </div>
-</header>
 
 <!--在这里编写你的代码-->
 
@@ -165,8 +120,9 @@
 <div id="output"></div>
 
 
+
 <script>
-  getCodeAjax();
+  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
 </script>
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
@@ -362,7 +318,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckPoint?level=9-4");
+                    window.location.replace("./getCheckpoint?level=9-4");
                 },
                 onCancel: function () {
 
@@ -499,7 +455,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckPoint?level=9-4");
+                    window.location.replace("./getCheckpoint?level=9-4");
                 },
                 onCancel: function () {
 

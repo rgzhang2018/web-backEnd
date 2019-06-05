@@ -71,18 +71,6 @@ public class GameController {
     }
 
 
-    /**
-    * @Description: 获取到当前关卡的信息(待完成)
-    * @Param: [request]
-    * @return: java.lang.String
-    * @Author: rgzhang
-    */
-    @RequestMapping(value = "/getCheckpoint",method = {RequestMethod.POST})
-    public String getCheckpoint(HttpServletRequest request){
-        System.out.println(request.getRequestURI());
-        return "students/student_login";
-    }
-
 
     /**
      * @Description: 学生打开闯关页面，返回的successLists表示已经通过的关卡

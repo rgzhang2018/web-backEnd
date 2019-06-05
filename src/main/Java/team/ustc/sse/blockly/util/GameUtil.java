@@ -14,7 +14,7 @@ import java.util.logging.Level;
  **/
 public class GameUtil {
     public static final Integer MAX_LEVEL = 20;
-    public static final Integer[] LEVEL_COUNTS = {0,1,20,20,1,1,8,20,1,11,10,20,8,1,15,20,8,1,20,20};    //第0个下标设置为0
+    public static final Integer[] LEVEL_COUNTS = {0,1,18,18,1,1,16,18,1,11,10,18,17,1,15,18,11,1,18,18};    //第0个下标设置为0
     public static final String[] LEVEL_NAME = {
             "0.null","1.离线：七巧板","2.迷宫与蜜蜂","3.小艺术家","4.离线：封装变量","5.离线：疯狂填词","6.小艺术家：变量",
             "7.游戏实验室：变量","8.离线：计数循环的乐趣","9.蜜蜂：计数循环","10.小艺术家：计数循环","11.游戏实验室：计数循环",
@@ -25,20 +25,21 @@ public class GameUtil {
 
     private static String htmlCheckpoints = null;
 
+    //所有关卡信息
     static {
         StringBuilder result = new StringBuilder();
         for(int i=1;i<GameUtil.MAX_LEVEL;i++){
             result.append("<tr><td>").append(LEVEL_NAME[i]).append("</td>");
             if(LEVEL_COUNTS[i]==1){
-                result.append("<td><button type='button' class='am-btn am-btn-default am-round'>线下的活动</button></td>");
+                result.append("<td><button type='button' class='am-btn am-btn-sm am-btn-default am-round'>线下的活动</button></td>");
             }else{
-                result.append("<td>\n");
+                result.append("<td>");
                 for(int j=1;j<LEVEL_COUNTS[i]+1;j++){
                     String s = i+"-"+j;
                     result.append("<a href=\"/rest/game/getCheckpoint?level=").append(s).append("\" id=\"").append(s)
-                            .append("\" type=\"button\" class=\"am-btn am-btn-default  am-round\"> ").append(j).append(" </a>\n");
+                            .append("\" type=\"button\" class=\"am-btn am-btn-sm am-btn-default  am-round\"> ").append(j).append(" </a>");
                 }
-                result.append("</td>\n");
+                result.append("</td>");
             }
         }
         htmlCheckpoints = new String(result);

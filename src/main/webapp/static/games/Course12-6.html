@@ -2,7 +2,50 @@
 <body>
 	<!-- 引入个人js -->
 	<script src="/static/lib/myblock/zy_blocks.js"></script>
-
+	<style>
+			html,body {
+								 margin: 0;
+									padding: 0;
+									width: 100%;
+									height: 100%;
+									background-color:#F0F0F0;
+									overflow:scroll;overflow-y:hidden;/* 禁止滚动条 */
+							}
+			#topbar{
+				background-color: #0e90d2;
+			}
+			#canvas-monkey {   
+				position: absolute;
+			}
+		
+			#canvas-path {
+				position: absolute;
+			}
+			#canvas-display {
+				position: absolute;
+				background-color: white;
+			}
+			#content-left{
+				width: 405px;
+				height: 90%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+	
+			}
+			#content-right{
+				
+				height: 100%;
+			}
+			#content{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: space-between;
+				flex-wrap:nowrap;
+				margin-top: 10px;
+			}
+		</style>
 
 	<!-- 导航条下面的内容 -->
 <div id="content" >
@@ -378,6 +421,7 @@
 		console.log(imgData.length); */
 		var bool=ctxPath.isPointInPath(150+120,143)&&ctxPath.isPointInPath(150+120,243);//判断点是否在canva-path中
 	    if (bool) {
+	    	setSuccessAjax();
 	        $('#success-confirm').modal({
 	            relatedTarget: this,
 	            onConfirm: function () {
@@ -495,10 +539,11 @@
 	        	console.log(imgData.length); */
 	        	var bool=ctxPath.isPointInPath(150,243)&&ctxPath.isPointInPath(200,156);//判断点是否在canva-path中
 	        	  if (bool) {
+	    	setSuccessAjax();
 	        	      $('#success-confirm').modal({
 	        	          relatedTarget: this,
 	        	          onConfirm: function () {
-	        	              window.location.replace("Course6-2.html");
+	        	              window.location.replace("./getCheckpoint?level=12-7");
 	        	          },
 	        	          onCancel: function () {
 	        		

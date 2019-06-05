@@ -125,7 +125,7 @@ ${pageContext.request.contextPath }/static/lib/assets/
 
 
 
-
+<%--            所有关卡信息，从GameUtil中获取到--%>
             ${htmlCheckpoints}
 
             </tbody>

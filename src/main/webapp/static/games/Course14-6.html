@@ -212,9 +212,13 @@
   </div>
 </div>
 <div id="output"></div>
+
   <!-- 引入个人js -->
   <script src="/static/lib/myblock/lr_blocks.js"></script>
-  <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
+  <script>
+  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
+</script>
+<script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 <script>
 var count = 0;  //用以对块计数判断
@@ -430,7 +434,7 @@ var dire = 0;
         $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
-                  window.location.replace("./getCheckPoint?level=14-7");
+                  window.location.replace("./getCheckpoint?level=14-7");
               },
               onCancel: function () {
   
@@ -563,7 +567,7 @@ var dire = 0;
               $('#success-confirm').modal({
               relatedTarget: this,
                   onConfirm: function () {
-                       window.location.replace("./getCheckPoint?level=14-7");
+                       window.location.replace("./getCheckpoint?level=14-7");
                   },
                   onCancel: function () {
   
