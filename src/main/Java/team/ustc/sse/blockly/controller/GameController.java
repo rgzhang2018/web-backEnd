@@ -36,10 +36,13 @@ public class GameController {
     * @return: void
     * @Author: rgzhang
     */
-    @RequestMapping(value = "/saveCheckoutPoint",method = {RequestMethod.POST})
+    @RequestMapping(value = "/saveCheckoutPointAjax",method = {RequestMethod.POST})
     public @ResponseBody boolean saveCheckoutPointAjax(@RequestBody Checkoutpoint checkoutpoint, HttpServletResponse response,HttpServletRequest request){
         if(SessionUtil.checkStudentLogin(request)){
             checkoutpoint.setStudentid(SessionUtil.getStudentID(request));
+            System.out.println(checkoutpoint.getProgram());
+            System.out.println(checkoutpoint.getCheckpointid());
+            System.out.println("====================");
             boolean result = gameServiceImpl.saveCheckoutPoint(checkoutpoint);
             response.setContentType("application/json; charset=utf-8");     //请求json，相应json，二者必须都是json格式
             return true;
@@ -56,11 +59,15 @@ public class GameController {
     * @return: java.lang.String
     * @Author: rgzhang
     */
-    @RequestMapping(value = "/getCheckoutPoint",method = {RequestMethod.POST})
-    public @ResponseBody Checkoutpoint getCheckoutPoint(@RequestBody Checkoutpoint checkoutpoint, HttpServletResponse response){
-        checkoutpoint = gameServiceImpl.getCheckoutPoint(checkoutpoint.getStudentid(),checkoutpoint.getCheckpointid());
-        response.setContentType("application/json; charset=utf-8");     //请求json，相应json，二者必须都是json格式
-        return checkoutpoint;
+    @RequestMapping(value = "/getCheckoutPointAjax",method = {RequestMethod.POST})
+    public @ResponseBody Checkoutpoint getCheckoutPointAjax(@RequestBody Checkoutpoint checkoutpoint,HttpServletRequest request, HttpServletResponse response){
+        if(SessionUtil.checkStudentLogin(request)){
+            checkoutpoint.setStudentid(SessionUtil.getStudentID(request));
+            checkoutpoint = gameServiceImpl.getCheckoutPoint(checkoutpoint.getStudentid(),checkoutpoint.getCheckpointid());
+            response.setContentType("application/json; charset=utf-8");     //请求json，相应json，二者必须都是json格式
+            return checkoutpoint;
+        }
+        return null;
     }
 
 
@@ -87,12 +94,6 @@ public class GameController {
     public String checkPoints(HttpServletRequest request){
         String htmlCheckpoints = GameUtil.getHtmlCheckpoints();
         request.setAttribute("htmlCheckpoints",htmlCheckpoints);
-//        if(SessionUtil.checkStudentLogin(request)){
-//            Integer studentID = SessionUtil.getStudentID(request);
-//            List<Checkoutpoint> checkoutpointList = gameServiceImpl.getSuccessMessageByStudent(studentID);
-//            List<List<Boolean>> successLists = GameUtil.turnSuccessToList(checkoutpointList);
-//            request.setAttribute("successLists",successLists);
-//        }
         return "students/checkpoints";
     }
 

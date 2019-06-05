@@ -82,6 +82,8 @@
 </div>
 <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
   <block type="start_block"></block>
+
+
 </xml>
 <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
   <block type="movepx">
@@ -126,16 +128,20 @@
   </div>
 </div>
 <!--<script type="text/javascript" src="myblock/step-execution.js"></script>-->
+ <script>
+	 getCodeAjax();
+ </script>
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 <script>
+	      //刷新页面就重新尝试获取保存在服务端的闯关记录
 	//运行、重置代码
 		var bool=false;
     function runCode() {
 				// Generate JavaScript code and run it.
 				//切换按钮的样式
 				bool=!bool;
-				if(bool){	
+				if(bool){
 					document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
 					window.LoopTrap = 1000;
         Blockly.JavaScript.INFINITE_LOOP_TRAP =
@@ -169,7 +175,7 @@
 					 lineX=150, lineY=243;//记录画线的初始位置
 					 imgMonkey;
 					 imgData;//画布中的像素信息，
-					$(document).ready(function(){				
+					$(document).ready(function(){
 						var c=document.getElementById("canvas-display");
 						var ctx = c.getContext('2d');
 						ctx.moveTo(150,243);
@@ -184,13 +190,13 @@
 						var ctxMonkey = canvasMonkey.getContext('2d');
 						imgMonkey = new Image();
 						imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
-						ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
-						}); 
-					
+						ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40);
+						});
+
 				}
-        
+
 		}
-		
+
 	function generateCode() {
         // Generate JavaScript code and show it.
         window.LoopTrap = 1000;

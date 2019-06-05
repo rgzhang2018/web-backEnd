@@ -481,7 +481,8 @@ var dire = 0;
     // var ctxpath=document.getElementById("canvas-path").getContext('2d');
     // var bool=ctxpath.isPointInPath(175,214.4);//判断点是否在canva-path中
       if (turnstep ===80 && movelengthStep1 === 4 && movelengthStep2 === 4 && movelengthStep3 === 4 && movelengthStep4 === 4 && movelengthStep5 === 4 && movelengthStep6 === 4 && movelengthStep7 === 4 && movelengthStep8 === 4 && movelengthStep9 === 4 && movelengthStep10 === 4&& movelengthStep11 === 4 && movelengthStep12 === 4 && movelengthStep13 === 4 && movelengthStep14 === 4 && movelengthStep15 === 4 && movelengthStep16 === 4 && movelengthStep17 === 4 && movelengthStep18 === 4 && movelengthStep19 === 4 && movelengthStep20 === 4) {
-          $('#success-confirm').modal({
+        setSuccessAjax();		//闯关成功，调用存入数据库的代码
+        $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
                   window.location.replace("./getCheckPoint?level=10-5");

@@ -1,4 +1,5 @@
 
+
 <body>
   <!--定义多层canvas的css信息-->
   <style>
@@ -391,6 +392,7 @@ var dire = 0;
 //判断是否是正确的结果
   function isRightResult() {
       if (turnstep === 15 && movelengthStep === 15 && dumplengthStep >= 4) {
+        setSuccessAjax();		//闯关成功，调用存入数据库的代码
           $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {

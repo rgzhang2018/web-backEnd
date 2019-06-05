@@ -325,6 +325,7 @@ function isRightResult() {
             
             if (marginleft === 351 && margintop === 200 && flower1===0 &&flower2===0 &&flower3===0){
                 //run success
+              setSuccessAjax();		//闯关成功，调用存入数据库的代码
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
@@ -546,11 +547,3 @@ function isRightResult() {
 </script>
 
 
-
-<!-- 单步
-  
-<script type="text/javascript" src="myblock/acorn_interpreter.js"></script>
-<script type="text/javascript" src="myblock/wait_block.js"></script>
-<script type="text/javascript" src="myblock/step-execution.js"></script> -->
-</body>
-</html>

@@ -426,7 +426,8 @@ var dire = 0;
 //判断是否是正确的结果
   function isRightResult() {
       if (turnstep1 === 3 && turnstep2 === 4 && turnstep3 === 6 && movelengthStep1 === 7 && movelengthStep2 === 6 && dumplengthStep1 === 1 &&dumplengthStep2 === 1) {
-          $('#success-confirm').modal({
+        setSuccessAjax();		//闯关成功，调用存入数据库的代码
+        $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
                   window.location.replace("./getCheckPoint?level=14-7");

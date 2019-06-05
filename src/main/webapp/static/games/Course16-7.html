@@ -339,6 +339,7 @@ function isRightResult() {
             
             if (marginleft === 200 && margintop === 350&& flower1===0 &&flower2===0 &&flower3===0 &&flower4===0 &&flower5===0 &&flower6===0){
                 //run success
+                setSuccessAjax();		//闯关成功，调用存入数据库的代码
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {

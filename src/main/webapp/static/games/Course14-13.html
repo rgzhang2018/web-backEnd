@@ -422,7 +422,8 @@ var dire = 0;
     // var ctxpath=document.getElementById("canvas-path").getContext('2d');
     // var bool=ctxpath.isPointInPath(175,214.4);//判断点是否在canva-path中
       if (turnstep1 ===3 && turnstep2 ===4 && turnstep3 ===6 && turnstep4 ===5 && movelengthStep1 === 18) {
-          $('#success-confirm').modal({
+        setSuccessAjax();		//闯关成功，调用存入数据库的代码
+        $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
                   window.location.replace("./getCheckPoint?level=14-14");

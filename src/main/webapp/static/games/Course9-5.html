@@ -161,7 +161,9 @@
   </div>
 </div>
 <div id="output"></div>
-
+<script>
+  getCodeAjax();
+</script>
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 
@@ -327,6 +329,7 @@ function isRightResult() {
             
             if (marginleft === 150 && margintop === 305&& flower1===0 &&flower2===0 &&flower3===0){
                 //run success
+              setSuccessAjax();		//闯关成功，调用存入数据库的代码
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
@@ -385,6 +388,7 @@ function isRightResult() {
         
         //alert(number);
         isRightResult();
+
       }));
       interpreter.setProperty(scope, 'lr_gatherhoney',
           interpreter.createNativeFunction(function(text,number) {

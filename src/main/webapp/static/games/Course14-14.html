@@ -456,7 +456,8 @@ var dire = 0;
 //判断是否是正确的结果
   function isRightResult() {
       if (turnstep1 === 3 &&turnstep2 === 4 &&turnstep3 === 5 &&turnstep4 === 6 && movelengthStep1 === 3 && movelengthStep2 === 4 && movelengthStep3 === 5 && movelengthStep4 === 6 && dumplengthStep >= 3) {
-          $('#success-confirm').modal({
+        setSuccessAjax();		//闯关成功，调用存入数据库的代码
+        $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
                   window.location.replace("Course10-2.html");
