@@ -8,8 +8,12 @@ To change this template use File | Settings | File Templates.
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<footer class="footer am-u-sm-7 am-u-sm-offset-5">
-    <p>© 2019 by LYZZ Team.</p>
+<footer class="footer" style="background-color: #0a628f">
+
+    <div class="am-u-sm-7 am-u-sm-offset-5">
+        <p>© 2019 by LYZZ Team.</p>
+    </div>
+
 </footer>
 <!--[if (gte IE 9)|!(IE)]><!-->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

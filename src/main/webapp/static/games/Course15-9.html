@@ -1,0 +1,600 @@
+
+<body>
+	<!-- 引入个人js -->
+	<script src="/static/lib/myblock/zy_blocks.js"></script>
+	<style>
+			html,body {
+								 margin: 0;
+									padding: 0;
+									width: 100%;
+									height: 100%;
+									background-color:#F0F0F0;
+									overflow:scroll;overflow-y:hidden;/* 禁止滚动条 */
+							}
+			#topbar{
+				background-color: #0e90d2;
+			}
+			#canvas-monkey {   
+				position: absolute;
+			}
+		
+			#canvas-path {
+				position: absolute;
+			}
+			#canvas-display {
+				position: absolute;
+				background-color: white;
+			}
+			#content-left{
+				width: 405px;
+				height: 90%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+	
+			}
+			#content-right{
+				
+				height: 100%;
+			}
+			#content{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: space-between;
+				flex-wrap:nowrap;
+				margin-top: 10px;
+			}
+		</style>
+
+	<!-- 导航条下面的内容 -->
+<div id="content" >
+	<!-- 左边 -->
+  <div id="content-left">
+		<div id="top">
+				<div style="background-color: white;">
+						<canvas id="canvas-display" width="400px" height="400px"></canvas>
+						<canvas id="canvas-monkey" width="400px" height="400px"></canvas>
+						<canvas id="canvas-path" width="400px" height="400px"></canvas>
+					</div>
+					<div style="padding-top: 410px;width: 400px;display: flex;justify-content:space-between ;">
+						<button id="runButton" type="button" value="运行" class="am-btn am-btn-primary am-radius am-btn-xl" onclick="runCode()">
+							<i class="am-icon-play"></i>
+							运行
+						</button>
+						<button id="stepButton" type="button" onclick="stepCode()" class="am-btn am-btn-primary am-radius am-btn-xl">
+							步进
+						</button>
+					</div>
+		</div>
+			
+		<div id="bottom" style="display: flex;justify-content: space-between;">
+			<div>
+				<small>
+					<a href="">简体字</a>
+				</small>
+			</div>
+			<div>
+				<small>
+					<span>
+						<a href="">隐私政策 |</a>
+					</span>
+					<span>
+						<a href="">版权 |</a>
+					</span>
+					<a href="">更多</a>
+				</small>
+			</div>
+				
+			</div>
+  </div>
+	<!-- 右边 -->
+  <div id="content-right" style="background-color:LightSteelBlue;flex-grow: 1;">
+		<div id="info" style="display: flex;justify-content: space-between;">
+				<div>
+					<img id="monkey2" src="/static/lib/assets/img/zy_monkey.jpg" style="width: 50px;height: 50px;" class="am-circle am-fl">
+				</div>
+				<div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
+				padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
+					<p>你能画两个正方形，每个之间相隔20像素吗？提示：每个正方形的边长是100像素</p>
+				</div>
+			</div>
+		<div id="headers" style="display: flex;justify-content: space-between;">
+			<div id="toolbox-header">
+				<span>模块</span>
+			</div>
+			<div id="show-toolbox-header">
+				<span>工作区域</span>
+			</div>
+			<div id="show-code-header">
+				<button type="button" class="am-btn am-btn-primary am-radius am-btn-sm am-fr" onclick="restart()">
+				  <i class="am-icon-refresh"></i>
+				  重新开始
+				</button>
+				<button type="button" class="am-btn am-btn-primary am-radius am-btn-sm am-fr" onclick="generateCode()">
+				  <i class="am-icon-play-circle"></i>
+				  显示代码
+				</button>
+			</div>
+		</div>
+    <!--  blockly工作区<!-->
+    <div id="blocklyDiv" style="height: 100%	; width: 100%;"></div>
+  </div>
+</div>
+<xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
+    <block type="start_block" x="100" y="5"></block>
+    
+    <block type="procedures_defnoreturn" id="cC8qd!:!C;:19?wwCY#^" x="600" y="5">
+          <field name="NAME">画一个正方形</field>
+          <comment pinned="false" h="80" w="160">Describe this function...</comment>
+          <statement name="STACK">
+            <block type="controls_repeat_ext" id="yZ29D=Q.iyzscz;If~D%">
+              <value name="TIMES">
+                <shadow type="math_number" id=",:d7A7kzPB7B;ig_81k%">
+                  <field name="NUM">4</field>
+                </shadow>
+              </value>
+            </block>
+          </statement>
+        </block>
+  </xml>
+  <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+      <category name="块">
+              <block type="procedures_defnoreturn" id="cC8qd!:!C;:19?wwCY#^" x="-12" y="38">
+                      <field name="NAME">画一个正方形</field>
+                      <comment pinned="false" h="80" w="160">Describe this function...</comment>
+                      <statement name="STACK">
+                        <block type="controls_repeat_ext" id="yZ29D=Q.iyzscz;If~D%">
+                          <value name="TIMES">
+                            <shadow type="math_number" id=",:d7A7kzPB7B;ig_81k%">
+                              <field name="NUM">4</field>
+                            </shadow>
+                          </value>
+                        </block>
+                      </statement>
+                    </block>
+                    <block type="procedures_callnoreturn" id="Xh`|C(AznLj[|71UsxX+" x="-12" y="188">
+                      <mutation name="画一个正方形"></mutation>
+                    </block>
+              <block type="movepx">
+                      <field name="moveDirection">moveForward</field>
+                      <field name="pixelNumber">100</field>
+                    </block>
+                    <block type="turn">
+                      <field name="direction">turnLeft</field>
+                      <field name="degree">90</field>
+                    </block>
+                      <block type="controls_repeat_ext">
+                        <value name="TIMES">
+                          <shadow type="math_number">
+                            <field name="NUM">3</field>
+                          </shadow>
+                        </value>
+                      </block>
+                <block type="jump">
+                    <field name="jumpDirection">jumpForward</field>
+                    <value name="pixel">
+                        <block type="math_number">
+                        <field name="NUM">100</field>
+                        </block>
+            </category>
+            <category name="函数" colour="#9A5CA6" custom="PROCEDURE"></category>
+  </xml>
+<div class="am-modal am-modal-confirm" tabindex="-1" id="success-confirm">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">完成了！</div>
+    <div class="am-modal-bd">
+      祝贺你，完成了关卡1！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+      <span class="am-modal-btn" data-am-modal-confirm>下一关</span>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal am-modal-confirm" tabindex="-1" id="failed-confirm">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">还不够！</div>
+    <div class="am-modal-bd">
+      还有一些问题没有解决。
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-cancel>继续</span>
+      <span class="am-modal-btn" data-am-modal-confirm>重新开始</span>
+    </div>
+  </div>
+</div>
+<!--<script type="text/javascript" src="myblock/step-execution.js"></script>-->
+<script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
+
+<script>
+	var bool=false;
+    function runCode() {
+        // Generate JavaScript code and run it.
+        //切换按钮的样式
+        bool=!bool;
+        if(bool){	
+            document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
+            window.LoopTrap = 1000;
+        Blockly.JavaScript.INFINITE_LOOP_TRAP =
+            'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+        var code = Blockly.JavaScript.workspaceToCode(workspace);
+        Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+        try {
+            alert(code);
+            eval(code);
+			isRightResult();
+        } catch (e) {
+            alert(e);
+        }
+				}else{
+                    document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 运行';
+                    //清除路径和猴子
+                    var canvas = document.getElementById('canvas-path');
+                    var context=canvas.getContext("2d");
+                    context.clearRect(0,0,canvas.width,canvas.height);
+                    context.beginPath();
+                    var canvas = document.getElementById('canvas-monkey');
+                    var context=canvas.getContext("2d");
+                    context.clearRect(0,0,canvas.width,canvas.height);
+                    context.beginPath();
+                    //重绘画布
+					count = 0;  //用以对块计数判断
+                    direction = 0;   //记录运动的方向
+                    monkeyX = 150-40-5, monkeyY = 243-40-5;   //记录人物的位置用于重画
+                    lineX=150, lineY=243;//记录画线的初始位置
+                    imgMonkey;
+                    imgData;//画布中的像素信息，
+                    $(document).ready(function(){				
+                        var c=document.getElementById("canvas-display");
+                        var ctx = c.getContext('2d');
+                        ctx.moveTo(150,243);
+                        ctx.lineTo(250,243);
+                        ctx.lineTo(250,143);
+                        ctx.lineTo(150,143);
+                        ctx.lineTo(150,243);
+                        ctx.lineWidth=5;
+                        ctx.strokeStyle="grey";
+                        ctx.stroke();
+                        
+                        ctx.moveTo(150+120,243);
+                        ctx.lineTo(250+120,243);
+                        ctx.lineTo(250+120,143);
+                        ctx.lineTo(150+120,143);
+                        ctx.lineTo(150+120,243);
+                        ctx.lineWidth=5;
+                        ctx.strokeStyle="grey";
+                        ctx.stroke();
+                        
+                        var canvasMonkey = document.getElementById('canvas-monkey');
+                        var ctxMonkey = canvasMonkey.getContext('2d');
+                        imgMonkey = new Image();
+                        imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
+                        ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
+                        }); 
+                                }
+                        
+		}
+		
+	function generateCode() {
+        // Generate JavaScript code and show it.
+        window.LoopTrap = 1000;
+        Blockly.JavaScript.INFINITE_LOOP_TRAP =
+            'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+        var code = Blockly.JavaScript.workspaceToCode(workspace);
+        Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+        try {
+						alert(code);
+        } catch (e) {
+            alert(e);
+        }
+    }
+	function restart() {
+	location.reload();
+	}
+</script>
+
+<script typy="text/javascript">	
+	//run the code,control the direction and move
+	var count = 0;  //用以对块计数判断
+	var direction = 0;   //记录运动的方向
+	var monkeyX = 150-40-5, monkeyY = 243-40-5;   //记录人物的位置用于重画
+	var lineX=150, lineY=243;//记录画线的初始位置
+	var imgMonkey;
+	var imgData;//画布中的像素信息，
+	$(document).ready(function(){				
+		var c=document.getElementById("canvas-display");
+		var ctx = c.getContext('2d');
+		ctx.moveTo(150,243);
+		ctx.lineTo(250,243);
+		ctx.lineTo(250,143);
+		ctx.lineTo(150,143);
+        ctx.lineTo(150,243);
+		ctx.lineWidth=5;
+		ctx.strokeStyle="grey";
+        ctx.stroke();
+        
+        ctx.moveTo(150+120,243);
+		ctx.lineTo(250+120,243);
+		ctx.lineTo(250+120,143);
+		ctx.lineTo(150+120,143);
+        ctx.lineTo(150+120,243);
+		ctx.lineWidth=5;
+		ctx.strokeStyle="grey";
+        ctx.stroke();
+        
+		var canvasMonkey = document.getElementById('canvas-monkey');
+		var ctxMonkey = canvasMonkey.getContext('2d');
+		imgMonkey = new Image();
+		imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
+		ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
+		}); 
+		
+	function movepx(moveDire, pixel) {
+		if (moveDire === "moveBackwards") {
+		    direction = (direction + Math.PI) % (Math.PI * 2);
+		}
+		var ctxPath = document.getElementById('canvas-path').getContext('2d');
+		var ctxMonkey = document.getElementById('canvas-monkey').getContext('2d');		
+		var distinx = Math.round(lineX + pixel * Math.cos(direction));
+		var distiny = Math.round(lineY + pixel * Math.sin(direction));
+		monkeyX = distinx-40;    //调整小人的位置信息
+		monkeyY = distiny-40;		
+		//在绘制线段前保存现场
+		ctxPath.save();
+		//画线过程，目标点依据弧度制的计算，x = x + step*Math.cos(direction),y= y + step*Math.sin(direction)
+		ctxPath.beginPath();
+		ctxPath.moveTo(lineX, lineY);
+		ctxPath.lineWidth = 5;
+		ctxPath.strokeStyle="blue";
+		ctxPath.lineTo(distinx, distiny);		
+		ctxPath.stroke();
+		ctxPath.restore();		
+		lineX = distinx;
+		lineY = distiny;
+		//移动小人过程，同时需要进行图片旋转
+		ctxMonkey.clearRect(0, 0, 400, 400);
+		ctxMonkey.save();
+		//alert("boyx:" + boyx + " boyy:" + boyy);
+		ctxMonkey.translate(monkeyX + 20, monkeyY + 20);   //移动到的位置是boyx,boyy
+		//ctxboy.rotate(direction);
+		ctxMonkey.drawImage(imgMonkey, -40 / 2, -40 / 2, 40, 40);
+		ctxMonkey.restore();
+		count = count - 1;
+	}
+
+	function turn(dire_str, angle_str) {
+		var ctxMonkey = document.getElementById('canvas-monkey').getContext('2d');
+		var rad = parseInt(angle_str, 10) * Math.PI / 180;//parseInt(angle_str, 10)返回十进制的整数
+		//alert(parseInt(angle_str, 10));
+		if (dire_str === "turnLeft") {
+		    rad = 2 * Math.PI - rad;   //向左转a即为向右转2*pi-a
+		}		
+		direction = (direction+ rad) % (Math.PI * 2);  //控制旋转和画线的方向,对2*pi取余数
+		//对于人物的图层在旋转前需要保存现在的设置，不然之后的移动部分的函数执行就会出问题
+		ctxMonkey.save();
+		ctxMonkey.clearRect(0, 0, 400, 400);
+		ctxMonkey.translate(monkeyX+ 20, monkeyY+ 20, 40, 40);
+		ctxMonkey.rotate(direction);
+		ctxMonkey.drawImage(imgMonkey,-40 / 2, -40 / 2, 40, 40);
+		ctxMonkey.restore();	
+	}
+	function jump(jumpDire, pixel){
+        if (jumpDire === "jumpBackwards") {
+		    direction = (direction + Math.PI) % (Math.PI * 2);
+        }
+        var ctxPath = document.getElementById('canvas-path').getContext('2d');
+        var ctxMonkey = document.getElementById('canvas-monkey').getContext('2d');		
+        var distinx = Math.round(lineX + (pixel) * Math.cos(direction));
+        var distiny = Math.round(lineY + (pixel) * Math.sin(direction));
+        monkeyX = distinx-40;    //调整小人的位置信息
+        monkeyY = distiny-40;		
+        //在绘制线段前保存现场
+        ctxPath.save();
+        //画线过程，目标点依据弧度制的计算，x = x + step*Math.cos(direction),y= y + step*Math.sin(direction)
+        ctxPath.beginPath();
+        ctxPath.moveTo(lineX, lineY);
+        ctxPath.lineWidth = 5;
+        ctxPath.strokeStyle="blue";
+        ctxPath.lineTo(distinx, distiny);		
+        //ctxPath.stroke();
+        ctxPath.restore();		
+        lineX = distinx;
+        lineY = distiny;	
+        //alert(boyx + " " + boyy);
+        //移动小人过程，同时需要进行图片旋转
+        ctxMonkey.clearRect(0, 0, 400, 400);
+        ctxMonkey.save();
+        //alert("boyx:" + boyx + " boyy:" + boyy);
+        ctxMonkey.translate(monkeyX + 20, monkeyY + 20);   //移动到的位置是boyx,boyy
+        //ctxboy.rotate(direction);
+        ctxMonkey.drawImage(imgMonkey, -40 / 2, -40 / 2, 40, 40);
+        ctxMonkey.restore();
+        count = count - 1;
+    }
+	
+	//判断是否是正确的结果
+	function isRightResult() {
+		var ctxPath=document.getElementById("canvas-path").getContext('2d');
+		/* var imgData=ctxPath.getImageData(0,0,400,400);
+		console.log(imgData.length); */
+		var bool=ctxPath.isPointInPath(150+120,143)&&ctxPath.isPointInPath(150+120,243);//判断点是否在canva-path中
+	    if (bool) {
+	    	setSuccessAjax();
+	        $('#success-confirm').modal({
+	            relatedTarget: this,
+	            onConfirm: function () {
+	                window.location.replace("./getCheckpoint?level=15-10");
+	            },
+	            onCancel: function () {
+	
+	            }
+	        });
+	    } else {
+	        $('#failed-confirm').modal({
+	            relatedTarget: this,
+	            onConfirm: function () {
+	                restart();
+	            },
+	            onCancel: function () {
+	
+	            }
+	        });
+	    }
+	}
+
+	
+	//以下为运用js解释器实现的步进功能
+	//此处往下是通过javascript解释器实现的步进功能
+	    var outputArea = document.getElementById('output');
+	    var stepButton = document.getElementById('stepButton');
+	    var myInterpreter = null;
+	
+	    function initApi(interpreter, scope) {
+	      // Add an API function for the alert() block, generated for "text_print" blocks.
+	      interpreter.setProperty(scope, 'movepx',
+	          interpreter.createNativeFunction(function(text,number) {
+	        text = text ? text.toString() : '';
+	        
+	        //alert(number);
+	        movepx(text,number);
+	      }));
+	    
+	      // Add an API function for the prompt() block.
+	      var wrapper = function(text) {
+	        text = text ? text.toString() : '';
+	        return interpreter.createPrimitive(prompt(text));
+	      };
+	    
+	      interpreter.setProperty(scope, 'turn',
+	          interpreter.createNativeFunction(function(text,angle) {
+	        text = text ? text.toString() : '';
+	        angle = angle?angle.toString(): '';
+	        //alert(angle);
+	        turn(text,angle);
+	      }));
+	    
+	      // Add an API function for highlighting blocks.
+	      var wrapper = function(id) {
+	        id = id ? id.toString() : '';
+	        return interpreter.createPrimitive(highlightBlock(id));
+	      };
+	      interpreter.setProperty(scope, 'highlightBlock',
+	          interpreter.createNativeFunction(wrapper));
+	    }
+	    
+	
+	    var highlightPause = false;
+	    var latestCode = '';
+	
+	    function highlightBlock(id) {
+	      workspace.highlightBlock(id);
+	      highlightPause = true;
+	    }
+	
+	    function resetStepUi(clearOutput) {
+	      workspace.highlightBlock(null);
+	      highlightPause = false;
+	
+	      if (clearOutput) {
+	        //outputArea.value = 'Program output:\n=================';
+	      }
+	    }
+	
+	    function generateCodeAndLoadIntoInterpreter() {
+	      // Generate JavaScript code and parse it.
+	
+	      Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';//多余的注释了
+	      Blockly.JavaScript.addReservedWords('highlightBlock');
+	      latestCode = Blockly.JavaScript.workspaceToCode(workspace);
+	      //alert(latestCode);
+	      resetStepUi(true);
+	    }
+	
+	
+	    function stepCode() {
+	
+	      if (!myInterpreter) {
+	        // First statement of this code.
+	        // Clear the program output.
+	        resetStepUi(true);
+	        myInterpreter = new Interpreter(latestCode, initApi);
+	
+	        // And then show generated code in an alert.
+	        // In a timeout to allow the outputArea.value to reset first.
+	        setTimeout(function() {
+	         // alert('Ready to execute the following code\n' + '===================================\n' + latestCode);
+	          highlightPause = true;
+	          stepCode();
+	        }, 1);
+	        return;
+	      }
+	      highlightPause = false;
+	      do {
+	        try {
+	          var hasMoreCode = myInterpreter.step();
+	        	var ctxPath=document.getElementById("canvas-path").getContext('2d');
+	        	/* var imgData=ctxPath.getImageData(0,0,400,400);
+	        	console.log(imgData.length); */
+	        	var bool=ctxPath.isPointInPath(150,243)&&ctxPath.isPointInPath(200,156);//判断点是否在canva-path中
+	        	  if (bool) {
+	    	setSuccessAjax();
+	        	      $('#success-confirm').modal({
+	        	          relatedTarget: this,
+	        	          onConfirm: function () {
+	        	              window.location.replace("./getCheckpoint?level=12-7");
+	        	          },
+	        	          onCancel: function () {
+	        		
+	        	          }
+	        	      });
+	        	  } 
+	            
+	
+	
+	
+	        } finally {
+	          if (!hasMoreCode) {
+	            // Program complete, no more code to execute.
+	
+	            myInterpreter = null;
+	            resetStepUi(false);
+	
+	            // Cool down, to discourage accidentally restarting the program.
+	            stepButton.disabled = 'disabled';
+	            
+	
+	            return;
+	          }
+	        }
+	        // Keep executing until a highlight statement is reached,
+	        // or the code completes or errors.
+	      } while (hasMoreCode && !highlightPause);
+	    }
+	
+	    // Load the interpreter now, and upon future changes.
+	    generateCodeAndLoadIntoInterpreter();
+	    workspace.addChangeListener(function(event) {
+	      if (!(event instanceof Blockly.Events.Ui)) {
+	        // Something changed. Parser needs to be reloaded.
+					generateCodeAndLoadIntoInterpreter();
+					stepButton.disabled = '';
+	      }
+	    });
+</script>
+<!-- <script>
+	$(function() {
+    var $toggleButton = $('#runButton');
+    $toggleButton.on('click', function() {
+      setButtonStatus();
+    });
+
+    function setButtonStatus() {
+      var status = $toggleButton.hasClass('am-active') ? '未激活' : '激活';
+      $('#doc-single-toggle-status').text(status);
+    }
+  })
+</script> -->
+</body>
+</html>

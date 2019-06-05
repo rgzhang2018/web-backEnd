@@ -24,7 +24,7 @@ To change this template use File | Settings | File Templates.
         background-color: #0e90d2;
     }
     #bg_index{
-        background: url(../../assets/myImg/newLogin.jpg);
+        background: url(..//static/lib/assets/myImg/newLogin.jpg);
         box-sizing: border-box;
         max-width: 100%;
         height: 700px;

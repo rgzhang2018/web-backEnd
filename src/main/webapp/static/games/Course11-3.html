@@ -1,0 +1,410 @@
+
+<body>
+
+  <script src="/static/lib/myblock/zrg_blocks.js"></script>
+
+<!--在这里编写你的代码-->
+
+<div class="am-g doc-am-g">
+  <div class="am-u-sm-12 am-u-lg-4">
+    <div id="map" style="width:400px; height:400px;background:url(/static/lib/assets/img/course11-3_bg.jpg) no-repeat;background-size: 100% 100%;  ">
+      <div style="padding-left:120px;padding-top:170px">
+        <div id="centerpart" style="width:70px; height:70px; background:url(/static/lib/assets/img/course11-1_talk.png) no-repeat;background-size: 100% 100%; visibility:hidden;">
+          <div style="padding-left:15px;padding-top:18px"><h3 id = "talk"> </h3></div>
+          
+        </div>
+        
+      </div>
+    </div>
+    <div class="am-g" style="width:430px;">
+      <div class="am-u-sm-6">
+        <button id="runButton" type="button" class="am-btn am-btn-primary am-radius am-btn-xl am-fl" onclick="runCode()">
+          <i class="am-icon-play"></i>
+          运行</button>
+      </div>
+      <div class="am-u-sm-6">
+        <button id="stepButton" type="button"  class="am-btn am-btn-primary am-radius am-btn-xl am-fr " onclick="stepCode()">
+          <i class="am-icon-forward"></i>步进</button>
+      </div>
+    </div>
+
+  </div>
+  <div  id="blocklyArea" class="am-u-sm-12 am-u-lg-8 am-u-end" style="background-color:LightSteelBlue">
+    <div class="am-container">
+      <img id="icon1" src="/static/lib/assets/img/pig.jpg" class="am-circle am-fl">
+      <p class="am-center">试着让船长从10数到1000，每次增加10，间隔为0.1秒</p>
+    </div>
+    <div class="am-g" style="background-color:SteelBlue">
+      <div class="am-u-sm-4 am-u-md-2 am-u-lg-2">
+        模块
+      </div>
+      <div class="am-u-sm-4 am-u-md-6 am-u-lg-4">
+        工作区域1/6模块
+      </div>
+      <div class="am-u-sm-4 am-u-md-4 am-u-lg-6">
+        <button type="button" class="am-btn am-btn-primary am-radius am-btn-sm am-fr" onclick="restart()">
+          <i class="am-icon-refresh"></i>
+          重新开始
+        </button>
+        <button type="button" class="am-btn am-btn-primary am-radius am-btn-sm am-fr" onclick="generateCode()">
+          <i class="am-icon-play-circle"></i>
+          显示代码
+        </button>
+      </div>
+    </div>
+    <!--  blockly工作区<!-->
+    <div id="blocklyDiv" style="height: 400px; "></div>
+  </div>
+</div>
+
+<xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
+  <block type="start_block" id="A/3}biDE0:cC]4V!B}fl" x="200" y="63"></block>
+</xml>
+
+<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+  <category name="Category 1">
+    <block type="controls_for">
+      <field name="VAR" id="!=|`7NCZI?P)I@^#p++V" variabletype="">i</field>
+      <value name="FROM">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="TO">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+      <value name="BY">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="variables_get">
+      <field name="VAR" id="!=|`7NCZI?P)I@^#p++V" variabletype="">i</field>
+    </block>
+    <block type="math_number">
+      <field name="NUM">0</field>
+    </block>
+    <block type="zrg_saysomething"></block>
+    <block type="text">
+      <field name="TEXT">船长</field>
+    </block>
+  </category>
+  <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+</xml>
+
+<div class="am-modal am-modal-confirm" tabindex="-1" id="success-confirm">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">Amaze UI</div>
+    <div class="am-modal-bd">
+      祝贺你，完成了关卡！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+      <span class="am-modal-btn" data-am-modal-confirm>下一关</span>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal am-modal-confirm" tabindex="-1" id="failed-confirm">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">Amaze UI</div>
+    <div class="am-modal-bd">
+      闯关失败，再试试吧！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+      <span class="am-modal-btn" data-am-modal-confirm>重新开始</span>
+    </div>
+  </div>
+</div>
+<div id="output"></div>
+
+<script>
+  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
+</script>
+<script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
+
+
+
+
+
+
+<script>
+	//运行、重置代码
+		var bool=false;
+    function runCode() {
+				// Generate JavaScript code and run it.
+				//切换按钮的样式
+				bool=!bool;
+				if(bool){	
+					document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
+          $("#centerpart").css("visibility","visible");
+        // Generate JavaScript code and run it.
+        window.LoopTrap = 1000;
+        Blockly.JavaScript.INFINITE_LOOP_TRAP =
+            'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+        var code = Blockly.JavaScript.workspaceToCode(workspace);
+        Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+    try {
+        //code = code;
+        alert(code);
+        count = code.split(";").length - 1;
+        eval(code);
+        isRightResult();
+    } catch (e) {
+        alert(e);
+    }
+        try {
+            alert(code);
+            eval(code);
+						isRightResult();
+        } catch (e) {
+            alert(e);
+        }
+				}else{
+					//重置画布内容的位置
+          document.getElementById("runButton").innerHTML='<i class="am-icon-play"></i> 运行';
+          
+				}
+        
+		}
+		
+	function generateCode() {
+        // Generate JavaScript code and show it.
+        window.LoopTrap = 1000;
+        Blockly.JavaScript.INFINITE_LOOP_TRAP =
+            'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+        var code = Blockly.JavaScript.workspaceToCode(workspace);
+        Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+        try {
+						alert(code);
+        } catch (e) {
+            alert(e);
+        }
+    }
+	function restart() {
+	location.reload();
+	}
+</script>
+
+
+
+<script>
+var map = document.getElementById('map');   //地图，用以计算相对位置
+var center = document.getElementById('centerpart');
+var count = 0;  //用以对块计数判断
+
+
+//run the code,control the direction and move
+var times = 0;
+var result = 0;
+var name;
+function saysomething(someone,something,time){
+  if(someone == "船长"){
+    name = "船长";
+    times = time*1000 + times;
+    setTimeout(function(){
+    var talkpic = document.getElementById("talk");
+    talkpic.innerHTML = something;
+    },times);
+    // sleep(1000*time);
+    // setTimeout("talkpic.innerHTML = something;",times);
+    result = something;
+  }else{
+    name = "";
+  }
+
+}
+
+
+//设置休眠函数
+function sleep(delay) {
+  var start = (new Date()).getTime();
+  while ((new Date()).getTime() - start < delay) {
+    continue;
+  }
+}
+
+//判断是否是正确的结果
+function isRightResult() {
+    //isRightResult作为检查正确的激活
+    var interval = setInterval(function () {
+        if (times == 10000 && result == 1000 && name == "船长") {
+            //run success
+          setSuccessAjax();
+            $('#success-confirm').modal({
+                relatedTarget: this,
+                onConfirm: function () {
+                  window.location.replace("./getCheckpoint?level=11-4");
+                },
+                onCancel: function () {
+                  clearInterval(interval);
+                }
+            });
+        } else {
+            //run failed
+            //alert(marginleft + "," + margintop);
+            $('#failed-confirm').modal({
+                relatedTarget: this,
+                onConfirm: function () {
+                    restart();
+                },
+                onCancel: function () {
+                  clearInterval(interval);
+                }
+            });
+        }
+        count = count - 1;
+        
+    }, 10000);
+}
+
+</script>
+
+
+<script>
+
+//以下为运用js解释器实现的步进功能
+//此处往下是通过javascript解释器实现的步进功能
+    var outputArea = document.getElementById('output');
+    var stepButton = document.getElementById('stepButton');
+    var myInterpreter = null;
+
+    function initApi(interpreter, scope) {
+      // Add an API function for the alert() block, generated for "text_print" blocks.
+      interpreter.setProperty(scope, 'movepx',
+          interpreter.createNativeFunction(function(text,number) {
+        text = text ? text.toString() : '';
+        
+        //alert(number);
+        movepx(text,number);
+      }));
+    
+      // Add an API function for the prompt() block.
+      var wrapper = function(text) {
+        text = text ? text.toString() : '';
+        return interpreter.createPrimitive(prompt(text));
+      };
+    
+      interpreter.setProperty(scope, 'turn',
+          interpreter.createNativeFunction(function(text,angle) {
+        text = text ? text.toString() : '';
+        angle = angle?angle.toString(): '';
+        //alert(angle);
+        turn(text,angle);
+      }));
+    
+      // Add an API function for highlighting blocks.
+      var wrapper = function(id) {
+        id = id ? id.toString() : '';
+        return interpreter.createPrimitive(highlightBlock(id));
+      };
+      interpreter.setProperty(scope, 'highlightBlock',
+          interpreter.createNativeFunction(wrapper));
+    }
+    
+
+    var highlightPause = false;
+    var latestCode = '';
+
+    function highlightBlock(id) {
+      workspace.highlightBlock(id);
+      highlightPause = true;
+    }
+
+    function resetStepUi(clearOutput) {
+      workspace.highlightBlock(null);
+      highlightPause = false;
+
+      if (clearOutput) {
+        //outputArea.value = 'Program output:\n=================';
+      }
+    }
+
+    function generateCodeAndLoadIntoInterpreter() {
+      // Generate JavaScript code and parse it.
+
+      Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';//多余的注释了
+      Blockly.JavaScript.addReservedWords('highlightBlock');
+      latestCode = Blockly.JavaScript.workspaceToCode(workspace);
+      //alert(latestCode);
+      resetStepUi(true);
+    }
+
+
+    function stepCode() {
+
+      if (!myInterpreter) {
+        // First statement of this code.
+        // Clear the program output.
+        resetStepUi(true);
+        myInterpreter = new Interpreter(latestCode, initApi);
+
+        // And then show generated code in an alert.
+        // In a timeout to allow the outputArea.value to reset first.
+        setTimeout(function() {
+         // alert('Ready to execute the following code\n' + '===================================\n' + latestCode);
+          highlightPause = true;
+          stepCode();
+        }, 1);
+        return;
+      }
+      highlightPause = false;
+      do {
+        try {
+          var hasMoreCode = myInterpreter.step();
+          var ctxPath=document.getElementById("canvas-path").getContext('2d');
+          /* var imgData=ctxPath.getImageData(0,0,400,400);
+          console.log(imgData.length); */
+          var bool=ctxPath.isPointInPath(150,243)&&ctxPath.isPointInPath(200,156);//判断点是否在canva-path中
+            if (bool) {
+                $('#success-confirm').modal({
+                    relatedTarget: this,
+                    onConfirm: function () {
+                        window.location.replace("Course12-2.html");
+                    },
+                    onCancel: function () {
+            
+                    }
+                });
+            } 
+            
+
+
+
+        } finally {
+          if (!hasMoreCode) {
+            // Program complete, no more code to execute.
+
+            myInterpreter = null;
+            resetStepUi(false);
+
+            // Cool down, to discourage accidentally restarting the program.
+            stepButton.disabled = 'disabled';
+            
+
+            return;
+          }
+        }
+        // Keep executing until a highlight statement is reached,
+        // or the code completes or errors.
+      } while (hasMoreCode && !highlightPause);
+    }
+
+    // Load the interpreter now, and upon future changes.
+    generateCodeAndLoadIntoInterpreter();
+    workspace.addChangeListener(function(event) {
+      if (!(event instanceof Blockly.Events.Ui)) {
+        // Something changed. Parser needs to be reloaded.
+        generateCodeAndLoadIntoInterpreter();
+        stepButton.disabled = '';
+      }
+    });
+</script>
+
+
+</body>
+</html>

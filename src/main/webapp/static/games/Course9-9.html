@@ -6,10 +6,10 @@
 
 <div class="am-g doc-am-g">    
   <div class="am-u-sm-18 am-u-lg-4">
-    <div id="beeleftdiv" style="width:400px; height:400px;background:url(pictures/nine/course9-9.jpg) no-repeat">
+    <div id="beeleftdiv" style="width:400px; height:400px;background:url(/static/lib/pictures/nine/course9-9.jpg) no-repeat">
 
       <div style="padding-left:150px;padding-top:150px">
-        <img id="beeleft" src="pictures/nine/beeleft.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeleftimg">
+        <img id="beeleft" src="/static/lib/pictures/nine/beeleft.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeleftimg">
            <div style="left: 210px;position: absolute;top: 230px;color:#FFFFFF"><p><span id="flower1">3</span></p></div>
 
            <div style="left: 310px;position: absolute;top: 230px;color:#FFFFFF"><p><span id="flower2">6</span></p></div>
@@ -32,7 +32,7 @@
   </div>
   <div  id="blocklyArea" class="am-u-sm-12 am-u-lg-8 am-u-end" style="background-color:LightSteelBlue">
     <div class="am-container">
-      <img id="beeleft2" src="pictures/nine/beeleft.jpg" class="am-circle am-fl">
+      <img id="beeleft2" src="/static/lib/pictures/nine/beeleft.jpg" class="am-circle am-fl">
       <p class="am-center">现在让我们将“计数器”变量和一个数学模块一起使用！怎样通过用“计数器”变量来使用最少的模块来游览花园呢？这次需要什么来收集3，6，9，12，15个花蜜呢？秘密就是“计数器”变量！</p>
     </div>
     <div class="am-g" style="background-color:SteelBlue">
@@ -141,7 +141,15 @@
 
 <script>
   getCodeAjax();
-</script><script>
+</script>
+<script type="text/javascript" src="/static/lib/myblock/lr_blocks.js"></script>
+<script>
+  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
+</script>
+<script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
+
+
+<script>
 var beeleftmap = document.getElementById('beeleftdiv');   //地图，用以计算相对位置
 var beeleftimg = document.getElementById('beeleft');
 var count = 0;  //用以对块计数判断

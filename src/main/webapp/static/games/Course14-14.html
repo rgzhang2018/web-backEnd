@@ -105,7 +105,7 @@
       <div id="info" style="display: flex;justify-content: space-between;">
         <div>
           <!-- 关卡提示的小图片 -->
-          <img id="monkey2" src="pictures/ten/lr_boydraw.jpg" style="width: 40px;height: 40px;"
+          <img id="monkey2" src="/static/lib/pictures/ten/lr_boydraw.jpg" style="width: 40px;height: 40px;"
             class="am-circle am-fl">
         </div>
         <div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
@@ -236,8 +236,11 @@
 
 
   <!-- 引入个人js -->
-  <script src="myblock/lr_blocks.js"></script>
-  <script type="text/javascript" src="myblock/workspace.js"></script>
+  <script src="/static/lib/myblock/lr_blocks.js"></script>
+  <script>
+  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
+</script>
+<script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 <script>
 var count = 0;  //用以对块计数判断
@@ -260,7 +263,7 @@ var isRunned = false;
 
       if (!isRunned) {
         imgBG = new Image();
-        imgBG.src = "pictures/fourteen/course14-14.jpg";
+        imgBG.src = "/static/lib/pictures/fourteen/course14-14.jpg";
         imgBG.onload = function () {
           ctxdisplay.drawImage(imgBG, 0, 0, 400, 400);
         }
@@ -273,7 +276,7 @@ var isRunned = false;
         movepointy = 250;
       }
       imgboy = new Image();
-      imgboy.src = "pictures/ten/lr_boydraw.jpg";
+      imgboy.src = "/static/lib/pictures/ten/lr_boydraw.jpg";
       imgboy.onload = function () {
         ctxboy.drawImage(imgboy, boyx, boyy, 40, 40);  //设定小人的大小为40*40像素
       };

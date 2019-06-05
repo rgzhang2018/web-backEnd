@@ -1,4 +1,5 @@
 
+
 <body>
 	<!--定义多层canvas的css信息-->
 	<style>
@@ -112,7 +113,7 @@
 				<div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
         padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
 					<!-- 关卡提示文字 -->
-					<p>你能用重复循环，来画一个边长100像素的正方形吗？</p>
+					<p>你能用重复循环，来画一个边长300像素的正方形吗？</p>
 				</div>
 			</div>
 			<div id="headers" style="display: flex;justify-content: space-between;">
@@ -139,6 +140,32 @@
 		</div>
 	</div>
 
+	<div class="am-modal am-modal-confirm" tabindex="-1" id="success-confirm">
+		<div class="am-modal-dialog">
+			<div class="am-modal-hd">Amaze UI</div>
+			<div class="am-modal-bd">
+				祝贺你，完成了关卡！
+			</div>
+			<div class="am-modal-footer">
+				<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+				<span class="am-modal-btn" data-am-modal-confirm>下一关</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="am-modal am-modal-confirm" tabindex="-1" id="failed-confirm">
+		<div class="am-modal-dialog">
+			<div class="am-modal-hd">Amaze UI</div>
+			<div class="am-modal-bd">
+				还有一些问题没有解决。
+			</div>
+			<div class="am-modal-footer">
+				<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+				<span class="am-modal-btn" data-am-modal-confirm>重新开始</span>
+			</div>
+		</div>
+	</div>
+
 	<!-- 导入自己的xml -->
 	<xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
 		<block type="start_block"></block>
@@ -157,17 +184,18 @@
 
 	<!-- 引入个人js -->
 	<script src="/static/lib/myblock/zyz_blocks.js"></script>
+
 	<script>
-  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
-</script>
-<script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
+		getCodeAjax(); //功能：ajax获取到登录用户的闯关新
+	</script>
+	<script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 	<script>
 
-		var count = 0;  //用以对块计数判断
+		//var count = 0;  //用以对块计数判断
 		var direction = 0;   //记录运动的弧度制方向
-		var boyx = 60, boyy = 60;   //记录人物的位置用于重画
-		var movepointx = 102.5, movepointy = 102.5;
+		var boyx = 10, boyy = 10;   //记录人物的位置用于重画
+		var movepointx = 52.5, movepointy = 52.5;
 		var imgboy;   //人物的图片
 		var votePointsCount = 0;  //用来判断人物运动位置正确的点计数，这里采用的取巧的方式
 
@@ -197,17 +225,19 @@
 			} else {
 				ctxboy.clearRect(0, 0, 400, 400);
 				ctxpath.clearRect(0, 0, 400, 400);  //清空path画布，用于重置
-				boyx = 60;
-				boyy = 60;
-				movepointx = 102.5;  //初始化位置信息
-				movepointy = 102.5;
+				boyx = 10;  //初始化位置和方向信息
+				boyy = 10;
+				movepointx = 52.5; 
+				movepointy = 52.5;
+				direction = 0;
+				votePointsCount = 0;
 			}
 			imgboy = new Image();
 			imgboy.src = "/static/lib/assets/img/boy.png";
 			imgboy.onload = function () {
 				ctxboy.drawImage(imgboy, boyx, boyy, 40, 40);  //设定小人的大小为40*40像素
 			};
-
+			
 		}
 		drawInit();
 
@@ -286,7 +316,6 @@
 
 		//对人物的方向和角度进行调整
 		function turnDireAngle(dire_str, angle_str) {
-			alert("turn");
 			var ctxboy = document.getElementById('canvas-boy').getContext('2d');
 			var rad = parseInt(angle_str, 10) * Math.PI / 180;
 			if (dire_str === "left") {
@@ -344,24 +373,23 @@
 			ctxboy.restore();
 
 			//判断位置的正确性 bones
-			if (((movepointx > 102 && movepointx < 103) || (movepointx > 302 && movepointx < 303))
-				&& (movepointy > 102 && movepointy < 103) || (movepointy > 302 && movepointy < 303)) {  //回到原点的位置
+			if (((movepointx > 50 && movepointx < 55) || (movepointx > 350 && movepointx < 355))
+				&& (movepointy > 50 && movepointy < 55) || (movepointy > 350 && movepointy < 355)) {  //回到原点的位置
 				votePointsCount = votePointsCount + 1;  //到达特定点就会将计数加1
 			}
-
-			//count = count - 1;
 		}
 
 		function runCode() {
 			if (!isRunned) {
+				alert("runcode")
 				document.getElementById("runButton").innerHTML = '<i class="am-icon-refresh"></i>重置';
-				alert(latestCode)
 				myInterpreter = new Interpreter(latestCode, initApi);
 				runNextCode();
 				isRunned = !isRunned;
 			} else {
 				document.getElementById("runButton").innerHTML = '<i class="am-icon-play"></i> 运行';
 				drawInit();  //isRunned == true
+				myInterpreter = null;
 				isRunned = !isRunned;
 			}
 		}
@@ -378,8 +406,10 @@
 
 		//判断是否是正确的结果
 		function isRightResult() {
-
+			//alert(votePointsCount)
 			if (votePointsCount === 4) {
+				//run success
+				setSuccessAjax();
 				$('#success-confirm').modal({
 					relatedTarget: this,
 					onConfirm: function () {
@@ -401,6 +431,49 @@
 				});
 			}
 		}
+
+		//步进功能
+		function stepCode() {
+			document.getElementById("runButton").innerHTML = '<i class="am-icon-refresh"></i>重置';
+			isRunned = true;
+
+			if (!myInterpreter) {
+				// First statement of this code.
+				// Clear the program output.
+				resetStepUi(true);
+				myInterpreter = new Interpreter(latestCode, initApi);
+				// And then show generated code in an alert.
+				// In a timeout to allow the outputArea.value to reset first.
+				setTimeout(function () {
+					// alert('Ready to execute the following code\n' + '===================================\n' + latestCode);
+					highlightPause = true;
+					stepCode();
+				}, 1);
+				return;
+			}
+			highlightPause = false;
+			do {
+				try {
+					var hasMoreCode = myInterpreter.step();
+					//步进时判断一下
+				} finally {
+					if (!hasMoreCode) {
+						// Program complete, no more code to execute.
+						myInterpreter = null;
+						resetStepUi(false);
+						// Cool down, to discourage accidentally restarting the program.
+						stepButton.disabled = 'disabled';
+						setTimeout(function () {
+							stepButton.disabled = '';
+						}, 20);
+						return;
+					}
+				}
+				// Keep executing until a highlight statement is reached,
+				// or the code completes or errors.
+			} while (hasMoreCode && !highlightPause);
+		}
+
 	</script>
 	<script>
 		$(document).ready(function () {
