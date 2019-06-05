@@ -1,4 +1,5 @@
 
+
 <body>
   <!--定义多层canvas的css信息-->
   <style>
@@ -57,7 +58,6 @@
   </style>
 
 
-
   <!-- 导航条下面的内容 -->
   <div id="content">
     <!-- 导航条下边的左边 -->
@@ -113,7 +113,7 @@
         <div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
         padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
           <!-- 关卡提示文字 -->
-          <p>这里已经有代码来用计数循环画三角形了，它会从50增加到100，每次增加10。注意：在点击“运行”前，先看看代码。这样你才知道以后的关卡如何通过。</p>
+          <p>用上一关做为参考来完成这关。最小的三角形的边长是20像素，最大的是200像素，每个三角形的边比上一个大20像素。</p>
         </div>
       </div>
       <div id="headers" style="display: flex;justify-content: space-between;">
@@ -219,10 +219,9 @@
 
 var count = 0;  //用以对块计数判断
 var direction = 0;   //记录运动的弧度制方向
-var boyx = 101, boyy = 206;   //记录人物的位置用于重画
-var movepointx = 145, movepointy = 248;
+var boyx = 58, boyy = 260;   //记录人物的位置用于重画
+var movepointx = 98, movepointy = 300;
 var imgboy;   //人物的图片
-
 
 var isRunned = false;
 
@@ -239,17 +238,17 @@ var isRunned = false;
 
       if (!isRunned) {
         imgBG = new Image();
-        imgBG.src = "/static/lib/pictures/ten/course10-2.jpg";
+        imgBG.src = "/static/lib/pictures/ten/course10-3.jpg";
         imgBG.onload = function () {
           ctxdisplay.drawImage(imgBG, 0, 0, 400, 400);
         }
       } else {
         ctxboy.clearRect(0, 0, 400, 400);
         ctxpath.clearRect(0, 0, 400, 400);  //清空path画布，用于重置
-        boyx = 101;
-        boyy = 206;
-        movepointx = 145;  //初始化位置信息
-        movepointy = 248;
+        boyx = 58;
+        boyy = 260;
+        movepointx = 98;  //初始化位置信息
+        movepointy = 300;
       }
       imgboy = new Image();
       imgboy.src = "/static/lib/pictures/ten/lr_boydraw.jpg";
@@ -294,28 +293,45 @@ var isRunned = false;
     var movelengthStep4 = 0;
     var movelengthStep5 = 0;
     var movelengthStep6 = 0;
-
+    var movelengthStep7 = 0;
+    var movelengthStep8 = 0;
+    var movelengthStep9 = 0;
+    var movelengthStep10 = 0;
     //小人移动的执行函数
     function moveStep(movedire, step) {
         //alert("move");
-        if(step ===50){
+        if(step ===20){
           movelengthStep1 += 1;
         }
-        if(step ===60){
+        if(step ===40){
           movelengthStep2 += 1;
         }
-        if(step ===70){
+        if(step ===60){
           movelengthStep3 += 1;
         }
         if(step ===80){
           movelengthStep4 += 1;
         }   
-        if(step ===90){
+        if(step ===100){
           movelengthStep5 += 1;
         }
-        if(step ===100){
+        if(step ===120){
           movelengthStep6 += 1;
-        }                             
+        }
+        if(step ===140){
+          movelengthStep7 += 1;
+        }  
+        if(step ===160){
+          movelengthStep8 += 1;
+        }  
+        if(step ===180){
+          movelengthStep9 += 1;
+        }  
+        if(step ===200){
+          movelengthStep10 += 1;
+        }    
+
+
         if (movedire === "movebackward") {
             direction = (direction + Math.PI) % (Math.PI * 2);
         }
@@ -360,26 +376,28 @@ var isRunned = false;
         count = count - 1;
         }
 
-
 function runCode() {
       if (!isRunned) {
         document.getElementById("runButton").innerHTML = '<i class="am-icon-refresh"></i>重置';
         alert(latestCode)
-
         myInterpreter = new Interpreter(code, initApi);
         runNextCode();
         isRunned = !isRunned;
       } else {
         document.getElementById("runButton").innerHTML = '<i class="am-icon-play"></i> 运行';
         drawInit();  //isRunned == true
-        direction=0;
-        turnstep =0;
-        movelengthStep1 = 0;
-        movelengthStep2 = 0;
-        movelengthStep3 = 0;
-        movelengthStep4 = 0;
-        movelengthStep5 = 0;
-        movelengthStep6 = 0;
+          turnstep=0;
+          direction=0;
+          movelengthStep1 = 0;
+          movelengthStep2 = 0;
+          movelengthStep3 = 0;
+          movelengthStep4 = 0;
+          movelengthStep5 = 0;
+          movelengthStep6 = 0;
+          movelengthStep7 = 0;
+          movelengthStep8 = 0;
+          movelengthStep9 = 0;
+          movelengthStep10 = 0;
         isRunned = !isRunned;
       }
     }
@@ -403,11 +421,11 @@ var dire = 0;
   function isRightResult() {
     // var ctxpath=document.getElementById("canvas-path").getContext('2d');
     // var bool=ctxpath.isPointInPath(175,214.4);//判断点是否在canva-path中
-      if (turnstep ===18 && movelengthStep1 === 3 && movelengthStep2 === 3 && movelengthStep3 === 3 && movelengthStep4 === 3 && movelengthStep5 === 3 && movelengthStep6 === 3) {
+      if (turnstep ===30 && movelengthStep1 === 3 && movelengthStep2 === 3 && movelengthStep3 === 3 && movelengthStep4 === 3 && movelengthStep5 === 3 && movelengthStep6 === 3 && movelengthStep7 === 3 && movelengthStep8 === 3 && movelengthStep9 === 3 && movelengthStep10 === 3) {
           $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
-                  window.location.replace("./getCheckPoint?level=10-3");
+                  window.location.replace("./getCheckPoint?level=10-4");
               },
               onCancel: function () {
   
@@ -447,11 +465,6 @@ var dire = 0;
           text = text ? text.toString() : '';
           return interpreter.createPrimitive(prompt(text));
         };
-
-        interpreter.setProperty(scope, 'isRightResult',
-            interpreter.createNativeFunction(function() {
-          isRightResult();
-        }));
       
         interpreter.setProperty(scope, 'turnDireAngle',
             interpreter.createNativeFunction(function(text,angle) {
@@ -459,6 +472,11 @@ var dire = 0;
           angle = angle?angle.toString(): '';
           //alert(angle);
           turnDireAngle(text,angle);
+        }));
+
+        interpreter.setProperty(scope, 'isRightResult',
+            interpreter.createNativeFunction(function() {
+          isRightResult();
         }));
       
         // Add an API function for highlighting blocks.
@@ -487,7 +505,6 @@ var dire = 0;
           //outputArea.value = 'Program output:\n=================';
         }
       }
-      
       var code ="";
 
       function generateCodeAndLoadIntoInterpreter() {
@@ -503,7 +520,7 @@ var dire = 0;
   
   
       function stepCode() {
-      	document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
+        document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
         isRunned = true;
   
         if (!myInterpreter) {
@@ -527,11 +544,11 @@ var dire = 0;
             var hasMoreCode = myInterpreter.step();
 
               //步进判断是否完成任务
-          if (turnstep ===18 && movelengthStep1 === 3 && movelengthStep2 === 3 && movelengthStep3 === 3 && movelengthStep4 === 3 && movelengthStep5 === 3 && movelengthStep6 === 3) {
+          if (turnstep ===30 && movelengthStep1 === 3 && movelengthStep2 === 3 && movelengthStep3 === 3 && movelengthStep4 === 3 && movelengthStep5 === 3 && movelengthStep6 === 3 && movelengthStep7 === 3 && movelengthStep8 === 3 && movelengthStep9 === 3 && movelengthStep10 === 3){
           $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
-                  window.location.replace("./getCheckPoint?level=10-3");
+                  window.location.replace("./getCheckPoint?level=10-4");
               },
               onCancel: function () {
   

@@ -68,6 +68,36 @@ Blockly.defineBlocksWithJsonArray(
               "tooltip": "",
               "helpUrl": ""
             },
+            {
+            "type": "lr_dump",
+            "message0": "%1 %2",
+            "args0": [
+               {
+                "type": "field_dropdown",
+                "name": "move",
+                "options": [
+                    [
+                      "向前跳动",
+                      "dumpmoveforward"
+                    ],
+                    [
+                      "向后跳动",
+                      "dumpmovebackward"
+                    ]
+                  ]
+                },
+                {
+                  "type": "input_value",
+                  "name": "NAME"
+                }
+              ],
+              "inputsInline": true,
+              "previousStatement": null,
+              "nextStatement": null,
+              "colour": 230,
+              "tooltip": "",
+              "helpUrl": ""
+            },
         {
             "type": "turnleft",
             "message0": "向左转",
@@ -270,6 +300,16 @@ Blockly.JavaScript['lr_move'] = function(block) {
     return code;
   };
 
+
+  //将移动距离内含的移动快
+Blockly.JavaScript['lr_dump'] = function(block) {
+  var dropdown_move = block.getFieldValue('move');
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = "moveDump(\""+dropdown_move+"\","+value_name+")\n";
+    return code;
+  };
+
 //将转向角度内含的转向块
   Blockly.JavaScript['lr_turn'] = function(block) {
   var dropdown_name = block.getFieldValue('NAME');
@@ -278,3 +318,5 @@ Blockly.JavaScript['lr_move'] = function(block) {
   var code = "turnDireAngle(\"" + dropdown_name + "\","+ value_name +");";
   return code;
 };
+
+

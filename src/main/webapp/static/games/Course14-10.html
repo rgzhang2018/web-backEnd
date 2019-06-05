@@ -56,8 +56,6 @@
     }
   </style>
 
-
-
   <!-- 导航条下面的内容 -->
   <div id="content">
     <!-- 导航条下边的左边 -->
@@ -113,7 +111,7 @@
         <div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
         padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
           <!-- 关卡提示文字 -->
-          <p>这里已经有代码来用计数循环画三角形了，它会从50增加到100，每次增加10。注意：在点击“运行”前，先看看代码。这样你才知道以后的关卡如何通过。</p>
+          <p>创建一个有“长度”参数的“画一个六边形”的函数。六边形的边长都是100像素。</p>
         </div>
       </div>
       <div id="headers" style="display: flex;justify-content: space-between;">
@@ -142,17 +140,45 @@
 
 
 <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
-  <block type="start_block"></block>
+  <block type="start_block" id="A/3}biDE0:cC]4V!B}fl" x="150" y="33"></block>
 
 
 </xml>
 
 <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+  <category name="操作" colour="%{BKY_LISTS_HUE}">
+      <block type="lr_move"></block>
+      <!-- <block type="turn_angle"></block> -->
+      <block type="lr_turn"></block>
+    </category>
 
-  <block type="lr_move"></block>
-  <block type="turn_angle"></block>
-<!--   <block type="move_step"></block> -->
-  <block type="controls_for">
+    <category name="数学" colour="%{BKY_MATH_HUE}">
+      <block type="math_number">
+        <field name="NUM">0</field>
+      </block>
+      <block type="math_arithmetic">
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">360</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">6</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+
+    <category name="循环" colour="%{BKY_COLOUR_HUE}">
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">？</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_for">
         <field name="VAR">i</field>
         <value name="FROM">
           <block type="math_number">
@@ -170,17 +196,14 @@
           </block>
         </value>
       </block>
-    <block type="controls_repeat_ext"></block>
-
-  <block type="math_number">
-        <field name="NUM">3</field>
-  </block>
- 
-<block type="variables_get">
-    <field name="VAR">i</field>
-  </block>
-
-
+       
+         <block type="variables_get">
+            <field name="VAR">i</field>
+         </block>
+    </category>
+    
+    <category name="函数" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
+    <category name="变量" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
 
 </xml>
 
@@ -219,12 +242,11 @@
 
 var count = 0;  //用以对块计数判断
 var direction = 0;   //记录运动的弧度制方向
-var boyx = 101, boyy = 206;   //记录人物的位置用于重画
-var movepointx = 145, movepointy = 248;
+var boyx = 110, boyy = 233;   //记录人物的位置用于重画
+var movepointx = 150, movepointy = 273;
 var imgboy;   //人物的图片
 
-
-var isRunned = false;
+    var isRunned = false;
 
     //对canvas进行初始化配置，本课程需要多个canvas来表示不同的图像，包括原本的地图信息，人物位置信息和运动轨迹信息
     function drawInit() {
@@ -239,17 +261,17 @@ var isRunned = false;
 
       if (!isRunned) {
         imgBG = new Image();
-        imgBG.src = "/static/lib/pictures/ten/course10-2.jpg";
+        imgBG.src = "/static/lib/pictures/fourteen/course14-10.jpg";
         imgBG.onload = function () {
           ctxdisplay.drawImage(imgBG, 0, 0, 400, 400);
         }
       } else {
         ctxboy.clearRect(0, 0, 400, 400);
         ctxpath.clearRect(0, 0, 400, 400);  //清空path画布，用于重置
-        boyx = 101;
-        boyy = 206;
-        movepointx = 145;  //初始化位置信息
-        movepointy = 248;
+        boyx = 110;
+        boyy = 233;
+        movepointx = 150;  //初始化位置信息
+        movepointy = 273;
       }
       imgboy = new Image();
       imgboy.src = "/static/lib/pictures/ten/lr_boydraw.jpg";
@@ -260,13 +282,12 @@ var isRunned = false;
 
     }
     drawInit();
-    
     var turnstep =0;
 
     //对人物的方向和角度进行调整
     function turnDireAngle(dire_str, angle_str) {
         //alert("turn");
-        if(dire_str === "left" && eval(angle_str) === 120){
+        if(dire_str === "left" && eval(angle_str) === 60){
           turnstep = turnstep +1;
         }
         var ctxboy = document.getElementById('canvas-boy').getContext('2d');
@@ -289,33 +310,15 @@ var isRunned = false;
 
 
     var movelengthStep1 = 0;
-    var movelengthStep2 = 0;
-    var movelengthStep3 = 0;
-    var movelengthStep4 = 0;
-    var movelengthStep5 = 0;
-    var movelengthStep6 = 0;
 
     //小人移动的执行函数
     function moveStep(movedire, step) {
         //alert("move");
-        if(step ===50){
+        if(step ===100 && movedire === "moveforward"){
           movelengthStep1 += 1;
         }
-        if(step ===60){
-          movelengthStep2 += 1;
-        }
-        if(step ===70){
-          movelengthStep3 += 1;
-        }
-        if(step ===80){
-          movelengthStep4 += 1;
-        }   
-        if(step ===90){
-          movelengthStep5 += 1;
-        }
-        if(step ===100){
-          movelengthStep6 += 1;
-        }                             
+
+
         if (movedire === "movebackward") {
             direction = (direction + Math.PI) % (Math.PI * 2);
         }
@@ -365,28 +368,24 @@ function runCode() {
       if (!isRunned) {
         document.getElementById("runButton").innerHTML = '<i class="am-icon-refresh"></i>重置';
         alert(latestCode)
-
+      
         myInterpreter = new Interpreter(code, initApi);
         runNextCode();
         isRunned = !isRunned;
       } else {
         document.getElementById("runButton").innerHTML = '<i class="am-icon-play"></i> 运行';
         drawInit();  //isRunned == true
-        direction=0;
-        turnstep =0;
-        movelengthStep1 = 0;
-        movelengthStep2 = 0;
-        movelengthStep3 = 0;
-        movelengthStep4 = 0;
-        movelengthStep5 = 0;
-        movelengthStep6 = 0;
+          direction=0;
+          turnstep =0;
+          movelengthStep1 = 0;
+
         isRunned = !isRunned;
       }
     }
 
      function runNextCode(){
       if(myInterpreter.step()){
-        window.setTimeout(runNextCode,10);
+        window.setTimeout(runNextCode,0);
       }
     }
 
@@ -403,11 +402,11 @@ var dire = 0;
   function isRightResult() {
     // var ctxpath=document.getElementById("canvas-path").getContext('2d');
     // var bool=ctxpath.isPointInPath(175,214.4);//判断点是否在canva-path中
-      if (turnstep ===18 && movelengthStep1 === 3 && movelengthStep2 === 3 && movelengthStep3 === 3 && movelengthStep4 === 3 && movelengthStep5 === 3 && movelengthStep6 === 3) {
+      if (turnstep ===6 && movelengthStep1 === 6) {
           $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
-                  window.location.replace("./getCheckPoint?level=10-3");
+                  window.location.replace("./getCheckPoint?level=14-11");
               },
               onCancel: function () {
   
@@ -447,11 +446,6 @@ var dire = 0;
           text = text ? text.toString() : '';
           return interpreter.createPrimitive(prompt(text));
         };
-
-        interpreter.setProperty(scope, 'isRightResult',
-            interpreter.createNativeFunction(function() {
-          isRightResult();
-        }));
       
         interpreter.setProperty(scope, 'turnDireAngle',
             interpreter.createNativeFunction(function(text,angle) {
@@ -459,6 +453,11 @@ var dire = 0;
           angle = angle?angle.toString(): '';
           //alert(angle);
           turnDireAngle(text,angle);
+        }));
+
+        interpreter.setProperty(scope, 'isRightResult',
+            interpreter.createNativeFunction(function() {
+          isRightResult();
         }));
       
         // Add an API function for highlighting blocks.
@@ -487,9 +486,9 @@ var dire = 0;
           //outputArea.value = 'Program output:\n=================';
         }
       }
-      
       var code ="";
 
+  
       function generateCodeAndLoadIntoInterpreter() {
         // Generate JavaScript code and parse it.
   
@@ -503,7 +502,7 @@ var dire = 0;
   
   
       function stepCode() {
-      	document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
+        document.getElementById("runButton").innerHTML='<i class="am-icon-refresh"></i>重置';
         isRunned = true;
   
         if (!myInterpreter) {
@@ -527,11 +526,11 @@ var dire = 0;
             var hasMoreCode = myInterpreter.step();
 
               //步进判断是否完成任务
-          if (turnstep ===18 && movelengthStep1 === 3 && movelengthStep2 === 3 && movelengthStep3 === 3 && movelengthStep4 === 3 && movelengthStep5 === 3 && movelengthStep6 === 3) {
+          if (turnstep ===6 && movelengthStep1 === 6){
           $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
-                  window.location.replace("./getCheckPoint?level=10-3");
+                  window.location.replace("./getCheckPoint?level=14-11");
               },
               onCancel: function () {
   
