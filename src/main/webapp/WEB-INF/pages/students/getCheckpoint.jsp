@@ -126,9 +126,14 @@
     <script src="${pageContext.request.contextPath }/static/lib/blockly/javascript_compressed.js"></script>
     <script src="${pageContext.request.contextPath }/static/lib/blockly/msg/js/zh-hans.js"></script>
     <script src="${pageContext.request.contextPath }/static/lib/assets/js/acorn_interpreter.js"></script>
+    <script src="${pageContext.request.contextPath }/static/lib/assets/js/jQueryRotate.js"></script>
     <script src="${pageContext.request.contextPath }/static/lib/assets/js/wait_block.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/static/lib/myblock/workspace.js"></script>
 
+    <script type="text/javascript" src="/static/lib/myblock/zy_blocks.js"></script>
+    <script type="text/javascript" src="/static/lib/myblock/zyz_blocks.js"></script>
+    <script type="text/javascript" src="/static/lib/myblock/lr_blocks.js"></script>
+    <script type="text/javascript" src="/static/lib/myblock/zrg_blocks.js"></script>
 </head>
 
 

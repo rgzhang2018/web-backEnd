@@ -29,10 +29,20 @@
       </div>
     </div>
   </div>
+
+
   <div  id="blocklyArea" class="am-u-sm-12 am-u-lg-8 am-u-end" style="background-color:LightSteelBlue">
-    <div class="am-container">
-      <img id="bee2" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-fl">
-      <p class="am-center">写一个序列“收集3个花蜜”来转向、移动、收集花蜜，然后返回原始位置。</p>
+    <div id="info" style="display: flex;justify-content: space-between;">
+      <div>
+        <!-- 关卡提示的小图片 -->
+        <img id="bee2" src="/static/lib/pictures/nine/bee.jpg" style="width: 40px;height: 40px;"
+             class="am-circle am-fl">
+      </div>
+      <div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
+        padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
+        <!-- 关卡提示文字 -->
+        <p>写一个序列“收集3个花蜜”来转向、移动、收集花蜜，然后返回原始位置。</p>
+      </div>
     </div>
     <div class="am-g" style="background-color:SteelBlue">
       <div class="am-u-sm-4 am-u-md-2 am-u-lg-2">
@@ -55,6 +65,7 @@
     <!--  blockly工作区<!-->
     <div id="blocklyDiv" style="height: 400px; "></div>
   </div>
+
 </div>
 
 <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">

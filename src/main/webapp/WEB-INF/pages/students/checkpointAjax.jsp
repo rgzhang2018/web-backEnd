@@ -79,8 +79,6 @@
         // //将json对象转为格式化的字符串
         // var dumper = new JKL.Dumper();
         // var jsonText = dumper.dump(json_text);//jsonText为工作区内容的json格式的字符串
-        // alert(json_text);
-        // alert(jsonText);
         return xml_text;
     }
 
@@ -109,8 +107,6 @@
         //将json对象转为格式化的字符串
         var dumper = new JKL.Dumper();
         var jsonText = dumper.dump(json_text);//jsonText为工作区内容的json格式的字符串
-        alert(json_text);
-        alert(jsonText);
         return jsonText;
     }
 
@@ -121,12 +117,9 @@
         var xml = xotree.writeXML(json);
         //使用jkl-dumper.js中的formatXml方法将xml字符串格式化
         var xmlText = formatXml(xml);
-
-        //在xml中加入id="workspaceBlocks"
-        var newXmlText = xmlText.slice(0,82)+' id="workspaceBlocks"'+xmlText.slice(82);
+        xmlText = xmlText.substr(43,xmlText.length - 50);
         console.log(xmlText);
-        //工作区的xml换成数据库中保存的xml
-        document.getElementById("workspaceBlocks").innerText = xmlText;
+        document.getElementById("workspaceBlocks").innerHTML = xmlText;
     }
 
 

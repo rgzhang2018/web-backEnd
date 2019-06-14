@@ -6,7 +6,12 @@ Time: 19:32
 To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>学生登录</title>
+</head>
 <%@ include file="../demo/header.jsp"%>
 <style>
     html,body {

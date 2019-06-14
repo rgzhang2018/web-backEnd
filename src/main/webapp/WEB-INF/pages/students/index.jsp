@@ -1,11 +1,15 @@
 <%--<%@ page language="java" contentType="text/html; charset=UTF-8" %>--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>儿童编程网</title>
+</head>
 
 
 <%@ include file="../demo/header.jsp"%>
-
-
 
 
 <!--在这里编写你的代码-->

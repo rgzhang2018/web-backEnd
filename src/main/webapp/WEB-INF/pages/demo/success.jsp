@@ -33,8 +33,8 @@
         if(--secs>0)
             setTimeout("countDown("+secs+" )",1000);
     }
-    countDown(3);
-    setTimeout("jumpToIndex()",3500);
+    countDown(1);
+    setTimeout("jumpToIndex()",1000);
     function jumpToIndex(){
         window.location.href='<%=url %>';
     }
