@@ -119,9 +119,8 @@
 </div>
 <div id="output"></div>
 
-<script>
-  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
-</script>
+
+<script>getCodeAjax(); //功能：ajax获取到登录用户的闯关新</script>
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 
@@ -437,6 +436,7 @@ function isRightResult() {
             
             if (marginleft === 300 && margintop === 150 && flower1===0 &&flower2===0 &&flower3===0 &&flower4===0 &&flower5===0){
                 //run success
+              setSuccessAjax();
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {

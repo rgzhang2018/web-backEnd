@@ -371,6 +371,7 @@
   </div>
 </div>
 
+<script>getCodeAjax(); //功能：ajax获取到登录用户的闯关新</script>
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 <script>
 	//运行、重置代码
@@ -608,6 +609,7 @@
 		console.log(imgData.length); */
 		var bool=ctxPath.isPointInPath(150,143)&&ctxPath.isPointInPath(150,243);//判断点是否在canva-path中
 	    if (bool) {
+            setSuccessAjax();
 	        $('#success-confirm').modal({
 	            relatedTarget: this,
 	            onConfirm: function () {
@@ -725,10 +727,11 @@
 	        	console.log(imgData.length); */
 	        	var bool=ctxPath.isPointInPath(100,243-60)&&ctxPath.isPointInPath(100,243);//判断点是否在canva-path中
 	        	  if (bool) {
+                      setSuccessAjax();
 	        	      $('#success-confirm').modal({
 	        	          relatedTarget: this,
 	        	          onConfirm: function () {
-	        	              jumpToNextLevel();"./getCheckPoint?level=12-15");
+	        	              jumpToNextLevel();
 	        	          },
 	        	          onCancel: function () {
 	        		

@@ -238,9 +238,8 @@
 
 <!-- 引入个人js -->
   <script src="/static/lib/myblock/lr_blocks.js"></script>
-  <script>
-  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
-</script>
+
+<script>getCodeAjax(); //功能：ajax获取到登录用户的闯关新</script>
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 <script>
@@ -472,7 +471,7 @@ var dire = 0;
         $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
-                  jumpToNextLevel();"./getCheckpoint?level=16-1");
+                  jumpToNextLevel();
               },
               onCancel: function () {
   
@@ -600,10 +599,11 @@ var dire = 0;
 
               //步进判断是否完成任务
           if (turnstep1 ===20 && turnstep2 ===10 && turnstep3 ===50 && movelengthStep1 === 1 && movelengthStep2 === 1 && movelengthStep3 === 1 && dumplengthStep1 === 1 && dumplengthStep2 === 1){
-          $('#success-confirm').modal({
+            setSuccessAjax();
+            $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
-                  jumpToNextLevel();"./getCheckpoint?level=16-1");
+                  jumpToNextLevel();
               },
               onCancel: function () {
   

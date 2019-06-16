@@ -103,7 +103,8 @@
 </div>
 <div id="output"></div>
 
- <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
+ <script>getCodeAjax(); //功能：ajax获取到登录用户的闯关新</script>
+<script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 <script>
 var beemap = document.getElementById('beediv');   //地图，用以计算相对位置
@@ -422,6 +423,7 @@ function isRightResult() {
             
             if (marginleft === 300 && margintop === 50 && flower1===0 &&flower2===0 &&flower3===0 &&flower4===0 &&flower5===0&&flower6===0){
                 //run success
+              setSuccessAjax();
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {

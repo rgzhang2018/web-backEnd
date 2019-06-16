@@ -210,9 +210,8 @@
 <div id="output"></div>
 
 <script src="/static/lib/myblock/zrg_blocks.js"></script>
-<script>
-  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
-</script>
+
+<script>getCodeAjax(); //功能：ajax获取到登录用户的闯关新</script>
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 
@@ -560,6 +559,7 @@ function isRightResult() {
             console.log(imgData.length); */
             var bool=ctxPath.isPointInPath(150,243)&&ctxPath.isPointInPath(200,156);//判断点是否在canva-path中
               if (bool) {
+                setSuccessAjax();
                   $('#success-confirm').modal({
                       relatedTarget: this,
                       onConfirm: function () {

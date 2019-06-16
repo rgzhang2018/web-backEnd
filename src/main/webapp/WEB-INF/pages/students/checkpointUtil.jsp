@@ -11,7 +11,6 @@
 <script src="${pageContext.request.contextPath }/static/lib/assets/js/jkl-dumper.js"></script>
 <script>
 
-
     function setSuccessAjax() {
         var url='<%=request.getContextPath()%>/rest/game/saveCheckoutPointAjax';
         var checkpointid = turnLevelToID(GetQueryString("level"));
@@ -101,7 +100,7 @@
     function jumpToNextLevel() {
         var next = turnLevelToID(GetQueryString("level"))+1;
         var url = "./getCheckpoint?level="+turnIDToLevel(next);
-        jumpToNextLevel();url);
+        window.location.replace(url);
     }
 
     function xmlToJson(){
@@ -161,7 +160,6 @@
     function turnIDToLevel(id) {
         var major = Math.floor(id /100);
         var count = id % 100;
-        return ""+major+"-"+count;
         return ""+major+"-"+count;
     }
 
