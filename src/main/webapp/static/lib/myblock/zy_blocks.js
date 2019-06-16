@@ -54,7 +54,7 @@ Blockly.defineBlocksWithJsonArray(
 					"options": [
 						[
 							"向前移动",
-							"  moveForward"
+							"moveForward"
 						],
 						[
 							"向后移动",

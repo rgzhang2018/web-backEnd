@@ -23,8 +23,13 @@
 	    position: absolute;
 	  }
 	  #canvas-display {
-	    position: absolute;
+			position: absolute;
 			background-color: white;
+      background: url(pictures/eighteen/6.png);
+      width: 400px;
+      height: 400px;
+      background-size:100% 100%;
+      background-repeat:no-repeat;
 	  }
 		#content-left{
 			width: 405px;
@@ -47,53 +52,7 @@
 			margin-top: 10px;
 		}
 	</style>
-	<!-- 导航条 -->
-	<div id="topbar" style="display: flex;justify-content: space-between;">
-		<div id="topbar-left">
-				<a href="##" class="am-icon-btn am-secondary am-icon-reddit-alien"></a>
-		</div>
-		
-		<div id="topbarr-center" style="display: inline-flex">
-				<div style="padding-top:15px;margin-right: 10px;">
-						<a href="HomePage.html" style="color:white">课程18：小艺术家：函数</a>
-				</div>
-				<div id="pagination" style="border:2px solid white;border-radius: 5px;padding:2px 0;margin:5px 0;background-color: #0e90d2;">
-						<a href="Course18-1.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">1</a>
-						<a href="Course18-2.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">2</a>
-						<a href="Course18-3.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">3</a>
-						<a href="Course18-4.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">4</a>
-						<a href="Course18-5.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">5</a>
-						<a href="Course18-6.html" type="button" class="am-active am-btn am-btn-primary am-round">6</a>
-						<a href="Course18-7.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">7</a>
-            <a href="Course18-8.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">8</a>
-            <a href="Course18-9.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">9</a>
-            <a href="Course18-10.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">10</a>
-            <a href="Course18-11.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">11</a>
-						<a href="Menu.html" type="button" class="am-btn am-btn-primary">更多
-							<i class="am-icon-chevron-circle-down"></i>
-						</a>			
-					</div>
-					
-		</div>
-
-		<div id="header-right" class="am-btn-group">			
-			<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="border:2px solid white;border-radius: 5px;margin-top:10px;background-color: #0e90d2;"
-			>登录</button>
-			<div class="am-dropdown" data-am-dropdown>
-					<button data-am-dropdown-toggle 
-					class="am-btn am-btn-primary am-topbar-btn am-btn-sm am-dropdown-toggle"
-					style="border: white;margin-top:10px;" >
-							<span class="am-icon-bars"></span>
-						<!-- <i class="am-icon-bars"></i> -->
-					</button>
-					<ul class="am-dropdown-content" style="background-color: #0e90d2;">
-						<li><a href="Menu.html" >课程分类</a></li>
-						<li><a href="#" >关于我们</a></li>
-					</ul>	
-			</div>
-			
-		</div>
-	</div>
+	
 
 	<!-- 导航条下面的内容 -->
 <div id="content" >
@@ -318,7 +277,7 @@
   <div class="am-modal-dialog">
     <div class="am-modal-hd">完成了！</div>
     <div class="am-modal-bd">
-      祝贺你，完成了关卡
+      祝贺你，完成了关卡1！
     </div>
     <div class="am-modal-footer">
       <span class="am-modal-btn" data-am-modal-cancel>取消</span>
@@ -340,9 +299,6 @@
   </div>
 </div>
 
-<script>
-  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
-</script>
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 <script>
 	//运行、重置代码
@@ -377,42 +333,6 @@
 					context.clearRect(0,0,canvas.width,canvas.height);
 					context.beginPath();
 
-					//重绘画布
-					 count = 0;  //用以对块计数判断
-					 direction = 0;   //记录运动的方向
-					 monkeyX = 150-40-5, monkeyY = 243-40-5;   //记录人物的位置用于重画
-					 lineX=150, lineY=243;//记录画线的初始位置
-					 imgMonkey;
-					 imgData;//画布中的像素信息，
-					$(document).ready(function(){				
-						var c=document.getElementById("canvas-display");
-						var ctx = c.getContext('2d');
-						ctx.moveTo(150,243);
-                        ctx.lineTo(170,243);
-                
-                        ctx.lineWidth=5;
-                        ctx.strokeStyle="grey";
-                        ctx.stroke();
-                        
-                        ctx.moveTo(150+20+20,243);
-                        ctx.lineTo(150+20+20+40,243);
-                       
-                        ctx.lineWidth=5;
-                        ctx.strokeStyle="grey";
-                        ctx.stroke();
-
-                        ctx.moveTo(150+20+20+40+20,243);
-                        ctx.lineTo(150+20+20+40+20+60,243);
-                        
-                        ctx.lineWidth=5;
-                        ctx.strokeStyle="grey";
-                        ctx.stroke();   
-						var canvasMonkey = document.getElementById('canvas-monkey');
-						var ctxMonkey = canvasMonkey.getContext('2d');
-						imgMonkey = new Image();
-						imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
-						ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
-						}); 
 					
 				}
         
@@ -444,39 +364,7 @@
 	var lineX=150, lineY=243;//记录画线的初始位置
 	var imgMonkey;
 	var imgData;//画布中的像素信息，
-	$(document).ready(function(){				
-		var c=document.getElementById("canvas-display");
-		var ctx = c.getContext('2d');
-		ctx.moveTo(150,243);
-        ctx.lineTo(170,243);
-
-        ctx.lineWidth=5;
-        ctx.strokeStyle="grey";
-        ctx.stroke();
-        
-        ctx.moveTo(150+20+20,243);
-        ctx.lineTo(150+20+20+40,243);
-        
-        ctx.lineWidth=5;
-        ctx.strokeStyle="grey";
-        ctx.stroke();
-
-        ctx.moveTo(150+20+20+40+20,243);
-        ctx.lineTo(150+20+20+40+20+60,243);
-        
-        ctx.lineWidth=5;
-        ctx.strokeStyle="grey";
-        ctx.stroke();  
-
-		ctx.lineWidth=5;
-		ctx.strokeStyle="grey";
-		ctx.stroke();
-		var canvasMonkey = document.getElementById('canvas-monkey');
-		var ctxMonkey = canvasMonkey.getContext('2d');
-		imgMonkey = new Image();
-		imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
-		ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
-		}); 
+	
 		
         function movepx2(moveDire, pixel) {
           if (moveDire === "moveBackwards") {
@@ -568,11 +456,10 @@
 		console.log(imgData.length); */
 		var bool=ctxPath.isPointInPath(150,143)&&ctxPath.isPointInPath(150,243);//判断点是否在canva-path中
 	    if (bool) {
-	    	setSuccessAjax();
 	        $('#success-confirm').modal({
 	            relatedTarget: this,
 	            onConfirm: function () {
-	                window.location.replace("./getCheckpoint?level=18-7");
+	                window.location.replace("./getCheckPoint?level=18-7");
 	            },
 	            onCancel: function () {
 	
@@ -686,11 +573,10 @@
 	        	console.log(imgData.length); */
 	        	var bool=ctxPath.isPointInPath(150,243)&&ctxPath.isPointInPath(200,156);//判断点是否在canva-path中
 	        	  if (bool) {
-	    	setSuccessAjax();
 	        	      $('#success-confirm').modal({
 	        	          relatedTarget: this,
 	        	          onConfirm: function () {
-	        	              window.location.replace("./getCheckpoint?level=18-7");
+	        	              window.location.replace("./getCheckPoint?level=18-7");
 	        	          },
 	        	          onCancel: function () {
 	        		

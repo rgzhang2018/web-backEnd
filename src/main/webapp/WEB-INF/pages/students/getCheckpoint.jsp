@@ -205,7 +205,7 @@
 
 
 
-<%@ include file="checkpointAjax.jsp"%>
+<%@ include file="checkpointUtil.jsp"%>
 
 <jsp:include page="${pageContext.request.contextPath }/static/games/Course${level}.html" flush="true" />
 

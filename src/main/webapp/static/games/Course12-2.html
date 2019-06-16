@@ -153,7 +153,7 @@
   <div class="am-modal-dialog">
     <div class="am-modal-hd">完成了！</div>
     <div class="am-modal-bd">
-      祝贺你，完成了关卡
+      祝贺你，完成了关卡1！
     </div>
     <div class="am-modal-footer">
       <span class="am-modal-btn" data-am-modal-cancel>取消</span>
@@ -175,9 +175,6 @@
   </div>
 </div>
 <!--<script type="text/javascript" src="myblock/step-execution.js"></script>-->
-<script>
-  getCodeAjax(); //功能：ajax获取到登录用户的闯关新
-</script>
 <script type="text/javascript" src="/static/lib/myblock/workspace.js"></script>
 
 <script>
@@ -393,11 +390,10 @@
 		console.log(imgData.length); */
 		var bool=ctxPath.isPointInPath(150+120,143)&&ctxPath.isPointInPath(150+120,243);//判断点是否在canva-path中
 	    if (bool) {
-	    	setSuccessAjax();
 	        $('#success-confirm').modal({
 	            relatedTarget: this,
 	            onConfirm: function () {
-	                window.location.replace("./getCheckpoint?level=12-3");
+	                window.location.replace("./getCheckPoint?level=12-3");
 	            },
 	            onCancel: function () {
 	
@@ -511,11 +507,10 @@
 	        	console.log(imgData.length); */
 	        	var bool=ctxPath.isPointInPath(150,243)&&ctxPath.isPointInPath(200,156);//判断点是否在canva-path中
 	        	  if (bool) {
-	    	setSuccessAjax();
 	        	      $('#success-confirm').modal({
 	        	          relatedTarget: this,
 	        	          onConfirm: function () {
-	        	              window.location.replace("./getCheckpoint?level=12-3");
+	        	              window.location.replace("./getCheckPoint?level=12-3");
 	        	          },
 	        	          onCancel: function () {
 	        		

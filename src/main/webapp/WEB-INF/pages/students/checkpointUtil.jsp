@@ -97,6 +97,13 @@
     }
 
 
+    //转跳下一关
+    function jumpToNextLevel() {
+        var next = turnLevelToID(GetQueryString("level"))+1;
+        var url = "./getCheckpoint?level="+turnIDToLevel(next);
+        window.location.replace(url);
+    }
+
     function xmlToJson(){
         //从工作区获取块的xml
         var xml = Blockly.Xml.workspaceToDom(workspace);
@@ -123,8 +130,12 @@
     }
 
 
-    //获取get请求的参数，对应get请求的关卡名
+
     /**
+     *   传入get请求的key，返回get请求的value。（用于提取关卡）
+     *   eg：http://xxxxx/xxx/xx?name=123
+     *   输入："name"
+     *   输出："123"
      * @return {string}
      */
     function GetQueryString(name) {
@@ -138,6 +149,7 @@
         return "";
     }
 
+    //把关卡的string转为对应id。输入："12-1"，输出1201
     function turnLevelToID(level) {
         var result = level.split("-");
         var x= parseInt(result[0]);
@@ -145,10 +157,14 @@
         return x*100+y;
     }
 
+    //把关卡的id转为对应string。输入：1201,输出"12-1"
+    function turnIDToLevel(id) {
+        var major = id /100;
+        var count = id % 100;
+        return ""+major+"-"+count;
+    }
 
 
-
-    // alert("1111");
 </script>
 
 

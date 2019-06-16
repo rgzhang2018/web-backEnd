@@ -24,7 +24,7 @@ To change this template use File | Settings | File Templates.
         <ul class="am-nav am-nav-pills am-topbar-nav">
             <li><a href="${pageContext.request.contextPath }/rest//student/index">首页</a></li>
             <li><a href="${pageContext.request.contextPath }/rest//game/checkpoints">开始游戏</a></li>
-            <li><a href="#">联系我们</a></li>
+            <li><a href="https://github.com/ustc-group">联系我们</a></li>
 
         </ul>
 
@@ -51,8 +51,13 @@ To change this template use File | Settings | File Templates.
             if(f==null || !f){
         %>
         <div class="am-topbar-right">
-            <a href="${pageContext.request.contextPath }/rest//loginControl/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</a>
+            <a href="${pageContext.request.contextPath }/rest//loginControl/register" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm">注册</a>
         </div>
+
+        <div class="am-topbar-right">
+            <a href="${pageContext.request.contextPath }/rest//loginControl/login" class="am-btn am-btn-success am-topbar-btn am-btn-sm">登录</a>
+        </div>
+
         <%
             }else{
         %>
