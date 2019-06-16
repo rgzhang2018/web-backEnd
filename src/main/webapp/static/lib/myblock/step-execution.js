@@ -186,7 +186,7 @@ function isRightResult() {
                 $('#success-confirm').modal({
                     relatedTarget: this,
                     onConfirm: function () {
-                        window.location.replace("Course2-2.html");
+                        jumpToNextLevel();
                     },
                     onCancel: function () {
 

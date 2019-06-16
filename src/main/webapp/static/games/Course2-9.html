@@ -6,10 +6,10 @@
 
 <div class="am-g doc-am-g">    
   <div class="am-u-sm-18 am-u-lg-4">
-    <div id="bediv" style="width:400px; height:400px;background:url(/static/lib/pictures/nine/course2-9.jpg) no-repeat">
+    <div id="bediv" style="width:400px; height:400px;background:url(/static/lib/pictures/course2/course2-9.jpg) no-repeat">
 
       <div style="padding-left:1px;padding-top:150px">
-        <img id="be" src="/static/lib/pictures/nine/be.jpg" class="am-circle am-img-responsive am-img-xs" alt="beimg">
+        <img id="be" src="/static/lib/pictures/course9/be.jpg" class="am-circle am-img-responsive am-img-xs" alt="beimg">
            <div style="left: 160px;position: absolute;top: 230px;color:#FFFFFF"><p><span id="flower1">1</span></p></div>
            <div style="left: 260px;position: absolute;top: 280px;color:#FFFFFF"><p><span id="flower2">0</span></p></div>
            <div style="left: 360px;position: absolute;top: 330px;color:#FFFFFF"><p><span id="flower3">1</span></p></div>
@@ -30,7 +30,7 @@
   </div>
   <div  id="blocklyArea" class="am-u-sm-12 am-u-lg-8 am-u-end" style="background-color:LightSteelBlue">
     <div class="am-container">
-      <img id="be2" src="/static/lib/pictures/nine/be.jpg" class="am-circle am-fl">
+      <img id="be2" src="/static/lib/pictures/course9/be.jpg" class="am-circle am-fl">
       <p class="am-center">现在我们需要往前移动“计数器”这么多次，然后收集“计数器”这么多次花蜜。你能用两个重复循环来解决这个挑战吗？</p>
     </div>
     <div class="am-g" style="background-color:SteelBlue">
@@ -269,7 +269,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckPoint?level=9-6");
+                    jumpToNextLevel();
                 },
                 onCancel: function () {
 
@@ -417,7 +417,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckPoint?level=9-6");
+                    jumpToNextLevel();
                 },
                 onCancel: function () {
 

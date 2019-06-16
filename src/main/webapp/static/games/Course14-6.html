@@ -107,7 +107,7 @@
       <div id="info" style="display: flex;justify-content: space-between;">
         <div>
           <!-- 关卡提示的小图片 -->
-          <img id="monkey2" src="/static/lib/pictures/ten/lr_boydraw.jpg" style="width: 40px;height: 40px;"
+          <img id="monkey2" src="/static/lib/pictures/course10/lr_boydraw.jpg" style="width: 40px;height: 40px;"
             class="am-circle am-fl">
         </div>
         <div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
@@ -241,7 +241,7 @@ var isRunned = false;
 
       if (!isRunned) {
         imgBG = new Image();
-        imgBG.src = "/static/lib/pictures/fourteen/course14-6.jpg";
+        imgBG.src = "/static/lib/pictures/course14/course14-6.jpg";
         imgBG.onload = function () {
           ctxdisplay.drawImage(imgBG, 0, 0, 400, 400);
         }
@@ -254,7 +254,7 @@ var isRunned = false;
         movepointy = 298;
       }
       imgboy = new Image();
-      imgboy.src = "/static/lib/pictures/ten/lr_boydraw.jpg";
+      imgboy.src = "/static/lib/pictures/course10/lr_boydraw.jpg";
       imgboy.onload = function () {
         ctxboy.drawImage(imgboy, boyx, boyy, 40, 40);  //设定小人的大小为40*40像素
       };
@@ -434,7 +434,7 @@ var dire = 0;
         $('#success-confirm').modal({
               relatedTarget: this,
               onConfirm: function () {
-                  window.location.replace("./getCheckpoint?level=14-7");
+                  jumpToNextLevel();"./getCheckpoint?level=14-7");
               },
               onCancel: function () {
   
@@ -567,7 +567,7 @@ var dire = 0;
               $('#success-confirm').modal({
               relatedTarget: this,
                   onConfirm: function () {
-                       window.location.replace("./getCheckpoint?level=14-7");
+                       jumpToNextLevel();"./getCheckpoint?level=14-7");
                   },
                   onCancel: function () {
   

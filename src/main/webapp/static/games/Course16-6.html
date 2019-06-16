@@ -10,10 +10,10 @@
 
 <div class="am-g doc-am-g">    
   <div class="am-u-sm-18 am-u-lg-4">
-    <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/nine/course16-6.jpg) no-repeat">
+    <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/course16/course16-6.jpg) no-repeat">
 
       <div style="padding-left:1px;padding-top:150px">
-        <img id="bee" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
+        <img id="bee" src="/static/lib/pictures/course9/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
            <div style="left: 110px;position: absolute;top: 80px;color:#FFFFFF"><p><span id="flower1">2</span></p></div>
 
            <div style="left: 160px;position: absolute;top: 280px;color:#FFFFFF"><p><span id="flower2">3</span></p></div>
@@ -36,7 +36,7 @@
   </div>
   <div  id="blocklyArea" class="am-u-sm-12 am-u-lg-8 am-u-end" style="background-color:LightSteelBlue">
     <div class="am-container">
-      <img id="bee2" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-fl">
+      <img id="bee2" src="/static/lib/pictures/course9/bee.jpg" class="am-circle am-fl">
       <p class="am-center">如果你能用一个函数来收集所有花蜜，是否会更好？试着给你的“花蜜单元”函数加一个新参数来控制收集的花蜜数量。你也许也想重新命名这个函数！</p>
     </div>
     <div class="am-g" style="background-color:SteelBlue">
@@ -342,7 +342,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckpoint?level=16-7");
+                    jumpToNextLevel();
                 },
                 onCancel: function () {
 
@@ -510,7 +510,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckpoint?level=16-7");
+                    jumpToNextLevel();
                 },
                 onCancel: function () {
 

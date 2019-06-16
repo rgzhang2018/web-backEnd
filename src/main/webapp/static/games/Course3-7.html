@@ -107,8 +107,8 @@
 			<div id="info" style="display: flex;justify-content: space-between;">
 				<div>
 					<!-- 关卡提示的小图片 -->
-					<img id="monkey2" src="/static/lib/assets/img/zy_monkey.jpg" style="width: 50px;height: 50px;"
-						class="am-circle am-fl">
+					<img id="monkey2" src="/static/lib/pictures/zy_monkey.jpg" style="width: 50px;height: 50px;"
+                         class="am-circle am-fl">
 				</div>
 				<div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
         padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
@@ -218,7 +218,7 @@
 
 			if (!isRunned) {
 				imgBG = new Image();
-				imgBG.src = "/static/lib/assets/img/course3/course3-5.jpg";
+				imgBG.src = "/static/lib/pictures/course3/course3-5.jpg";
 				imgBG.onload = function () {
 					ctxdisplay.drawImage(imgBG, 0, 0, 400, 400);
 				}
@@ -233,7 +233,7 @@
 			votePointsCount = 0;
 
 			imgboy = new Image();
-			imgboy.src = "/static/lib/assets/img/boy.png";
+			imgboy.src = "/static/lib/pictures/boy.png";
 			imgboy.onload = function () {
 				ctxboy.drawImage(imgboy, boyx, boyy, 40, 40);  //设定小人的大小为40*40像素
 			};
@@ -412,7 +412,7 @@
 				$('#success-confirm').modal({
 					relatedTarget: this,
 					onConfirm: function () {
-						window.location.replace("Course2-2.html");
+						jumpToNextLevel();"Course2-2.html");
 					},
 					onCancel: function () {
 

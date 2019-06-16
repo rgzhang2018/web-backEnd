@@ -5,10 +5,10 @@
 
 <div class="am-g doc-am-g">    
   <div class="am-u-sm-18 am-u-lg-4">
-    <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/nine/course9-11.jpg) no-repeat">
+    <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/course9/course9-11.jpg) no-repeat">
 
       <div style="padding-left:300px;padding-top:1px">
-        <img id="bee" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
+        <img id="bee" src="/static/lib/pictures/course9/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
            <div style="left: 354px;position: absolute;top: 380px;color:#FFFFFF"><p><span id="flower1">14</span></p></div>
 
            <div style="left: 104px;position: absolute;top: 380px;color:#FFFFFF"><p><span id="flower2">10</span></p></div>
@@ -30,7 +30,7 @@
   </div>
   <div  id="blocklyArea" class="am-u-sm-12 am-u-lg-8 am-u-end" style="background-color:LightSteelBlue">
     <div class="am-container">
-      <img id="bee2" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-fl">
+      <img id="bee2" src="/static/lib/pictures/course9/bee.jpg" class="am-circle am-fl">
       <p class="am-center">准备好挑战了吗？用你学会的关于循环的知识来解决这个问题。记住：你可能需要尝试很多次才能找到正确的解法。</p>
     </div>
     <div class="am-g" style="background-color:SteelBlue">
@@ -322,7 +322,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("Course10-1.html");
+                    jumpToNextLevel();
                 },
                 onCancel: function () {
 
@@ -476,7 +476,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("Course10-1.html");
+                    jumpToNextLevel();
                 },
                 onCancel: function () {
 

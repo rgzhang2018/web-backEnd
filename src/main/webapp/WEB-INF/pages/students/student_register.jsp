@@ -16,7 +16,7 @@ To change this template use File | Settings | File Templates.
 <style type="text/css">
 
     #bg_index{
-        background: url(${pageContext.request.contextPath }/static/lib/assets/myImg/newResigner.jpg);
+        background: url(${pageContext.request.contextPath }/static/lib/pictures/newResigner.jpg);
         background-size: 100% 100%;
         box-sizing: border-box;
         max-width: 100%;

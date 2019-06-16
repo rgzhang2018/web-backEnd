@@ -25,7 +25,7 @@
 	  #canvas-display {
 			position: absolute;
 			background-color: white;
-      background: url(pictures/eighteen/11.png);
+      background: url(/static/lib/pictures/course18/11.png);
       width: 400px;
       height: 400px;
       background-size:100% 100%;
@@ -98,7 +98,7 @@
   <div id="content-right" style="background-color:LightSteelBlue;flex-grow: 1;">
 		<div id="info" style="display: flex;justify-content: space-between;">
 				<div>
-					<img id="monkey2" src="/static/lib/assets/img/zy_monkey.jpg" style="width: 50px;height: 50px;" class="am-circle am-fl">
+					<img id="monkey2" src="/static/lib/pictures/zy_monkey.jpg" style="width: 50px;height: 50px;" class="am-circle am-fl">
 				</div>
 				<div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
 				padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
@@ -459,7 +459,7 @@
 	        $('#success-confirm').modal({
 	            relatedTarget: this,
 	            onConfirm: function () {
-	                window.location.replace("./getCheckPoint?level=19-1");
+	                jumpToNextLevel();"./getCheckPoint?level=19-1");
 	            },
 	            onCancel: function () {
 	
@@ -576,7 +576,7 @@
 	        	      $('#success-confirm').modal({
 	        	          relatedTarget: this,
 	        	          onConfirm: function () {
-	        	              window.location.replace("./getCheckPoint?level=19-1");
+	        	              jumpToNextLevel();"./getCheckPoint?level=19-1");
 	        	          },
 	        	          onCancel: function () {
 	        		

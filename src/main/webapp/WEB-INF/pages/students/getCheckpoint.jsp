@@ -130,10 +130,11 @@
     <script src="${pageContext.request.contextPath }/static/lib/assets/js/wait_block.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/static/lib/myblock/workspace.js"></script>
 
-    <script type="text/javascript" src="/static/lib/myblock/zy_blocks.js"></script>
-    <script type="text/javascript" src="/static/lib/myblock/zyz_blocks.js"></script>
-    <script type="text/javascript" src="/static/lib/myblock/lr_blocks.js"></script>
-    <script type="text/javascript" src="/static/lib/myblock/zrg_blocks.js"></script>
+
+    <script type="text/javascript" src="${pageContext.request.contextPath }/static/lib/myblock/zy_blocks.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/static/lib/myblock/zyz_blocks.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/static/lib/myblock/lr_blocks.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/static/lib/myblock/zrg_blocks.js"></script>
 </head>
 
 
@@ -148,20 +149,16 @@
             <a href="${pageContext.request.contextPath }/rest/game/checkpoints" style="color:white">课程${levelName}</a>
         </div>
         <div id="pagination" style="border:2px solid white;border-radius: 5px;padding:2px 0;margin:5px 0;background-color: #0e90d2;">
-
             <c:forEach var="i" begin="1" end="${countNum}" step="1">
                 <c:choose>
                     <c:when test="${count == i}">
                         <a href="./getCheckpoint?level=${major}-${i}" type="button" class="am-btn am-btn-primary am-round am-active">${i}</a>
                     </c:when>
-
                     <c:otherwise>
                         <a href="./getCheckpoint?level=${major}-${i}" type="button" class="am-btn am-btn-primary am-round">${i}</a>
-
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
-
             <a href="${pageContext.request.contextPath }/rest/game/checkpoints" type="button" class="am-btn am-btn-primary">更多
                 <i class="am-icon-chevron-circle-down"></i>
             </a>
@@ -202,8 +199,6 @@
 
     </div>
 </div>
-
-
 
 <%@ include file="checkpointUtil.jsp"%>
 

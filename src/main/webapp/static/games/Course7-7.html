@@ -8,10 +8,10 @@
 
 <div class="am-g doc-am-g">    
   <div class="am-u-sm-18 am-u-lg-4">
-    <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/nine/course16-2.jpg) no-repeat">
+    <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/course16/course16-2.jpg) no-repeat">
 
       <div style="padding-left:1px;padding-top:150px">
-        <img id="bee" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
+        <img id="bee" src="/static/lib/pictures/course9/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
            <div style="left: 157px;position: absolute;top: 280px;color:#FFFFFF"><p><span id="flower1">3</span></p></div>
 
            <div style="left: 310px;position: absolute;top: 280px;color:#FFFFFF"><p><span id="flower2">3</span></p></div>
@@ -33,7 +33,7 @@
   </div>
   <div  id="blocklyArea" class="am-u-sm-12 am-u-lg-8 am-u-end" style="background-color:LightSteelBlue">
     <div class="am-container">
-      <img id="bee2" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-fl">
+      <img id="bee2" src="/static/lib/pictures/course9/bee.jpg" class="am-circle am-fl">
       <p class="am-center">修改“收集3个花蜜”函数，来让我向右转，而不是向左转来到达花。</p>
     </div>
     <div class="am-g" style="background-color:SteelBlue">
@@ -310,7 +310,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckpoint");
+                    jumpToNextLevel();
                 },
                 onCancel: function () {
 
@@ -481,7 +481,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckpoint?level=16-3");
+                    jumpToNextLevel();
                 },
                 onCancel: function () {
 

@@ -92,7 +92,7 @@
   <div id="content-right" style="background-color:LightSteelBlue;flex-grow: 1;">
 		<div id="info" style="display: flex;justify-content: space-between;">
 				<div>
-					<img id="monkey2" src="/static/lib/assets/img/zy_monkey.jpg" style="width: 50px;height: 50px;" class="am-circle am-fl">
+					<img id="monkey2" src="/static/lib/pictures/zy_monkey.jpg" style="width: 50px;height: 50px;" class="am-circle am-fl">
 				</div>
 				<div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
 				padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
@@ -223,7 +223,7 @@
                 var canvasMonkey = document.getElementById('canvas-monkey');
                 var ctxMonkey = canvasMonkey.getContext('2d');
                 imgMonkey = new Image();
-                imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
+                imgMonkey.src = "/static/lib/pictures/zy_monkey.jpg";//50*63像素
                 ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
                 });    
         }     
@@ -268,7 +268,7 @@
 		var canvasMonkey = document.getElementById('canvas-monkey');
 		var ctxMonkey = canvasMonkey.getContext('2d');
 		imgMonkey = new Image();
-		imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
+		imgMonkey.src = "/static/lib/pictures/zy_monkey.jpg";//50*63像素
 		ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
 		}); 
 		
@@ -333,7 +333,7 @@
 	        $('#success-confirm').modal({
 	            relatedTarget: this,
 	            onConfirm: function () {
-	                window.location.replace("./getCheckPoint?level=12-4");
+	                jumpToNextLevel();"./getCheckPoint?level=12-4");
 	            },
 	            onCancel: function () {
 	
@@ -450,7 +450,7 @@
 	        	      $('#success-confirm').modal({
 	        	          relatedTarget: this,
 	        	          onConfirm: function () {
-	        	              window.location.replace("./getCheckPoint?level=12-4");
+	        	              jumpToNextLevel();"./getCheckPoint?level=12-4");
 	        	          },
 	        	          onCancel: function () {
 	        		

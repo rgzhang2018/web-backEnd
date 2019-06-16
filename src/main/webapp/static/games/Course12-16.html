@@ -47,59 +47,7 @@
 			margin-top: 10px;
 		}
 	</style>
-	<!-- 导航条 -->
-	<div id="topbar" style="display: flex;justify-content: space-between;">
-		<div id="topbar-left">
-				<a href="##" class="am-icon-btn am-secondary am-icon-reddit-alien"></a>
-		</div>
-		
-		<div id="topbarr-center" style="display: inline-flex">
-				<div style="padding-top:15px;margin-right: 10px;">
-						<a href="HomePage.html" style="color:white">课程12：小艺术家：函数</a>
-				</div>
-				<div id="pagination" style="border:2px solid white;border-radius: 5px;padding:2px 0;margin:5px 0;background-color: #0e90d2;">
-          <a href="Course12-1.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">1</a>
-          <a href="Course12-2.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">2</a>
-          <a href="Course12-3.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">3</a>
-          <a href="Course12-4.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">4</a>
-          <a href="Course12-5.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">5</a>
-          <a href="Course12-6.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">6</a>
-          <a href="Course12-7.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">7</a>
-          <a href="Course12-8.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">8</a>
-          <a href="Course12-9.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">9</a>
-          <a href="Course12-10.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">10</a>
-          <a href="Course12-11.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">11</a>
-          <a href="Course12-12.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">12</a>
-          <a href="Course12-13.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">13</a>
-          <a href="Course12-14.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">14</a>
-          <a href="Course12-15.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">15</a>
-          <a href="Course12-16.html" type="button" class="am-active am-btn am-btn-primary am-round">16</a>
-          <a href="Course12-17.html" type="button" class="am-btn-xs am-btn am-btn-primary am-round">17</a>
-          <a href="Menu.html" type="button" class="am-btn am-btn-primary">更多
-            <i class="am-icon-chevron-circle-down"></i>
-          </a>			
-        </div>
-					
-		</div>
 
-		<div id="header-right" class="am-btn-group">			
-			<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="border:2px solid white;border-radius: 5px;margin-top:10px;background-color: #0e90d2;"
-			>登录</button>
-			<div class="am-dropdown" data-am-dropdown>
-					<button data-am-dropdown-toggle 
-					class="am-btn am-btn-primary am-topbar-btn am-btn-sm am-dropdown-toggle"
-					style="border: white;margin-top:10px;" >
-							<span class="am-icon-bars"></span>
-						<!-- <i class="am-icon-bars"></i> -->
-					</button>
-					<ul class="am-dropdown-content" style="background-color: #0e90d2;">
-						<li><a href="Menu.html" >课程分类</a></li>
-						<li><a href="#" >关于我们</a></li>
-					</ul>	
-			</div>
-			
-		</div>
-	</div>
 
 	<!-- 导航条下面的内容 -->
 <div id="content" >
@@ -146,7 +94,7 @@
   <div id="content-right" style="background-color:LightSteelBlue;flex-grow: 1;">
 		<div id="info" style="display: flex;justify-content: space-between;">
 				<div>
-					<img id="monkey2" src="/static/lib/assets/img/zy_monkey.jpg" style="width: 50px;height: 50px;" class="am-circle am-fl">
+					<img id="monkey2" src="/static/lib/pictures/zy_monkey.jpg" style="width: 50px;height: 50px;" class="am-circle am-fl">
 				</div>
 				<div style="width:90%;background-color: white;border:2px solid;border-radius: 15px;border-color:white;
 				padding-top: 5px;margin-top: 5px;margin-bottom: 5px;">
@@ -487,7 +435,7 @@
 						var canvasMonkey = document.getElementById('canvas-monkey');
 						var ctxMonkey = canvasMonkey.getContext('2d');
 						imgMonkey = new Image();
-						imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
+						imgMonkey.src = "/static/lib/pictures/zy_monkey.jpg";//50*63像素
 						ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
 						}); 
 					
@@ -557,7 +505,7 @@
 		var canvasMonkey = document.getElementById('canvas-monkey');
 		var ctxMonkey = canvasMonkey.getContext('2d');
 		imgMonkey = new Image();
-		imgMonkey.src = "/static/lib/assets/img/zy_monkey.jpg";//50*63像素
+		imgMonkey.src = "/static/lib/pictures/zy_monkey.jpg";//50*63像素
 		ctxMonkey.drawImage(imgMonkey,150-40-5,243-40,40,40); 		
 		}); 
 		
@@ -654,7 +602,7 @@
 	        $('#success-confirm').modal({
 	            relatedTarget: this,
 	            onConfirm: function () {
-	                window.location.replace("./getCheckPoint?level=12-17");
+	                jumpToNextLevel();
 	            },
 	            onCancel: function () {
 	
@@ -771,7 +719,7 @@
 	        	      $('#success-confirm').modal({
 	        	          relatedTarget: this,
 	        	          onConfirm: function () {
-	        	              window.location.replace("./getCheckPoint?level=12-17");
+	        	              jumpToNextLevel();
 	        	          },
 	        	          onCancel: function () {
 	        		

@@ -7,8 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<script src="/static/lib/assets/js/ObjTree.js"></script>
-<script src="/static/lib/assets/js/jkl-dumper.js"></script>
+<script src="${pageContext.request.contextPath }/static/lib/assets/js/ObjTree.js"></script>
+<script src="${pageContext.request.contextPath }/static/lib/assets/js/jkl-dumper.js"></script>
 <script>
 
 
@@ -29,7 +29,7 @@
             dataType:"json",
             data:JSON.stringify(data),
             success:function(data){
-                alert("保存成功！");
+                // alert("保存成功！");
                 // alert(data);
             },
             // error: function(XMLHttpRequest, textStatus){
@@ -101,7 +101,7 @@
     function jumpToNextLevel() {
         var next = turnLevelToID(GetQueryString("level"))+1;
         var url = "./getCheckpoint?level="+turnIDToLevel(next);
-        window.location.replace(url);
+        jumpToNextLevel();url);
     }
 
     function xmlToJson(){
@@ -159,8 +159,9 @@
 
     //把关卡的id转为对应string。输入：1201,输出"12-1"
     function turnIDToLevel(id) {
-        var major = id /100;
+        var major = Math.floor(id /100);
         var count = id % 100;
+        return ""+major+"-"+count;
         return ""+major+"-"+count;
     }
 

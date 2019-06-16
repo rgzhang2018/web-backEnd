@@ -107,7 +107,7 @@
       ctxdisplay.strokeRect(100, 100, 200, 200);
       ctxdisplay.strokeRect(105, 105, 190, 190);
       imgboy = new Image();
-      imgboy.src = "/static/lib/assets/img/boy.png";
+      imgboy.src = "/static/lib/pictures/boy.png";
       imgboy.onload = function () {
         ctxboy.drawImage(imgboy, boyx, boyy, 40, 40);  //设定小人的大小为40*40像素
       };
@@ -252,7 +252,7 @@
         $('#success-confirm').modal({
           relatedTarget: this,
           onConfirm: function () {
-            window.location.replace("Course2-2.html");
+            jumpToNextLevel();"Course2-2.html");
           },
           onCancel: function () {
 

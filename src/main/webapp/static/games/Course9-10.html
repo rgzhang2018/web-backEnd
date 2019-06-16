@@ -6,10 +6,10 @@
 
 <div class="am-g doc-am-g">    
   <div class="am-u-sm-18 am-u-lg-4">
-    <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/nine/course9-10.jpg) no-repeat">
+    <div id="beediv" style="width:400px; height:400px;background:url(/static/lib/pictures/course9/course9-10.jpg) no-repeat">
 
       <div style="padding-left:50px;padding-top:50px">
-        <img id="bee" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
+        <img id="bee" src="/static/lib/pictures/course9/bee.jpg" class="am-circle am-img-responsive am-img-xs" alt="beeimg">
            <div style="left: 154px;position: absolute;top: 130px;color:#FFFFFF"><p><span id="flower1">15</span></p></div>
 
            <div style="left: 204px;position: absolute;top: 180px;color:#FFFFFF"><p><span id="flower2">12</span></p></div>
@@ -32,7 +32,7 @@
   </div>
   <div  id="blocklyArea" class="am-u-sm-12 am-u-lg-8 am-u-end" style="background-color:LightSteelBlue">
     <div class="am-container">
-      <img id="bee2" src="/static/lib/pictures/nine/bee.jpg" class="am-circle am-fl">
+      <img id="bee2" src="/static/lib/pictures/course9/bee.jpg" class="am-circle am-fl">
       <p class="am-center">如果循环的数字是递减的，每次循环就会从计数器变量中减去增量的值。如果要收集15，然后12，9，6，3个花蜜，增量的值需要设置为多少？</p>
     </div>
     <div class="am-g" style="background-color:SteelBlue">
@@ -311,7 +311,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckpoint?level=9-11");
+                    jumpToNextLevel();
                 },
                 onCancel: function () {
 
@@ -463,7 +463,7 @@ function isRightResult() {
             $('#success-confirm').modal({
                 relatedTarget: this,
                 onConfirm: function () {
-                    window.location.replace("./getCheckpoint?level=9-11");
+                    jumpToNextLevel();
                 },
                 onCancel: function () {
 
