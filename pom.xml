@@ -45,7 +45,7 @@
       <artifactId>junit</artifactId>
         <!-- 依赖版本名称 -->
       <version>4.11</version>
-    </dependency>
+  </dependency>
 
       <!-- MOCK包：用于对spring在junit下进行测试 -->
       <dependency>

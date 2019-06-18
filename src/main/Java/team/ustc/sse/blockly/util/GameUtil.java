@@ -14,12 +14,12 @@ import java.util.logging.Level;
  **/
 public class GameUtil {
     //实际还差的关卡：11关步进功能，7关全部，15关全部
-    public static final Integer MAX_LEVEL = 20;
-    public static final Integer[] LEVEL_COUNTS = {0,1,9,10,1,   //0-4
+    private static final Integer MAX_LEVEL = 20;
+    private static final Integer[] LEVEL_COUNTS = {0,1,9,10,1,   //0-4
                                                   1,16,7,1,11,  //5-9
                                                   10,7,17,1,15,  //10-14
                                                   11,8,1,11,1};    //15-18
-    public static final String[] LEVEL_NAME = {
+    private static final String[] LEVEL_NAME = {
             "0.null","1.离线：七巧板","2.迷宫与蜜蜂","3.小艺术家","4.离线：封装变量","5.离线：疯狂填词","6.小艺术家：变量",
             "7.游戏实验室：变量","8.离线：计数循环的乐趣","9.蜜蜂：计数循环","10.小艺术家：计数循环","11.游戏实验室：计数循环",
             "12.小艺术家：函数","13.离线：用参数写歌","14.小艺术家：有参数的函数","15.游戏实验室：有参数的函数","16.蜜蜂：有参数的函数",
@@ -46,11 +46,11 @@ public class GameUtil {
                 result.append("</td>");
             }
         }
-        htmlCheckpoints = new String(result);
+        htmlCheckpoints = new String(result);//根据关卡，得到对应的static资源名称
     }
 
 
-
+    //获得关卡名
     public static String getLevelName(String level){
         int checkpointID = turnStringToInt(level);
         int count = checkpointID/100;
@@ -60,6 +60,7 @@ public class GameUtil {
         return null;
     }
 
+    //根据关卡，得到对应的static资源名称
     public static String getHtmlCheckpoints(){
         return htmlCheckpoints;
     }
@@ -114,6 +115,7 @@ public class GameUtil {
         return Integer.valueOf(result[0]);
     }
 
+    //返回对应的大关有多少个小关
     public static int getCounts(String level){
         String[] result = level.split("-");
         int major = Integer.valueOf(result[0]);
@@ -125,30 +127,10 @@ public class GameUtil {
 
 
 
-    //用于ajax获取某个用户闯关信息(已弃用)，传出格式为完整的List
-    public static List<List<Boolean>> turnSuccessToList(List<Checkoutpoint> checkoutpoints){
-        List<List<Boolean>> lists = new ArrayList<List<Boolean>>();
-        for(int i=0;i<MAX_LEVEL;i++){
-            List<Boolean>list = new ArrayList<Boolean>();
-            for(int j = 0;j<LEVEL_COUNTS[i];j++){    //后面再改为具体每个大关有几个小关
-                list.add(false);
-            }
-            lists.add(list);
-        }
-//        int[] checkoutpointID = new int[MAX_LEVEL*100];
-        for (Checkoutpoint c: checkoutpoints) {
-            if(c.getIssuccess()==1){
-                int major = c.getCheckpointid()/100;
-                int count = c.getCheckpointid()%100;
-                lists.get(major).set(count,true);       //设置第major大关，第count小关为通过
-            }
-        }
-        return lists;
 
-    }
-
-    //用于ajax获取某个用户闯关信息(已弃用)，传出格式为通过的关卡list:
-    //1-1 , 2-3 ...
+    //用于ajax获取某个用户闯关信息(闯关首页等)，传出格式为通过的关卡list:
+    //输入List<Checkoutpoint>  使用信息为CheckoutpointID，如： 1201  1810
+    //输出： List<String>    如  12-1   18-10
     public static List<String> turnSuccessToString(List<Checkoutpoint> checkoutpoints) {
         List<String> successList = new ArrayList<>();
         for (Checkoutpoint c: checkoutpoints) {

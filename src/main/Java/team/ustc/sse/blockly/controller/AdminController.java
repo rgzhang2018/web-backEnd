@@ -9,8 +9,10 @@ import team.ustc.sse.blockly.service.inte.AdminService;
 import team.ustc.sse.blockly.service.inte.GameService;
 import team.ustc.sse.blockly.service.inte.StudentService;
 import team.ustc.sse.blockly.util.SessionUtil;
+import team.ustc.sse.blockly.util.TimeUtil;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -71,7 +73,12 @@ public class AdminController {
     @RequestMapping(value = "/recentLoginMessage",method = {RequestMethod.GET})
     public String recentLoginMessage(HttpServletRequest request){
         List<Studentloginmessage> list = studentServiceImpl.getTenStudentLoginMessages();
+        List<String> dateList = new ArrayList<>();
+        for(Studentloginmessage studentloginmessage : list){
+            dateList.add(TimeUtil.getTimeFormatText(studentloginmessage.getLogindata()));
+        }
         request.setAttribute("list",list);
+        request.setAttribute("dateList",dateList);
         return "admin/admin_recentLoginMessage";
     }
 
@@ -107,7 +114,7 @@ public class AdminController {
     * @Author: rgzhang
     */
     @RequestMapping(value = "/loginControl",method = {RequestMethod.POST})
-    public String login(Admin admin, HttpServletRequest request){
+    public String loginControl(Admin admin, HttpServletRequest request){
         System.out.println(admin);
         if(admin.getAdminaccount() == null || admin.getAdminpassword()==null)return "demo/wrong";
         boolean result = adminServiceImpl.adminLogin(admin,request);
@@ -122,7 +129,7 @@ public class AdminController {
     * @Author: rgzhang
     */
     @RequestMapping(value = "/setAdminPassword",method = {RequestMethod.POST})
-    public String changeAdminPassword(String oldPassword, String newPassword, HttpServletRequest request){
+    public String setAdminPassword(String oldPassword, String newPassword, HttpServletRequest request){
         String account = SessionUtil.getAdminAccout(request);
         Admin admin = new Admin();
         admin.setAdminaccount(account);
@@ -159,7 +166,12 @@ public class AdminController {
     @RequestMapping(value = "/showCheckoutPoint",method = {RequestMethod.GET})
     public String showCheckoutPoint(int studentid,HttpServletRequest request){
         List<Checkoutpoint> checkoutpointList = gameServiceImpl.getCheckoutpointByStudentID(studentid);
+        List<String> dateList = new ArrayList<>();
+        for(Checkoutpoint checkoutpoint : checkoutpointList){
+            dateList.add(TimeUtil.getTimeFormatText(checkoutpoint.getSavetime()));
+        }
         request.setAttribute("checkoutpointList",checkoutpointList);
+        request.setAttribute("dateList",dateList);
         request.setAttribute("studentid",studentid);
         return "admin/admin_getStudentGameMessage";
     }

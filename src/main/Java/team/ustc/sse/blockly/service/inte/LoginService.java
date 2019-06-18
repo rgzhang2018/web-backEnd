@@ -5,7 +5,7 @@ import team.ustc.sse.blockly.entity.Studentlogin;
 
 import javax.servlet.http.HttpServletRequest;
 
-public interface LoginService {
+    public interface LoginService {
 
 
 

@@ -32,12 +32,12 @@ To change this template use File | Settings | File Templates.
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="studentLoginMessage" items="${list}">
+        <c:forEach var="studentLoginMessage" items="${list}" varStatus="loop">
             <tr>
                 <td>${studentLoginMessage.studentid}</td>
                 <td>${studentLoginMessage.loginmessage}</td>
                 <td>${studentLoginMessage.loginip}</td>
-                <td>${studentLoginMessage.logindata}</td>
+                <td>${dateList[loop.count-1]}</td>
                 <td>
                     <div class="am-u-sm-12">
                         <button class="am-btn am-btn-default am-btn-block">查看详情</button>

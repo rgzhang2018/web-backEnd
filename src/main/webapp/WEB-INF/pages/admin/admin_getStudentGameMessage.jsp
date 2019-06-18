@@ -32,15 +32,15 @@ To change this template use File | Settings | File Templates.
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="checkoutpoint" items="${checkoutpointList}">
+        <c:forEach var="checkoutpoint" items="${checkoutpointList}" varStatus="loop">
             <tr>
                 <td>${checkoutpoint.checkpointid}</td>
                 <td>${checkoutpoint.toaltime}</td>
-                <td>${checkoutpoint.savetime}</td>
+                <td>${dateList[loop.count-1]}</td>
                 <td>${checkoutpoint.issuccess}</td>
                 <td>
                     <div class="am-u-sm-10">
-                        <button class="am-btn am-btn-default am-btn-block">删除记录</button>
+                        <button class="am-btn am-btn-default am-btn-block"> <a href="./index">删除记录</a></button>
                     </div>
                 </td>
             </tr>
